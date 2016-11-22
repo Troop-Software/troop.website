@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rank.name %>
+  <% if @rank.scouts.count > 0  %>
+      <%= render 'scouts/scout', obj: @rank.scouts %>
+  <% else %>
+    <p>No scouts currently hold this rank</p>
+<% end %>
+
+</p>
+
+<%= link_to 'Back', ranks_path %>

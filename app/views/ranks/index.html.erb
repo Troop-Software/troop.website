@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ranks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ranks.each do |rank| %>
+      <tr>
+        <td><%= rank.scouts.count %></td>
+        <td><%= rank.name %></td>
+        <td><%= link_to 'Show', rank %></td>
+        <td><%= link_to 'Edit', edit_rank_path(rank) %></td>
+        <td><%= link_to 'Destroy', rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

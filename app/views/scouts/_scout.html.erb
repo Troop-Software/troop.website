@@ -1,0 +1,45 @@
+<div class='col-md-10 offset-md-1'>
+  <%= link_to 'New Scout', new_scout_path %>
+  <table class="table table-bordered table-list table-hover ">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Grade</th>
+      <th>Age</th>
+      <th>Rank</th>
+      <th>Patrol</th>
+      <th>Position</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% obj.each do |scout| %>
+        <% scout_alert, scout_alert_message = scout.scout_alert %>
+        <tr class=<%= scout_alert %>>
+          <td>
+            <% unless scout_alert.nil? %>
+                <span class='has-popover-click' data-toggle='popover' title='Alert'
+                      data-content="<%= scout_alert_message %>"><%= fa_icon 'exclamation-triangle' %>
+                </span>
+            <% end %>
+          </td>
+          <td><%= scout.name %></td>
+          <td><%= scout.grade %></td>
+          <td>
+            <span class="has-popover-hover" data-toggle="popover" title="" data-content="<%= render 'scouts/age_data', scout: scout %>"><%= scout.age(scout.birthdate) %></span>
+          </td>
+          <td><%= scout.rank.name %></td>
+          <td><%= scout.patrol.name %></td>
+          <td><%= scout.position.name %></td>
+          <td><%= link_to '<i class="fa fa-eye fa-lg"></i>Show'.html_safe, scout %> |
+            <%= link_to "<i class='fa fa-pencil fa-lg'></i>Edit".html_safe,  edit_scout_path(scout) %> |
+            <%= link_to "<i class='fa fa-trash fa-lg'></i>Destroy".html_safe, scout, method: :delete, data: {confirm: 'Are you sure?'} %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

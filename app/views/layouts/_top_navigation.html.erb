@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+  <%=link_to 'Troop.Website', root_path, class: 'navbar-brand' %>
+  <ul class="nav navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle"
+         id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View by</a>
+      <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+        <%= link_to 'Scout', scouts_path, class: 'dropdown-item' %>
+        <%= link_to 'Patrol', patrols_path, class: 'dropdown-item' %>
+        <%= link_to 'Position', positions_path, class: 'dropdown-item' %>
+        <%= link_to 'Rank', ranks_path, class: 'dropdown-item' %>
+
+      </div>
+    </li>
+  </ul>
+  <form class="form-inline float-xs-right">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+
+</nav>

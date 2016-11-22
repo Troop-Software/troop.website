@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @patrol.name %>
+</p>
+<% if @patrol.scouts.count > 0  %>
+    <%= render 'scouts/scout', obj: @patrol.scouts %>
+<% else %>
+    <p>No scouts currently in this patrol</p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_patrol_path(@patrol) %> |
+<%= link_to 'Back', patrols_path %>

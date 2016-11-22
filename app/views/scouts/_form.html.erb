@@ -1,0 +1,47 @@
+<%= form_for(scout) do |f| %>
+    <% if scout.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(scout.errors.count, "error") %> prohibited this scout from being saved:</h2>
+
+          <ul>
+            <% scout.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :grade %>
+      <%= f.number_field :grade %>
+    </div>
+
+    <div class="field">
+      <%= f.label :birthdate %>
+      <%= f.date_select :birthdate %>
+    </div>
+
+    <div class="field">
+      <%= f.label :rank_id %>
+      <%= f.select :rank_id, options_for_select(Rank.all.map { |r| [r.name, r.id] }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :patrol_id %>
+      <%= f.select :patrol_id, options_for_select(Patrol.all.map { |p| [p.name, p.id] }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :position_id %>
+      <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

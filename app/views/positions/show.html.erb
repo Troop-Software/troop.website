@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @position.name %>
+  <% if @position.scouts.count > 0  %>
+    <%=render 'scouts/scout', obj: @position.scouts %>
+  <% else %>
+    <p>No scouts currently hold this position</p>
+  <% end %>
+
+</p>
+
+<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Back', positions_path %>

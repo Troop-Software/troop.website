@@ -1,0 +1,1 @@
+json.array! @patrols, partial: 'patrols/patrol', as: :patrol
