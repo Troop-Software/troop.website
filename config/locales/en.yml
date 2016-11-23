@@ -18,6 +18,11 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
+  date:
+    formats:
+      default: "%m/%d/%Y"
+  time:
+    formats:
+      default: "%,/%d/%Y %H:%M"
   hello: "Hello world"

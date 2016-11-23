@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Troop.website</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Troop.website</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= render 'layouts/top_navigation' %>
-    <%= yield %>
-  </body>
+<body>
+<%= render 'layouts/top_navigation' %>
+<%= render 'layouts/flash' %>
+<div class='container'>
+  <%= yield %>
+</div>
+</body>
 <%= render 'layouts/footer' %>
 </html>

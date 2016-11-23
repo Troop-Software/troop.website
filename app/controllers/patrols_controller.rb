@@ -28,7 +28,10 @@ class PatrolsController < ApplicationController
 
     respond_to do |format|
       if @patrol.save
-        format.html { redirect_to @patrol, notice: 'Patrol was successfully created.' }
+        format.html {
+          flash[:success] = 'Patrol was successfully created.'
+          redirect_to @patrol
+        }
         format.json { render :show, status: :created, location: @patrol }
       else
         format.html { render :new }
@@ -42,7 +45,10 @@ class PatrolsController < ApplicationController
   def update
     respond_to do |format|
       if @patrol.update(patrol_params)
-        format.html { redirect_to @patrol, notice: 'Patrol was successfully updated.' }
+        format.html {
+          flash[:success] = 'Patrol was successfully created.'
+          redirect_to @patrol
+        }
         format.json { render :show, status: :ok, location: @patrol }
       else
         format.html { render :edit }
@@ -56,7 +62,10 @@ class PatrolsController < ApplicationController
   def destroy
     @patrol.destroy
     respond_to do |format|
-      format.html { redirect_to patrols_url, notice: 'Patrol was successfully destroyed.' }
+      format.html {
+        flash[:danger] = 'Patrol was successfully destroyed.'
+        redirect_to patrols_url
+      }
       format.json { head :no_content }
     end
   end

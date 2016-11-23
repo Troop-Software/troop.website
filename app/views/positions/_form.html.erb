@@ -1,22 +1,23 @@
-<%= form_for(position) do |f| %>
-  <% if position.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(position.errors.count, "error") %> prohibited this position from being saved:</h2>
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_for(position, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+        <%= render 'shared/errors', obj: position %>
 
-      <ul>
-      <% position.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :name %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Position Title', autofocus: true %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-10">
+            <%= f.submit class: 'btn btn-primary' %>
+            <%= link_to 'Cancel', positions_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

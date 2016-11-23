@@ -4,3 +4,33 @@
  */
 @import "bootstrap";
 @import "font-awesome";
+
+$bsa_blue: #003F87;
+$bsa_red: #CE1126;
+$bsa_brown: #996633;
+$bsa_yellow: #FFCC00;
+$venture_green: #006B3F;
+
+
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: asset-url('splash.jpg');
+  background-size: cover;
+  height: 550px;
+}
+
+.jumbotron h1 {
+  color: $bsa_blue;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.btn-xlarge {
+  font-size: 1.7em;
+  background-color: black;
+}

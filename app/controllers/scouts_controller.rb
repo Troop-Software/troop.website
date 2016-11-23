@@ -28,7 +28,10 @@ class ScoutsController < ApplicationController
 
     respond_to do |format|
       if @scout.save
-        format.html { redirect_to @scout, notice: 'Scout was successfully created.' }
+        format.html {
+          flash[:success] = 'Scout was successfully created.'
+          redirect_to @scout
+        }
         format.json { render :show, status: :created, location: @scout }
       else
         format.html { render :new }
@@ -42,7 +45,10 @@ class ScoutsController < ApplicationController
   def update
     respond_to do |format|
       if @scout.update(scout_params)
-        format.html { redirect_to @scout, notice: 'Scout was successfully updated.' }
+        format.html {
+          flash[:success] =  'Scout was successfully updated.'
+          redirect_to @scout
+        }
         format.json { render :show, status: :ok, location: @scout }
       else
         format.html { render :edit }
@@ -56,7 +62,10 @@ class ScoutsController < ApplicationController
   def destroy
     @scout.destroy
     respond_to do |format|
-      format.html { redirect_to scouts_url, notice: 'Scout was successfully destroyed.' }
+      format.html {
+        flash[:danger]= 'Scout was successfully deleted.'
+        redirect_to scouts_url
+      }
       format.json { head :no_content }
     end
   end

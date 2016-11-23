@@ -1,47 +1,69 @@
-<%= form_for(scout) do |f| %>
-    <% if scout.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(scout.errors.count, "error") %> prohibited this scout from being saved:</h2>
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_for(scout, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+        <%= render 'shared/errors', obj: scout %>
 
-          <ul>
-            <% scout.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :name %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Scout Name', autofocus: true %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :grade %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.number_field :grade, class: 'form-control' ,  in: 5..12%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :birthdate %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.date_select :birthdate, class: 'form-control', order: [:month, :day, :year] %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :rank_id %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.select :rank_id, options_for_select(Rank.all.map { |r| [r.name, r.id] }, scout.rank_id),{}, class: 'form-control' %>
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :patrol_id %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.select :patrol_id, options_for_select(Patrol.all.map { |p| [p.name, p.id] }, scout.patrol_id),{}, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :position_id %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }, scout.position_id),{}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-10">
+            <%= f.submit class: 'btn btn-primary' %>
+            <%= link_to 'Cancel', scouts_path, class: 'btn btn-secondary' %>
+          </div>
         </div>
     <% end %>
-
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :grade %>
-      <%= f.number_field :grade %>
-    </div>
-
-    <div class="field">
-      <%= f.label :birthdate %>
-      <%= f.date_select :birthdate %>
-    </div>
-
-    <div class="field">
-      <%= f.label :rank_id %>
-      <%= f.select :rank_id, options_for_select(Rank.all.map { |r| [r.name, r.id] }) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :patrol_id %>
-      <%= f.select :patrol_id, options_for_select(Patrol.all.map { |p| [p.name, p.id] }) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :position_id %>
-      <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }) %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+  </div>
+</div>

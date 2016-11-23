@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @scout.name %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @scout.grade %>
-</p>
-
-<p>
-  <strong>Birthdate:</strong>
-  <%= @scout.birthdate %>
-</p>
-
-<p>
-  <strong>Patrol:</strong>
-  <%= @scout.patrol.name %>
-</p>
-
-<%= link_to 'Edit', edit_scout_path(@scout) %> |
-<%= link_to 'Back', scouts_path %>
+<div class="col-xs-8 offset-xs-2">
+  <div class="card">
+    <h3 class="card-header center"><%= @scout.name %></h3>
+    <div class="card-block">
+      <p class="card-text">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Grade: </strong><%= @scout.grade %></li>
+        <li class="list-group-item"><strong>BirthDate: </strong><%= @scout.birthdate %></li>
+        <li class="list-group-item"><strong>Patrol: </strong><%= @scout.patrol.name %></li>
+        <li class="list-group-item"><strong>Rank: </strong><%= @scout.rank.name %></li>
+        <li class="list-group-item"><strong>Position: </strong><%= @scout.position.name %></li>
+      </ul>
+      </p>
+      <div>
+        <%= link_to 'Edit this scout', edit_scout_path(@scout), class: 'btn btn-sm btn-primary' %>
+        <%= link_to 'Delete this scout', scout_path(@scout), method: :delete,
+                    data: {confirm: 'Are you sure you want to delete the scout?'},
+                    class: 'btn btn-sm btn-danger' %>
+        <%= link_to 'View all scouts', scouts_path, class: 'btn btn-sm btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>

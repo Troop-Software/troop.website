@@ -28,7 +28,10 @@ class RanksController < ApplicationController
 
     respond_to do |format|
       if @rank.save
-        format.html { redirect_to @rank, notice: 'Rank was successfully created.' }
+        format.html {
+          flash[:success] = 'Rank was successfully created.'
+          redirect_to @rank
+        }
         format.json { render :show, status: :created, location: @rank }
       else
         format.html { render :new }
@@ -42,7 +45,10 @@ class RanksController < ApplicationController
   def update
     respond_to do |format|
       if @rank.update(rank_params)
-        format.html { redirect_to @rank, notice: 'Rank was successfully updated.' }
+        format.html {
+          flash[:success] = 'Rank was successfully created.'
+          redirect_to @rank
+        }
         format.json { render :show, status: :ok, location: @rank }
       else
         format.html { render :edit }
@@ -56,7 +62,10 @@ class RanksController < ApplicationController
   def destroy
     @rank.destroy
     respond_to do |format|
-      format.html { redirect_to ranks_url, notice: 'Rank was successfully destroyed.' }
+      format.html {
+        flash[:danger] = 'Rank was successfully deleted.'
+        redirect_to ranks_url
+      }
       format.json { head :no_content }
     end
   end
