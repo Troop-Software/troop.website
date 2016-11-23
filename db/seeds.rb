@@ -28,11 +28,12 @@ unless Position.exists?
   end
 end
 
-
-5.times do |x|
-  Scout.create!(name: Faker::Name.name, grade: rand(5..12),
-               birthdate: Faker::Date.between(18.years.ago, 11.years.ago),
-               patrol_id: rand(1..patrol_names.count),
-               rank_id: rand(1..ranks.count),
-               position_id: rand(1..positions.count))
+if Rails.env.development?
+  5.times do |x|
+    Scout.create!(name: Faker::Name.name, grade: rand(5..12),
+                  birthdate: Faker::Date.between(18.years.ago, 11.years.ago),
+                  patrol_id: rand(1..patrol_names.count),
+                  rank_id: rand(1..ranks.count),
+                  position_id: rand(1..positions.count))
+  end
 end
