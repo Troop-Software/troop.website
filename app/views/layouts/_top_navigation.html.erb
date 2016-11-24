@@ -1,21 +1,35 @@
 <nav class="navbar navbar-dark bg-inverse">
   <%=link_to 'Troop.Website', root_path, class: 'navbar-brand' %>
+  <% if user_signed_in? %>
   <ul class="nav navbar-nav">
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle"
-         id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View by</a>
+         id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</a>
       <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-        <%= link_to 'Scout', scouts_path, class: 'dropdown-item' %>
-        <%= link_to 'Patrol', patrols_path, class: 'dropdown-item' %>
-        <%= link_to 'Position', positions_path, class: 'dropdown-item' %>
-        <%= link_to 'Rank', ranks_path, class: 'dropdown-item' %>
-
+        <%= link_to 'Scouts', scouts_path, class: 'dropdown-item' %>
+        <%= link_to 'Patrols', patrols_path, class: 'dropdown-item' %>
+        <%= link_to 'Positions', positions_path, class: 'dropdown-item' %>
+        <%= link_to 'Ranks', ranks_path, class: 'dropdown-item' %>
+        <%= link_to 'Articles', articles_path, class: 'dropdown-item' %>
       </div>
     </li>
   </ul>
-  <form class="form-inline float-xs-right">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
-
+  <% end %>
+  <ul class="nav navbar-nav pull-right">
+    <% if user_signed_in? %>
+        <li class="nav-link dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.username %>
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+            <%= link_to 'Profile', edit_user_registration_path, class: 'dropdown-item' %>
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete , class: 'dropdown-item'%>
+          </div>
+        </li>
+    <% else %>
+        <li><%= link_to 'Log In', new_user_session_path %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+    <% end %>
+  </ul>
 </nav>

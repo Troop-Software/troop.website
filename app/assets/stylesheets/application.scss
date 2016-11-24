@@ -11,6 +11,13 @@ $bsa_brown: #996633;
 $bsa_yellow: #FFCC00;
 $venture_green: #006B3F;
 
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
 
 .center {
   text-align: center;
@@ -63,3 +70,11 @@ $venture_green: #006B3F;
   color: black; }
 .tw_pagination a:hover, .tw_pagination a:focus {
   text-decoration: underline; }
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
