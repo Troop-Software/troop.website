@@ -78,3 +78,9 @@ $venture_green: #006B3F;
 .alert-notice {
   @extend .alert-info;
 }
+.small {
+  font-size: 75%
+}
+.text-right {
+  text-align: right;
+}

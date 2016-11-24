@@ -36,4 +36,17 @@ if Rails.env.development?
                   rank_id: rand(1..ranks.count),
                   position_id: rand(1..positions.count))
   end
+
+  10.times do |x|
+    User.create!(username: "#{Faker::StarWars.character} #{x}",
+                 email: Faker::Internet.email,
+                 password: '123456')
+
+  end
+  users = User.all
+  users.each do |user|
+    5.times do |x|
+      user.articles.create!(title: Faker::GameOfThrones.character.truncate(50), description: Faker::Lorem.paragraph(100, false, 8).truncate(1000))
+    end
+  end
 end

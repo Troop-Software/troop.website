@@ -18,9 +18,8 @@
   <ul class="nav navbar-nav pull-right">
     <% if user_signed_in? %>
         <li class="nav-link dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.username %>
-            <span class="caret"></span>
+          <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+            <%= gravatar_for current_user.email, size: 25 %>&nbsp;<%= current_user.username %>
           </a>
           <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
             <%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %>
