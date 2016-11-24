@@ -23,7 +23,8 @@
             <span class="caret"></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-            <%= link_to 'Profile', edit_user_registration_path, class: 'dropdown-item' %>
+            <%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %>
+            <%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %>
             <%= link_to 'Log out', destroy_user_session_path, method: :delete , class: 'dropdown-item'%>
           </div>
         </li>
