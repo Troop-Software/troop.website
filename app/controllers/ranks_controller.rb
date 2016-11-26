@@ -1,6 +1,7 @@
 class RanksController < ApplicationController
   before_action :set_rank, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
 
   # GET /ranks
   # GET /ranks.json
@@ -81,4 +82,11 @@ class RanksController < ApplicationController
     def rank_params
       params.require(:rank).permit(:name)
     end
+
+  def require_admin_user
+    if !current_user.admin?
+      flash[:danger] = 'Sorry you do not have permissions to modify ranks'
+      redirect_to ranks_path
+    end
+  end
 end

@@ -1,6 +1,8 @@
 class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
+
 
   # GET /positions
   # GET /positions.json
@@ -81,4 +83,11 @@ class PositionsController < ApplicationController
     def position_params
       params.require(:position).permit(:name)
     end
+
+  def require_admin_user
+    if !current_user.admin?
+      flash[:danger] = 'Sorry you do not have permissions to modify positions'
+      redirect_to positions_path
+    end
+  end
 end
