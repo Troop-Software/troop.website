@@ -1,6 +1,7 @@
 class PatrolsController < ApplicationController
   before_action :set_patrol, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
 
   # GET /patrols
   # GET /patrols.json
@@ -81,4 +82,11 @@ class PatrolsController < ApplicationController
     def patrol_params
       params.require(:patrol).permit(:name)
     end
+
+  def require_admin_user
+    if !current_user.admin?
+      flash[:danger] = 'Sorry you do not have permissions to modify patrols'
+      redirect_to patrol_path
+    end
+  end
 end
