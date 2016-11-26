@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Positions</h1>
+<h1 class="center">Positions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @positions.each do |position| %>
-      <tr>
-        <td><%= position.scouts.count %></td>
-        <td><%= position.name %></td>
-        <td><%= link_to 'Show', position %></td>
-        <td><%= link_to 'Edit', edit_position_path(position) %></td>
-        <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Position', new_position_path %>
+<% if current_user.admin? %>
+    <div class="text-right">
+      <%= link_to 'Create New Position', new_position_path, class: 'btn btn-success ' %>
+    </div>
+<% end %>
+<div class="card-columns">
+  <% @positions.each do |position| %>
+      <div class="card">
+        <div class="card-header">
+          <%= position.name %>
+          <small>(<%= pluralize(position.scouts.count, 'scout') %>)</small>
+          <% if current_user.admin? %>
+              <span class="pull-right">
+                <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_position_path(position) %>
+                <%= link_to "<i class='fa fa-trash fa-sm'></i>".html_safe, position,
+                            method: :delete, data: {confirm: 'Are you sure?'} %>
+                </span>
+          <% end %>
+        </div>
+        <div class="card-block">
+          <p class="card-text">
+            <% position.scouts.each do |scout| %>
+                <%= link_to scout.name, scout %><br/>
+            <% end %>
+          </p>
+        </div>
+      </div>
+  <% end %>
+</div>
