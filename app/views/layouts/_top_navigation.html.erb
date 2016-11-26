@@ -17,7 +17,19 @@
               <%= link_to 'Articles', articles_path, class: 'dropdown-item' %>
             </div>
           </li>
+          <% if current_user.admin? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#"
+                   id="responsiveNavbarDropdown" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Admin</a>
+                <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown2">
+                  <%= link_to 'Users', profiles_path, class: 'dropdown-item' %>
+                  <%= link_to 'User Devise', admin_home_path, class: 'dropdown-item' %>
+                </div>
+              </li>
+          <% end %>
         </ul>
+
         <ul class="nav navbar-nav float-xs-right">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#"

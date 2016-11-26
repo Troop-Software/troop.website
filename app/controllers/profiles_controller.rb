@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(page: params[:page], per_page: 5)
+    @profiles = User.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /users/1
