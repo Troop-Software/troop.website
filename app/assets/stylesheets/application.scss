@@ -4,12 +4,18 @@
  */
 @import "bootstrap";
 @import "font-awesome";
-
 $bsa_blue: #003F87;
 $bsa_red: #CE1126;
 $bsa_brown: #996633;
 $bsa_yellow: #FFCC00;
 $venture_green: #006B3F;
+
+body { padding-top: 60px;
+       padding-bottom: 60px;
+}
+.inverted {
+  filter: invert(100%);
+}
 
 .alert-alert {
   @extend .alert-warning;
@@ -35,11 +41,6 @@ $venture_green: #006B3F;
   margin-bottom: 30px;
   letter-spacing: -1px;
   font-weight: bold;
-}
-
-.btn-xlarge {
-  font-size: 1.7em;
-  background-color: black;
 }
 
 .pad-top {
@@ -83,4 +84,38 @@ $venture_green: #006B3F;
 }
 .text-right {
   text-align: right;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+//buttons
+.btn-xlarge {
+  font-size: 1.7em;
+  background-color: black;
+}
+
+.btn-primary {
+  background-color: $bsa_blue;
+}
+
+.btn-success {
+  background-color: $venture_green;
+}
+
+.btn-danger {
+  background-color: $bsa_red;
+}
+
+//cards
+.card-header {
+  background-color: $bsa_blue;
+  color: white;
+}
+.card-header a {
+  color: white;
+}
+.card-header a:hover {
+  color: $bsa_yellow;
 }
