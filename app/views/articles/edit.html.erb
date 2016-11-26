@@ -1,3 +1,11 @@
 <h1 class="center">Editing Article</h1>
+<% if current_user.admin? && @article.user != current_user %>
+    <div class="alert alert-warning col-xs-8 offset-xs-2 center">
+      <small>You are editing an article that belong to another user.<br/>
+        This action is permitted because you are logged in as a user with admin privileges </small>
+      <br/>
+    </div>
+<% end %>
 
 <%= render 'form', article: @article %>
+
