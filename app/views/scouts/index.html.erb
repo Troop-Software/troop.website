@@ -1,4 +1,9 @@
 <h1 class="center">Scouts</h1>
+<% if current_user.admin? %>
+    <div class="text-right">
+      <%= link_to 'Create New Scout', new_scout_path, class: 'btn btn-success ' %>
+    </div>
+<% end %>
 <div class="tw_pagination"><%= will_paginate %></div>
 <%= render 'scout', obj: @scouts %>
 <div class="tw_pagination"><%= will_paginate %></div>

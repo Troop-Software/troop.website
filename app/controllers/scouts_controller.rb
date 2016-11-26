@@ -5,7 +5,7 @@ class ScoutsController < ApplicationController
   # GET /scouts
   # GET /scouts.json
   def index
-    @scouts = Scout.paginate(page: params[:page], per_page: 5)
+    @scouts = Scout.paginate(page: params[:page], per_page: 8)
   end
 
   # GET /scouts/1

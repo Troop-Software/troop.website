@@ -2,34 +2,7 @@
   <div class="card">
     <h3 class="card-header center"><%= @scout.name %></h3>
 
-    <div class="card-text">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-4">
-              <strong>Grade: </strong><%= @scout.grade %>th
-            </div>
-            <div class="col-xs-4 center">
-              <strong>Age: </strong><%= @scout.age(@scout.birthdate) %> years old
-            </div>
-            <div class="col-xs-4 text-right" >
-              <strong>BirthDate: </strong><%= l @scout.birthdate %>
-            </div>
-          </div>
-        </li>
-        <div class="row">
-          <div class="col-xs-2 center">
-            <%= image_tag("/assets/ranks/#{@scout.rank.name}.jpg", height: 100) %>
-          </div>
-          <div class="col-xs-9">
-            <li class="list-group-item">
-              <strong>Patrol: </strong><%= @scout.patrol.name %>
-            </li>
-            <li class="list-group-item"><strong>Position: </strong><%= @scout.position.name %></li>
-          </div>
-        </div>
-      </ul>
-    </div>
+    <%= render 'scout_card_detail', obj: @scout%>
 
   </div>
   <div class="center">

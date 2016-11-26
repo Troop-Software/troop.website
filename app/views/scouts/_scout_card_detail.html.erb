@@ -1,0 +1,34 @@
+<div class="card-text">
+  <% scout_alert, scout_alert_message = obj.scout_alert %>
+  <% unless scout_alert.nil? %>
+      <div class="<%=scout_alert%> center">
+        <%= scout_alert_message %>
+      </div>
+  <% end %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-4">
+          <strong>Grade: </strong><%= obj.grade %>th
+        </div>
+        <div class="col-xs-4 center">
+          <strong>Age: </strong><%= obj.age(obj.birthdate) %> years old
+        </div>
+        <div class="col-xs-4 text-right" >
+          <strong>BirthDate: </strong><%= l obj.birthdate %>
+        </div>
+      </div>
+    </li>
+    <div class="row">
+      <div class="col-xs-2 center">
+        <%= image_tag("/assets/ranks/#{obj.rank.name}.jpg", height: 100) %>
+      </div>
+      <div class="col-xs-9">
+        <li class="list-group-item">
+          <strong>Patrol: </strong><%= obj.patrol.name %>
+        </li>
+        <li class="list-group-item"><strong>Position: </strong><%= obj.position.name %></li>
+      </div>
+    </div>
+  </ul>
+</div>
