@@ -24,5 +24,4 @@ en:
       default: "%m/%d/%Y"
   time:
     formats:
-      default: "%,/%d/%Y %H:%M"
-  hello: "Hello world"
+      default: "%m/%d/%Y %H:%M"

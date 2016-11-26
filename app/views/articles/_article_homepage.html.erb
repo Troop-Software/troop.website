@@ -1,0 +1,18 @@
+<div class="card-columns">
+  <% obj.each do |article| %>
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">
+            <h4><%= link_to article.title, article_path(article) %></h4>
+          </div>
+          <div class="card-text">
+            <%= truncate(article.description, length: 100) %>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">
+          Created by: <%= article.user.username if article.user %><br/>
+          Updated last: <%= distance_of_time_in_words_to_now(article.updated_at) %>
+        </div>
+      </div>
+  <% end %>
+</div>
