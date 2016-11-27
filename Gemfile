@@ -32,7 +32,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'sqlite3'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -41,6 +41,10 @@ group :development do
   gem 'listen', '~> 3.0.5'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
