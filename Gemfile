@@ -45,6 +45,9 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'simplecov'
+  gem 'rspec_junit_formatter'
+  gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
