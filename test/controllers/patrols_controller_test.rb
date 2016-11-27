@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class PatrolsControllerTest < ActionDispatch::IntegrationTest
+
   setup do
     @patrol = patrols(:one)
+    @user = users(:one)
   end
 
   test 'patrols is not accessible if not logged in' do
