@@ -9,7 +9,7 @@
       <div class="card">
         <div class="card-header">
           <%= patrol.name %>
-          <small>(<%= pluralize(patrol.scouts.count, 'scout') %>)</small>
+          <span class="tag tag-success"><%= patrol.scouts.count %></span>
           <% if current_user.admin? %>
               <span class="pull-right">
                 <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_patrol_path(patrol) %>

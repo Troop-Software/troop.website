@@ -9,7 +9,7 @@
       <div class="card ">
         <div class="card-header">
           <%= rank.name %>
-          <small>(<%= pluralize(rank.scouts.count, 'scout') %>)</small>
+          <span class="tag tag-success"><%= rank.scouts.count %></span>
           <% if current_user.admin? %>
               <span class="pull-right">
                 <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_rank_path(rank) %>

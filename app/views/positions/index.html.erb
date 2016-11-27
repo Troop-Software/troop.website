@@ -1,4 +1,3 @@
-
 <h1 class="center">Positions</h1>
 
 <% if current_user.admin? %>
@@ -11,7 +10,11 @@
       <div class="card">
         <div class="card-header">
           <%= position.name %>
-          <small>(<%= pluralize(position.scouts.count, 'scout') %>)</small>
+          <% if position.scouts.count == 0 %>
+              <span class="tag tag-danger"><%= position.scouts.count %></span>
+          <% else %>
+              <span class="tag tag-success"><%= position.scouts.count %></span>
+          <% end %>
           <% if current_user.admin? %>
               <span class="pull-right">
                 <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_position_path(position) %>
