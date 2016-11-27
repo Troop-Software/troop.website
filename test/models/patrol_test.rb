@@ -24,4 +24,10 @@ class PatrolTest < ActiveSupport::TestCase
     assert patrol.respond_to?(:scouts)
   end
 
+  test 'patrol name is unique' do
+    patrol1 = Patrol.new(name: 'patrol name')
+    patrol2 = Patrol.new(name: 'patrol name')
+    assert patrol1.save
+    assert_not patrol2.save
+  end
 end

@@ -22,4 +22,11 @@ class PositionTest < ActiveSupport::TestCase
     position = Position.new(name: 'position name')
     assert position.respond_to?(:scouts)
   end
+
+  test 'position name is unique' do
+    position1 = Position.new(name: 'position name')
+    position2 = Position.new(name: 'position name')
+    assert position1.save
+    assert_not position2.save
+  end
 end

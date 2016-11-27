@@ -22,4 +22,11 @@ class RankTest < ActiveSupport::TestCase
     rank = Rank.new(name: 'rank name')
     assert rank.respond_to?(:scouts)
   end
+
+  test 'rank is unique' do
+    rank1 = Rank.new(name: 'rank name')
+    rank2 = Rank.new(name: 'rank name')
+    assert rank1.save
+    assert_not rank2.save
+  end
 end
