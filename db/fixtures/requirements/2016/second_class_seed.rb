@@ -1,0 +1,55 @@
+Requirement.seed(sortOrder: 1,req_num: '1a', revision: '2016', rank_id:4, req_category: :camping_and_outdoor_ethics,  description: 'Since joining, participate in five separate troop/patrol activities, three of which include overnight camping. These five activities do not include troop or patrol meetings. On at least two of the three campouts, spend the night in a tent that you pitch or other structure that you help erect (such as a lean-to, snow cave, or tepee.)')
+Requirement.seed(sortOrder: 2,req_num: '1b', revision: '2016', rank_id:4, req_category: :camping_and_outdoor_ethics,  description: 'Explain the principles of Leave No Trace, and tell how you practiced them while on a campout or outing. This outing must be different from the one used for Tenderfoot requirement 1c.')
+Requirement.seed(sortOrder: 3,req_num: '1c', revision: '2016', rank_id:4, req_category: :camping_and_outdoor_ethics,  description: 'On one of these campouts, select a location for your patrol site and recommend it to your patrol leader, senior patrol leader, or troop guide. Explain what factors you should consider when choosing a patrol site and where to pitch a tent.')
+
+Requirement.seed(sortOrder: 4,req_num: '2a', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'Explain when it is appropriate to use a fire for cooking or other purposes and when it would not be appropriate to do so.')
+Requirement.seed(sortOrder: 5,req_num: '2b', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'Use the tools listed in Tenderfoot requirement 3d to prepare tinder, kindling, and fuel wood for a cooking fire.')
+Requirement.seed(sortOrder: 6,req_num: '2c', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'At an approved outdoor location and time, use the tinder, kindling, and fuel wood from Second Class requirement 2b to demonstrate how to build a fire. Unless prohibited by local fire restrictions, light the fire. After allowing the flames to burn safely for at least two minutes, safely extinguish the flames with minimal impact to the fire site.')
+Requirement.seed(sortOrder: 7,req_num: '2d', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'Explain when it is appropriate to use a lightweight stove and when it is appropriate to use a propane stove. Set up a lightweight stove or propane stove. Light the stove, unless prohibited by local fire restrictions. Describe the safety procedures for using these types of stoves.')
+Requirement.seed(sortOrder: 8,req_num: '2e', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'On one campout, plan and cook one hot breakfast or lunch, selecting foods from MyPlate or the current USDA nutrition model. Explain the importance of good nutrition. Demonstrate how to transport, store, and prepare the foods you selected.')
+Requirement.seed(sortOrder: 9,req_num: '2f', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'Demonstrate how to tie the sheet bend knot. Describe a situation in which you would use this knot.')
+Requirement.seed(sortOrder: 10,req_num: '2g', revision: '2016', rank_id:4, req_category: :cooking_and_tools,  description: 'Demonstrate how to tie the bowline knot. Describe a situation in which you would use this knot.')
+
+Requirement.seed(sortOrder: 11,req_num: '3a', revision: '2016', rank_id:4, req_category: :navigation,  description: 'Demonstrate how a compass works and how to orient a map. Use a map to point out and tell the meaning of five map symbols.')
+Requirement.seed(sortOrder: 12,req_num: '3b', revision: '2016', rank_id:4, req_category: :navigation,  description: 'Using a compass and a map together, take a five-mile hike (or 10 miles by bike) approved by your adult leader and your parent or guardian.2')
+Requirement.seed(sortOrder: 13,req_num: '3c', revision: '2016', rank_id:4, req_category: :navigation,  description: 'Describe some hazards or injuries that you might encounter on your hike and what you can do to help prevent them.2')
+Requirement.seed(sortOrder: 14,req_num: '3d', revision: '2016', rank_id:4, req_category: :navigation,  description: 'Demonstrate how to find directions during the day and at night without using a compass or an electronic device.')
+
+Requirement.seed(sortOrder: 15,req_num: '4', revision: '2016', rank_id:4, req_category: :nature,  description: 'Identify or show evidence of at least ten kinds of wild animals (such as birds, mammals, reptiles, fish, mollusks) found in your local area or camping location. You may show evidence by tracks, signs, or photographs you have taken.')
+
+Requirement.seed(sortOrder: 16,req_num: '5a', revision: '2016', rank_id:4, req_category: :aquatics,  description: 'Tell what precautions must be taken for a safe swim.')
+Requirement.seed(sortOrder: 17,req_num: '5b', revision: '2016', rank_id:4, req_category: :aquatics,  description: 'Demonstrate your ability to pass the BSA beginner test.  Jump feetfirst into water over your head in depth, level off and swim 25 feet on the surface, stop, turn sharply, resume swimming, then return to your starting place.')
+Requirement.seed(sortOrder: 18,req_num: '5c', revision: '2016', rank_id:4, req_category: :aquatics,  description: 'Demonstrate water rescue methods by reaching with your arm or leg, by reaching with a suitable object, and by throwing lines and objects.')
+Requirement.seed(sortOrder: 19,req_num: '5d', revision: '2016', rank_id:4, req_category: :aquatics,  description: 'Explain why swimming rescues should not be attempted when a reaching or throwing rescue is possible. Explain why and how a rescue swimmer should avoid contact with the victim.')
+
+Requirement.seed(sortOrder: 20,req_num: '6a', revision: '2016', rank_id:4, req_category: :first_aid,  description: 'Demonstrate first aid for the following:
+Object in the eye
+Bite of a warm blooded animal
+Puncture wounds from a splinter, nail, and fishhook
+Serious burns (partial thickness, or second degree)
+Heat exhaustion
+Shock
+Heatstroke, dehydration, hypothermia, and hyperventilation')
+Requirement.seed(sortOrder: 21,req_num: '6b', revision: '2016', rank_id:4, req_category: :first_aid,  description: 'Show what to do for "hurry" cases of stopped breathing, stroke, severe bleeding, and ingested poisoning.')
+Requirement.seed(sortOrder: 22,req_num: '6c', revision: '2016', rank_id:4, req_category: :first_aid,  description: 'Tell what you can do while on a campout or hike to prevent or reduce the occurrence of the injuries listed in Second Class requirements 6a and 6b.')
+Requirement.seed(sortOrder: 23,req_num: '6d', revision: '2016', rank_id:4, req_category: :first_aid,  description: 'Explain what to do in case of accidents that require emergency response in the home and the backcountry. Explain what constitutes an emergency and what information you will need to provide to a responder.')
+Requirement.seed(sortOrder: 24,req_num: '6e', revision: '2016', rank_id:4, req_category: :first_aid,  description: 'Tell how you should respond if you come upon the scene of a vehicular accident.')
+
+Requirement.seed(sortOrder: 25,req_num: '7a', revision: '2016', rank_id:4, req_category: :fitness,  description: 'After competing Tenderfoot requirement 6c, be physically active at least 30 minutes a day for five days a week for four weeks. Keep track of your activities.')
+Requirement.seed(sortOrder: 26,req_num: '7b', revision: '2016', rank_id:4, req_category: :fitness,  description: 'Share your challenges and successes in completing Second Class requirement 7a. Set a goal for continuing to include physical activity as part of your daily life and develop a plan for doing so.')
+Requirement.seed(sortOrder: 27,req_num: '7c', revision: '2016', rank_id:4, req_category: :fitness,  description: 'Participate in a school, community, or troop program on the dangers of using drugs, alcohol, and tobacco, and other practices that could be harmful to your health. Discuss your participation in the program with your family, and explain the dangers of substance addictions. Report to your Scoutmaster or other adult leader in your troop about which parts of the Scout Oath and Law relate to what you learned.')
+
+Requirement.seed(sortOrder: 28,req_num: '8a', revision: '2016', rank_id:4, req_category: :citizenship,  description: 'Participate in a flag ceremony for your school, religious institution, chartered organization, community, or Scouting activity.')
+Requirement.seed(sortOrder: 29,req_num: '8b', revision: '2016', rank_id:4, req_category: :citizenship,  description: 'Explain what respect is due the flag of the United States.')
+Requirement.seed(sortOrder: 30,req_num: '8c', revision: '2016', rank_id:4, req_category: :citizenship,  description: 'With your parents or guardian, decide on an amount of money that you would like to earn, based on the cost of a specific item you would like to purchase. Develop a plan written plan to earn the amount agreed upon and follow that plan; it is acceptable to make changes to your plan along the way. Discuss any changes made to your original plan and whether you met your goal.')
+Requirement.seed(sortOrder: 31,req_num: '8d', revision: '2016', rank_id:4, req_category: :citizenship,  description: 'At a minimum of three locations, compare the cost of the item for which you are saving to determine the best place to purchase it. After completing Second Class requirement 8c, decide if you will use the amount that you earned as originally intended, save all or part of it, or use it for another purpose.')
+Requirement.seed(sortOrder: 32,req_num: '8e', revision: '2016', rank_id:4, req_category: :citizenship,  description: 'Participate in two hours of service through one or more service projects approved by your Scoutmaster. Tell how your service to others relates to the Scout Oath.')
+
+Requirement.seed(sortOrder: 33,req_num: '9a', revision: '2016', rank_id:4, req_category: :leadership,  description: "Explain the three R's of personal safety and protection.")
+Requirement.seed(sortOrder: 34,req_num: '9b', revision: '2016', rank_id:4, req_category: :leadership,  description: 'Describe bullying; tell what the appropriate response is to one who might be bullying you or bullying another person.')
+
+Requirement.seed(sortOrder: 35,req_num: '10', revision: '2016', rank_id:4, req_category: :scout_spirit,  description: 'Demonstrate scout spirit by living the Scout Oath and Scout Law. Tell how you have done your duty to God and how you have lived four different points of the Scout Law (not to include those used for Tenderfoot requirement 9) in your everyday life.')
+
+Requirement.seed(sortOrder: 36,req_num: '11', revision: '2016', rank_id:4, req_category: :scout_spirit,  description: 'While working toward Second Class rank, and after completing Tenderfoot requirement 10, participate in a Scoutmaster conference.')
+
+Requirement.seed(sortOrder: 37,req_num: '12', revision: '2016', rank_id:4, req_category: :scout_spirit,  description: 'Successfully complete your board of review for the Second Class rank.')

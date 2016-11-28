@@ -1,0 +1,1 @@
+(@rank == 'Scout') ? scout_class = default_class + ' active' : scout_class = default_class

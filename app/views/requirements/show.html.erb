@@ -1,0 +1,31 @@
+<div class="col-xs-10 offset-xs-1">
+  <div class="card">
+    <h3 class="card-header center"><%= @requirement.rank.name %>, Requirement # <%= @requirement.req_num %></h3>
+    <div class="card-block">
+      <p class="card-text">
+        <%= simple_format(@requirement.description) %>
+      </p>
+    </div>
+    <div class="card-footer small">
+      Category: <span class="tag tag-info"><%= @requirement.req_category.humanize.titlecase %></span><br/>
+      Created: <%= distance_of_time_in_words_to_now(@requirement.created_at) %> ago<br/>
+      Updated last: <%= distance_of_time_in_words_to_now(@requirement.updated_at) %> ago
+    </div>
+  </div>
+  <div class="article-actions center">
+    <% if current_user.admin? %>
+        <div class="alert alert-warning">
+          <small>Options available because you are signed in with admin privileges</small>
+          <br/>
+    <% end %>
+    <%= link_to 'Edit this requirement', edit_requirement_path(@requirement), class: 'btn btn-sm btn-primary' %>
+    <%= link_to 'Delete this requirement', requirement_path(@requirement), method: :delete,
+                data: {confirm: 'Are you sure you want to delete the article?'},
+                class: 'btn btn-sm btn-danger' %>
+    <% if current_user.admin? %>
+        </div>
+    <% end %>
+
+    <%= link_to 'View all requirements', requirements_path, class: 'btn btn-sm btn-success' %>
+  </div>
+</div>
