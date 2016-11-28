@@ -21,4 +21,7 @@
 .byebug_history
 
 # Ignore idea
-./.idea
+.idea/*
+
+#ignore coverage
+coverage/*
