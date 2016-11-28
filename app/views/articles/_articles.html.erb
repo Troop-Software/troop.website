@@ -10,7 +10,11 @@
             <%= truncate(article.description, length: 100) %>...
           </div>
           <div class="card-footer">
-            <small>Created by: <%= article.user.username if article.user %>,
+            <small>
+              <% if article.categories.any? %>
+                  Categories: <%= render article.categories %><br/>
+              <% end %>
+              Created by: <%= article.user.username if article.user %>,
               <%= time_ago_in_words(article.created_at) %> ago,
               last updated: <%= time_ago_in_words(article.updated_at) %> ago
             </small>

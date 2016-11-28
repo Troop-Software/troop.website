@@ -23,6 +23,7 @@
                    id="responsiveNavbarDropdown" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Admin</a>
                 <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown2">
+                  <%= link_to 'Categories', categories_path, class: 'dropdown-item' %>
                   <%= link_to 'Users', profiles_path, class: 'dropdown-item' %>
                   <%= link_to 'User Devise', admin_home_path, class: 'dropdown-item' %>
                 </div>

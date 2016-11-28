@@ -10,6 +10,9 @@
           </div>
         </div>
         <div class="card-footer small text-muted">
+          <% if article.categories.any? %>
+              Categories: <%= render article.categories %><br/>
+          <% end %>
           Created by: <%= article.user.username if article.user %><br/>
           Updated last: <%= distance_of_time_in_words_to_now(article.updated_at) %>
         </div>
