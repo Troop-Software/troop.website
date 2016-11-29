@@ -7,9 +7,9 @@
     <% if user_signed_in? %>
         <ul class="nav navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown"
+            <a class="nav-link dropdown-toggle" href="#" id="view"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</a>
-            <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="view">
               <%= link_to 'Scouts', scouts_path, class: 'dropdown-item' %>
               <%= link_to 'Patrols', patrols_path, class: 'dropdown-item' %>
               <%= link_to 'Positions', positions_path, class: 'dropdown-item' %>
@@ -17,12 +17,26 @@
               <%= link_to 'Articles', articles_path, class: 'dropdown-item' %>
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="requirements"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Requirements</a>
+            <div class="dropdown-menu" aria-labelledby="requirements">
+              <%= link_to 'Scout', requirements_path(by_rank_id: 2), class: 'dropdown-item' %>
+              <%= link_to 'Tenderfoot', requirements_path(by_rank_id: 3), class: 'dropdown-item' %>
+              <%= link_to 'Second Class', requirements_path(by_rank_id: 4), class: 'dropdown-item' %>
+              <%= link_to 'First Class', requirements_path(by_rank_id: 5), class: 'dropdown-item' %>
+              <%= link_to 'Star', requirements_path(by_rank_id: 6), class: 'dropdown-item' %>
+              <%= link_to 'Life', requirements_path(by_rank_id: 7), class: 'dropdown-item' %>
+              <%= link_to 'Eagle', requirements_path(by_rank_id: 8), class: 'dropdown-item' %>
+             </div>
+          </li>
           <% if current_user.admin? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle " href="#"
                    id="responsiveNavbarDropdown" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Admin</a>
                 <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown2">
+                  <%= link_to 'Requirements', requirements_path, class: 'dropdown-item' %>
                   <%= link_to 'Categories', categories_path, class: 'dropdown-item' %>
                   <%= link_to 'Users', profiles_path, class: 'dropdown-item' %>
                   <%= link_to 'User Devise', admin_home_path, class: 'dropdown-item' %>
