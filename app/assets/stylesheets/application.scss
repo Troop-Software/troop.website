@@ -5,6 +5,7 @@
 @import "bootstrap";
 @import "font-awesome";
 $bsa_blue: #003F87;
+$bsa_blue_light: #7FBDFF; // Lightened 50%
 $bsa_red: #CE1126;
 $bsa_brown: #996633;
 $bsa_yellow: #FFCC00;
@@ -126,4 +127,11 @@ a:link {
 
 .checkbox {
   margin-right: 5px;
+}
+
+//table
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: $bsa_blue_light;
 }

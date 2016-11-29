@@ -5,34 +5,36 @@
       <%= link_to 'Create New Requirement', new_requirement_path, class: 'btn btn-success ' %>
     </div>
 <% end %>
-  <div class="tw_pagination"><%= will_paginate %></div>
-  <div class="btn-group" role="group" aria-label="Rank Selection">
-    <% default_class = 'btn btn-outline-primary btn-sm' %>
+<div class="tw_pagination"><%= will_paginate %></div>
+<div class="btn-group" role="group" aria-label="Rank Selection">
+  <% default_class = 'btn btn-outline-primary btn-sm' %>
 
-    <% (@rank.nil?) ? all_class = default_class + ' active' : all_class = default_class %>
-    <% (@rank == 'Scout') ? scout_class = default_class + ' active' : scout_class = default_class %>
-    <% (@rank == 'Tenderfoot') ? tenderfoot_class = default_class + ' active' : tenderfoot_class = default_class %>
-    <% (@rank == 'Second Class') ? secondclass_class = default_class + ' active' : secondclass_class = default_class %>
-    <% (@rank == 'First Class') ? firstclass_class = default_class + ' active' : firstclass_class = default_class %>
-    <% (@rank == 'Star') ? star_class = default_class + ' active' : star_class = default_class %>
-    <% (@rank == 'Life') ? life_class = default_class + ' active' : life_class = default_class %>
-    <% (@rank == 'Eagle') ? eagle_class = default_class + ' active ' : eagle_class = default_class %>
+  <% (@rank.nil?) ? all_class = default_class + ' active' : all_class = default_class %>
+  <% (@rank == 'Scout') ? scout_class = default_class + ' active' : scout_class = default_class %>
+  <% (@rank == 'Tenderfoot') ? tenderfoot_class = default_class + ' active' : tenderfoot_class = default_class %>
+  <% (@rank == 'Second Class') ? secondclass_class = default_class + ' active' : secondclass_class = default_class %>
+  <% (@rank == 'First Class') ? firstclass_class = default_class + ' active' : firstclass_class = default_class %>
+  <% (@rank == 'Star') ? star_class = default_class + ' active' : star_class = default_class %>
+  <% (@rank == 'Life') ? life_class = default_class + ' active' : life_class = default_class %>
+  <% (@rank == 'Eagle') ? eagle_class = default_class + ' active ' : eagle_class = default_class %>
 
-    <%= link_to 'All', {controller: 'requirements', action: 'index'}, class: all_class %>
-    <%= link_to 'Scout', {controller: 'requirements', action: 'index', :by_rank_id => '2'}, class: scout_class %>
-    <%= link_to 'Tenderfoot', {controller: 'requirements', action: 'index', :by_rank_id => '3'}, class: tenderfoot_class %>
-    <%= link_to 'Second Class', {controller: 'requirements', action: 'index', :by_rank_id => '4'}, class: secondclass_class %>
-    <%= link_to 'First Class', {controller: 'requirements', action: 'index', :by_rank_id => '5'}, class: firstclass_class %>
-    <%= link_to 'Star', {controller: 'requirements', action: 'index', :by_rank_id => '6'}, class: star_class %>
-    <%= link_to 'Life', {controller: 'requirements', action: 'index', :by_rank_id => '7'}, class: life_class %>
-    <%= link_to 'Eagle', {controller: 'requirements', action: 'index', :by_rank_id => '8'}, class: eagle_class %>
-  </div>
+  <%= link_to 'All', {controller: 'requirements', action: 'index'}, class: all_class %>
+  <%= link_to 'Scout', {controller: 'requirements', action: 'index', :by_rank_id => '2'}, class: scout_class %>
+  <%= link_to 'Tenderfoot', {controller: 'requirements', action: 'index', :by_rank_id => '3'}, class: tenderfoot_class %>
+  <%= link_to 'Second Class', {controller: 'requirements', action: 'index', :by_rank_id => '4'}, class: secondclass_class %>
+  <%= link_to 'First Class', {controller: 'requirements', action: 'index', :by_rank_id => '5'}, class: firstclass_class %>
+  <%= link_to 'Star', {controller: 'requirements', action: 'index', :by_rank_id => '6'}, class: star_class %>
+  <%= link_to 'Life', {controller: 'requirements', action: 'index', :by_rank_id => '7'}, class: life_class %>
+  <%= link_to 'Eagle', {controller: 'requirements', action: 'index', :by_rank_id => '8'}, class: eagle_class %>
+</div>
 <table class="table table-bordered table-striped table-responsive">
   <thead>
   <tr>
-    <th>Rank</th>
-    <th>#</th>
-    <th>Category</th>
+    <% if @rank.nil? %>
+        <th class="center">Rank</th>
+    <% end %>
+    <th class="center">#</th>
+    <th class="center">Category</th>
     <th>Requirement</th>
     <th></th>
   </tr>
@@ -40,10 +42,16 @@
   <tbody>
   <% @requirements.each do |req| %>
       <tr>
-        <td><%= req.rank.name %></td>
-        <td><%= req.req_num %></td>
-        <td><%= req.req_category.humanize.titlecase %></td>
-        <td><%= simple_format(req.description) %></td>
+        <% if @rank.nil? %>
+            <td><%= req.rank.name %></td>
+        <% end %>
+        <% if req.req_num.nil? %>
+            <td colspan="3" class="center alert-notice"><%= simple_format(req.description) %></td>
+        <% else %>
+            <td class="center"><%= req.req_num %></td>
+            <td class="small center"><%= req.req_category.humanize.titlecase %></td>
+            <td><%= simple_format(req.description) %></td>
+        <% end %>
         <td class="center">
           <%= link_to "<i class='fa fa-eye fa-sm'></i>".html_safe, requirement_path(req) %>
           <% if current_user.admin? %>
