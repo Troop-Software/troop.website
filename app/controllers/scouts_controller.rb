@@ -11,6 +11,7 @@ class ScoutsController < ApplicationController
   # GET /scouts/1
   # GET /scouts/1.json
   def show
+    @requirements = Requirement.where(rank_id: @scout.rank_id+1)
   end
 
   # GET /scouts/new

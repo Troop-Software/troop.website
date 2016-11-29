@@ -9,6 +9,8 @@ class Scout < ApplicationRecord
   belongs_to :patrol
   belongs_to :rank
   belongs_to :position
+  has_many :scout_requirements
+  has_many :requirements, through: :scout_requirements
 
 
   def age(birthday)
