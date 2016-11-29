@@ -7,26 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 patrol_names =['Blood Hounds', 'Screaming Eagles', 'Black Hawks', 'Morning', 'Wolverines']
 positions = %w[Patrol\ Leader Assistant\ senior\ patrol\ leader senior\ patrol\ leader troop\ guide Order\ of\ the\ Arrow\ troop\ representative den\ chief scribe librarian historian quartermaster bugler junior\ assistant\ Scoutmaster chaplain\ aide instructor troop\ webmaster Outdoor\ Ethics\ Guide ]
-ranks =['Scout', 'Tenderfoot', 'Second Class', 'First Class', 'Star', 'Life', 'Eagle']
+ranks =['Just Joined', 'Scout', 'Tenderfoot', 'Second Class', 'First Class', 'Star', 'Life', 'Eagle']
 
-unless Patrol.exists?
-  patrol_names.each do |patrol_name|
-    Patrol.create!(name: patrol_name)
-  end
-end
-
-unless Rank.exists?
-  ranks.each do |rank|
-    puts "Creating #{rank}"
-    Rank.create!(name: rank)
-  end
-end
-
-unless Position.exists?
-  positions.each do |position|
-    Position.create!(name: position.titleize)
-  end
-end
 
 if Rails.env.development?
   5.times do |x|
@@ -50,3 +32,4 @@ if Rails.env.development?
     end
   end
 end
+
