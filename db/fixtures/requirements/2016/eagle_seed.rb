@@ -15,7 +15,7 @@ k. Swimming OR Hiking OR Cycling
 l. Camping, and
 m. Family Life
 You must choose only one of the merit badges listed in categories h, i, and k. Any additional merit badge(s) earned in those categories may be counted as one of your eight optional merit badges used to make your total of 21.')
-Requirement.seed(sortOrder: 5,req_num: '5', revision: '2016', rank_id:6, req_category: :general,  description: 'While a Life Scout, serve actively in your troop for four months in one or more of the following positions of responsibility (or carry out a Scoutmaster-approved leadership project to help the troop):
+Requirement.seed(sortOrder: 5,req_num: '5', revision: '2016', rank_id:8, req_category: :general,  description: 'While a Life Scout, serve actively in your troop for four months in one or more of the following positions of responsibility (or carry out a Scoutmaster-approved leadership project to help the troop):
 Boy Scout troop. Patrol leader, assistant senior patrol leader, senior patrol leader, troop guide, Order of the Arrow troop representative, den chief, scribe, librarian, historian, quartermaster, junior assistant Scoutmaster, chaplain aide, instructor, webmaster, or outdoor ethics guide.4
 Varsity Scout team. Captain, cocaptain, program manager, squad leader, team secretary, Order of the Arrow team representative, librarian, historian, quartermaster, chaplain aide, instructor, den chief, webmaster, or outdoor ethics gide.
 Venturing crew/Sea Scout ship. President, vice president, secretary, treasurer, den chief, quartermaster, historian, guide, boatswain, boatswain’s mate, yeoman, purser, storekeeper, or webmaster.
