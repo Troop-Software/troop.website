@@ -54,7 +54,7 @@
             <%= f.label :position_id %>
           </div>
           <div class="col-sm-4">
-            <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }, scout.position_id),{}, {class: 'form-control'} %>
+            <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name.titlecase, pn.id] }, scout.position_id),{}, {class: 'form-control'} %>
           </div>
         </div>
 

@@ -9,7 +9,7 @@
   <% @positions.each do |position| %>
       <div class="card">
         <div class="card-header">
-          <%= position.name %>
+          <%= position.name.titlecase %>
           <% if position.scouts.count == 0 %>
               <span class="tag tag-danger"><%= position.scouts.count %></span>
           <% else %>
