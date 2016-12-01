@@ -8,4 +8,8 @@
 <%= render 'scout', obj: @scouts %>
 <div class="tw_pagination"><%= will_paginate %></div>
 
+<small>Export to:</small> <%= link_to '<i class="fa fa-file-excel-o" aria-hidden="true"></i>'.html_safe, scouts_path({:format => :csv})%>
+
+
+
 

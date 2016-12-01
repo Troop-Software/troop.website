@@ -27,16 +27,34 @@ class Scout < ApplicationRecord
   end
 
   def scout_alert
-
     # Set Red if less than 180 left till 18 and rank is Life
-    return ['alert-danger','Less than 3 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(0, 180)
+    return ['alert-danger', 'Less than 3 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(0, 180)
 
     # Set Yellow if less than 274 left and rank is Life
-    return ['alert-warning','Less than 9 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(181, 274)
+    return ['alert-warning', 'Less than 9 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(181, 274)
 
     return nil
-
-
   end
 
+  def self.to_csv(report)
+    CSV.generate(headers: true) do |csv|
+      case report
+        when 'scoutsReport'
+          csv << %w{ID NAME GRADE AGE BIRTHDATE RANK POSITION PATROL}
+          all.each do |scout|
+            csv << [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
+                      scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
+          end
+        when 'scoutCurrentRankRequirements'
+          csv << %w{ID NAME GRADE AGE BIRTHDATE RANK POSITION PATROL}
+          all.each do |scout|
+            export = [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
+                    scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
+            csv << export
+          end
+        else
+          csv << ["#{report} not found"]
+      end
+    end
+  end
 end

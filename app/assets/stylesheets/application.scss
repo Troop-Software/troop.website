@@ -135,3 +135,21 @@ a:link {
 .table-striped>tbody>tr:nth-child(odd)>th {
   background-color: $bsa_blue_light;
 }
+
+//----------PRINT-----------------
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4em;
+    word-spacing: 1px;
+    letter-spacing: 0.2px;
+    font: 13px Arial, Helvetica,"Lucida Grande", serif;
+    color: black;
+  }
+
+  .label {
+    font-weight: bold;
+  }
+
+}

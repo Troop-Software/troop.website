@@ -6,6 +6,12 @@ class ScoutsController < ApplicationController
   # GET /scouts.json
   def index
     @scouts = Scout.paginate(page: params[:page], per_page: 8)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Scout.all.to_csv('scoutsReport'), filename: "scouts-#{Date.today}.csv" }
+      format.json { render :index, status: :ok, location: @scout_path }
+    end
   end
 
   # GET /scouts/1
