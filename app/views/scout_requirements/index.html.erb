@@ -27,7 +27,3 @@
 </table>
 <%= link_to 'Create New', new_scout_requirement_path, class: 'btn btn-success ' %>
 
-<!-- Trigger modal -->
-<%= link_to 'Create Modal', nil, {class: 'btn btn-danger', data: {toggle: 'modal', target: '#myModal'}}%>
-<!-- Modal -->
-<%= render 'scout_requirements/new_form_modal', scout_requirement: ScoutRequirement.new %>

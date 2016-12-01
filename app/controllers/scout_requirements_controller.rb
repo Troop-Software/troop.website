@@ -1,7 +1,7 @@
 class ScoutRequirementsController < ApplicationController
-   before_action :set_scout_requirement, only: [:show, :edit, :update, :destroy]
+   before_action :set_scout_requirement, only: [:show, :edit, :update]
    before_action :authenticate_user!
-   before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
+   before_action :require_admin_user, only: [:destroy, :index]
   #
   # # GET /categories
   # # GET /categories.json
