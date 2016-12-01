@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128093112) do
+ActiveRecord::Schema.define(version: 20161129104143) do
 
   create_table "article_categories", force: :cascade do |t|
     t.integer  "article_id"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20161128093112) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "sortOrder"
+  end
+
+  create_table "scout_requirements", force: :cascade do |t|
+    t.integer  "scout_id"
+    t.integer  "requirement_id"
+    t.string   "sign_off"
+    t.boolean  "completed"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.date     "completed_date"
   end
 
   create_table "scouts", force: :cascade do |t|

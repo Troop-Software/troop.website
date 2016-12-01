@@ -9,6 +9,9 @@ class Requirement < ApplicationRecord
                       :nature, :aquatics, :first_aid, :first_aid_and_emergency_prepardness]
 
   belongs_to :rank
+  has_many :scout_requirements
+  has_many :scouts, through: :scout_requirements
+
   scope :by_rank_id, -> rank_id { where(:rank_id => rank_id) }
 
 end
