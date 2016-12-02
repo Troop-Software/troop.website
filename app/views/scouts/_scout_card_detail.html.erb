@@ -1,34 +1,38 @@
 <div class="card-text">
   <% scout_alert, scout_alert_message = obj.scout_alert %>
   <% unless scout_alert.nil? %>
-      <div class="<%=scout_alert%> center">
+      <div class="<%= scout_alert %> center">
         <%= scout_alert_message %>
       </div>
   <% end %>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-4">
-          <strong>Grade: </strong><%= obj.grade %>th
-        </div>
-        <div class="col-xs-4 center">
-          <strong>Age: </strong><%= obj.age(obj.birthdate) %> years old
-        </div>
-        <div class="col-xs-4 text-right" >
-          <strong>BirthDate: </strong><%= l obj.birthdate %>
-        </div>
-      </div>
-    </li>
-    <div class="row">
-      <div class="col-xs-2 center">
-        <%= image_tag("/assets/ranks/#{obj.rank.name}.jpg", height: 100) %>
-      </div>
-      <div class="col-xs-9">
-        <li class="list-group-item">
-          <strong>Patrol: </strong><%= obj.patrol.name %>
-        </li>
-        <li class="list-group-item"><strong>Position: </strong><%= obj.position.name %></li>
-      </div>
-    </div>
-  </ul>
+  <div class="col-sm-1 rank_image text-left">
+    <%= image_tag("/assets/ranks/#{obj.rank.name}.jpg", height: 100) %>
+  </div>
+  <div class="offset-sm-10 col-xs-2 rank_image text-right hidden-sm">
+    <%= image_tag("/assets/positions/#{obj.position.name.downcase}.jpg", height: 100) %>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 offset-xs-2"><strong>Grade: </strong><%= obj.grade %>th</div>
+    <div class="col-xs-3 center"><strong>Age: </strong><%= obj.age(obj.birthdate) %> years old</div>
+    <div class="col-xs-3 text-right"><strong>BirthDate: </strong><%= l obj.birthdate %></div>
+
+  </div>
+  <div class="row">
+    <div class="col-xs-5 offset-xs-2"><strong>Email: </strong><%= obj.email %></div>
+    <div class="col-xs-3 text-right"><strong>Joined: </strong><%= l obj.joined %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 offset-xs-2 "><strong>Phone: </strong><%= obj.phone %></div>
+    <div class="col-xs-5 text-right"><strong>BSA ID:</strong> <%= obj.bsa_id %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 offset-xs-2"><strong>Position: </strong><%= obj.position.name %></div>
+    <div class="col-xs-5 text-right"><strong>Patrol: </strong><%= obj.patrol.name %></div>
+
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
 </div>
+
+

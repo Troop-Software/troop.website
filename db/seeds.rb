@@ -16,7 +16,12 @@ if Rails.env.development?
                   birthdate: Faker::Date.between(18.years.ago, 11.years.ago),
                   patrol_id: rand(1..patrol_names.count),
                   rank_id: rand(1..ranks.count),
-                  position_id: rand(1..positions.count))
+                  position_id: rand(1..positions.count),
+                  email: Faker::Internet.email,
+                  phone: '1111111111',
+                  joined: Date.today,
+                  bsa_id: '123456789'
+    )
   end
 
   10.times do |x|
@@ -27,8 +32,8 @@ if Rails.env.development?
   end
   users = User.all
   users.each do |user|
-    5.times do |x|
-      user.articles.create!(title: Faker::GameOfThrones.character.truncate(50), description: Faker::Lorem.paragraph(100, false, 8).truncate(1000))
+    10.times do |x|
+      user.articles.create!(title: Faker::Pokemon.name.truncate(50), description: Faker::Lorem.paragraph(100, false, 8).truncate(1000))
     end
   end
 end
