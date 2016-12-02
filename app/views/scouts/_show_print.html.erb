@@ -1,0 +1,66 @@
+<div class="visible-print-block">
+  <div class="row">
+    <div class="col-xs-1 label">Name:</div>
+    <div class="col-xs-4"><%= @scout.name %></div>
+    <div class="col-xs-1 offset-xs-1 label">Email:</div>
+    <div class="col-xs-4"><%= @scout.email %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1 label">Patrol:</div>
+    <div class="col-xs-4"><%= @scout.patrol.name %></div>
+    <div class="col-xs-1 offset-xs-1 label">Phone:</div>
+    <div class="col-xs-4"><%= @scout.phone %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1 label">Rank:</div>
+    <div class="col-xs-2"><%= @scout.rank.name %></div>
+    <div class="col-xs-1 label">Date:</div>
+    <div class="col-xs-1">11/11/1111</div>
+    <div class="col-xs-1 offset-xs-1 label">DoB:</div>
+    <div class="col-xs-1"><%= l @scout.birthdate %></div>
+    <div class="col-xs-1 offset-xs-1 label">Age:</div>
+    <div class="col-xs-1"><%= @scout.age(@scout.birthdate) %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1 label">Position:</div>
+    <div class="col-xs-4"><%= @scout.position.name %></div>
+    <div class="col-xs-1 offset-xs-1 label">Joined:</div>
+    <div class="col-xs-2"><%= l @scout.joined %></div>
+    <div class="col-xs-1 label">ID:</div>
+    <div class="col-xs-1"><%= @scout.bsa_id %></div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <!---- if rank is completed show name and date ----->
+  <div class="row label">Completed Ranks:</div>
+  <div class="row">
+    <div class="col-xs-1">Scout</div>
+    <div class="col-xs-1">11/11/1111</div>
+  </div>
+
+  <!----- Ranks not Completed --------------->
+  <%= 4.times do |y| %>
+      <div class="row">&nbsp;</div>
+      <div class="row label">Tenderfoot</div>
+      <table>
+        <% 19.times do |x| %>
+            <tr>
+              <td class="label"><%= x %>a.</td>
+              <td>XXXXOXXXXOXXXXOXXXXOXXXXOXXXXOXXXXO</td>
+              <td>11/11/1111</td>
+              <td></td>
+              <td><%= x %>a.</td>
+              <td>XXXXOXXXXOXXXXOXXXXOXXXXOXXXXOXXXXO</td>
+              <td>11/11/1111</td>
+            </tr>
+        <% end %>
+      </table>
+  <% end %>
+</div>
+  <!------------- Merit Badges Earned ------------- --!>
+  <!------------- Activity Totals ---------------!>
+  <!------------- Awards ---------------!>
+  <!------------- Training ---------------!>
+  <!------------- Leadership ---------------!>
+
+
+
