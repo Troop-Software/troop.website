@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time='0.035335' skipped='0' failures='0' errors='0' name="PositionTest" assertions='7' tests='5'>
+  <testcase time='0.001091' file="test/models/position_test.rb" name="test_scouts_belong_to_position" assertions='1'>
+  </testcase>
+  <testcase time='0.011978' file="test/models/position_test.rb" name="test_position_name_is_unique" assertions='2'>
+  </testcase>
+  <testcase time='0.003134' file="test/models/position_test.rb" name="test_position_requires_name" assertions='1'>
+  </testcase>
+  <testcase time='0.006991' file="test/models/position_test.rb" name="test_position_can_be_saved" assertions='1'>
+  </testcase>
+  <testcase time='0.012141' file="test/models/position_test.rb" name="test_position_name_requirements" assertions='2'>
+  </testcase>
+</testsuite>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time='0.033202' skipped='0' failures='0' errors='0' name="ScoutsControllerTest" assertions='2' tests='1'>
+  <testcase time='0.033202' file="test/controllers/scouts_controller_test.rb" name="test_scouts_is_not_accessible_if_not_logged_in" assertions='2'>
+  </testcase>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time='0.065424' skipped='0' failures='0' errors='0' name="CategoryTest" assertions='5' tests='5'>
+  <testcase time='0.026034' file="test/models/category_test.rb" name="test_category_should_be_valid" assertions='1'>
+  </testcase>
+  <testcase time='0.005788' file="test/models/category_test.rb" name="test_name_should_be_present" assertions='1'>
+  </testcase>
+  <testcase time='0.012882' file="test/models/category_test.rb" name="test_name_should_be_unique" assertions='1'>
+  </testcase>
+  <testcase time='0.016967' file="test/models/category_test.rb" name="test_name_should_not_be_too_long" assertions='1'>
+  </testcase>
+  <testcase time='0.003753' file="test/models/category_test.rb" name="test_name_should_not_be_too_short" assertions='1'>
+  </testcase>
+</testsuite>

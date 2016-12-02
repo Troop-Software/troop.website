@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite time='1.032425' skipped='0' failures='0' errors='0' name="CategoriesControllerTest" assertions='2' tests='1'>
-  <testcase time='1.032425' file="test/controllers/categories_controller_test.rb" name="test_categories_is_not_accessible_if_not_logged_in" assertions='2'>
+<testsuite time='0.024907' skipped='0' failures='0' errors='0' name="CategoriesControllerTest" assertions='2' tests='1'>
+  <testcase time='0.024907' file="test/controllers/categories_controller_test.rb" name="test_categories_is_not_accessible_if_not_logged_in" assertions='2'>
   </testcase>
 </testsuite>

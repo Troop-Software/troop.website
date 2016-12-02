@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time='0.054676' skipped='0' failures='0' errors='0' name="RankTest" assertions='7' tests='5'>
+  <testcase time='0.020377' file="test/models/rank_test.rb" name="test_rank_is_unique" assertions='2'>
+  </testcase>
+  <testcase time='0.001881' file="test/models/rank_test.rb" name="test_scouts_belong_to_rank" assertions='1'>
+  </testcase>
+  <testcase time='0.009781' file="test/models/rank_test.rb" name="test_rank_can_be_saved" assertions='1'>
+  </testcase>
+  <testcase time='0.017015' file="test/models/rank_test.rb" name="test_rank_name_requirements" assertions='2'>
+  </testcase>
+  <testcase time='0.005622' file="test/models/rank_test.rb" name="test_rank_requires_name" assertions='1'>
+  </testcase>
+</testsuite>

@@ -25,7 +25,7 @@ class PositionTest < ActiveSupport::TestCase
 
   test 'position name is unique' do
     position1 = Position.new(name: 'position name')
-    position2 = Position.new(name: 'position name')
+    position2 = Position.new(name: 'Position Name')
     assert position1.save
     assert_not position2.save
   end
