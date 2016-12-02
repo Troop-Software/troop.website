@@ -19,10 +19,10 @@
   </div>
   <div class="row">
     <div class="col-xs-5 offset-xs-2"><strong>Email: </strong><%= obj.email %></div>
-    <div class="col-xs-3 text-right"><strong>Joined: </strong><%= l obj.joined %></div>
+    <div class="col-xs-3 text-right"><strong>Joined: </strong><%= l obj.joined unless obj.joined.nil? %></div>
   </div>
   <div class="row">
-    <div class="col-xs-3 offset-xs-2 "><strong>Phone: </strong><%= obj.phone %></div>
+    <div class="col-xs-3 offset-xs-2 "><strong>Phone: </strong><%= number_to_phone(obj.phone, area_code: true ) %></div>
     <div class="col-xs-5 text-right"><strong>BSA ID:</strong> <%= obj.bsa_id %></div>
   </div>
   <div class="row">

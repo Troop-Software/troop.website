@@ -45,13 +45,6 @@ class Scout < ApplicationRecord
             csv << [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
                       scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
           end
-        when 'scoutCurrentRankRequirements'
-          csv << %w{ID NAME GRADE AGE BIRTHDATE RANK POSITION PATROL}
-          all.each do |scout|
-            export = [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
-                    scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
-            csv << export
-          end
         else
           csv << ["#{report} not found"]
       end
