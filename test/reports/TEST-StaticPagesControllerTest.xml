@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite time='0.601684' skipped='0' failures='0' errors='0' name="StaticPagesControllerTest" assertions='1' tests='1'>
-  <testcase time='0.601684' file="test/controllers/static_pages_controller_test.rb" name="test_should_get_home" assertions='1'>
-  </testcase>
-</testsuite>
