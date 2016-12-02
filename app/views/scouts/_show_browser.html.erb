@@ -9,11 +9,13 @@
          rank_progress = counter / @requirements.count.to_f * 100
          @scout.rank_id += 1 #increment scout rank to show next ranks requirements
       %>
+      <!--- Rank Progress Bar -->
       <div class="alert alert-success">
         <div class="text-xs-center" id="rank-progress">Progress
           toward <%= @scout.rank.name %>&hellip; <%= number_to_percentage(rank_progress, precision: 0) %></div>
         <progress class="progress" value="<%= rank_progress %>" max="100" aria-describedby="rank-progress"></progress>
       </div>
+
       <h4 class="center"><%= @scout.rank.name %> Requirements</h4>
       <div>
         <table class="table table-bordered table-striped table-responsive">

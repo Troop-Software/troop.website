@@ -5,6 +5,8 @@ class Scout < ApplicationRecord
                             :less_than_or_equal_to => 12,
                             :greater_than_or_equal_to => 5,
                             :only_integer => true
+  #validates :birthdate, inclusion: { in: (10.years.ago..18.years.ago) }
+
 
   belongs_to :patrol
   belongs_to :rank
