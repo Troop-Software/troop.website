@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <div class="col-xs-5 offset-xs-2"><strong>Email: </strong><%= obj.email %></div>
-    <div class="col-xs-3 text-right"><strong>Joined: </strong><%= l obj.joined %></div>
+    <div class="col-xs-3 text-right"><strong>Joined: </strong><%= l obj.joined unless obj.joined.nil? %></div>
   </div>
   <div class="row">
     <div class="col-xs-3 offset-xs-2 "><strong>Phone: </strong><%= obj.phone %></div>

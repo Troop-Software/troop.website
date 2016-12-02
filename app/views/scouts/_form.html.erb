@@ -14,10 +14,46 @@
 
         <div class="form-group row">
           <div class="control-label col-sm-2">
+            <%= f.label :email %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.email_field :email, class: 'form-control'%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :phone %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.telephone_field :phone, class: 'form-control'%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
             <%= f.label :grade %>
           </div>
           <div class="col-sm-4">
             <%= f.number_field :grade, class: 'form-control' ,  in: 5..12%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :joined %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.date_select :joined, class: 'form-control', order: [:month, :day, :year] %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label 'BSA ID' %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.number_field :bsa_id, class: 'form-control' %>
           </div>
         </div>
 
