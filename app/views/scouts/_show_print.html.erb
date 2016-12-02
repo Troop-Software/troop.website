@@ -9,7 +9,7 @@
     <div class="col-xs-1 label">Patrol:</div>
     <div class="col-xs-4"><%= @scout.patrol.name %></div>
     <div class="col-xs-1 offset-xs-1 label">Phone:</div>
-    <div class="col-xs-4"><%= number_to_email(@scout.phone, areacode: true) %></div>
+    <div class="col-xs-4"><%= number_to_phone(@scout.phone, areacode: true) %></div>
   </div>
   <div class="row">
     <div class="col-xs-1 label">Rank:</div>
