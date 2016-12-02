@@ -7,7 +7,7 @@
       </p>
     </div>
     <div class="card-footer small">
-      Category: <span class="tag tag-info"><%= @requirement.req_category.humanize.titlecase %></span><br/>
+      Category: <span class="tag tag-info"><%= @requirement.req_category.humanize %></span><br/>
       Created: <%= distance_of_time_in_words_to_now(@requirement.created_at) %> ago<br/>
       Updated last: <%= distance_of_time_in_words_to_now(@requirement.updated_at) %> ago
     </div>

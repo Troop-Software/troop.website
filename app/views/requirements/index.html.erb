@@ -49,7 +49,7 @@
             <td colspan="3" class="center alert-notice"><%= simple_format(req.description) %></td>
         <% else %>
             <td class="center"><%= req.req_num %></td>
-            <td class="small center"><%= req.req_category.humanize.titlecase %></td>
+            <td class="small center"><%= req.req_category.humanize %></td>
             <td><%= simple_format(req.description) %></td>
         <% end %>
         <td class="center">

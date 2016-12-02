@@ -25,3 +25,5 @@
 
 #ignore coverage
 coverage/*
+#ignore test reports
+test/reports/*

@@ -5,4 +5,7 @@ class Category < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
   validates_uniqueness_of :name
 
+  before_save do |category|
+    category.name = category.name.downcase.titlecase
+  end
 end

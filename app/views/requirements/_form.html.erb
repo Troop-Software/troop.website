@@ -25,7 +25,7 @@
             <%= f.label :category %>
           </div>
           <div class="col-sm-4">
-            <%= f.select :req_category, options_for_select(Requirement.req_categories.map {|k, v| [k.humanize.titlecase, k]}) %>
+            <%= f.select :req_category, options_for_select(Requirement.req_categories.map {|k, v| [k.humanize, k]}) %>
           </div>
         </div>
 
