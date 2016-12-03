@@ -139,6 +139,10 @@ a:link {
 .table-striped>tbody>tr:nth-child(odd)>th {
   background-color: $bsa_blue_light;
 }
+// ---- nav tabs
+.tab-panel {
+  display: none;
+}
 
 //----------PRINT-----------------
 @media print {

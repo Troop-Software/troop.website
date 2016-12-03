@@ -1,0 +1,64 @@
+
+<% rank = Rank.find(current_rank_selected) %>
+<% requirements = Requirement.where(rank_id: current_rank_selected) %>
+
+<!-- Display Progress Bar if next rank -->
+<% next_rank = @scout.rank_id + 1 %>
+
+    <% counter = 0
+       requirements.each { |req| @scout.scout_requirements.each { |test| counter +=1 if test.requirement_id == req.id } }
+       rank_progress = counter / requirements.count.to_f * 100
+    %>
+    <!--- Rank Progress Bar -->
+    <div class="alert alert-success">
+      <div class="text-xs-center" id="rank-progress">Progress
+        toward <%= rank.name %>&hellip; <%= number_to_percentage(rank_progress, precision: 0) %></div>
+      <progress class="progress" value="<%= rank_progress %>" max="100" aria-describedby="rank-progress"></progress>
+    </div>
+
+
+<!-- Display requirements -->
+<div>
+  <table class="table table-bordered table-striped table-responsive">
+    <thead>
+    <tr>
+      <th><i class="fa fa-check" aria-hidden="true"></i></th>
+      <th class="center">#</th>
+      <th class="center">Category</th>
+      <th>Requirement</th>
+      <th>Signed</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% requirements.each do |req| %>
+        <% scout_requirement = {} %>
+        <tr>
+          <td>
+            <% @scout.scout_requirements.each { |test|
+              if test.requirement_id == req.id
+                scout_requirement[:sign_off] = test.sign_off
+                scout_requirement[:completed_date] = test.completed_date
+              end
+            } %>
+            <% unless scout_requirement.empty? %>
+                <i class="fa fa-check" aria-hidden="true"></i>
+            <% end %>
+          </td>
+          <td class="center">
+            <!-- Trigger modal -->
+            <%= link_to req.req_num, nil, {class: '', data: {toggle: 'modal', target: "##{@scout.id}-#{req.id}"}} %>
+            <!-- Modal -->
+            <%= render 'scout_requirements/new_form_modal',
+                       scout_requirement: ScoutRequirement.find_or_initialize_by(scout_id: @scout.id, requirement_id: req.id) %>
+          </td>
+          <td class="small center"><%= req.req_category.humanize %></td>
+          <td><%= simple_format(req.description) %></td>
+          <td><%= scout_requirement[:sign_off] %></td>
+          <td><%= l scout_requirement[:completed_date] unless scout_requirement[:completed_date].nil? %></td>
+        </tr>
+
+    <% end %>
+    </tbody>
+  </table>
+</div>
