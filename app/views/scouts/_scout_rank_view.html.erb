@@ -1,20 +1,31 @@
-
 <% rank = Rank.find(current_rank_selected) %>
 <% requirements = Requirement.where(rank_id: current_rank_selected) %>
 
-<!-- Display Progress Bar if next rank -->
-<% next_rank = @scout.rank_id + 1 %>
-
-    <% counter = 0
-       requirements.each { |req| @scout.scout_requirements.each { |test| counter +=1 if test.requirement_id == req.id } }
-       rank_progress = counter / requirements.count.to_f * 100
-    %>
-    <!--- Rank Progress Bar -->
-    <div class="alert alert-success">
+<!-- Progress Bar / Rank Date-->
+<div class="alert alert-success">
+  <%
+    rank_date = nil
+    @scout.scout_rank_histories.each do |rank_history|
+      if current_rank_selected == rank_history.rank_id
+        rank_date = rank_history.rank_completed
+      end
+    end
+    if rank_date.nil?
+      counter = 0
+      requirements.each { |req| @scout.scout_requirements.each { |test| counter +=1 if test.requirement_id == req.id } }
+      rank_progress = counter / requirements.count.to_f * 100 %>
       <div class="text-xs-center" id="rank-progress">Progress
         toward <%= rank.name %>&hellip; <%= number_to_percentage(rank_progress, precision: 0) %></div>
       <progress class="progress" value="<%= rank_progress %>" max="100" aria-describedby="rank-progress"></progress>
-    </div>
+
+  <% else
+       if rank_date == Date.parse('1/1/1111') %>
+          <div class="text-xs-center">Rank Completed on Unknown Date</div>
+      <% else %>
+          <div class="text-xs-center">Rank Completed on <%= l rank_date %></div>
+      <% end %>
+  <% end %>
+</div>
 
 
 <!-- Display requirements -->

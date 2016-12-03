@@ -29,7 +29,7 @@
         <% tab_class += ' active' if next_rank == r.id %>
         <div class="tab-content">
           <div class="<%= tab_class %>" id="rank<%= r.id %>" role="tabpanel">
-            <%= render 'scouts/scout_rank_view_test', current_rank_selected: r.id %>
+            <%= render 'scouts/scout_rank_view', current_rank_selected: r.id %>
           </div>
         </div>
     <% end %>
