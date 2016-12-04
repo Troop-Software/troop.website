@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201212452) do
+ActiveRecord::Schema.define(version: 20161203025037) do
 
   create_table "article_categories", force: :cascade do |t|
     t.integer  "article_id"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20161201212452) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "sortOrder"
+  end
+
+  create_table "scout_rank_histories", force: :cascade do |t|
+    t.integer  "scout_id"
+    t.integer  "rank_id"
+    t.date     "rank_completed"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "scout_requirements", force: :cascade do |t|
