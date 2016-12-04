@@ -1,0 +1,45 @@
+.table{
+   > thead > tr > th{
+       border-bottom-width: 0.0625em;
+       font-size: $font-size-h6;
+       font-weight: $font-weight-light;
+   }
+
+   .radio,
+   .checkbox{
+       margin-top: 0;
+       margin-bottom: 0;
+       margin-left: 0.625em;
+       padding: 0;
+       width: 0.9375em;
+
+       .icons{
+           position: relative;
+       }
+   }
+   > thead > tr > th,
+   > tbody > tr > th,
+   > tfoot > tr > th,
+   > thead > tr > td,
+   > tbody > tr > td,
+   > tfoot > tr > td{
+       padding: 0.75em 0.5em;
+       vertical-align: middle;
+   }
+
+   > thead > tr > th{
+       padding-bottom: 0.25em;
+   }
+
+   .td-actions{
+        display: flex;
+
+        .btn{
+           margin: 0em;
+           padding: 0.3125em;
+        }
+    }
+    > tbody > tr{
+        position: relative;
+    }
+}
