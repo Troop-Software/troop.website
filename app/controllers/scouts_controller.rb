@@ -54,7 +54,7 @@ class ScoutsController < ApplicationController
     respond_to do |format|
       if @scout.update(scout_params)
         format.html {
-          flash[:success] =  'Scout was successfully updated.'
+          flash[:success] = 'Scout was successfully updated.'
           redirect_to @scout
         }
         format.json { render :show, status: :ok, location: @scout }
@@ -79,13 +79,15 @@ class ScoutsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scout
-      @scout = Scout.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scout
+    @scout = Scout.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scout_params
-      params.require(:scout).permit(:name, :grade, :birthdate, :patrol_id, :rank_id, :position_id, :email, :phone, :joined, :bsa_id )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def scout_params
+    params.require(:scout).permit(:name, :grade, :birthdate, :patrol_id, :rank_id, :position_id, :email,
+                                  :phone, :joined, :bsa_id)
+  end
+
 end

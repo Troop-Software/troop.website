@@ -5,7 +5,6 @@ class Scout < ApplicationRecord
                             :less_than_or_equal_to => 12,
                             :greater_than_or_equal_to => 5,
                             :only_integer => true
-  #validates :birthdate, inclusion: { in: (10.years.ago..18.years.ago) }
 
 
   belongs_to :patrol
@@ -15,6 +14,18 @@ class Scout < ApplicationRecord
   has_many :scout_requirements
   has_many :requirements, through: :scout_requirements
 
+   after_create :establish_scout_rank_history
+
+
+  def establish_scout_rank_history
+    x = 1
+    until x > rank.id
+      srh = ScoutRankHistory.new(scout_id: self.id, rank_id: x, rank_completed: Date.parse('1/1/1111'))
+      puts srh.inspect
+      srh.save!
+      x += 1
+    end
+  end
 
   def age(birthday)
     # http://stackoverflow.com/questions/819263/get-persons-age-in-ruby

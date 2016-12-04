@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-2 offset-sm-3 ">
+    <strong>Scout:</strong>
+  </div>
+  <div class="col-sm-3">
+    <%= @scout_rank_history.scout.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2 offset-sm-3 ">
+    <strong>Rank:</strong>
+  </div>
+  <div class="col-sm-1">
+    <%= @scout_rank_history.rank.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2 offset-sm-3 ">
+    <strong>Rank Date:</strong>
+  </div>
+  <div class="col-sm-1">
+    <%= l @scout_rank_history.rank_completed %>
+  </div>
+</div>
+<%= link_to 'Back', :back %>
