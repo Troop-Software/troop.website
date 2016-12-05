@@ -1,8 +1,17 @@
-<nav class="navbar navbar-light bg-faded navbar-fixed-bottom small">
-  <span class="navbar-text">
-    <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
-  </span>
-  <span class="navbar-text pull-right small">
-    © 2016 Bob Koertge. All rights reserved
-  </span>
-</nav>
+<footer class="footer">
+  <div class="container-fluid">
+    <nav class="pull-left">
+      <ul>
+        <li>
+          <a href="<%= root_path %>">
+            Home
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+    <p class="copyright pull-right">
+      &copy;<%= Date.today.year %> Bob Koertge. All rights reserved
+    </p>
+  </div>
+</footer>

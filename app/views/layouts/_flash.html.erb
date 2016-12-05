@@ -1,10 +1,56 @@
 <div class="row">
-  <div class="col-xs-10 offset-xs-1">
-    <% flash.each do |name, msg| %>
-        <div class='alert alert-<%="#{name}" %>'>
-          <a href="#" class="close" data-dismiss="alert">×</a>
-          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-        </div>
+  <div class="col-xs-8 col-sm-offset-2">
+    <% flash.each do |name, msg|
+      case name
+        when 'danger', 'alert' %>
+            <div class="alert alert-danger">
+              <div class="container-fluid">
+                <div class="alert-icon">
+                  <i class="material-icons">error_outline</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                <b>Error Alert:</b> <%= msg %>
+              </div>
+            </div>
+        <% when 'success', 'notice' %>
+            <div class="alert alert-success">
+              <div class="container-fluid">
+                <div class="alert-icon">
+                  <i class="material-icons">check</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                <b>Success Alert:</b> <%= msg %>
+              </div>
+            </div>
+        <% when 'warning' %>
+            <div class="alert alert-warning">
+              <div class="container-fluid">
+                <div class="alert-icon">
+                  <i class="material-icons">warning</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                <b>Warning Alert:</b> <%= msg %>
+              </div>
+            </div>
+        <% when 'info' %>
+            <div class="alert alert-info">
+              <div class="container-fluid">
+                <div class="alert-icon">
+                  <i class="material-icons">info_outline</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                <b>Info alert:</b> <%= msg %>
+              </div>
+            </div>
+        <% end %>
     <% end %>
   </div>
 </div>

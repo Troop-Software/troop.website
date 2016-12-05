@@ -9,7 +9,7 @@ module DeviseHelper
 
     html = <<-HTML
     <div class="row">
-      <div class="col-xs-8 offset-xs-2">
+      <div class="col-xs-8 col-xs-offset-2">
         <div class="alert alert-danger">
           <div class="alert-heading">
             <h4 class="alert-title">

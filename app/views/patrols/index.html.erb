@@ -1,33 +1,47 @@
-<h1 class="center">Patrols</h1>
+<%= content_for(:title, 'Patrols') %>
+
 <% if current_user.admin? %>
     <div class="text-right">
-      <%= link_to 'Create New Patrol', new_patrol_path, class: 'btn btn-success ' %>
+      <%= link_to 'Create New Patrol', new_patrol_path, class: 'btn btn-warning ' %>
     </div>
 <% end %>
-<div class="card-columns">
+<div class="row">
   <% @patrols.each do |patrol| %>
-      <div class="card">
-        <div class="card-header">
-          <%= patrol.name %>
-          <span class="tag tag-success"><%= patrol.scouts.count %></span>
-          <% if current_user.admin? %>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header" data-background-color="dark blue">
+            <h4 class="title"><%= patrol.name %>
+              <span class="label label-success"><%= patrol.scouts.count %></span>
+              <% if current_user.admin? %>
               <span class="pull-right">
-                <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_patrol_path(patrol) %>
-                <%= link_to "<i class='fa fa-trash fa-sm'></i>".html_safe, patrol,
+                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_patrol_path(patrol) %>
+                <%= link_to "<i class='material-icons'>delete</i>".html_safe, patrol,
                             method: :delete, data: {confirm: 'Are you sure?'} %>
                 </span>
-          <% end %>
-        </div>
-        <div class="card-block">
-          <p class="card-text">
-            <% patrol.scouts.each do |scout| %>
-                <% if scout.position.id == 1 %>
-                    <strong><%= link_to scout.name, scout %></strong><br/>
-                <% else %>
-                    <%= link_to scout.name, scout %><br/>
-                <% end %>
-            <% end %>
-          </p>
+              <% end %>
+            </h4>
+          </div>
+          <div class="card-content">
+            <p class="card-text">
+            <table class="table table-responsive table-striped">
+              <thead>
+              <tr>
+                <th>Scout</th>
+                <th>Rank</th>
+                <th>Position</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% patrol.scouts.each do |scout| %>
+                    <tr>
+                      <td><%= link_to scout.name, scout %></td>
+                      <td><%= scout.rank.name %></td>
+                      <td><%= scout.position.name %></td>
+                    </tr>
+              <% end %>
+              </table>
+            </p>
+          </div>
         </div>
       </div>
   <% end %>

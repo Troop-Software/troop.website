@@ -1,50 +1,37 @@
-<div class="row">&nbsp;</div>
-<div class="row">
-  <div class="col-sm-12">
-    <%= form_for(@scout_rank_history, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
-        <%= render 'shared/errors', obj: @scout_rank_history %>
 
-        <div class="form-group row">
-          <div class="control-label col-sm-2 offset-sm-2">
-            <%= f.label :scout_id %>
-          </div>
-          <div class="col-sm-4">
-            <%= f.select :scout_id, options_for_select(Scout.all.map { |s| [s.name, s.id] },
-                                                       @scout_rank_history.scout_id), {},
-                         class: 'form-control', :disabled => true %>
-          </div>
-        </div>
+<div class="row col-sm-9 col-sm-offset-1 text-center">
+  <div class="card">
+    <div class="card-header" data-background-color="green">
+      <h2 class="title"><%= @scout_rank_history.scout.name %> - <%= @scout_rank_history.rank.name %></h2>
+    </div>
+    <div class="card-content">
+      <%= form_for(@scout_rank_history, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+          <%= render 'shared/errors', obj: @scout_rank_history %>
 
-        <div class="form-group row">
-          <div class="control-label col-sm-2 offset-sm-2">
-            <%= f.label :rank_id %>
-          </div>
-          <div class="col-sm-4">
-            <%= f.select :rank_id, options_for_select(Rank.all.map { |r| [r.name, r.id] },
-                                                      @scout_rank_history.rank_id),
-                         {}, class: 'form-control', :disabled => true %>
-          </div>
-        </div>
+          <%= f.hidden_field :scout_id , value: @scout_rank_history.scout_id%>
+          <%= f.hidden_field :rank_id , value: @scout_rank_history.rank_id%>
 
-        <div class="form-group row">
-          <div class="control-label col-sm-2 offset-sm-2">
-            <%= f.label :rank_completed %>
+          <div class="form-group row">
+            <div class="control-label col-sm-4 col-sm-offset-1 ">
+              <%= f.label :rank_completed , class: 'input-lg'%>
+            </div>
+            <div class="col-sm-4 ">
+              <% if @scout_rank_history.rank_completed == Date.parse('1/1/1111') %>
+                  <%= f.date_field :rank_completed, class: 'form-control input-lg', :value => Date.today %>
+              <% else %>
+                  <%= f.date_field :rank_completed, class: 'form-control input-lg' %>
+              <% end %>
+            </div>
           </div>
-          <div class="col-sm-3">
-            <% if @scout_rank_history.rank_completed == Date.parse('1/1/1111') %>
-                <%= f.date_field :rank_completed, class: 'form-control', :value => Date.today %>
-            <% else %>
-                <%= f.date_field :rank_completed, class: 'form-control' %>
-            <% end %>
+          <div class="form-group row">
+            <div class="col-sm-5 col-sm-offset-3">
+              <%= f.submit 'Update', class: 'btn btn-success' %>
+              <%= link_to 'Cancel', :back, class: 'btn btn-secondary' %>
+            </div>
           </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="offset-sm-4 col-sm-8">
-            <%= f.submit class: 'btn btn-primary' %>
-            <%= link_to 'Cancel', :back, class: 'btn btn-secondary' %>
-          </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+

@@ -32,7 +32,7 @@ class PatrolsController < ApplicationController
       if @patrol.save
         format.html {
           flash[:success] = 'Patrol was successfully created.'
-          redirect_to @patrol
+          redirect_to patrols_path
         }
         format.json { render :show, status: :created, location: @patrol }
       else
@@ -48,8 +48,8 @@ class PatrolsController < ApplicationController
     respond_to do |format|
       if @patrol.update(patrol_params)
         format.html {
-          flash[:success] = 'Patrol was successfully created.'
-          redirect_to @patrol
+          flash[:success] = 'Patrol was successfully renamed.'
+          redirect_to patrols_path
         }
         format.json { render :show, status: :ok, location: @patrol }
       else

@@ -1,20 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Troop.website</title>
+  <meta charset="utf-8"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"/>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>TroopWebsite2</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!--     Fonts and icons     -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
 </head>
-
 <body>
+<% if user_signed_in? %>
+    <div class="wrapper">
+      <%= render 'layouts/sidebar' %>
+      <div class="main-panel">
+        <%= render 'layouts/navbar' %>
+        <div class="content">
 
-<%= render 'layouts/top_navigation' %>
-<%= render 'layouts/flash' %>
-<div class="container">
-  <%= yield %>
-</div>
-</body>
-<%= render 'layouts/footer' %>
+          <div class="container-fluid">
+            <div class="row">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+    </body>
+<% else %>
+    <div class="wrapper">
+      <%= render 'layouts/flash' %>
+      <div class="col-md-8 col-md-offset-2">
+        <%= yield %>
+      </div>
+    </div>
+    </body>
+    <%= render 'layouts/footer' %>
+<% end %>
 </html>

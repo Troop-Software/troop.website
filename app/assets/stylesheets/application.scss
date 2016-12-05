@@ -4,48 +4,47 @@
  */
 @import "bootstrap";
 @import "font-awesome";
-$bsa_blue: #003F87;
-$bsa_blue_light: #7FBDFF; // Lightened 50%
-$bsa_red: #CE1126;
-$bsa_brown: #996633;
-$bsa_yellow: #FFCC00;
-$venture_green: #006B3F;
+@import "material-dashboard";
 
-body { padding-top: 60px;
-       padding-bottom: 60px;
-}
-.inverted {
-  filter: invert(100%);
+.navbar-brand {
+  font-size: 1.75em;
+  font-variant: small-caps;
 }
 
-.alert-alert {
-  @extend .alert-warning;
-}
-
-.alert-notice {
-  @extend .alert-info;
-}
-
-.center {
-  text-align: center;
+.img-card-rank {
+  width: 50px !important;
 }
 
 .jumbotron {
   background-image: asset-url('splash.jpg');
   background-size: cover;
   height: 550px;
+  text-align: center;
 }
 
-.jumbotron h1 {
-  color: $bsa_blue;
-  text-align: center;
-  margin-bottom: 30px;
-  letter-spacing: -1px;
+.img-circle {
+  border-radius: 50%;
+}
+
+.bold {
   font-weight: bold;
 }
-
-.pad-top {
-  padding-top: 30px;
+hr {
+  height: 30px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+hr:before {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
 }
 
 .tw_pagination {
@@ -58,7 +57,7 @@ body { padding-top: 60px;
 .tw_pagination .current {
   font-style: normal;
   font-weight: bold;
-  background-color: $bsa_yellow;
+  background-color: $yellow-500;
   display: inline-block;
   width: 1.4em;
   height: 1.4em;
@@ -72,92 +71,3 @@ body { padding-top: 60px;
   color: black; }
 .tw_pagination a:hover, .tw_pagination a:focus {
   text-decoration: underline; }
-
-.alert-alert {
-  @extend .alert-warning;
-}
-
-.alert-notice {
-  @extend .alert-info;
-}
-.small {
-  font-size: 75%
-}
-.text-right {
-  text-align: right;
-}
-
-a:link {
-  text-decoration: none;
-}
-.rank_image {
-  margin-top: 5px;
-  position: absolute;
-}
-
-//buttons
-.btn-xlarge {
-  font-size: 1.7em;
-  background-color: black;
-}
-
-.btn-primary {
-  background-color: $bsa_blue;
-}
-
-.btn-success {
-  background-color: $venture_green;
-}
-
-.btn-danger {
-  background-color: $bsa_red;
-}
-
-//cards
-.card-header {
-  background-color: $bsa_blue;
-  color: white;
-}
-.card-header a {
-  color: white;
-}
-.card-header a:hover {
-  color: $bsa_yellow;
-}
-
-.checkbox-inline {
-  padding-left: 5px;
-}
-
-.checkbox {
-  margin-right: 5px;
-}
-
-//table
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: $bsa_blue_light;
-}
-// ---- nav tabs
-.tab-panel {
-  display: none;
-}
-
-//----------PRINT-----------------
-@media print {
-  body {
-    margin: 0;
-    padding: 0;
-    line-height: 1.4em;
-    word-spacing: 1px;
-    letter-spacing: 0.2px;
-    font: 13px Arial, Helvetica,"Lucida Grande", serif;
-    color: black;
-  }
-
-  .label {
-    font-weight: bold;
-  }
-
-}

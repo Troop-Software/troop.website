@@ -1,13 +1,13 @@
 <% obj.each do |article| %>
 
     <div class="row">
-      <div class="col-xs-8 offset-xs-2">
+      <div class="col-sm-offset-1 col-sm-10 ">
         <div class="card">
-          <div class="card-header">
-            <%= link_to article.title, article_path(article) %>
+          <div class="card-header" data-background-color="dark blue">
+            <h4><%= link_to article.title, article_path(article) %></h4>
           </div>
-          <div class="card-text card-block">
-            <%= truncate(article.description, length: 100) %>...
+          <div class="card-content">
+            <%= truncate(article.description, length: 500) %>
           </div>
           <div class="card-footer">
             <small>
@@ -20,20 +20,12 @@
             </small>
           </div>
 
-          <div class="card-block center">
+          <div class="card-block text-center">
             <% if article.user == current_user || current_user.admin? %>
-                <% if current_user.admin? && article.user != current_user %>
-                    <div class="alert alert-warning">
-                      <small>Options available because you are signed in with admin privileges</small>
-                      <br/>
-                <% end %>
                 <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-sm btn-primary" %>
                 <%= link_to "Delete this article", article_path(article), method: :delete,
                             data: {confirm: "Are you sure you want to delete the article?"},
                             class: "btn btn-sm btn-danger" %>
-                <% if current_user.admin? && article.user != current_user %>
-                    </div>
-                <% end %>
             <% end %>
           </div>
         </div>

@@ -18,11 +18,13 @@ class ScoutRequirementsController < ApplicationController
   # GET /scout_requirements/new
    def new
     @scout_requirement = ScoutRequirement.new
+    @scout_id = params[:scout_id]
+    @req_id = params[:req_id]
+
    end
   #
   # GET /scout_requirements/1/edit
    def edit
-
    end
   #
   # POST /scout_requirements
@@ -34,7 +36,7 @@ class ScoutRequirementsController < ApplicationController
       if @scout_requirement.save
         format.html {
           flash[:success] = "Scout's Requirement was successfully was successfully created."
-          redirect_to :back
+          redirect_to controller: 'scouts', action: 'show', id: @scout_requirement.scout_id
         }
         format.json { render :show, status: :created, location: @scout_requirement }
       else
@@ -51,7 +53,7 @@ class ScoutRequirementsController < ApplicationController
       if @scout_requirement.update(scout_requirement_params)
         format.html {
           flash[:success] = "Scout's Requirement was successfully updated."
-          redirect_to :back
+          redirect_to controller: 'scouts', action: 'show', id: @scout_requirement.scout_id
         }
         format.json { render :show, status: :ok, location: @scout_requirement }
       else
