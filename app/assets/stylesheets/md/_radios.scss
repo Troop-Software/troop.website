@@ -18,7 +18,7 @@
 .radio {
   label {
     cursor: pointer;
-    padding-left: 2.1875em;
+    padding-left: 35px;
     position: relative;
     color: $mdb-radio-label-color;
     @include mdb-label-color-toggle-focus();
@@ -26,19 +26,19 @@
     span {
       display: block;
       position: absolute;
-      left: 0.625em;
-      top: 0.125em;
+      left: 10px;
+      top: 2px;
       transition-duration: 0.2s;
     }
     .circle {
-      border: 0.0625em solid $mdb-radio-color-off;
-      height: 0.9375em;
-      width: 0.9375em;
+      border: 1px solid $mdb-radio-color-off;
+      height: 15px;
+      width: 15px;
       border-radius: 100%;
     }
     .check {
-      height: 0.9375em;
-      width: 0.9375em;
+      height: 15px;
+      width: 15px;
       border-radius: 100%;
       background-color: $mdb-radio-color-on;
       transform: scale3d(0, 0, 0);
@@ -48,10 +48,10 @@
       position: absolute;
       content: "";
       background-color: $mdb-text-color-primary;
-      left: -1.125em;
-      top: -1.125em;
-      height: 3.125em;
-      width: 3.125em;
+      left: -18px;
+      top: -18px;
+      height: 50px;
+      width: 50px;
       border-radius: 100%;
       z-index: 1;
       opacity: 0;

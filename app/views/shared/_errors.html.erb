@@ -1,7 +1,10 @@
 <% if obj.errors.any? %>
     <div class="row">
-      <div class="col-xs-8 offset-xs-2">
-        <div class="alert alert-danger">
+      <div class="alert alert-danger">
+        <div class="container-fluid">
+          <div class="alert-icon">
+            <i class="material-icons">error_outline</i>
+          </div>
           <div class="alert-heading">
             <h4 class="alert-title">
               <%= pluralize(obj.errors.count, "error") %>

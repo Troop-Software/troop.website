@@ -4,8 +4,8 @@
     border: 0;
     border-radius: 0;
     position: relative;
-    padding: 1.25em 0.9375em;
-    line-height: 1.25em;
+    padding: 20px 15px;
+    line-height: 20px;
 
     b{
         font-weight: $font-weight-bold;
@@ -26,12 +26,12 @@
     }
 
     i[data-notify="icon"] {
-        font-size: 1.875em;
+        font-size: 30px;
         display: block;
-        left: 0.9375em;
+        left: 15px;
         position: absolute;
         top: 50%;
-        margin-top: -0.9375em;
+        margin-top: -15px;
     }
 
     span{
@@ -45,13 +45,13 @@
         margin-right: $margin-base;
 
         i{
-            margin-top: -0.4375em;
-            top: 0.3125em;
+            margin-top: -7px;
+            top: 5px;
             position: relative;
         }
     }
 }
 
 .alert.alert-with-icon {
-    padding-left: 4.0625em;
+    padding-left: 65px;
 }

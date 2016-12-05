@@ -49,7 +49,7 @@
     line-height: $static-line-height;
     color: $mdb-input-placeholder-color;
     font-weight: 400;
-    margin: 1em 0 0 0; // std and lg
+    margin: 16px 0 0 0; // std and lg
   }
 
   .help-block {
@@ -133,9 +133,9 @@
 .form-group .form-control {
   border: 0;
   background-image: linear-gradient($brand-primary, $brand-primary), linear-gradient($mdb-input-underline-color, $mdb-input-underline-color);
-  background-size: 0 0.125em, 100% 0.0625em;
+  background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 0.0625em);
+  background-position: center bottom, center calc(100% - 1px);
   background-color: rgba(0, 0, 0, 0);
   transition: background 0s ease-out;
   float: none;
@@ -152,7 +152,7 @@
 
 
   //&:textarea {    // appears to be an invalid selector
-  //  height: 2.5em;
+  //  height: 40px;
   //}
 
   &[readonly],
@@ -164,7 +164,7 @@
   &[disabled],
   fieldset[disabled] & {
     background-image: none;
-    border-bottom: 0.0625em dotted $mdb-input-underline-color;
+    border-bottom: 1px dotted $mdb-input-underline-color;
   }
 }
 
@@ -217,7 +217,7 @@
     .form-control {
       outline: none;
       background-image: linear-gradient($brand-primary, $brand-primary), linear-gradient($mdb-input-underline-color, $mdb-input-underline-color);
-      background-size: 100% 0.125em, 100% 0.0625em;
+      background-size: 100% 2px, 100% 1px;
       box-shadow: none;
       transition-duration: 0.3s;
 
@@ -278,7 +278,7 @@
   textarea {
     resize: none;
     & ~ .form-control-highlight {
-      margin-top: -0.6875em;
+      margin-top: -11px;
     }
   }
 
@@ -318,7 +318,7 @@ select.form-control {
   &[multiple] {
     &,
     .form-group.is-focused & {
-      height: 5.3125em;
+      height: 85px;
     }
   }
 }
@@ -355,13 +355,13 @@ select.form-control {
 
 .input-group {  // may be in or outside of form-group
   .input-group-btn {
-    padding: 0 0.75em; // match addon spacing
+    padding: 0 12px; // match addon spacing
   }
 
   .input-group-addon {
     border: 0;
     background: transparent;
-    padding: 0.375em 0.9375em 0em;
+    padding: 6px 15px 0px;
   }
 }
 

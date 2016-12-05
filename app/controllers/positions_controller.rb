@@ -33,7 +33,7 @@ class PositionsController < ApplicationController
       if @position.save
         format.html {
           flash[:success] = 'Position was successfully created.'
-          redirect_to @position
+          redirect_to positions_path
         }
         format.json { render :show, status: :created, location: @position }
       else
@@ -49,8 +49,8 @@ class PositionsController < ApplicationController
     respond_to do |format|
       if @position.update(position_params)
         format.html {
-          flash[:success] = 'Position was successfully created.'
-          redirect_to @position
+          flash[:success] = 'Position was successfully renamed.'
+          redirect_to positions_path
         }
         format.json { render :show, status: :ok, location: @position }
       else
@@ -67,7 +67,7 @@ class PositionsController < ApplicationController
     respond_to do |format|
       format.html {
         flash[:danger] = 'Position was successfully deleted.'
-        redirect_to positions_url
+        redirect_to positions_path
       }
       format.json { head :no_content }
     end

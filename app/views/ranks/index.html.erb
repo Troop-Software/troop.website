@@ -1,29 +1,46 @@
-<h1 class="center">Ranks</h1>
+<%= content_for(:title, 'Ranks') %>
 <% if current_user.admin? %>
     <div class="text-right">
-      <%= link_to 'Create New Rank', new_rank_path, class: 'btn btn-success ' %>
+      <%= link_to 'Create New Rank', new_rank_path, class: 'btn btn-warning ' %>
     </div>
 <% end %>
-<div class="card-columns">
+<div class="row">
   <% @ranks.each do |rank| %>
-      <div class="card ">
-        <div class="card-header">
-          <%= rank.name %>
-          <span class="tag tag-success"><%= rank.scouts.count %></span>
-          <% if current_user.admin? %>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header" data-background-color="dark blue">
+            <h4 class="title"><%= rank.name %>
+              <span class="label label-success"><%= rank.scouts.count %></span>
+              <% if current_user.admin? %>
               <span class="pull-right">
-                <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_rank_path(rank) %>
-                <%= link_to "<i class='fa fa-trash fa-sm'></i>".html_safe, rank,
+                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_rank_path(rank) %>
+                <%= link_to "<i class='material-icons'>delete</i>".html_safe, rank,
                             method: :delete, data: {confirm: 'Are you sure?'} %>
                 </span>
-          <% end %>
-        </div>
-        <div class="card-block">
-          <p class="card-text">
-            <% rank.scouts.each do |scout| %>
-                <%= link_to scout.name, scout %><br/>
-            <% end %>
-          </p>
+              <% end %>
+            </h4>
+          </div>
+          <div class="card-content">
+            <p class="card-text">
+            <table class="table table-responsive table-striped">
+              <thead>
+              <tr>
+                <th>Scout</th>
+                <th>Rank</th>
+                <th>Position</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% rank.scouts.each do |scout| %>
+                  <tr>
+                    <td><%= link_to scout.name, scout %></td>
+                    <td><%= scout.rank.name %></td>
+                    <td><%= scout.position.name %></td>
+                  </tr>
+              <% end %>
+              </table>
+            </p>
+          </div>
         </div>
       </div>
   <% end %>

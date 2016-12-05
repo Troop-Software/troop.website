@@ -6,17 +6,17 @@
   border-radius: $border-radius-base;
   // @include shadow-big-navbar();
 
-  border-bottom: 0.0625em solid #ededf3;
+  border-bottom: 1px solid #ededf3;
   @extend .animation-transition-fast;
 
-  padding: 0.625em 0;
+  padding: 10px 0;
 
   .navbar-brand {
     position: relative;
-    height: 3.125em;
-    line-height: 1.875em;
+    height: 50px;
+    line-height: 30px;
     color: inherit;
-    padding: 0.625em 0.9375em;
+    padding: 10px 15px;
 
     &:hover,
     &:focus {
@@ -27,18 +27,18 @@
 
   .notification{
     position: absolute;
-    top: 0.3125em;
-    border: 0.0625em solid #FFF;
-    right: 0.625em;
-    font-size: 0.5625em;
+    top: 5px;
+    border: 1px solid #FFF;
+    right: 10px;
+    font-size: 9px;
     background: #f44336;
     color: #FFFFFF;
-    min-width: 1.25em;
-    padding: 0em 0.3125em;
-    height: 1.25em;
-    border-radius: 0.625em;
+    min-width: 20px;
+    padding: 0px 5px;
+    height: 20px;
+    border-radius: 10px;
     text-align: center;
-    line-height: 1.1875em;
+    line-height: 19px;
     vertical-align: middle;
     display: block;
   }
@@ -47,15 +47,15 @@
 
   .navbar-text {
     color: inherit;
-    margin-top: 0.9375em;
-    margin-bottom: 0.9375em;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .navbar-nav {
     > li > a {
       color: inherit;
-      padding-top: 0.9375em;
-      padding-bottom: 0.9375em;
+      padding-top: 15px;
+      padding-bottom: 15px;
 
       font-weight: $font-weight-default;
       font-size: $mdb-btn-font-size-base;
@@ -72,21 +72,21 @@
 
       .material-icons,
       .fa{
-            font-size: 1.25em;
+            font-size: 20px;
       }
 
       &.btn:not(.btn-just-icon){
           .fa{
             position: relative;
-            top: 0.125em;
-            margin-top: -0.25em;
-            margin-right: 0.25em;
+            top: 2px;
+            margin-top: -4px;
+            margin-right: 4px;
           }
       }
     }
 
     > li > .dropdown-menu{
-        margin-top: -1.25em;
+        margin-top: -20px;
     }
 
     > li.open > .dropdown-menu{
@@ -111,10 +111,10 @@
       }
     }
     .profile-photo{
-        padding: 0 0.3125em 0;
+        padding: 0 5px 0;
         .profile-photo-small{
-            height: 2.5em;
-            width: 2.5em;
+            height: 40px;
+            width: 40px;
         }
     }
 
@@ -129,7 +129,7 @@
     }
     .icon-bar {
       background-color: inherit;
-      border: 0.0625em solid;
+      border: 1px solid;
     }
   }
 
@@ -158,8 +158,8 @@
     @media (max-width: $grid-float-breakpoint-max) {
       .navbar-text {
         color: inherit;
-        margin-top: 0.9375em;
-        margin-bottom: 0.9375em;
+        margin-top: 15px;
+        margin-bottom: 15px;
       }
 
       // Dropdowns get custom display
@@ -169,7 +169,7 @@
           color: inherit;
         }
         .divider {
-          border-bottom: 0.0625em solid;
+          border-bottom: 1px solid;
           opacity: 0.08;
         }
         > li > a {
@@ -233,7 +233,7 @@
   }
 
   .navbar-form {
-    margin: 0.25em 0 0;
+    margin: 4px 0 0;
     .form-group {
       margin: 0;
       padding: 0;
@@ -255,8 +255,8 @@
       //---
       //height: $mdb-input-height-base;
       $bs-line-height-base: 1.428571429 !default;
-      $bs-line-height-computed:    floor(($font-size-base * $bs-line-height-base)) !default; // ~1.25em
-      height: ($bs-line-height-computed + 0.5em);
+      $bs-line-height-computed:    floor(($font-size-base * $bs-line-height-base)) !default; // ~20px
+      height: ($bs-line-height-computed + 8px);
       font-size: $font-size-base;
       line-height: $bs-line-height-base;
       //---
@@ -286,18 +286,18 @@
   @media (max-width: $screen-md-max) {
 
     .navbar-brand {
-      height: 3.125em;
-      padding: 0.625em 0.9375em;
+      height: 50px;
+      padding: 10px 15px;
     }
 /*
     .navbar-form {
-      margin-top: 0.625em;
+      margin-top: 10px;
     }
 */
 
     .navbar-nav > li > a {
-      padding-top: 0.9375em;
-      padding-bottom: 0.9375em;
+      padding-top: 15px;
+      padding-bottom: 15px;
     }
   }
 
@@ -306,7 +306,7 @@
         left: 0;
         position: absolute;
         right: 0;
-        top: 5.3125em;
+        top: 85px;
         width: 100%;
         z-index: 3;
         transition: all 0.3s;
@@ -324,6 +324,6 @@
 .navbar-absolute{
     position: absolute;
     width: 100%;
-    padding-top: 0.625em;
+    padding-top: 10px;
     z-index: 1029;
 }

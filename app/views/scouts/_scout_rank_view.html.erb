@@ -1,46 +1,42 @@
 <% rank = Rank.find(current_rank_selected) %>
 <% requirements = Requirement.where(rank_id: current_rank_selected) %>
 
-<!-- Progress Bar / Rank Date-->
-<div class="alert alert-success">
-  <%
-    rank_date, displayed_rank= nil
-    completed = false
-    @scout.scout_rank_histories.each do |rank_history|
-      if current_rank_selected == rank_history.rank_id
-        rank_date = rank_history.rank_completed
-        displayed_rank = rank_history
-      end
-    end
-    if rank_date.nil?
-      counter = 0
-      requirements.each { |req| @scout.scout_requirements.each { |test| counter +=1 if test.requirement_id == req.id } }
-      rank_progress = counter / requirements.count.to_f * 100 %>
-      <div class="text-xs-center" id="rank-progress">Progress
-        toward <%= rank.name %>&hellip; <%= number_to_percentage(rank_progress, precision: 0) %></div>
-      <progress class="progress" value="<%= rank_progress %>" max="100" aria-describedby="rank-progress"></progress>
-
-  <% else
-       completed = true
-       if rank_date == Date.parse('1/1/1111') %>
-          <div class="text-xs-center">Rank Completed on Unknown Date
-            <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
-      <% else %>
-          <div class="text-xs-center">Rank Completed on <%= l rank_date %>
-            <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
-      <% end %>
-  <% end %>
-</div>
-
-
-<!-- Display requirements -->
 <div>
   <table class="table table-bordered table-striped table-responsive">
-    <thead>
+    <thead class="text-primary">
+
+    <%
+      rank_date, displayed_rank= nil
+      completed = false
+      @scout.scout_rank_histories.each do |rank_history|
+        if current_rank_selected == rank_history.rank_id
+          rank_date = rank_history.rank_completed
+          displayed_rank = rank_history
+        end
+      end
+      if rank_date.nil? %>
+
+    <% else
+         completed = true %>
+        <tr>
+          <th colspan="6">
+            <div>
+              <% if rank_date == Date.parse('1/1/1111') %>
+                  <div class="text-center">Rank Completed on Unknown Date
+                    <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
+              <% else %>
+                  <div class="text-center">Rank Completed on <%= l rank_date %>
+                    <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
+              <% end %>
+            </div>
+          </th>
+        </tr>
+    <% end %>
+
     <tr>
       <th><i class="fa fa-check" aria-hidden="true"></i></th>
-      <th class="center">#</th>
-      <th class="center">Category</th>
+      <th class="text-center">#</th>
+      <th class="text-center">Category</th>
       <th>Requirement</th>
       <th>Signed</th>
       <th>Date</th>
@@ -58,32 +54,38 @@
             if test.requirement_id == req.id
               scout_requirement[:sign_off] = test.sign_off
               scout_requirement[:completed_date] = test.completed_date
+              scout_requirement[:found] = true
             end
           } %>
         <tr>
-          <td>
-            <% if !scout_requirement.empty? || completed %>
-                <i class="fa fa-check" aria-hidden="true"></i>
-            <% end %>
-          </td>
-          <td class="center">
-            <!-- Trigger modal -->
-            <%= link_to req.req_num, nil, {class: '', data: {toggle: 'modal', target: "##{@scout.id}-#{req.id}"}} %>
-            <!-- Modal -->
-            <%= render 'scout_requirements/new_form_modal',
-                       scout_requirement: ScoutRequirement.find_or_initialize_by(scout_id: @scout.id, requirement_id: req.id) %>
-          </td>
-          <td class="small center"><%= req.req_category.humanize %></td>
-          <td><%= simple_format(req.description) %></td>
-          <td><%= scout_requirement[:sign_off] %></td>
-          <% if scout_requirement[:completed_date] == Date.parse('1/1/1111') %>
-              <td>n/a</td>
+          <% unless req.req_num.nil? %>
+              <td>
+                <% if !scout_requirement.empty? || completed %>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                <% end %>
+              </td>
+              <td class="center">
+                <% if scout_requirement[:found] %>
+                    <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), class: 'btn btn-sm btn-secondary' %>
+                <% else %>
+                    <%= link_to req.req_num, new_scout_requirement_path(scout_id: @scout.id, req_id: req.id), class: 'btn btn-sm btn-primary' %>
+                <% end %>
+              </td>
+              <td class="small center"><%= req.req_category.humanize %></td>
+              <td><%= simple_format(req.description) %></td>
+              <td><%= scout_requirement[:sign_off] %></td>
+              <% if scout_requirement[:completed_date] == Date.parse('1/1/1111') %>
+                  <td>n/a</td>
+              <% else %>
+                  <td><%= l scout_requirement[:completed_date] unless scout_requirement[:completed_date].nil? %></td>
+              <% end %>
           <% else %>
-              <td><%= l scout_requirement[:completed_date] unless scout_requirement[:completed_date].nil? %></td>
+              <td colspan="6" class="text-info"><%= simple_format(req.description) %></td>
           <% end %>
         </tr>
-
     <% end %>
     </tbody>
   </table>
+
 </div>
+

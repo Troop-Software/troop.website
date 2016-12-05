@@ -19,7 +19,7 @@
             text-transform: uppercase;
             font-size: $mdb-btn-font-size-base;
             font-weight: $font-weight-bold;
-            min-width: 6.25em;
+            min-width: 100px;
             text-align: center;
             color: $gray;
             transition: all .3s;
@@ -31,8 +31,8 @@
 
         i{
             display: block;
-            font-size: 1.875em;
-            padding: 0.9375em 0;
+            font-size: 30px;
+            padding: 15px 0;
         }
 
         &.active > a{
@@ -55,7 +55,7 @@
 
     &.nav-stacked{
         > li + li{
-            margin-top: 0.3125em;
+            margin-top: 5px;
         }
     }
 
@@ -113,5 +113,5 @@
     
 }
 .tab-space{
-    padding: 1.25em 0 3.125em 0em;
+    padding: 20px 0 50px 0px;
 }

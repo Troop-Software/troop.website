@@ -1,9 +1,10 @@
 <% if user_signed_in? %>
+    <h1><%= content_for(:title, 'Home Page') %></h1>
     <%= render 'articles/article_homepage', obj: @articles %>
     <div class="tw_pagination"><%= will_paginate @articles %></div>
 <% else %>
-    <div class="jumbotron center">
-      <h1>Troop.website</h1>
+    <div class="jumbotron">
+      <h1>hello</h1>
       <%= link_to 'Sign up now', new_user_registration_path, class: 'btn btn-primary btn-large' %>
       <%= link_to 'Log in now', new_user_session_path, class: 'btn btn-primary btn-large' %>
     </div>

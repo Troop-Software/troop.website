@@ -3,8 +3,8 @@
     border: none;
     border-radius: $border-radius-base;
     position: relative;
-    padding: 0.75em 1.875em;
-    margin: 0.625em 0.0625em;
+    padding: 12px 30px;
+    margin: 10px 1px;
 
     font-size: $mdb-btn-font-size-base;
     font-weight: 400;
@@ -82,10 +82,10 @@
 
     &:not(.btn-just-icon):not(.btn-fab){
       .fa{
-          font-size: 1.125em;
-          margin-top: -0.125em;
+          font-size: 18px;
+          margin-top: -2px;
           position: relative;
-          top: 0.125em;
+          top: 2px;
       }
     }
 
@@ -138,30 +138,30 @@
     &.btn-lg,
     .btn-group-lg & {
         font-size: $mdb-btn-font-size-lg;
-        padding: 1.125em 2.25em;
+        padding: 18px 36px;
     }
     &.btn-sm,
     .btn-group-sm & {
-        padding: 0.3125em 1.25em;
+        padding: 5px 20px;
         font-size: $mdb-btn-font-size-sm;
     }
     &.btn-xs,
     .btn-group-xs & {
-        padding: 0.25em 0.9375em;
+        padding: 4px 15px;
         font-size: $mdb-btn-font-size-xs;
     }
 
     &.btn-just-icon{
-        font-size: 1.25em;
-        padding: 0.75em 0.75em;
+        font-size: 20px;
+        padding: 12px 12px;
         line-height: 1em;
 
         i{
-            width: 1.25em;
+            width: 20px;
         }
         &.btn-lg{
-            font-size: 1.375em;
-            padding: 0.8125em 1.125em;
+            font-size: 22px;
+            padding: 13px 18px;
         }
     }
 }
@@ -171,7 +171,7 @@
     .material-icons{
         vertical-align: middle;
         font-size: $mdb-btn-icon-size-mini;
-        top: -0.0625em;
+        top: -1px;
         position: relative;
     }
 
@@ -179,23 +179,23 @@
 
 .navbar .navbar-nav > li > {
     a.btn{
-        margin-top: 0.125em;
-        margin-bottom: 0.125em;
+        margin-top: 2px;
+        margin-bottom: 2px;
 
         &.btn-fab{
-            margin: 0.3125em 0.125em;
+            margin: 5px 2px;
         }
     }
     a:not(.btn){
         .material-icons{
-            margin-top: -0.1875em;
-            top: 0em;
+            margin-top: -3px;
+            top: 0px;
             position: relative;
-            margin-right: 0.1875em;
+            margin-right: 3px;
         }
     }
     .profile-photo{
-        margin: 0.3125em 0.125em;
+        margin: 5px 2px;
     }
 }
 
@@ -212,8 +212,8 @@
 .btn-group-vertical {
 
   position: relative;
-  //border-radius: 0.125em;
-  margin: 0.625em 0.0625em;
+  //border-radius: 2px;
+  margin: 10px 1px;
 
   &.open {
     .dropdown-toggle {
@@ -254,6 +254,6 @@
     }
 
     i{
-        font-size: 1.25em;
+        font-size: 20px;
     }
 }

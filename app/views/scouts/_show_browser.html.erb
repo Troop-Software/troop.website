@@ -1,50 +1,46 @@
-<div class="col-xs-10 offset-xs-1 hidden-print">
+<div class="hidden-print">
   <div class="card">
-    <h3 class="card-header center "><%= @scout.name %></h3>
+    <div class="card-header" data-background-color="dark blue">
+      <h4 class="title"><%= @scout.name %></h4>
+    </div>
     <%= render 'scout_card_detail', obj: @scout %>
   </div>
-
   <!--  Nav tabs between ranks -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs" role="tablist" >
     <% next_rank = @scout.rank_id + 1 %>
     <% Rank.all.each do |rank| %>
         <% case rank.id %>
-    <% when 1 # Just Joined (hide from view)      %>
-        <% when next_rank # Current rank       %>
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#rank<%= rank.id %>" role="tab"><%= rank.name %></a>
+    <% when 1 # Just Joined (hide from view)        %>
+        <% when next_rank # Current rank         %>
+            <li class="nav-item active">
+              <a role="presentation"
+                 class="nav-link"
+                 data-toggle="tab"
+                 aria-expanded="true"
+                 href="#rank<%= rank.id %>" role="tablist"><%= rank.name %></a>
             </li>
         <% else %>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#rank<%= rank.id %>" role="tab"><%= rank.name %></a>
+              <a role="presentation" class="nav-link" data-toggle="tab" href="#rank<%= rank.id %>" role="tablist"><%= rank.name %></a>
             </li>
         <% end %>
     <% end %>
   </ul>
-
   <!--- tab panes -->
   <div class="tab-content">
     <% Rank.all.each do |r| %>
-        <% tab_class = 'tab-panel' %>
+        <% tab_class = 'tab-pane' %>
         <% tab_class += ' active' if next_rank == r.id %>
         <div class="tab-content">
-          <div class="<%= tab_class %>" id="rank<%= r.id %>" role="tabpanel">
+          <div role="tabpanel" class="<%= tab_class %>" id="rank<%= r.id %>" role="tabpanel">
             <%= render 'scouts/scout_rank_view', current_rank_selected: r.id %>
           </div>
         </div>
     <% end %>
   </div>
   <% if next_rank == 9 %>
-      No further ranks.  Eagle Palms coming soon
+      No further ranks. Eagle Palms coming soon
   <% end %>
 
 
-
-  <div class="center">
-    <%= link_to 'Edit this scout', edit_scout_path(@scout), class: 'btn btn-sm btn-primary' %>
-    <%= link_to 'Delete this scout', scout_path(@scout), method: :delete,
-                data: {confirm: 'Are you sure you want to delete the scout?'},
-                class: 'btn btn-sm btn-danger' %>
-    <%= link_to 'View all scouts', scouts_path, class: 'btn btn-sm btn-success' %>
-  </div>
 </div>

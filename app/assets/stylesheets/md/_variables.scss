@@ -32,12 +32,12 @@ $brand-warning: $orange !default;
 $brand-info: $cyan !default;
 $brand-rose: $pink !default;
 
-$border-radius-base: 0.2143rem !default;
-$border-radius-small: 0.1429rem !default;
-$border-radius-large: 0.4286rem !default;
-$border-radius-huge: 0.7143rem !default;
-$border-radius-label: 0.8571rem !default;
-$border-radius-extreme: 1.875em !default;
+$border-radius-base: 3px !default;
+$border-radius-small: 2px !default;
+$border-radius-large: 6px !default;
+$border-radius-huge: 10px !default;
+$border-radius-label: 12px !default;
+$border-radius-extreme: 30px !default;
 
 // Typography
 $font-family-sans-serif: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
@@ -108,9 +108,9 @@ $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
 
-$font-size-base:          0.875em !default;
-$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~1.125em
-$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~0.75em
+$font-size-base:          14px !default;
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
 $font-size-h1:                 3.8em !default;
 $font-size-h2:                 2.6em !default;
@@ -118,14 +118,14 @@ $font-size-h3:                 1.825em !default;
 $font-size-h4:                 1.3em !default;
 $font-size-h5:                 1.25em !default;
 $font-size-h6:                 1em !default;
-$font-paragraph:               1.143rem !default;
-$font-size-navbar:             1.143rem !default;
-$font-size-small:              0.8571rem !default;
+$font-paragraph:               16px !default;
+$font-size-navbar:             16px !default;
+$font-size-small:              12px !default;
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.428571429 !default; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~1.25em
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
 $headings-font-family:    inherit !default;
@@ -152,29 +152,29 @@ $icon-font-svg-id:        "glyphicons_halflingsregular" !default;
 
 //== Components
 //
-//## Define common padding and border radius sizes and more. Values based on 0.875em text and 1.428 line-height (~1.25em to start).
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-$padding-base:              1.071rem !default;
-$margin-base:               1.071rem !default;
+$padding-base:              15px !default;
+$margin-base:               15px !default;
 
-$padding-base-vertical:     0.4286rem !default;
-$padding-base-horizontal:   0.8571rem !default;
+$padding-base-vertical:     6px !default;
+$padding-base-horizontal:   12px !default;
 
-$padding-large-vertical:    0.7143rem !default;
-$padding-large-horizontal:  1.143rem !default;
+$padding-large-vertical:    10px !default;
+$padding-large-horizontal:  16px !default;
 
-$padding-small-vertical:    0.3571rem !default;
-$padding-small-horizontal:  0.7143rem !default;
+$padding-small-vertical:    5px !default;
+$padding-small-horizontal:  10px !default;
 
-$padding-xs-vertical:       0.07143rem !default;
-$padding-xs-horizontal:     0.3571rem !default;
+$padding-xs-vertical:       1px !default;
+$padding-xs-horizontal:     5px !default;
 
 $line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
 $line-height-small:         1.5 !default;
 
-$border-radius-base:        0.2857rem !default;
-$border-radius-large:       0.4286rem !default;
-$border-radius-small:       0.2143rem !default;
+$border-radius-base:        4px !default;
+$border-radius-large:       6px !default;
+$border-radius-small:       3px !default;
 
 //** Global color for active items (e.g., navs or dropdowns).
 $component-active-color:    #fff !default;
@@ -182,9 +182,9 @@ $component-active-color:    #fff !default;
 $component-active-bg:       $brand-primary !default;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
-$caret-width-base:          0.2857rem !default;
+$caret-width-base:          4px !default;
 //** Carets increase slightly in size for larger components.
-$caret-width-large:         0.3571rem !default;
+$caret-width-large:         5px !default;
 
 
 //== Tables
@@ -192,9 +192,9 @@ $caret-width-large:         0.3571rem !default;
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
 //** Padding for `<th>`s and `<td>`s.
-$table-cell-padding:            0.5714rem !default;
+$table-cell-padding:            8px !default;
 //** Padding for cells in `.table-condensed`.
-$table-condensed-cell-padding:  0.3571rem !default;
+$table-condensed-cell-padding:  5px !default;
 
 //** Default background color used for all tables.
 $table-bg:                      transparent !default;
@@ -283,7 +283,7 @@ $input-height-large:             (ceil($font-size-large * $line-height-large) + 
 $input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
 
 //** `.form-group` margin
-$form-group-margin-bottom:       1.071rem !default;
+$form-group-margin-bottom:       15px !default;
 
 $legend-color:                   $gray-dark !default;
 $legend-border-color:            #e5e5e5 !default;
@@ -354,7 +354,7 @@ $zindex-modal:             1050 !default;
 
 // Extra small screen / phone
 //** Deprecated `$screen-xs` as of v3.0.1
-$screen-xs:                  30em !default;
+$screen-xs:                  480px !default;
 //** Deprecated `$screen-xs-min` as of v3.2.0
 $screen-xs-min:              $screen-xs !default;
 //** Deprecated `$screen-phone` as of v3.0.1
@@ -362,21 +362,21 @@ $screen-phone:               $screen-xs-min !default;
 
 // Small screen / tablet
 //** Deprecated `$screen-sm` as of v3.0.1
-$screen-sm:                  48em !default;
+$screen-sm:                  768px !default;
 $screen-sm-min:              $screen-sm !default;
 //** Deprecated `$screen-tablet` as of v3.0.1
 $screen-tablet:              $screen-sm-min !default;
 
 // Medium screen / desktop
 //** Deprecated `$screen-md` as of v3.0.1
-$screen-md:                  62em !default;
+$screen-md:                  992px !default;
 $screen-md-min:              $screen-md !default;
 //** Deprecated `$screen-desktop` as of v3.0.1
 $screen-desktop:             $screen-md-min !default;
 
 // Large screen / wide desktop
 //** Deprecated `$screen-lg` as of v3.0.1
-$screen-lg:                  75em !default;
+$screen-lg:                  1200px !default;
 $screen-lg-min:              $screen-lg !default;
 //** Deprecated `$screen-lg-desktop` as of v3.0.1
 $screen-lg-desktop:          $screen-lg-min !default;
@@ -394,7 +394,7 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 //** Number of columns in the grid.
 $grid-columns:              12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         2.143rem !default;
+$grid-gutter-width:         30px !default;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 $grid-float-breakpoint:     $screen-sm-min !default;
@@ -407,17 +407,17 @@ $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
 //## Define the maximum width of `.container` for different screen sizes.
 
 // Small screen / tablet
-$container-tablet:             (51.43rem + $grid-gutter-width) !default;
+$container-tablet:             (720px + $grid-gutter-width) !default;
 //** For `$screen-sm-min` and up.
 $container-sm:                 $container-tablet !default;
 
 // Medium screen / desktop
-$container-desktop:            (67.14rem + $grid-gutter-width) !default;
+$container-desktop:            (940px + $grid-gutter-width) !default;
 //** For `$screen-md-min` and up.
 $container-md:                 $container-desktop !default;
 
 // Large screen / wide desktop
-$container-large-desktop:      (81.43rem + $grid-gutter-width) !default;
+$container-large-desktop:      (1140px + $grid-gutter-width) !default;
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop !default;
 
@@ -427,12 +427,12 @@ $container-lg:                 $container-large-desktop !default;
 //##
 
 // Basics of a navbar
-$navbar-height:                    3.571rem !default;
+$navbar-height:                    50px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
-$navbar-collapse-max-height:       24.29rem !default;
+$navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #777 !default;
 $navbar-default-bg:                #f8f8f8 !default;
@@ -489,7 +489,7 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 //##
 
 //=== Shared nav styles
-$nav-link-padding:                          0.7143rem 1.071rem !default;
+$nav-link-padding:                          10px 15px !default;
 $nav-link-hover-bg:                         $gray-lighter !default;
 
 $nav-disabled-link-color:                   $gray-light !default;
@@ -540,7 +540,7 @@ $pagination-disabled-border:           #ddd !default;
 
 $pager-bg:                             $pagination-bg !default;
 $pager-border:                         $pagination-border !default;
-$pager-border-radius:                  1.071rem !default;
+$pager-border-radius:                  15px !default;
 
 $pager-hover-bg:                       $pagination-hover-bg !default;
 
@@ -554,7 +554,7 @@ $pager-disabled-color:                 $pagination-disabled-color !default;
 //
 //##
 
-$jumbotron-padding:              2.143rem !default;
+$jumbotron-padding:              30px !default;
 $jumbotron-color:                inherit !default;
 $jumbotron-bg:                   $gray-lighter !default;
 $jumbotron-heading-color:        inherit !default;
@@ -588,7 +588,7 @@ $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !
 //##
 
 //** Tooltip max width
-$tooltip-max-width:           14.29rem !default;
+$tooltip-max-width:           200px !default;
 //** Tooltip text color
 $tooltip-color:               #fff !default;
 //** Tooltip background color
@@ -596,7 +596,7 @@ $tooltip-bg:                  #000 !default;
 $tooltip-opacity:             .9 !default;
 
 //** Tooltip arrow width
-$tooltip-arrow-width:         0.3571rem !default;
+$tooltip-arrow-width:         5px !default;
 //** Tooltip arrow color
 $tooltip-arrow-color:         $tooltip-bg !default;
 
@@ -608,7 +608,7 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 //** Popover body background color
 $popover-bg:                          #fff !default;
 //** Popover maximum width
-$popover-max-width:                   19.71rem !default;
+$popover-max-width:                   276px !default;
 //** Popover border color
 $popover-border-color:                rgba(0,0,0,.2) !default;
 //** Popover fallback border color
@@ -618,7 +618,7 @@ $popover-fallback-border-color:       #ccc !default;
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
 
 //** Popover arrow width
-$popover-arrow-width:                 0.7143rem !default;
+$popover-arrow-width:                 10px !default;
 //** Popover arrow color
 $popover-arrow-color:                 $popover-bg !default;
 
@@ -658,10 +658,10 @@ $label-link-hover-color:      #fff !default;
 //##
 
 //** Padding applied to the modal body
-$modal-inner-padding:         1.071rem !default;
+$modal-inner-padding:         15px !default;
 
 //** Padding applied to the modal title
-$modal-title-padding:         1.071rem !default;
+$modal-title-padding:         15px !default;
 //** Modal title line-height
 $modal-title-line-height:     $line-height-base !default;
 
@@ -681,16 +681,16 @@ $modal-header-border-color:   #e5e5e5 !default;
 //** Modal footer border color
 $modal-footer-border-color:   $modal-header-border-color !default;
 
-$modal-lg:                    56.25em !default;
-$modal-md:                    37.5em !default;
-$modal-sm:                    18.75em !default;
+$modal-lg:                    900px !default;
+$modal-md:                    600px !default;
+$modal-sm:                    300px !default;
 
 
 //== Alerts
 //
 //## Define alert colors, border radius, and padding.
 
-$alert-padding:               1.071rem !default;
+$alert-padding:               15px !default;
 $alert-border-radius:         $border-radius-base !default;
 $alert-link-font-weight:      bold !default;
 
@@ -773,8 +773,8 @@ $list-group-link-heading-color: #333 !default;
 //##
 
 $panel-bg:                    #fff !default;
-$panel-body-padding:          1.071rem !default;
-$panel-heading-padding:       0.7143rem 1.071rem !default;
+$panel-body-padding:          15px !default;
+$panel-heading-padding:       10px 15px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         $border-radius-base !default;
 
@@ -812,7 +812,7 @@ $panel-danger-heading-bg:     $state-danger-bg !default;
 //##
 
 //** Padding around the thumbnail image
-$thumbnail-padding:           0.2857rem !default;
+$thumbnail-padding:           4px !default;
 //** Thumbnail background color
 $thumbnail-bg:                $body-bg !default;
 //** Thumbnail border color
@@ -823,7 +823,7 @@ $thumbnail-border-radius:     $border-radius-base !default;
 //** Custom text color for thumbnail captions
 $thumbnail-caption-color:     $text-color !default;
 //** Padding around the thumbnail caption
-$thumbnail-caption-padding:   0.6429rem !default;
+$thumbnail-caption-padding:   9px !default;
 
 
 //== Wells
@@ -850,15 +850,15 @@ $badge-active-bg:             #fff !default;
 
 $badge-font-weight:           bold !default;
 $badge-line-height:           1 !default;
-$badge-border-radius:         0.7143rem !default;
+$badge-border-radius:         10px !default;
 
 
 //== Breadcrumbs
 //
 //##
 
-$breadcrumb-padding-vertical:   0.5714rem !default;
-$breadcrumb-padding-horizontal: 1.071rem !default;
+$breadcrumb-padding-vertical:   8px !default;
+$breadcrumb-padding-horizontal: 15px !default;
 //** Breadcrumb background color
 $breadcrumb-bg:                 #f5f5f5 !default;
 //** Breadcrumb text color
@@ -873,12 +873,12 @@ $breadcrumb-separator:          "/" !default;
 //
 //##
 
-$carousel-text-shadow:                        0 0.07143rem 0.1429rem rgba(0,0,0,.6) !default;
+$carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
 
 $carousel-control-color:                      #fff !default;
 $carousel-control-width:                      15% !default;
 $carousel-control-opacity:                    .5 !default;
-$carousel-control-font-size:                  1.429rem !default;
+$carousel-control-font-size:                  20px !default;
 
 $carousel-indicator-active-bg:                #fff !default;
 $carousel-indicator-border-color:             #fff !default;
@@ -892,7 +892,7 @@ $carousel-caption-color:                      #fff !default;
 
 $close-font-weight:           bold !default;
 $close-color:                 #000 !default;
-$close-text-shadow:           0 0.07143rem 0 #fff !default;
+$close-text-shadow:           0 1px 0 #fff !default;
 
 
 //== Code
@@ -908,7 +908,7 @@ $kbd-bg:                      #333 !default;
 $pre-bg:                      #f5f5f5 !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
-$pre-scrollable-max-height:   21.25em !default;
+$pre-scrollable-max-height:   340px !default;
 
 
 //== Type
@@ -916,7 +916,7 @@ $pre-scrollable-max-height:   21.25em !default;
 //##
 
 //** Horizontal offset for forms and lists.
-$component-offset-horizontal: 11.25em !default;
+$component-offset-horizontal: 180px !default;
 //** Text muted color
 $text-muted:                  $gray-light !default;
 //** Abbreviations and acronyms border color
@@ -966,36 +966,36 @@ $mdb-input-underline-color: #D2D2D2 !default;
 $mdb-label-static-size-ratio: 75 / 100 !default;
 $mdb-help-block-size-ratio: 75 / 100 !default;
 
-$mdb-input-font-size-base: 1rem !default;
-$mdb-input-font-size-large: ceil(($font-size-base * 1.25)) !default; // ~1.25em
-$mdb-input-font-size-small: ceil(($font-size-base * 0.75)) !default; // ~0.75em
+$mdb-input-font-size-base: 14px !default;
+$mdb-input-font-size-large: ceil(($font-size-base * 1.25)) !default; // ~20px
+$mdb-input-font-size-small: ceil(($font-size-base * 0.75)) !default; // ~12px
 
 // FIXME: with #733 customization of bootstrap, consider how these could be based on the original bs customized variables
 //** Unit-less `line-height` for use in components like buttons.
 
 $mdb-input-line-height-base:        $line-height-base; //1.428571429 !default; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-$mdb-input-line-height-computed:    floor(($mdb-input-font-size-base * $mdb-input-line-height-base)) !default; // ~1.25em
+$mdb-input-line-height-computed:    floor(($mdb-input-font-size-base * $mdb-input-line-height-base)) !default; // ~20px
 $mdb-input-line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
 $mdb-input-line-height-small:         1.5 !default;
 
-//## Define common padding and border radius sizes and more. Values based on 0.875em text and 1.428 line-height (~1.25em to start).
-$mdb-input-padding-base-vertical:     0.5714rem - 0.07143rem !default; // was 6.
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+$mdb-input-padding-base-vertical:     8px - 1px !default; // was 6.
 $mdb-input-padding-base-horizontal:   0 !default; // was 12.
 $mdb-label-as-placeholder-shim-base:  0 !default; // manual adjustment of label top when positioned as placeholder
-$mdb-label-top-margin-base:           1.143rem !default;
+$mdb-label-top-margin-base:           16px !default;
 
-$mdb-input-padding-large-vertical:    0.7143rem - 0.07143rem !default; // 10
+$mdb-input-padding-large-vertical:    10px - 1px !default; // 10
 $mdb-input-padding-large-horizontal:  0 !default;  // 16
-$mdb-label-as-placeholder-shim-large: -0.2857rem!default; // manual adjustment of label top when positioned as placeholder
-$mdb-label-top-margin-large:          1.143rem !default;
+$mdb-label-as-placeholder-shim-large: -4px !default; // manual adjustment of label top when positioned as placeholder
+$mdb-label-top-margin-large:          16px !default;
 
-$mdb-input-padding-small-vertical:    0.2857rem - 0.07143rem !default; // 5
+$mdb-input-padding-small-vertical:    4px - 1px !default; // 5
 $mdb-input-padding-small-horizontal:  0 !default; // 10
-$mdb-label-as-placeholder-shim-small: 0.5714rem !default; // manual adjustment of label top when positioned as placeholder
-$mdb-label-top-margin-small:          0.8571rem !default;
+$mdb-label-as-placeholder-shim-small: 8px !default; // manual adjustment of label top when positioned as placeholder
+$mdb-label-top-margin-small:          12px !default;
 
-$mdb-input-padding-xs-vertical:       0.1429rem !default; // 1
+$mdb-input-padding-xs-vertical:       2px !default; // 1
 $mdb-input-padding-xs-horizontal:     0 !default; // 5
 
 $mdb-input-border-radius-base:        0 !default;
@@ -1022,7 +1022,7 @@ $text-disabled: #a8a8a8 !default;
 $background-disabled: #eaeaea !default;
 
 // Checkboxes
-$mdb-checkbox-size: 1.429rem !default;
+$mdb-checkbox-size: 20px !default;
 $mdb-checkbox-animation-ripple: 500ms !default;
 $mdb-checkbox-animation-check: 0.3s !default;
 $mdb-checkbox-checked-color: $brand-primary !default;
@@ -1035,7 +1035,7 @@ $mdb-popover-background: rgba(101, 101, 101, 0.9) !default;
 $mdb-popover-color: #ececec !default;
 
 // Dropdown Menu
-$mdb-dropdown-font-size: 0.9286rem !default;
+$mdb-dropdown-font-size: 13px !default;
 
 // Toggle
 $mdb-toggle-label-color: $mdb-label-color !default;
@@ -1046,25 +1046,25 @@ $mdb-radio-color-off: $mdb-label-color-toggle-focus !default;
 $mdb-radio-color-on: $brand-primary !default;
 
 // Buttons:
-$mdb-btn-font-size-base: 0.8571rem !default;
-$mdb-btn-font-size-lg: 1rem !default;
-$mdb-btn-font-size-sm: 0.7857rem !default;
-$mdb-btn-font-size-xs: 0.7143rem !default;
+$mdb-btn-font-size-base: 12px !default;
+$mdb-btn-font-size-lg: 14px !default;
+$mdb-btn-font-size-sm: 11px !default;
+$mdb-btn-font-size-xs: 10px !default;
 
 
 $mdb-btn-background-color: $body-bg; //transparent !default;
 $mdb-btn-background-color-text: $mdb-text-color-primary !default;
 
 
-$mdl-btn-border-radus: 0.1429rem !default;
+$mdl-btn-border-radus: 2px !default;
 //$mdb-btn-primary-color: unquote("rgba(#{$rgb-grey-500}, 0.20)") !default;
 
-$mdb-btn-fab-size: 3.5em !default;
-$mdb-btn-fab-size-mini: 2.5em !default;
-$mdb-btn-fab-font-size: 1.5em !default;
+$mdb-btn-fab-size: 56px !default;
+$mdb-btn-fab-size-mini: 40px !default;
+$mdb-btn-fab-font-size: 24px !default;
 
-$mdb-btn-icon-size: 2em !default;
-$mdb-btn-icon-size-mini: 1.214rem !default;
+$mdb-btn-icon-size: 32px !default;
+$mdb-btn-icon-size-mini: 17px !default;
 
 /* SHADOWS */
 $mdb-shadow-key-umbra-opacity: 0.2 !default;
@@ -1072,7 +1072,7 @@ $mdb-shadow-key-penumbra-opacity: 0.14 !default;
 $mdb-shadow-ambient-shadow-opacity: 0.12 !default;
 
 
-$fancy-shadow: 0 0.8125em 2.4375em -0.625em rgba(0, 0, 0, 0.65), 0 0.0625em 1.5625em 0em rgba(0, 0, 0, 0.15);
+$fancy-shadow: 0 13px 39px -10px rgba(0, 0, 0, 0.65), 0 1px 25px 0px rgba(0, 0, 0, 0.15);
 
 
 $general-transition-time:  300ms !default;
@@ -1111,17 +1111,17 @@ $font-hover-background-light-grey: #5E5E5C !default;
 $transition-ease-in:              ease-in !default;
 $transition-ease-out:             ease-out !default;
 $ultra-fast-transition-time:      60ms  !default;
-$navbar-padding-a:               0.7143rem 1.071rem;
-$padding-zero:                   0em !default;
-$sidebar-width:               calc(100% - 16.25em) !default;
+$navbar-padding-a:               10px 15px;
+$padding-zero:                   0px !default;
+$sidebar-width:               calc(100% - 260px) !default;
 $topbar-back:          topbar-back !default;
 $bottombar-back:       bottombar-back !default;
 $topbar-x:             topbar-x !default;
 $bottombar-x:          bottombar-x !default;
-$margin-bottom:                0 0 0.7143rem 0 !default;
-$margin-base-vertical:         1.071rem !default;
+$margin-bottom:                0 0 10px 0 !default;
+$margin-base-vertical:         15px !default;
 
 // Variables for datetimepicker //
-$padding-default-vertical:     0.7143rem !default;
+$padding-default-vertical:     10px !default;
 $medium-pale-bg:             #F1EAE0 !default;
 $pale-bg:                    #F9F7F3 !default;

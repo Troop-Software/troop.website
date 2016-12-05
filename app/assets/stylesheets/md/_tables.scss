@@ -1,6 +1,6 @@
 .table{
    > thead > tr > th{
-       border-bottom-width: 0.0625em;
+       border-bottom-width: 1px;
        font-size: $font-size-h6;
        font-weight: $font-weight-light;
    }
@@ -9,9 +9,9 @@
    .checkbox{
        margin-top: 0;
        margin-bottom: 0;
-       margin-left: 0.625em;
+       margin-left: 10px;
        padding: 0;
-       width: 0.9375em;
+       width: 15px;
 
        .icons{
            position: relative;
@@ -23,20 +23,20 @@
    > thead > tr > td,
    > tbody > tr > td,
    > tfoot > tr > td{
-       padding: 0.75em 0.5em;
+       padding: 12px 8px;
        vertical-align: middle;
    }
 
    > thead > tr > th{
-       padding-bottom: 0.25em;
+       padding-bottom: 4px;
    }
 
    .td-actions{
         display: flex;
 
         .btn{
-           margin: 0em;
-           padding: 0.3125em;
+           margin: 0px;
+           padding: 5px;
         }
     }
     > tbody > tr{

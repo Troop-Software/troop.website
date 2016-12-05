@@ -1,20 +1,23 @@
-<div class="card-columns">
+<div class="row">
   <% obj.each do |article| %>
-      <div class="card">
-        <div class="card-block">
-          <div class="card-title">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header" data-background-color="dark blue">
             <h4><%= link_to article.title, article_path(article) %></h4>
           </div>
-          <div class="card-text">
-            <%= truncate(article.description, length: 100) %>
+          <div class="card-content">
+            <%= truncate(article.description, length: 500) %>
           </div>
-        </div>
-        <div class="card-footer small text-muted">
-          <% if article.categories.any? %>
-              Categories: <%= render article.categories %><br/>
-          <% end %>
-          Created by: <%= article.user.username if article.user %><br/>
-          Updated last: <%= distance_of_time_in_words_to_now(article.updated_at) %>
+
+          <div class="card-footer small text-muted">
+            <% if article.categories.any? %>
+                Categories: <%= render article.categories %><br/>
+            <% end %>
+            <div class="row">
+              <div class="col-sm-7">Created by: <%= article.user.username if article.user %></div>
+              <div class="col-sm-7">Updated last: <%= distance_of_time_in_words_to_now(article.updated_at) %></div>
+            </div>
+          </div>
         </div>
       </div>
   <% end %>

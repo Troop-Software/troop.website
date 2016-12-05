@@ -26,12 +26,12 @@
 .popover-title{
     background-color: $white-color;
     border: none;
-    padding: 0.9375em 0.9375em 0.3125em;
+    padding: 15px 15px 5px;
     font-size: $font-size-h4;
 }
 
 .popover-content{
-    padding: 0.625em 0.9375em 0.9375em;
+    padding: 10px 15px 15px;
     line-height: 1.4;
 }
 
@@ -40,14 +40,14 @@
 }
 .tooltip.in{
     opacity: 1;
-    @include transform-translate-y(0em);
+    @include transform-translate-y(0px);
 
 
 }
 .tooltip{
     opacity: 0;
     transition: opacity, transform .2s ease;
-    @include transform-translate-y(0.3125em);
+    @include transform-translate-y(5px);
 
     &.left{
         .tooltip-arrow{
@@ -72,6 +72,6 @@
 }
 
 .tooltip-inner{
-    padding: 0.625em 0.9375em;
-    min-width: 8.125em;
+    padding: 10px 15px;
+    min-width: 130px;
 }

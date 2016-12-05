@@ -32,7 +32,7 @@ class RanksController < ApplicationController
       if @rank.save
         format.html {
           flash[:success] = 'Rank was successfully created.'
-          redirect_to @rank
+          redirect_to ranks_path
         }
         format.json { render :show, status: :created, location: @rank }
       else
@@ -49,7 +49,7 @@ class RanksController < ApplicationController
       if @rank.update(rank_params)
         format.html {
           flash[:success] = 'Rank was successfully created.'
-          redirect_to @rank
+          redirect_to ranks_path
         }
         format.json { render :show, status: :ok, location: @rank }
       else

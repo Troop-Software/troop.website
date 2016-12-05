@@ -1,24 +1,25 @@
-
 <div id="accordion" role="tablist" aria-multiselectable="true">
   <% obj.each do |scout| %>
       <div class="card">
-        <div class="card-header" role="tab" id="headingTwo<%= scout.id %>">
-          <h5 class="mb-0">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>" aria-expanded="false" aria-controls="collapseTwo<%= scout.id %>">
+        <div class="card-header" role="tab" id="headingTwo<%= scout.id %>" data-background-color="dark blue">
+          <h4 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
+               aria-expanded="false" aria-controls="collapseTwo<%= scout.id %>">
+              <i class='material-icons'>menu</i>
               <% unless scout.scout_alert.nil? %>
-                <%= fa_icon 'exclamation-triangle' %>
+                  <i class='material-icons'>warning</i>
               <% end %>
               <%= scout.name %>
             </a>
             <span class="pull-right">
-                <%= link_to "<i class='fa fa-eye fa-sm'></i>".html_safe, scout_path(scout) %>
+                <%= link_to "<i class='material-icons'>remove_red_eye</i>".html_safe, scout_path(scout) %>
               <% if current_user.admin? %>
-                    <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_scout_path(scout) %>
-                  <%= link_to "<i class='fa fa-trash fa-sm'></i>".html_safe, scout,
+                    <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_scout_path(scout) %>
+                  <%= link_to "<i class='material-icons'>delete</i>".html_safe, scout,
                               method: :delete, data: {confirm: 'Are you sure?'} %>
                <% end %>
               </span>
-          </h5>
+          </h4>
         </div>
         <div id="collapseTwo<%= scout.id %>" class="collapse" role="tabpanel" aria-labelledby="headingTwo<%= scout.id %>">
           <%= render 'scout_card_detail', obj: scout %>
