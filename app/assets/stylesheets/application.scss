@@ -2,9 +2,14 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  */
-@import "bootstrap";
-@import "font-awesome";
+
+@import "md-customizations";
 @import "material-dashboard";
+@import "bootstrap";
+@import "md-mixins-customizations";
+@import "overrides";
+@import "hover-effects/push";
+
 
 .navbar-brand {
   font-size: 1.75em;
@@ -29,6 +34,7 @@
 .bold {
   font-weight: bold;
 }
+
 hr {
   height: 30px;
   border-style: solid;
@@ -36,6 +42,7 @@ hr {
   border-width: 1px 0 0 0;
   border-radius: 20px;
 }
+
 hr:before {
   display: block;
   content: "";
@@ -49,11 +56,17 @@ hr:before {
 
 .tw_pagination {
   text-align: center;
-  cursor: default; }
+  cursor: default;
+}
+
 .tw_pagination a, .tw_pagination span {
-  padding: 0.2em 0.3em; }
+  padding: 0.2em 0.3em;
+}
+
 .tw_pagination .disabled {
-  color: #aaaaaa; }
+  color: #aaaaaa;
+}
+
 .tw_pagination .current {
   font-style: normal;
   font-weight: bold;
@@ -65,9 +78,19 @@ hr:before {
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
   border-radius: 1em;
-  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+
 .tw_pagination a {
   text-decoration: none;
-  color: black; }
+  color: black;
+}
+
 .tw_pagination a:hover, .tw_pagination a:focus {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
+
+
+*:focus {
+  outline: none;
+}

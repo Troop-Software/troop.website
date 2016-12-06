@@ -2,8 +2,8 @@
   <% obj.each do |scout| %>
       <div class="card">
         <div class="card-header" role="tab" id="headingTwo<%= scout.id %>" data-background-color="dark blue">
-          <h4 class="mb-0">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
+          <h4 class="title">
+            <a class="collapsed hvr-push" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
                aria-expanded="false" aria-controls="collapseTwo<%= scout.id %>">
               <i class='material-icons'>menu</i>
               <% unless scout.scout_alert.nil? %>

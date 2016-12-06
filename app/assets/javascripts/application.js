@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require tether
 //= require bootstrap
-//= require turbolinks
+//= require jquery.tagsinput
 //= require_tree .
 
 $(document).ready(function() {
@@ -39,3 +39,4 @@ $(document).ready(function() {
         $(tab).fadeIn();
     });
 });
+
