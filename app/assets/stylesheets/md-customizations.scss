@@ -1,0 +1,42 @@
+
+$color-primary-0: #004087;	// Main Primary color */
+$color-primary-1: #016FEB;
+$color-primary-2: #004FA7;
+$color-primary-3: #00326B;
+$color-primary-4: #00234A;
+
+$color-secondary-1-0: #CD0005;	// Main Secondary color (1) */
+$color-secondary-1-1: #FE0007;
+$color-secondary-1-2: #FD0006;
+$color-secondary-1-3: #A20004;
+$color-secondary-1-4: #710003;
+
+$color-secondary-2-0: #08A800;	// Main Secondary color (2) */
+$color-secondary-2-1: #0CF400;
+$color-secondary-2-2: #0ACF00;
+$color-secondary-2-3: #078400;
+$color-secondary-2-4: #055C00;
+
+$color-complement-0: #CF7D00;	// Main Complement color */
+$color-complement-1: #FF9A00;
+$color-complement-2: #FF9A00;
+$color-complement-3: #A36300;
+$color-complement-4: #724500;
+
+$blue-500: $color-primary-0;
+$red-500: $color-secondary-1-0;
+$green-500: $color-secondary-2-0;
+$orange-500: $color-complement-0;
+
+$bsa-blue-300: #3372BA !default;
+$bsa-blue-400: #1A59A1 !default;
+$bsa-blue-500: #003F87 !default;
+$bsa-blue-600: #00266E !default;
+$bsa-blue: $bsa-blue-500 !default;
+
+$brand-primary: $bsa-blue !default;
+
+$brand-dark-blue: $bsa-blue !default;
+
+
+

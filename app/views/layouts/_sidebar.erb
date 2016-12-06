@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple">
+<div class="sidebar" data-active-color="dark blue" data-background-color="black">
   <div class="logo">
       <span class="simple-text">
         Troop Website
@@ -7,28 +7,26 @@
 
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="active">
-        <a href="<%= root_path %>">
-          <i class="material-icons">home</i>
-          <p>Home</p>
+      <%= nav_link '<i class="material-icons">home</i><p>Home</p>'.html_safe, root_path %>
+      <%= nav_link '<i class="material-icons">face</i><p>Scouts</p>'.html_safe, scouts_path %>
+      <%= nav_link '<i class="material-icons">flag</i><p>Patrols</p>'.html_safe, patrols_path %>
+      <%= nav_link '<i class="fa fa-trophy" aria-hidden="true"></i><p>Ranks</p>'.html_safe, ranks_path %>
+      <%= nav_link '<i class="fa fa-users" aria-hidden="true"></i><p>Positions</p>'.html_safe, positions_path %>
+      <li>
+        <a data-toggle="collapse" href="#scoutsBy">
+          <i class="material-icons">dashboard</i>
+          <p>Dropdown
+            <b class="caret"></b>
+          </p>
         </a>
-          <a href="<%= scouts_path %>">
-            <i class="material-icons">face</i>
-            <p>Scouts</p>
-          </a>
-        <a href="<%= patrols_path %>">
-          <i class="material-icons">flag</i>
-          <p>Patrols</p>
-        </a>
-        <a href="<%= ranks_path %>">
-          <i class="fa fa-trophy" aria-hidden="true"></i>
-          <p>Ranks</p>
-        </a>
-
-        <a href="<%= positions_path %>">
-          <i class="fa fa-users" aria-hidden="true"></i>
-          <p>Positions</p>
-        </a>
+        <div class="collapse" id="scoutsBy">
+          <ul class="nav">
+            <li><a href="#">Example #1</a></li>
+            <li><a href="#">Example #2</a></li>
+            <li><a href="#">Example #3</a></li>
+            <li><a href="#">Example #4</a></li>
+          </ul>
+        </div>
       </li>
     </ul>
   </div>

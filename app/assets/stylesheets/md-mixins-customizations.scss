@@ -1,0 +1,28 @@
+[data-background-color="dark blue"] {
+  background: linear-gradient(60deg, $bsa-blue-300, $bsa-blue-600);
+  @include shadow-big-color($brand-dark-blue);
+}
+
+[data-icon-bg-color="dark-blue"] {
+  @include alert-icon-color($brand-dark-blue);
+}
+
+.btn-dark-blue {
+  @include btn-styles($brand-dark-blue);
+}
+
+[data-active-color="dark blue"] {
+  @include set-background-color-button($brand-dark-blue);
+}
+
+.alert-dark-blue {
+  @include alert-icon-color($brand-dark-blue);
+}
+
+.main-panel {
+  > .content {
+    margin-top: 0px;
+  }
+}
+
+
