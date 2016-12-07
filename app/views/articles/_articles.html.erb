@@ -1,10 +1,18 @@
 <% obj.each do |article| %>
-
     <div class="row">
       <div class="col-sm-offset-1 col-sm-10 ">
         <div class="card">
           <div class="card-header" data-background-color="dark blue">
-            <h4><%= link_to article.title, article_path(article) %></h4>
+            <h4 class="hvr-push"><%= link_to article.title, article_path(article) %></h4>
+            <span class="pull-right">
+              <% if article.user == current_user || current_user.admin? %>
+                  <%= link_to "Edit", edit_article_path(article), class: "btn btn-sm btn-warning" %>
+                  <%= link_to "Delete", article_path(article), method: :delete,
+                              data: {confirm: "Are you sure you want to delete the article?"},
+                              class: "btn btn-sm btn-danger" %>
+              <% end %>
+
+            </span>
           </div>
           <div class="card-content">
             <%= truncate(article.description, length: 500) %>
@@ -12,21 +20,16 @@
           <div class="card-footer">
             <small>
               <% if article.categories.any? %>
-                  Categories: <%= render article.categories %><br/>
+                  Categories:
+                  <% article.categories.each do |cat| %>
+                       <span class="badge hvr-pulse-shrink"><%= link_to cat.name, category_path(cat) %></span>
+                  <% end %>
+                  <br/>
               <% end %>
               Created by: <%= article.user.username if article.user %>,
               <%= time_ago_in_words(article.created_at) %> ago,
               last updated: <%= time_ago_in_words(article.updated_at) %> ago
             </small>
-          </div>
-
-          <div class="card-block text-center">
-            <% if article.user == current_user || current_user.admin? %>
-                <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-sm btn-primary" %>
-                <%= link_to "Delete this article", article_path(article), method: :delete,
-                            data: {confirm: "Are you sure you want to delete the article?"},
-                            class: "btn btn-sm btn-danger" %>
-            <% end %>
           </div>
         </div>
       </div>
