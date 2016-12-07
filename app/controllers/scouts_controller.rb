@@ -86,11 +86,8 @@ class ScoutsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def scout_params
-    valid = params.require(:scout).permit(:name, :grade, :birthdate, :patrol_id, :rank_id, :position_id, :email,
+    params.require(:scout).permit(:name, :grade, :birthdate, :patrol_id, :rank_id, :position_id, :email,
                                   :phone, :joined, :bsa_id)
-
-    valid[:joined] = convert_date(valid[:joined])
-    return valid
   end
 
 
