@@ -43,8 +43,8 @@
           <div class="control-label col-sm-2">
             <%= f.label :joined %>
           </div>
-          <div class="col-sm-8">
-            <%= f.date_select :joined, class: 'form-control', order: [:month, :day, :year], start_year: 9.years.ago.year, end_year: Date.today.year %>
+          <div class="col-sm-2">
+            <%= f.text_field :joined, class: 'form-control datetimepicker', data: { date_format: 'MM/DD/YYYY' }%>
           </div>
         </div>
 
@@ -61,8 +61,8 @@
           <div class="control-label col-sm-2">
             <%= f.label :birthdate %>
           </div>
-          <div class="col-sm-8">
-            <%= f.date_select :birthdate, class: 'form-control', order: [:month, :day, :year], start_year: 18.years.ago.year, end_year: 11.years.ago.year %>
+          <div class="col-sm-2">
+            <%= f.text_field :birthdate, class: 'form-control datetimepickeryear', data: { date_format: 'MM/DD/YYYY' }%>
           </div>
         </div>
 

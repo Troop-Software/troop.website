@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :events
   get 'admin/home'
 
   devise_for :users
@@ -17,5 +18,6 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:index, :show]
   get '/admin', to: 'admin#home'
+  get '/calendar', to: 'static_pages#calendar'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -13,6 +13,6 @@ module TroopWebsite
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Eastern Time (US & Canada)'
-    config.autoload_paths += %W["#{config.root}/lib/validators/"]
+
   end
 end

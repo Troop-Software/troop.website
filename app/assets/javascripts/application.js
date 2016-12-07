@@ -12,12 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require tether
-//= require bootstrap
+//= require jquery-ui
 //= require jquery.tagsinput
+//= require tether
+//= require moment
+//= require bootstrap
+//= require bootstrap-datetimepicker
+//= require fullcalendar
+//= require material-dashboard
 //= require_tree .
 
-$(document).ready(function() {
+$(document).ready(function () {
     //=$('.has-tooltip').tooltip();
     $('.has-popover-click').popover({
         html: true,
@@ -29,8 +34,8 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function() {
-    $(".nav-tabs a").click(function(event) {
+$(document).ready(function () {
+    $(".nav-tabs a").click(function (event) {
         event.preventDefault();
         $(this).parent().addClass("current");
         $(this).parent().siblings().removeClass("current");
@@ -38,5 +43,17 @@ $(document).ready(function() {
         $(".tab-pane").not(tab).css("display", "none");
         $(tab).fadeIn();
     });
-});
 
+    $('#calendar').fullCalendar({
+        events: '/events.json',
+        header: {
+            left: 'title',
+            center: 'month agendaWeek agendaDay',
+            right: 'today prev,next'
+        }
+    })
+
+    $('.datetimepicker').datetimepicker();
+    $('.datetimepickeryear').datetimepicker({viewMode: 'years'});
+
+});

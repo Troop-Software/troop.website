@@ -21,4 +21,12 @@ module ApplicationHelper
       link_to link_text, link_path
     end
   end
+
+  def date_for_display(date)
+      fsdate = (date == nil)? date :  I18n.l( Date.parse(date.to_s), :format => :default)
+  end
+
+  def datetime_for_display(datetime)
+    fsdatetime = (datetime == nil)? datetime :  I18n.l( DateTime.parse(datetime.to_s), :format => :default)
+  end
 end
