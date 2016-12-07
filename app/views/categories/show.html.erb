@@ -1,5 +1,5 @@
-<h1 align="center"><%= "Category: " + @category.name %></h1>
 
+<%= content_for(:title, 'Category: ' + @category.name) %>
 <div align="center">
   <%= will_paginate @category_articles %>
 </div>

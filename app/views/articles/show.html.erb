@@ -1,32 +1,30 @@
-<div class="col-xs-10 offset-xs-1">
+<%= content_for(:title, 'Article') %>
+<div class="">
   <div class="card">
-    <h3 class="card-header center"><%= @article.title %></h3>
-    <div class="card-block">
-      <p class="card-text">
-        <%= simple_format(@article.description) %>
-      </p>
-    </div>
-    <div class="card-footer small">
-      <% if @article.categories.any? %>
-          Categories: <%= render @article.categories %><br/>
-      <% end %>
-      Created: <%= distance_of_time_in_words_to_now(@article.created_at) %> ago<br/>
-      Updated last: <%= distance_of_time_in_words_to_now(@article.updated_at) %> ago
+    <div class="card">
+      <div class="card-header" data-background-color="dark blue">
+        <h4><%= @article.title %></h4>
+      </div>
+      <div class="card-content">
+        <p class="card-text">
+          <%= simple_format(@article.description) %>
+        </p>
+      </div>
+      <div class="card-footer small">
+        <% if @article.categories.any? %>
+            Categories: <%= render @article.categories %><br/>
+        <% end %>
+        Created: <%= distance_of_time_in_words_to_now(@article.created_at) %> ago<br/>
+        Updated last: <%= distance_of_time_in_words_to_now(@article.updated_at) %> ago
+      </div>
     </div>
   </div>
-  <div class="article-actions center">
+  <div class="article-actions text-center">
     <% if @article.user == current_user || current_user.admin? %>
-        <% if current_user.admin? && @article.user != current_user%>
-            <div class="alert alert-warning">
-              <small>Options available because you are signed in with admin privileges</small><br/>
-        <% end %>
         <%= link_to 'Edit this article', edit_article_path(@article), class: 'btn btn-sm btn-primary' %>
         <%= link_to 'Delete this article', article_path(@article), method: :delete,
                     data: {confirm: 'Are you sure you want to delete the article?'},
                     class: 'btn btn-sm btn-danger' %>
-        <% if current_user.admin? && @article.user != current_user %>
-            </div>
-        <% end %>
     <% end %>
     <%= link_to 'View all articles', articles_path, class: 'btn btn-sm btn-success' %>
   </div>

@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
       if @category.save
         format.html {
           flash[:success] = 'Category was successfully created.'
-          redirect_to @category
+          redirect_to categories_path
         }
         format.json { render :show, status: :created, location: @category }
       else
@@ -50,7 +50,7 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.html {
           flash[:success] = 'Category was successfully created.'
-          redirect_to @category
+          redirect_to categories_path
         }
         format.json { render :show, status: :ok, location: @category }
       else

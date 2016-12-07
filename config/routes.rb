@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :ranks
   resources :patrols
   resources :articles
-  resources :categories, except: [:destroy]
+  resources :categories
   resources :scout_rank_histories
 
   resources :profiles, only: [:index, :show]

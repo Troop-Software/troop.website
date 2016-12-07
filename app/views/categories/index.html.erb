@@ -1,33 +1,25 @@
-<h1 class="center">Categories</h1>
+<%= content_for(:title, 'Categories') %>
 <% if current_user.admin? %>
     <div class="text-right">
-      <%= link_to 'Create New Category', new_category_path, class: 'btn btn-success' %>
+      <%= link_to 'Create New Category', new_category_path, class: 'btn btn-warning ' %>
     </div>
 <% end %>
-<div class="card-columns">
+<div class="row">
   <% @categories.each do |category| %>
-      <div class="card ">
-        <div class="card-header">
-          <%= category.name %>
-              <span class="tag tag-success"><%= category.articles.count %></span>
-          <% if current_user.admin? %>
+      <div class="col-sm-6">
+        <div class="card card-plain">
+          <div class="card-header" data-background-color="dark blue">
+            <h4 class="card-title"><%= category.name %>
+              <% if current_user.admin? %>
               <span class="pull-right">
-                <%= link_to "<i class='fa fa-eye fa-sm'></i>".html_safe, category_path(category) %>
-                <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_category_path(category) %>
-                <%= link_to "<i class='fa fa-trash fa-sm'></i>".html_safe, category,
+                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_category_path(category) %>
+                <%= link_to "<i class='material-icons'>delete</i>".html_safe, category,
                             method: :delete, data: {confirm: 'Are you sure?'} %>
                 </span>
-          <% end %>
+              <% end %>
+            </h4>
+          </div>
         </div>
-        <% if false %>
-            <div class="card-block">
-              <p class="card-text">
-                <% rank.scouts.each do |scout| %>
-                    <%= link_to scout.name, scout %><br/>
-                <% end %>
-              </p>
-            </div>
-        <% end %>
       </div>
   <% end %>
 </div>

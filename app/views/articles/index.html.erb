@@ -1,5 +1,4 @@
-
-<h1 class="center">Articles</h1>
+<%= content_for(:title, 'Articles') %>
 
 <div class="tw_pagination"><%= will_paginate %></div>
 <%= render 'articles', obj: @articles %>
