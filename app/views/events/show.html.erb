@@ -1,40 +1,51 @@
 <%= content_for(:title, 'Event ' + @event.title.titlecase) %>
+<div class="row">
+<div class="card col-sm-8 col-sm-offset-1">
+  <div class="card-header card-header-icon" data-background-color="dark blue">
+    <i class="material-icons">event</i>
+  </div>
+  <div class="card-content">
+    <h4 class="card-title"><%= @event.title %></h4>
+    <h5><%= @event.description %></h5>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Start</th>
+        <th>End</th>
+        <th>All Day</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <% if @event.allDay? %>
+            <td><%= date_for_display(@event.start) %></td>
+            <td><%= date_for_display(@event.end) %></td>
+        <% else %>
+            <td><%= datetime_for_display(@event.start) %></td>
+            <td><%= datetime_for_display(@event.end) %></td>
+        <% end %>
+        <td><%= @event.allDay %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <div class="stats">
+      <i class="material-icons">access_time</i>
+      Created: <%= distance_of_time_in_words_to_now(@event.created_at) %> ago<br/>
+      <i class="material-icons ">access_time</i>
+      Updated: <%= distance_of_time_in_words_to_now(@event.updated_at) %> ago
+    </div>
+  </div>
+</div>
+</div>
+<div class="row col-sm-11 text-center">
+  <% if current_user.admin? %>
+      <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Delete', event_path(@event), method: :delete,
+                  data: {confirm: 'Are you sure you want to delete this event?'},
+                  class: 'btn btn-sm btn-danger' %>
+  <% end %>
+  <%= link_to 'View Events', calendar_path, class: 'btn btn-sm btn-success' %>
 
-
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @event.start %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @event.end %>
-</p>
-
-<p>
-  <strong>Allday:</strong>
-  <%= @event.allDay %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @event.category %>
-</p>
-
-<p>
-  <strong>External link:</strong>
-  <%= @event.external_link %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+</div>
