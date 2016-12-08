@@ -30,7 +30,7 @@
             <%= f.label :rank_completed %>
           </div>
           <div class="col-sm-8">
-            <%= f.date_field :rank_completed, class: 'form-control' %>
+            <%= f.text_field :rank_completed, class: 'form-control datetimepicker', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'} %>
           </div>
         </div>
 

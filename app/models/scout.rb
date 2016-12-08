@@ -1,11 +1,6 @@
 class Scout < ApplicationRecord
   validates :name, presence: true, length: {minimum: 3, maximum: 250}
   validates_uniqueness_of :name
-  validates_numericality_of :grade,
-                            :less_than_or_equal_to => 12,
-                            :greater_than_or_equal_to => 5,
-                            :only_integer => true
-
 
   belongs_to :patrol
   belongs_to :rank

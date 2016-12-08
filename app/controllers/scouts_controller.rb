@@ -90,4 +90,5 @@ class ScoutsController < ApplicationController
                                   :phone, :joined, :bsa_id)
   end
 
+
 end

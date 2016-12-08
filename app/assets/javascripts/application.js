@@ -12,12 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require tether
-//= require bootstrap
 //= require jquery.tagsinput
+//= require tether
+//= require moment
+//= require bootstrap
+//= require bootstrap-datetimepicker
+//= require fullcalendar
+//= require material-dashboard
 //= require_tree .
 
-$(document).ready(function() {
+$(document).ready(function () {
     //=$('.has-tooltip').tooltip();
     $('.has-popover-click').popover({
         html: true,
@@ -29,8 +33,8 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function() {
-    $(".nav-tabs a").click(function(event) {
+$(document).ready(function () {
+    $(".nav-tabs a").click(function (event) {
         event.preventDefault();
         $(this).parent().addClass("current");
         $(this).parent().siblings().removeClass("current");
@@ -38,5 +42,42 @@ $(document).ready(function() {
         $(".tab-pane").not(tab).css("display", "none");
         $(tab).fadeIn();
     });
-});
 
+    $('#calendar').fullCalendar({
+        events: '/events.json',
+        header: {
+            left: 'title',
+            center: 'month agendaWeek agendaDay',
+            right: 'today prev,next'
+        }
+    });
+
+    $('.datetimepicker').datetimepicker({
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down",
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            today: 'fa fa-screenshot',
+            clear: 'fa fa-trash',
+            close: 'fa fa-remove'
+        }
+    });
+
+    $('.datetimepickeryear').datetimepicker({
+        viewMode: 'years',
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down",
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            today: 'fa fa-screenshot',
+            clear: 'fa fa-trash',
+            close: 'fa fa-remove'
+        }
+    });
+});

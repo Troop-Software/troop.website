@@ -1,0 +1,42 @@
+<%= content_for(:title, 'Events Listing') %>
+
+<table class="table table-responsive table-condensed">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Allday</th>
+    <th>Category</th>
+    <th>External link</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <% if event.allDay %>
+            <td><%= date_for_display(event.start) %></td>
+            <td><%= date_for_display(event.end) %></td>
+        <% else %>
+            <td><%= datetime_for_display(event.start) %></td>
+            <td><%= datetime_for_display(event.end) %></td>
+        <% end %>
+        <td><%= event.allDay %></td>
+        <td><%= event.category %></td>
+        <td><%= event.external_link %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>

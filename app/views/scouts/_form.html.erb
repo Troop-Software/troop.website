@@ -17,7 +17,7 @@
             <%= f.label :email %>
           </div>
           <div class="col-sm-4">
-            <%= f.email_field :email, class: 'form-control'%>
+            <%= f.email_field :email, class: 'form-control' %>
           </div>
         </div>
 
@@ -26,7 +26,7 @@
             <%= f.label :phone %>
           </div>
           <div class="col-sm-4">
-            <%= f.telephone_field :phone, class: 'form-control'%>
+            <%= f.telephone_field :phone, class: 'form-control' %>
           </div>
         </div>
 
@@ -35,7 +35,7 @@
             <%= f.label :grade %>
           </div>
           <div class="col-sm-4">
-            <%= f.number_field :grade, class: 'form-control' ,  in: 5..12%>
+            <%= f.number_field :grade, class: 'form-control', in: 5..12 %>
           </div>
         </div>
 
@@ -43,8 +43,8 @@
           <div class="control-label col-sm-2">
             <%= f.label :joined %>
           </div>
-          <div class="col-sm-8">
-            <%= f.date_select :joined, class: 'form-control', order: [:month, :day, :year], start_year: 9.years.ago.year, end_year: Date.today.year %>
+          <div class="col-sm-2">
+                <%= f.text_field :joined, class: 'form-control datetimepicker', data: {date: scout.joined, date_format: 'YYYY-MM-DD'} %>
           </div>
         </div>
 
@@ -61,8 +61,8 @@
           <div class="control-label col-sm-2">
             <%= f.label :birthdate %>
           </div>
-          <div class="col-sm-8">
-            <%= f.date_select :birthdate, class: 'form-control', order: [:month, :day, :year], start_year: 18.years.ago.year, end_year: 11.years.ago.year %>
+          <div class="col-sm-2">
+            <%= f.text_field :birthdate, class: 'form-control datetimepickeryear', data: {date: scout.birthdate, date_format: 'YYYY-MM-DD'} %>
           </div>
         </div>
 
@@ -71,7 +71,7 @@
             <%= f.label :rank_id %>
           </div>
           <div class="col-sm-4">
-            <%= f.select :rank_id, options_for_select(Rank.all.map { |r| [r.name, r.id] }, scout.rank_id),{}, class: 'form-control' %>
+            <%= f.select :rank_id, options_for_select(Rank.all.map { |r| [r.name, r.id] }, scout.rank_id), {}, class: 'form-control' %>
 
           </div>
         </div>
@@ -81,7 +81,7 @@
             <%= f.label :patrol_id %>
           </div>
           <div class="col-sm-4">
-            <%= f.select :patrol_id, options_for_select(Patrol.all.map { |p| [p.name, p.id] }, scout.patrol_id),{}, class: 'form-control' %>
+            <%= f.select :patrol_id, options_for_select(Patrol.all.map { |p| [p.name, p.id] }, scout.patrol_id), {}, class: 'form-control' %>
           </div>
         </div>
 
@@ -90,7 +90,7 @@
             <%= f.label :position_id %>
           </div>
           <div class="col-sm-4">
-            <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }, scout.position_id),{}, {class: 'form-control'} %>
+            <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }, scout.position_id), {}, {class: 'form-control'} %>
           </div>
         </div>
 
@@ -103,3 +103,4 @@
     <% end %>
   </div>
 </div>
+
