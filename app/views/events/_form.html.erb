@@ -57,10 +57,11 @@
           <%= f.label :category %>
         </div>
         <div class="col-sm-5">
-          <%= f.number_field :category, class: 'form-control' %>
+           <%= f.select :category, options_for_select(Event.categories.map { |key, value| [key.humanize.titlecase, key] }, event.category), { :include_blank => "Please select category"}, {:class => "form-control"} %>
         </div>
       </div>
-  
+
+      
       <div class="form-group row">
         <div class="control-label col-sm-2">
           <%= f.label :external_link %>

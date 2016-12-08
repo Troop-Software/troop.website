@@ -13,6 +13,7 @@
         <th>Start</th>
         <th>End</th>
         <th>All Day</th>
+        <th>Category</th>
       </tr>
       </thead>
       <tbody>
@@ -25,6 +26,7 @@
             <td><%= datetime_for_display(@event.end) %></td>
         <% end %>
         <td><%= @event.allDay %></td>
+        <td><span class="badge"><%= @event.category.humanize.titlecase %></span></td>
       </tr>
       </tbody>
     </table>
