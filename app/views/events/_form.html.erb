@@ -1,77 +1,81 @@
-<div class="row">
-  <div class="col-sm-12">
+<div class="card col-sm-6 col-sm-offset-2">
+  <div class="card-header" data-background-color="dark blue">
+      <h4>Event</h4>
+    </div>
+  <div class="card-content">
     <%= form_for(event, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
-        <%= render 'shared/errors', obj: event %>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :title %>
-          </div>
-          <div class="col-sm-6">
-            <%= f.text_field :title, class: 'form-control' %>
-          </div>
+      <%= render 'shared/errors', obj: event %>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :title %>
         </div>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :description %>
-          </div>
-          <div class="col-sm-6">
-            <%= f.text_field :description, class: 'form-control' %>
-          </div>
+        <div class="col-sm-6">
+          <%= f.text_field :title, class: 'form-control' %>
         </div>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :allDay %>
-          </div>
-          <div class="col-sm-6">
-            <%= f.check_box :allDay, class: 'form-control' %>
-          </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :description %>
         </div>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :start %>
-          </div>
-          <div class="col-sm-5">
-            <%= f.text_field :start, class: 'form-control datetimepicker ', data: {date: event.start,  date_format: 'YYYY-MM-DD hh:mm A'} %>
-
-          </div>
+        <div class="col-sm-6">
+          <%= f.text_field :description, class: 'form-control' %>
         </div>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :end %>
-          </div>
-          <div class="col-sm-5">
-            <%= f.text_field :end, class: 'form-control datetimepicker ', data: {date: event.end, date_format: 'YYYY-MM-DD hh:mm A'} %>
-          </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :allDay %>
         </div>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :category %>
-          </div>
-          <div class="col-sm-5">
-            <%= f.number_field :category %>
-          </div>
+        <div class="col-sm-6">
+          <%= f.check_box :allDay, class: 'form-control' %>
         </div>
-
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :external_link %>
-          </div>
-          <div class="col-sm-5">
-            <%= f.text_field :external_link %>
-          </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :start %>
         </div>
-
-        <div class="form-group row">
-          <div class="col-sm-5 col-sm-offset-3">
-          <%= f.submit %>
-          </div>
+        <div class="col-sm-5">
+          <%= f.text_field :start, class: 'form-control datetimepicker ', data: {date: event.start,  date_format: 'YYYY-MM-DD hh:mm A'} %>
+  
         </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :end %>
+        </div>
+        <div class="col-sm-5">
+          <%= f.text_field :end, class: 'form-control datetimepicker ', data: {date: event.end, date_format: 'YYYY-MM-DD hh:mm A'} %>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :category %>
+        </div>
+        <div class="col-sm-5">
+          <%= f.number_field :category, class: 'form-control' %>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="control-label col-sm-2">
+          <%= f.label :external_link %>
+        </div>
+        <div class="col-sm-5">
+          <%= f.text_field :external_link, class: 'form-control' %>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <div class="col-sm-5 col-sm-offset-4">
+          <%= f.submit 'Save', class: 'btn btn-primary' %>
+          <%= link_to 'Cancel', calendar_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
