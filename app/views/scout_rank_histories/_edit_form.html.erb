@@ -17,9 +17,9 @@
             </div>
             <div class="col-sm-4 ">
               <% if @scout_rank_history.rank_completed == Date.parse('1/1/1111') %>
-                  <%= f.date_field :rank_completed, class: 'form-control input-lg', :value => Date.today %>
+                  <%= f.text_field :rank_completed, class: 'form-control datetimepicker input-lg', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'}, :value => Date.today %>
               <% else %>
-                  <%= f.date_field :rank_completed, class: 'form-control input-lg' %>
+                  <%= f.text_field :rank_completed, class: 'form-control datetimepicker input-lg', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'} %>
               <% end %>
             </div>
           </div>
