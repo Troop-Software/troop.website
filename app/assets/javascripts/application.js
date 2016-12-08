@@ -44,12 +44,55 @@ $(document).ready(function () {
     });
 
     $('#calendar').fullCalendar({
-        events: '/events.json',
         header: {
             left: 'title',
             center: 'month agendaWeek agendaDay',
             right: 'today prev,next'
+        },
+        eventSources: [
+
+        // your event source
+        {
+            url: '/events?search="troop meeting', 
+            color: 'blue',    
+            textColor: 'white' 
+        },
+        {
+            url: '/events?search=campout',
+            color: 'green',    
+            textColor: 'white'  
+        },
+        {
+            url: '/events?search=outing',
+            color: 'yellow',    
+            textColor: 'black'  
+        },
+        {
+            url: '/events?search=plc',
+            color: 'red',    
+            textColor: 'white'  
+        },
+        {
+            url: '/events?search="committee meeting',
+            color: 'grey',    
+            textColor: 'white'  
+        },
+        {
+            url: '/events?search="service project',
+            color: 'orange',    
+            textColor: 'black'  
+        },
+        {
+            url: '/events?search=training',
+            color: 'pink',    
+            textColor: 'black'  
+        },
+        {
+            url: '/events?search=other',
+            color: 'black',    
+            textColor: 'white'  
         }
+    ]
     });
 
     $('.datetimepicker').datetimepicker({
