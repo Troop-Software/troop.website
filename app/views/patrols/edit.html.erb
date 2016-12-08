@@ -1,3 +1,11 @@
 <%= content_for(:title, 'Rename Patrol') %>
-
-<%= render 'form', patrol: @patrol %>
+<div class="card col-sm-6 col-sm-offset-2">
+  <div class="row">
+    <div class="card-header" data-background-color="dark blue">
+      <h4>Patrol</h4>
+    </div>
+    <div class="card-content">
+        <%= render 'form', patrol: @patrol %>
+    </div>
+  </div>
+</div>    
