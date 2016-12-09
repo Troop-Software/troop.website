@@ -1,5 +1,11 @@
-<h1 class="center">Modify Scout Details</h1>
-
-<%= render 'form', scout: @scout %>
-
-
+<%= content_for(:title, 'Change Scout Details') %>
+<div class="card col-sm-8 col-sm-offset-1">
+  <div class="row">
+    <div class="card-header" data-background-color="dkblue">
+      <h4>Editing <%= @scout.name %></h4>
+    </div>
+    <div class="card-content">
+        <%= render 'form', scout: @scout %>
+    </div>
+  </div>
+</div>    
