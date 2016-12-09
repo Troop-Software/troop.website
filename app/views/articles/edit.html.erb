@@ -1,6 +1,6 @@
 <%= content_for(:title, 'Edit Article') %>
 <% if current_user.admin? && @article.user != current_user %>
-    <div class="alert alert-warning alert-with-icon col-sm-8 col-sm-offset-2" data-notify="container">
+    <div class="alert alert-warning alert-with-icon col-sm-8 col-sm-offset-1" data-notify="container">
       <i class="material-icons" data-notify="icon">warning</i>
       <span data-notify="message">You are editing an article that belong to another user.<br/>
       This action is permitted because you are logged in as a user with admin privileges
@@ -8,5 +8,14 @@
     </div>
 
 <% end %>
+<div class="card col-sm-8 col-sm-offset-1">
+  <div class="row">
+    <div class="card-header" data-background-color="dark blue">
+      <h4>Edit <%= @article.title %></h4>
+    </div>
+    <div class="card-content">
+      <%= render 'form', article: @article %>
+    </div>
+  </div>
+</div>    
 
-<%= render 'form', article: @article %>

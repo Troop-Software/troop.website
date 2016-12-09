@@ -1,5 +1,11 @@
 <%= content_for(:title, 'Create a new ranks') %>
-
-<%= render 'form', rank: @rank %>
-
-
+<div class="card col-sm-6 col-sm-offset-2">
+  <div class="row">
+    <div class="card-header" data-background-color="dark blue">
+      <h4>Rank</h4>
+    </div>
+    <div class="card-content">
+        <%= render 'form', rank: @rank %>
+    </div>
+  </div>
+</div>    
