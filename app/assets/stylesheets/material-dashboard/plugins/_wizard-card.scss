@@ -67,6 +67,10 @@
     &[data-color="rose"]{
         @include set-wizard-color($brand-rose);
     }
+    
+    &[data-color="dkblue"]{
+        @include set-wizard-color($brand-dkblue);
+    }
 
     .picture input[type="file"] {
         cursor: pointer;

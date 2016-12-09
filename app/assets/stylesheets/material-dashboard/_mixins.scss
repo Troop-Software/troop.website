@@ -231,6 +231,13 @@
     ));
     @include call-variations-content-mixin($args-rose);
   }
+   &#{$component}-dkblue#{$selector-suffix} {
+    $args-dkblue: map-merge($args, (
+            variation-color: $brand-dkblue,
+            variation-color-text: $mdb-text-color-light
+    ));
+    @include call-variations-content-mixin($args-dkblue);
+  }
 
 }
 
@@ -319,6 +326,9 @@
     }
     &.tag-rose{
         @include tag-color($brand-rose);
+    }
+     &.tag-dkblue{
+        @include tag-color($brand-dkblue);
     }
 }
 

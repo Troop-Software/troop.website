@@ -78,7 +78,12 @@
         }
         @include lock-page-input-color($brand-rose);
     }
-
+    &[filter-color="dkblue"]{
+        &:after{
+            @include linear-gradient(rgba($bsa-blue-100,.56), rgba($bsa-blue-300,.95));
+        }
+        @include lock-page-input-color($brand-dkblue);
+    }
     &[data-image]:after{
         opacity: .8;
     }
@@ -270,6 +275,9 @@
                 }
                 &.icon-rose{
                     color: $brand-rose;
+                }
+                &.icon-dkblue{
+                    color: $brand-dkblue;
                 }
             }
 

@@ -2,7 +2,6 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  */
-@import "md-customizations";
 @import "material-dashboard";
 @import 'bootstrap-sprockets';
 @import "bootstrap";
@@ -12,6 +11,14 @@
 @import "hover-effects/push";
 @import "hover-effects/push";
 @import "hover-effects/pulse-shrink";
+
+
+/* stuff below here needs a home */
+.main-panel {
+  > .content {
+    margin-top: -30px;
+  }
+}
 
 .navbar-brand {
   font-size: 1.75em;

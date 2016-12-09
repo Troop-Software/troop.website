@@ -388,6 +388,15 @@
     [data-icon-bg-color="rose"]{
         @include alert-icon-color($brand-rose);
     }
+    
+    [data-background-color="dkblue"] {
+        background: linear-gradient(60deg, $bsa-blue-300, $bsa-blue-600);
+        @include shadow-big-color($brand-dkblue);
+    }
+
+    [data-icon-bg-color="dkblue"] {
+        @include alert-icon-color($brand-dkblue);
+    }
 
     [data-header-animation="true"]{
         @include transform-translate-y(0);
@@ -591,6 +600,9 @@
         }
         &.icon-rose{
             color: $brand-rose;
+        }
+        &.icon-dkblue{
+            color: $brand-dkblue;
         }
     }
 

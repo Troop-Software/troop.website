@@ -21,3 +21,10 @@ a:hover, a:visited, a:link, a:active
   color: $white-color;
 }
 
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+  background-color: $color-secondary-1-0;
+}
+
+.nav-tabs > li > a:hover{
+  background-color: $color-secondary-2-0;
+}

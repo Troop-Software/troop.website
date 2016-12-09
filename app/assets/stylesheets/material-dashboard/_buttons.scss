@@ -42,6 +42,9 @@
     &.btn-rose{
       @include btn-styles($brand-rose);
     }
+    &.btn-dkblue{
+      @include btn-styles($brand-dkblue);
+    }
     &.btn-white{
         &,
         &:focus,
