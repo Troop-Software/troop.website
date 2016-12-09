@@ -9,7 +9,7 @@ class Scout < ApplicationRecord
   has_many :scout_requirements
   has_many :requirements, through: :scout_requirements
 
-  after_create :establish_scout_rank_history
+  #after_create :establish_scout_rank_history
 
   def establish_scout_rank_history
     x = 1
