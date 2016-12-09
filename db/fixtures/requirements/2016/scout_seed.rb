@@ -21,7 +21,7 @@ Requirement.seed(sortOrder: 16,req_num: '5', revision: '2016', rank_id:2, req_ca
 
 Requirement.seed(sortOrder: 17,req_num: '6', revision: '2016', rank_id:2, req_category: :general,  description: 'With your parent or guardian, complete the exercises in the pamphlet "How to Protect Your Children from Child Abuse: A Parents Guide" and earn the Cyber Chip Award for your grade.')
 
-Requirement.seed(sortOrder: 18,req_num: '7', revision: '2016', rank_id:2, req_category: :general,  description: 'Since joining the troop and while working on the Scout rank, participate in a Scoutmaster conference.')
+Requirement.seed(sortOrder: 18,req_num: '7', revision: '2016', rank_id:2, req_category: :general, bor: true,  description: 'Since joining the troop and while working on the Scout rank, participate in a Scoutmaster conference.')
 
 
 

@@ -49,7 +49,7 @@ Requirement.seed(sortOrder: 24,req_num: '9', revision: '2016', rank_id:3, req_ca
 
 Requirement.seed(sortOrder: 25,req_num: '10', revision: '2016', rank_id:3, req_category: :scout_spirit,  description: 'While working toward Tenderfoot rank, and after completing Scout rank requirement 7, participate in a Scoutmaster conference.')
 
-Requirement.seed(sortOrder: 26,req_num: '11', revision: '2016', rank_id:3, req_category: :scout_spirit,  description: 'Successfully complete your board of review for the Tenderfoot rank.')
+Requirement.seed(sortOrder: 26,req_num: '11', revision: '2016', rank_id:3, req_category: :scout_spirit, bor: true,  description: 'Successfully complete your board of review for the Tenderfoot rank.')
 
 
 

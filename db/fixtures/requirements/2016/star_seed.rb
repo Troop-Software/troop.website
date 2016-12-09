@@ -9,6 +9,6 @@ Venturing crew/Sea Scout ship. President, vice president, secretary, treasurer, 
 Lone Scout. Leadership responsibility in your school, religious organization, club, or elsewhere in your community.')
 Requirement.seed(sortOrder: 6,req_num: '6', revision: '2016', rank_id:6, req_category: :general,  description: 'With your parent or guardian, complete the exercises in the pamphlet "How to Protect Your Children from Child Abuse: A Parents Guide" and earn the Cyber Chip Award for your grade.')
 Requirement.seed(sortOrder: 7,req_num: '7', revision: '2016', rank_id:6, req_category: :general,  description: 'While a First Class Scout, participate in a Scoutmaster conference')
-Requirement.seed(sortOrder: 8,req_num: '8', revision: '2016', rank_id:6, req_category: :general,  description: 'Successfully complete your board of review for the Star rank.')
+Requirement.seed(sortOrder: 8,req_num: '8', revision: '2016', rank_id:6, req_category: :general, bor: true,  description: 'Successfully complete your board of review for the Star rank.')
 
 
