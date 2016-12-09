@@ -283,6 +283,9 @@
     &[data-active-color="rose"]{
         @include set-background-color-button($brand-rose);
     }
+    &[data-active-color="dkblue"]{
+        @include set-background-color-button($brand-dkblue);
+    }
 
     &[data-image]:after,
     &.has-image:after{
@@ -494,6 +497,10 @@
 
             &[data-active-color="green"]{
                 @include sidebar-mini-li-active-color($brand-success);
+            }
+            
+            &[data-active-color="dkblue"]{
+                @include sidebar-mini-li-active-color($brand-dkblue);
             }
 
             .info{

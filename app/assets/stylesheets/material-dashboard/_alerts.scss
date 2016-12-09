@@ -15,7 +15,7 @@
     // SASS conversion note: please mirror any content change in _mixins-shared.scss alert-variations-content
     @include alert-variations(unquote(".alert"), unquote(""), $mdb-text-color-light);
 
-    &-info, &-danger, &-warning, &-success, &-rose {
+    &-info, &-danger, &-warning, &-success, &-rose, &dkblue{
         color: $mdb-text-color-light;
     }
 
@@ -47,6 +47,9 @@
     }
     &.alert-rose{
         @include alert-icon-color($brand-rose);
+    }
+    &.alert-dkblue{
+        @include alert-icon-color($brand-dkblue);
     }
 
     &.alert-with-icon{

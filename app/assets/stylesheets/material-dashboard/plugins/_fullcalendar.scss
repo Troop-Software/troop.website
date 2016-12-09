@@ -556,6 +556,10 @@ temporary rendered events).
 		background-color: $brand-rose;
 		@include shadow-big-color($brand-rose);
 	}
+	&.event-dkblue{
+		background-color: $brand-dkblue;
+		@include shadow-big-color($brand-dkblue);
+	}
 	&.event-default{
 		background-color: $gray-light;
 		@include shadow-big-color($gray-light);

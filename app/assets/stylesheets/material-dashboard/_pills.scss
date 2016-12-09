@@ -124,6 +124,18 @@
         }
     }
 
+    &.nav-pills-dkblue{
+        > li {
+            &.active > a{
+                &,
+                &:focus,
+                &:hover{
+                    background-color: $brand-dkblue;
+                    @include shadow-big-color($brand-dkblue);
+                }
+            }
+        }
+    }
 }
 .tab-space{
     padding: 20px 0;
