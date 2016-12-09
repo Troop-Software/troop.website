@@ -52,4 +52,4 @@ Requirement.seed(sortOrder: 35,req_num: '10', revision: '2016', rank_id:4, req_c
 
 Requirement.seed(sortOrder: 36,req_num: '11', revision: '2016', rank_id:4, req_category: :scout_spirit,  description: 'While working toward Second Class rank, and after completing Tenderfoot requirement 10, participate in a Scoutmaster conference.')
 
-Requirement.seed(sortOrder: 37,req_num: '12', revision: '2016', rank_id:4, req_category: :scout_spirit,  description: 'Successfully complete your board of review for the Second Class rank.')
+Requirement.seed(sortOrder: 37,req_num: '12', revision: '2016', rank_id:4, req_category: :scout_spirit, bor: true,  description: 'Successfully complete your board of review for the Second Class rank.')

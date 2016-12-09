@@ -11,7 +11,6 @@ class Scout < ApplicationRecord
 
   after_create :establish_scout_rank_history
 
-
   def establish_scout_rank_history
     x = 1
     until x > rank.id
