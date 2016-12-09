@@ -1,0 +1,21 @@
+<%= content_for(:title, 'Scout to Merit Badges') %>
+<div class="col-sm-8 col-sm-offset-1">
+    <table class="table table-striped table-inverse">
+      <thead>
+        <tr>
+          <th>Scout Name</th>
+          <th>Merit Badge Name</th>
+          <th>Completion Date</th>
+        </tr>  
+      </thead>
+      <tbody>
+          <% @scout_merit_badges.each do |scout_merit_badge| %>
+          <tr>
+              <td><%= scout_merit_badge.scout.name %></td>
+              <td><%= scout_merit_badge.merit_badge.name %></td>
+              <td><%= date_for_display(scout_merit_badge.completed) %></td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+</div>
