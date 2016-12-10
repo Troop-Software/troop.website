@@ -1,0 +1,47 @@
+<div class="card" style="margin-top: 0px;">
+    <ul class="nav nav-tabs" id="myTab" >
+       <li class = "dropdown active">
+          <a href = "#" id = "myTabDrop1" class = "dropdown-toggle" data-toggle = "dropdown">
+             Ranks<b class = "caret"></b>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <% @ranks.each do |rank| %>
+            <% unless rank.id == 1 %>
+                <li><a href = "#<%= rank.id %>" tabindex = "-1" data-toggle = "tab"><%= rank.name %></a></li> 
+            <% end %>
+          <% end %>
+          </ul>
+       </li>
+    
+       <li><a href = "#merit-badges" data-toggle = "tab">Merit Badges</a></li>
+       <li><a href = "#activities" data-toggle = "tab">Activities</a></li>
+       
+    </ul>
+    <div class="card-content">
+        <!-- Render Scout Rank and Requirements -->
+        <div id = "myTabContent" class = "tab-content" style="margin-top: 0px;">
+          <% @ranks.each do |rank| %>
+            <% unless rank.id == 1 %>
+              <% if rank.id == @scout.rank.id + 1 %>
+                  <div class = "tab-pane fade in active" id="<%= rank.id %>">
+              <% else %>
+                  <div class = "tab-pane fade in" id="<%= rank.id %>">
+              <% end %> 
+                <%= render 'scouts/scout_rank_view', current_rank_selected: rank.id %>
+              </div>
+            <% end %>
+          <% end %>
+        <!-- Render Merit Badge Page -->        
+        
+           <div class = "tab-pane fade in " id = "merit-badges">
+              <%= render 'scout_merit_badges/scout_merit_badges'%>
+           </div>
+           
+           <div class = "tab-pane fade in" id = "activities">
+              <p>Placeholder for displaying history of activities which a scout has
+              attended in the past</p>
+           </div>
+        
+        </div>
+    </div>
+</div>

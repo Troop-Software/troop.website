@@ -28,3 +28,7 @@ a:hover, a:visited, a:link, a:active
 .nav-tabs > li > a:hover{
   background-color: $color-secondary-2-0;
 }
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: $color-complement-0;
+}
