@@ -10,8 +10,8 @@ positions = %w[none Patrol\ Leader Assistant\ senior\ patrol\ leader senior\ pat
 ranks =['Just Joined', 'Scout', 'Tenderfoot', 'Second Class', 'First Class', 'Star', 'Life', 'Eagle']
 
 
-if Rails.env.development?
-  5.times do |x|
+#if Rails.env.development?
+  10.times do |x|
     Scout.create!(name: Faker::Name.name, grade: rand(5..12),
                   birthdate: Faker::Date.between(18.years.ago, 11.years.ago),
                   patrol_id: rand(1..patrol_names.count),
@@ -32,9 +32,9 @@ if Rails.env.development?
   end
   users = User.all
   users.each do |user|
-    10.times do |x|
+    5.times do |x|
       user.articles.create!(title: Faker::Pokemon.name.truncate(50), description: Faker::Lorem.paragraph(100, false, 8).truncate(1000))
     end
   end
-end
+#end
 
