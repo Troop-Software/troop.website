@@ -17,7 +17,7 @@ class ScoutsController < ApplicationController
   # GET /scouts/1
   # GET /scouts/1.json
   def show
-
+   @ranks = Rank.all
   end
 
   # GET /scouts/new

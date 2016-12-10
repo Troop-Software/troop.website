@@ -1,10 +1,5 @@
 <div class="hidden-print">
-  <div class="card">
-    <div class="card-header" data-background-color="dkblue">
-      <h4 class="card-title"><%= @scout.name %></h4>
-    </div>
-    <%= render 'scout_card_detail', obj: @scout %>
-  </div>
+
   <!--  Nav tabs between ranks -->
   <ul class="nav nav-tabs" role="tablist" >
     <% next_rank = @scout.rank_id + 1 %>
