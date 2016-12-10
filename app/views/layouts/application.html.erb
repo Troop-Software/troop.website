@@ -34,15 +34,8 @@
         <%= render 'layouts/footer' %>
       </div>
     </div>
-    </body>
 <% else %>
-    <div class="wrapper">
-      <%= render 'layouts/flash' %>
-      <div class="col-md-8 col-md-offset-2">
-        <%= yield %>
-      </div>
-    </div>
-    </body>
-    <%= render 'layouts/footer' %>
+    <%= yield %>
 <% end %>
+</body>
 </html>
