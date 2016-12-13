@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header" data-background-color="dkblue">
+      <h4>Activities Attended <span class="label label-info"><%= scout_activities.count%></span></h4>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped ">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Activity Name</th>
+            <th>Notes</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% scout_activities.each do |scout_activity| %>
+            <tr>
+              <td class="text-warning"><%= scout_activity.event.category.titlecase %></td>
+              <td><%= scout_activity.event.title %></td>
+              <td><%= scout_activity.notes %></td>
+              <td><%= date_for_display(scout_activity.event.start) %></td>
+              <td><%= date_for_display(scout_activity.event.end) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

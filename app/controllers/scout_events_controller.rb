@@ -1,6 +1,9 @@
 class ScoutEventsController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_scout_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  helper_method :get_scout_activities
 
   # GET /scout_events
   # GET /scout_events.json
@@ -64,6 +67,8 @@ class ScoutEventsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_scout_event
@@ -74,4 +79,6 @@ class ScoutEventsController < ApplicationController
     def scout_event_params
       params.require(:scout_event).permit(:scout_id, :event_id, :notes)
     end
+
+
 end
