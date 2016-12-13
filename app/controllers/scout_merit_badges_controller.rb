@@ -1,4 +1,4 @@
-class ScoutMeritBadgesController < ApplicationController
+  class ScoutMeritBadgesController < ApplicationController
   before_action :set_scout_merit_badge, only: [:show, :edit, :update]
   before_action :authenticate_user!
   before_action :require_admin_user, only: [:destroy, :index]
@@ -23,7 +23,7 @@ class ScoutMeritBadgesController < ApplicationController
       if @scout_merit_badge.save
         format.html {
           flash[:success] = 'Rank completion date saved.'
-          redirect_to :back
+          redirect_to scout_path(@scout_merit_badge.scout_id)
         }
         format.json { render :show, status: :created, location: @scout_merit_badge }
       else

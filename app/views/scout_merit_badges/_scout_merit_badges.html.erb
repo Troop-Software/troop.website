@@ -7,6 +7,9 @@ earned_mb = {}
    earned_mb[smb.merit_badge.name] = smb.completed unless smb.merit_badge.eagle_required
 end    
 %>
+<div class="row text-right">
+  <%= link_to 'Log new MB', new_scout_merit_badge_path(scout_id: @scout.id), class: 'btn btn-warning ' %>
+</div>
 <div class="col-md-6">
     <div class="card">
         <div class="card-header card-header-icon" data-background-color="dkblue">
