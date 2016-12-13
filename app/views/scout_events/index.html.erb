@@ -1,5 +1,4 @@
-<%= content_for(:title, 'Event Attendance') %>
-
+<%= content_for(:title, 'Event Attendance - 60 day window') %>
 <div class="col-sm-8 col-sm-offset-1">
   <table class="table table-striped table-inverse">
     <thead>
@@ -13,6 +12,7 @@
     </thead>
 
     <tbody>
+
     <% @scout_events.each do |scout_event| %>
         <tr>
           <td><%= scout_event.scout.name %></td>

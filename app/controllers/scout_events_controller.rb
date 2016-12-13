@@ -1,10 +1,13 @@
 class ScoutEventsController < ApplicationController
   before_action :set_scout_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /scout_events
   # GET /scout_events.json
   def index
-    @scout_events = ScoutEvent.all
+    # only show events +- 30 days
+    @scout_events = ScoutEvent.events_in_60_day_window
+   # @scout_events = ScoutEvent.all
   end
 
   # GET /scout_events/1

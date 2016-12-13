@@ -8,8 +8,8 @@
       </div>
       <div class="col-sm-8">
         <%= f.select :scout_id, options_for_select(Scout.all.map { |se| [se.name, se.id] },
-                                                   @scout_event.scout_id), {},
-                     class: 'form-control' %>
+                                                   @scout_event.scout_id),
+                     {:include_blank => 'Please select a Scout'}, {:class => 'form-control'} %>
       </div>
     </div>
 
@@ -18,9 +18,9 @@
         <%= f.label :event_id %>
       </div>
       <div class="col-sm-8">
-        <%= f.select :event_id, options_for_select(Event.all.map { |e| ["#{e.title} - #{datetime_for_display(e.start)}", e.id] },
-                                                   @scout_event.event_id), {},
-                     class: 'form-control' %>
+        <%= f.select :event_id, options_for_select(Event.events_in_60_day_window.map { |e| ["#{e.title} - #{datetime_for_display(e.start)}", e.id] },
+                                                   @scout_event.event_id),
+                     {:include_blank => 'Please select a event'}, {:class => 'form-control'} %>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
         <%= f.label :notes %>
       </div>
       <div class="col-sm-1">
-        <%= f.text_field :notes %>
+        <%= f.text_field :notes, size: 52, placeholder: 'Enter any note you have', maxlength: '254' %>
       </div>
     </div>
 

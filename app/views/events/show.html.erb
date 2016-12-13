@@ -1,45 +1,45 @@
 <%= content_for(:title, 'Event ' + @event.title.titlecase) %>
 <div class="row">
-<div class="card col-sm-8 col-sm-offset-1">
-  <div class="card-header card-header-icon" data-background-color="dkblue">
-    <i class="material-icons">event</i>
-  </div>
-  <div class="card-content">
-    <h4 class="card-title"><%= @event.title %></h4>
-    <h5><%= @event.description %></h5>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Start</th>
-        <th>End</th>
-        <th>All Day</th>
-        <th>Category</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <% if @event.allDay? %>
-            <td><%= date_for_display(@event.start) %></td>
-            <td><%= date_for_display(@event.end) %></td>
-        <% else %>
-            <td><%= datetime_for_display(@event.start) %></td>
-            <td><%= datetime_for_display(@event.end) %></td>
-        <% end %>
-        <td><%= @event.allDay %></td>
-        <td><span class="badge"><%= @event.category.humanize.titlecase %></span></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="card-footer">
-    <div class="stats">
-      <i class="material-icons">access_time</i>
-      Created: <%= distance_of_time_in_words_to_now(@event.created_at) %> ago<br/>
-      <i class="material-icons ">access_time</i>
-      Updated: <%= distance_of_time_in_words_to_now(@event.updated_at) %> ago
+  <div class="card col-sm-8 col-sm-offset-1">
+    <div class="card-header card-header-icon" data-background-color="dkblue">
+      <i class="material-icons">event</i>
+    </div>
+    <div class="card-content">
+      <h4 class="card-title"><%= @event.title %></h4>
+      <h5><%= @event.description %></h5>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Start</th>
+          <th>End</th>
+          <th>All Day</th>
+          <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <% if @event.allDay? %>
+              <td><%= date_for_display(@event.start) %></td>
+              <td><%= date_for_display(@event.end) %></td>
+          <% else %>
+              <td><%= datetime_for_display(@event.start) %></td>
+              <td><%= datetime_for_display(@event.end) %></td>
+          <% end %>
+          <td><%= @event.allDay %></td>
+          <td><span class="badge"><%= @event.category.humanize.titlecase %></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <div class="stats">
+        <i class="material-icons">access_time</i>
+        Created: <%= distance_of_time_in_words_to_now(@event.created_at) %> ago<br/>
+        <i class="material-icons ">access_time</i>
+        Updated: <%= distance_of_time_in_words_to_now(@event.updated_at) %> ago
+      </div>
     </div>
   </div>
-</div>
 </div>
 <div class="row col-sm-11 text-center">
   <% if current_user.admin? %>
@@ -49,5 +49,19 @@
                   class: 'btn btn-sm btn-danger' %>
   <% end %>
   <%= link_to 'View Events', calendar_path, class: 'btn btn-sm btn-success' %>
-
 </div>
+<% if @event.scout_events.count > 0 %>
+    <div class="card col-sm-8 col-sm-offset-1">
+      <div class="card-header card-header-icon" data-background-color="dkblue">
+        <i class="material-icons">face</i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">Scouts in attendance</h4>
+        <ul class="list-group">
+          <% @event.scout_events.each do |scout_event| %>
+              <li class="list-group-item"><%= scout_event.scout.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+<% end %>
