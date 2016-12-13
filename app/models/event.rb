@@ -5,7 +5,9 @@ class Event < ApplicationRecord
   
   enum category: [:troop_meeting, :campout, :outing, :plc, :committee_meeting, 
                     :service_project, :training, :other]
-  
+
+  has_many :scout_events
+  has_many :scouts, through: :scout_events
   
   def self.search(search)
     if search

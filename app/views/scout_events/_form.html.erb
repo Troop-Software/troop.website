@@ -1,0 +1,42 @@
+<%= form_for(scout_event) do |f| %>
+    <% if scout_event.errors.any? %>
+        <%= render 'shared/errors', obj: scout_event %>
+    <% end %>
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :scout_id %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.select :scout_id, options_for_select(Scout.all.map { |se| [se.name, se.id] },
+                                                   @scout_event.scout_id), {},
+                     class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :event_id %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.select :event_id, options_for_select(Event.all.map { |e| ["#{e.title} - #{datetime_for_display(e.start)}", e.id] },
+                                                   @scout_event.event_id), {},
+                     class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :notes %>
+      </div>
+      <div class="col-sm-1">
+        <%= f.text_field :notes %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', scout_events_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+<% end %>

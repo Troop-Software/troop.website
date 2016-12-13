@@ -1,0 +1,1 @@
+json.partial! "scout_events/scout_event", scout_event: @scout_event
