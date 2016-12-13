@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   root 'static_pages#home'
   
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :scout_rank_histories
   resources :scout_merit_badges
+  resources :scout_events
   resources :profiles, only: [:index, :show]
   get 'admin/home'
   get '/admin', to: 'admin#home'

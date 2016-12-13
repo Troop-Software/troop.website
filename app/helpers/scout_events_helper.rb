@@ -1,0 +1,2 @@
+module ScoutEventsHelper
+end

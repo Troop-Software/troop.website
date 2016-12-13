@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209072203) do
+ActiveRecord::Schema.define(version: 20161213044213) do
 
   create_table "article_categories", force: :cascade do |t|
     t.integer  "article_id"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 20161209072203) do
     t.datetime "updated_at",   null: false
     t.integer  "sortOrder"
     t.boolean  "bor"
+  end
+
+  create_table "scout_events", force: :cascade do |t|
+    t.integer  "scout_id"
+    t.integer  "event_id"
+    t.string   "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scout_id", "event_id"], name: "index_scout_events_on_scout_id_and_event_id", unique: true
   end
 
   create_table "scout_merit_badges", force: :cascade do |t|

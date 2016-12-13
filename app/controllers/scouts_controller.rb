@@ -2,6 +2,12 @@ class ScoutsController < ApplicationController
   before_action :set_scout, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  helper_method :scout_activities
+
+  def scout_activities
+    ScoutEvent.where(scout_id: params[:id]).joins(:event).order('events.start DESC')
+  end
+
   # GET /scouts
   # GET /scouts.json
   def index
@@ -77,7 +83,6 @@ class ScoutsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_scout
