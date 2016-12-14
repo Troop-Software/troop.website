@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -19,5 +20,12 @@ class ApplicationController < ActionController::Base
     date_format = '%m/%d/%Y %I:%M %p'
     offset = DateTime.now.strftime('%z')
     date = date != '' ? DateTime.strptime(date, date_format).change(:offset => offset).to_s : date
+  end
+
+  def require_admin_user
+    if !current_user.role? :admin
+      flash[:danger] = 'Sorry you do not have permissions to modify categories'
+      redirect_to category_path
+    end
   end
 end

@@ -83,10 +83,4 @@ class RanksController < ApplicationController
       params.require(:rank).permit(:name)
     end
 
-  def require_admin_user
-    if !current_user.admin?
-      flash[:danger] = 'Sorry you do not have permissions to modify ranks'
-      redirect_to ranks_path
-    end
-  end
 end

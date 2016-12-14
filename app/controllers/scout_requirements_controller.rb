@@ -87,10 +87,5 @@ class ScoutRequirementsController < ApplicationController
      params.require(:scout_requirement).permit(:scout_id, :requirement_id, :sign_off, :completed_date)
    end
   #
-   def require_admin_user
-     if !current_user.admin?
-       flash[:danger] = 'Sorry you do not have permissions to modify scout_requirements'
-       redirect_to category_path
-     end
-   end
+
 end

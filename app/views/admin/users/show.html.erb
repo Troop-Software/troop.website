@@ -1,0 +1,44 @@
+<%= content_for(:title, 'Admin Area - User Details') %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="fa fa-user fa-2x"></i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title"><%= @user.username %></h4>
+
+        <div class="col-sm-4">
+          <span class="bold">Email:</span> <%= @user.email %>
+        </div>
+        <div class="col-sm-4">
+          <span class="bold">Sign in count:</span> <%= @user.sign_in_count %>
+        </div>
+        <div class="col-sm-4">
+          <span class="bold">Last sign in:</span> <%= l @user.last_sign_in_at unless @user.last_sign_in_at.blank?  %>
+        </div>
+
+        <div class="col-sm-4">
+          <span class="bold">Last IP:</span> <%= @user.last_sign_in_ip %>
+        </div>
+        <div class="col-sm-4">
+          <span class="bold">Failed Attempts:</span> <%= @user.failed_attempts %>
+        </div>
+        <div class="col-sm-4">
+          <span class="bold">Locked at:</span> <%= l @user.locked_at unless @user.locked_at.blank? %>
+        </div>
+
+        <div class="col-sm-4">
+          <span class="bold">Roles:</span> <%= @user.roles.map(&:name).join ','  %>
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= link_to 'Edit', edit_admin_user_path(@user), class: 'btn btn-primary' %>
+      <%= link_to 'Back', admin_users_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

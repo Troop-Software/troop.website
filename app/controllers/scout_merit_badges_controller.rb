@@ -61,11 +61,4 @@
     params.require(:scout_merit_badge).permit(:scout_id, :merit_badge_id, :completed)
   end
 
-  def require_admin_user
-    if !current_user.admin?
-      flash[:danger] = 'Sorry you do not have permissions to modify scout_requirements'
-      redirect_to scout_path
-    end
-  end
-
 end

@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="article-actions text-center">
-    <% if @article.user == current_user || current_user.admin? %>
+    <% if @article.user == current_user || (current_user.role? :admin) %>
         <%= link_to 'Edit this article', edit_article_path(@article), class: 'btn btn-sm btn-primary' %>
         <%= link_to 'Delete this article', article_path(@article), method: :delete,
                     data: {confirm: 'Are you sure you want to delete the article?'},

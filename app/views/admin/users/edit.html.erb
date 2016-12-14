@@ -1,0 +1,45 @@
+<%= content_for(:title, 'Admin Area - Edit User') %>
+<div class="card col-sm-6 col-sm-offset-2">
+  <div class="row">
+    <div class="card-header" data-background-color="rose">
+      <h4><%= @user.username %></h4>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= form_for(@user, url: admin_user_path, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+              <%= render '/shared/errors', obj: @user %>
+
+              <div class="form-group row">
+                <div class="control-label col-sm-2">
+                  <%= f.label :username %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :username, class: 'form-control', autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-2">
+                  <%= f.label :role %>
+                </div>
+                <div class="col-sm-10 checkbox">
+                  <%= f.collection_check_boxes :role_ids, Role.all, :id, :name do |r| %>
+                      <% r.label(class: 'checkbox-inline') { r.check_box(class: '') + r.text } %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= f.submit class: 'btn btn-primary' %>
+                  <%= link_to 'Cancel', admin_user_path, class: 'btn btn-secondary' %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

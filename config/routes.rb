@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   resources :scout_merit_badges
   resources :scout_events
   resources :profiles, only: [:index, :show]
-  get 'admin/home'
-  get '/admin', to: 'admin#home'
+
+  namespace :admin do
+    resources :users
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

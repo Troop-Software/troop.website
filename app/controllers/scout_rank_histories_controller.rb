@@ -62,7 +62,7 @@ class ScoutRankHistoriesController < ApplicationController
   end
 
   def require_admin_user
-    if !current_user.admin?
+    if !current_user.role? :admin
       flash[:danger] = 'Sorry you do not have permissions to modify scout_requirements'
       redirect_to category_path
     end

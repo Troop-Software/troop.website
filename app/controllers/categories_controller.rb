@@ -84,10 +84,5 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:name)
   end
 
-  def require_admin_user
-    if !current_user.admin?
-      flash[:danger] = 'Sorry you do not have permissions to modify categories'
-      redirect_to category_path
-    end
-  end
+
 end

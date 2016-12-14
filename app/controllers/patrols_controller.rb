@@ -83,10 +83,4 @@ class PatrolsController < ApplicationController
       params.require(:patrol).permit(:name)
     end
 
-  def require_admin_user
-    if !current_user.admin?
-      flash[:danger] = 'Sorry you do not have permissions to modify patrols'
-      redirect_to patrol_path
-    end
-  end
 end
