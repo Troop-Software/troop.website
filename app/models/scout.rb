@@ -12,6 +12,9 @@ class Scout < ApplicationRecord
   has_many :merit_badges, through: :scout_merit_badges
   has_many :scout_events
   has_many :events, through: :scout_events
+  has_many :relationships
+  has_many :users, through: :relationships
+
 
   #after_create :establish_scout_rank_history
 

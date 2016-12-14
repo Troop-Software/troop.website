@@ -1,0 +1,15 @@
+<% if (current_user.role? :admin) %>
+    <li>
+      <a data-toggle="collapse" href="#admin">
+        <i class="material-icons">lock</i>
+        <p>Admin
+          <b class="caret"></b>
+        </p>
+      </a>
+      <div class="collapse" id="admin">
+        <ul class="nav">
+          <li><%= nav_link 'View Users', admin_users_path %></li>
+        </ul>
+      </div>
+    </li>
+<% end %>

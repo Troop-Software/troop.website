@@ -1,0 +1,18 @@
+<% if (current_user.role? :leader) %>
+    <li>
+      <a data-toggle="collapse" href="#scoutsBy">
+        <i class="material-icons">people</i>
+        <p>Scout Management
+          <b class="caret"></b>
+        </p>
+      </a>
+      <div class="collapse" id="scoutsBy">
+        <ul class="nav">
+          <li><%= nav_link '<i class="material-icons">face</i><p>Scouts</p>'.html_safe, scouts_path %></li>
+          <li><%= nav_link '<i class="material-icons">flag</i><p>Patrols</p>'.html_safe, patrols_path %></li>
+          <li><%= nav_link '<i class="fa fa-trophy" aria-hidden="true"></i><p>Ranks</p>'.html_safe, ranks_path %></li>
+          <li><%= nav_link '<i class="fa fa-users" aria-hidden="true"></i><p>Positions</p>'.html_safe, positions_path %></li>
+        </ul>
+      </div>
+    </li>
+<% end %>
