@@ -71,7 +71,7 @@ end
 def login(user)
   visit '/'
   click_link 'Log in now'
-  fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
+  fill_in 'user_email', with: user.email
+  fill_in 'user_password', with: user.password
   click_button 'Log in'
 end
