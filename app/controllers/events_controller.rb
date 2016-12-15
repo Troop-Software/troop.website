@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
- # before_action :require_user_leader, only: [:new, :create, :edit, :update, :destroy]
+  # before_action :require_user_leader, only: [:new, :create, :edit, :update, :destroy]
 
 
   # GET /events
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def ics_export
+  def calendar_export
     @events = Event.all
     respond_to do |format|
       format.ics do
@@ -81,16 +81,19 @@ class EventsController < ApplicationController
         cal.publish
         render text: cal.to_ical
       end
-    end
-  end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
+      format.csv { send_data Event.all.to_csv('troopCalendar'), filename: 'troopCalendar.csv' }
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:title, :description, :start, :end, :allDay, :category, :external_link)
-    end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:title, :description, :start, :end, :allDay, :category, :external_link)
+  end
 end

@@ -23,4 +23,18 @@ class Event < ApplicationRecord
       all
     end
   end
+
+  def self.to_csv(report)
+    CSV.generate(headers: true) do |csv|
+      case report
+        when 'troopCalendar'
+          csv << %w{ID TITLE STARTDATE ENDDATE DESCRIPTION URL}
+          all.each do |event|
+            csv << [event.title, event.start, event.end, event.description, event.external_link]
+          end
+        else
+          csv << ["#{report} not found"]
+      end
+    end
+  end
 end

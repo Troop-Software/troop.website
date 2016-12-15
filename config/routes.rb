@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/calendar', to: 'static_pages#calendar'
   resources :events do
     collection do
-      get 'ics_export'
+      get 'calendar_export'
     end
   end
 
