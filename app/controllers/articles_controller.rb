@@ -73,6 +73,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def feed
+    @blog_articles = Article.all
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_article

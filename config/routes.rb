@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   
   resources :articles
+  get 'feed' => 'articles#feed', format: 'rss'
   get '/calendar', to: 'static_pages#calendar'
   resources :events do
     collection do
