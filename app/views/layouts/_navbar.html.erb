@@ -43,7 +43,6 @@
             <p class="hidden-lg hidden-md">Profile</p>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %></li>
             <li><%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %></li>
             <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
           </ul>

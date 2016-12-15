@@ -1,5 +1,5 @@
 <%= content_for(:title, 'Categories') %>
-<% if current_user.admin? %>
+<% if current_user.role? :leader_full%>
     <div class="text-right">
       <%= link_to 'Create New Category', new_category_path, class: 'btn btn-warning ' %>
     </div>
@@ -10,7 +10,7 @@
         <div class="card card-plain">
           <div class="card-header" data-background-color="dkblue">
             <h4 class="card-title"><%= category.name %>
-              <% if current_user.admin? %>
+              <% if current_user.role? :leader_full%>
               <span class="pull-right">
                 <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_category_path(category) %>
                 <%= link_to "<i class='material-icons'>delete</i>".html_safe, category,

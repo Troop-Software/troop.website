@@ -1,7 +1,7 @@
 class RequirementsController < ApplicationController
   before_action :set_requirement, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  #before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
+  before_action :require_user_leader_full, only: [:create, :edit, :update, :destroy]
 
   has_scope :by_rank_id
 
@@ -87,10 +87,4 @@ class RequirementsController < ApplicationController
       params.require(:requirement).permit(:revision, :rank_id, :req_category, :req_num, :description)
     end
 
-  def require_admin_user
-    if !current_user.admin?
-      flash[:danger] = 'Sorry you do not have permissions to modify requirements'
-      redirect_to requirements_path
-    end
-  end
 end

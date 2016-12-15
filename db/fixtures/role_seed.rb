@@ -1,0 +1,5 @@
+Role.seed(name: :admin)
+Role.seed(name: :scout)
+Role.seed(name: :parent)
+Role.seed(name: :leader)
+Role.seed(name: :leader_full)

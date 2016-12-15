@@ -1,6 +1,6 @@
 <h1 class="center"><%= @rank %> Rank Requirements</h1>
 
-<% if current_user.admin? %>
+<% if current_user.role? :admin%>
     <div class="text-right">
       <%= link_to 'Create New Requirement', new_requirement_path, class: 'btn btn-success ' %>
     </div>
@@ -54,7 +54,7 @@
         <% end %>
         <td class="center">
           <%= link_to "<i class='fa fa-eye fa-sm'></i>".html_safe, requirement_path(req) %>
-          <% if current_user.admin? %>
+          <% if current_user.role? :admin%>
               <%= link_to "<i class='fa fa-pencil fa-sm'></i>".html_safe, edit_requirement_path(req) %>
               <%= link_to "<i class='fa fa-trash fa-sm'></i>".html_safe, req,
                           method: :delete, data: {confirm: 'Are you sure?'} %>

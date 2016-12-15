@@ -1,5 +1,5 @@
 <%= content_for(:title, 'Edit Article') %>
-<% if current_user.admin? && @article.user != current_user %>
+<% if (current_user.role? :leader) && @article.user != current_user %>
     <div class="alert alert-warning alert-with-icon col-sm-8 col-sm-offset-1" data-notify="container">
       <i class="material-icons" data-notify="icon">warning</i>
       <span data-notify="message">You are editing an article that belong to another user.<br/>

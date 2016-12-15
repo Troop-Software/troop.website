@@ -1,0 +1,36 @@
+<%= content_for(:title, 'Admin Area - Edit Relationship') %>
+<div class="card col-sm-6 col-sm-offset-2">
+  <div class="row">
+    <div class="card-header" data-background-color="rose">
+      <h4><%= @relationship.user.username %></h4>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= form_for(@relationship, url: relationship_path, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+              <%= render '/shared/errors', obj: @relationship %>
+
+              <%= f.hidden_field :user_id, value: @relationship.user_id %>
+
+              <div class="form-group row">
+                <div class="col-sm-2">
+                  <%= f.label :scout %>
+                </div>
+                <div class="col-sm-10 checkbox">
+                  <%= f.select :scout_id, options_for_select(Scout.all.map { |s| [s.name, s.id] }, @relationship.scout_id), {}, class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= f.submit class: 'btn btn-primary' %>
+                  <%= link_to 'Cancel', relationships_path, class: 'btn btn-secondary' %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,5 +1,10 @@
 <% if user_signed_in? %>
     <h1><%= content_for(:title, 'Home Page') %></h1>
+    <div class="row">
+      <div class="pull-right">
+        <%= link_to 'View all articles', articles_path , class: 'btn btn-warning btn-sm'%>
+      </div>
+    </div>
     <%= render 'articles/article_homepage', obj: @articles %>
     <div class="tw_pagination"><%= will_paginate @articles %></div>
 <% else %>

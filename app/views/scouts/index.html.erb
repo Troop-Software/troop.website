@@ -1,5 +1,5 @@
 <%= content_for(:title, 'Scout Listing') %>
-<% if current_user.admin? %>
+<% if current_user.role? :admin %>
     <div class="text-right">
       <%= link_to 'Create New Scout', new_scout_path, class: 'btn btn-warning ' %>
     </div>

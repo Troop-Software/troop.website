@@ -21,12 +21,14 @@
         <tr>
           <th colspan="6">
             <div>
-              <% if rank_date == Date.parse('1/1/1111') %>
-                  <div class="text-center">Rank Completed on Unknown Date
-                    <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
-              <% else %>
-                  <div class="text-center">Rank Completed on <%= l rank_date %>
-                    <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
+              <% if current_user.role? :leader_full %>
+                  <% if rank_date == Date.parse('1/1/1111') %>
+                      <div class="text-center">Rank Completed on Unknown Date
+                        <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
+                  <% else %>
+                      <div class="text-center">Rank Completed on <%= l rank_date %>
+                        <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
+                  <% end %>
               <% end %>
             </div>
           </th>
@@ -65,10 +67,14 @@
                 <% end %>
               </td>
               <td class="center">
-                <% if scout_requirement[:found] %>
-                    <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), class: 'btn btn-sm btn-secondary' %>
+                <% if current_user.role? :leader_full %>
+                    <% if scout_requirement[:found] %>
+                        <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), class: 'btn btn-sm btn-secondary' %>
+                    <% else %>
+                        <%= link_to req.req_num, new_scout_requirement_path(scout_id: @scout.id, req_id: req.id), class: 'btn btn-sm btn-primary' %>
+                    <% end %>
                 <% else %>
-                    <%= link_to req.req_num, new_scout_requirement_path(scout_id: @scout.id, req_id: req.id), class: 'btn btn-sm btn-primary' %>
+                    <%= req.req_num %>
                 <% end %>
               </td>
               <td class="small center"><%= req.req_category.humanize %></td>

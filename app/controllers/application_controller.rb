@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -19,5 +20,22 @@ class ApplicationController < ActionController::Base
     date_format = '%m/%d/%Y %I:%M %p'
     offset = DateTime.now.strftime('%z')
     date = date != '' ? DateTime.strptime(date, date_format).change(:offset => offset).to_s : date
+  end
+
+  def deny_access
+    flash[:danger] = 'Sorry you do not have permissions'
+    redirect_to :back
+  end
+
+  def require_user_leader
+    deny_access if !current_user.role? :leader
+  end
+
+  def require_user_leader_full
+    deny_access if !current_user.role? :leader_full
+  end
+
+  def require_admin_user
+    deny_access if !current_user.role? :admin
   end
 end

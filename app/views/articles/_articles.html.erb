@@ -5,8 +5,10 @@
           <div class="card-header" data-background-color="dkblue">
             <h4 class="hvr-push"><%= link_to article.title, article_path(article) %></h4>
             <span class="pull-right">
-              <% if article.user == current_user || current_user.admin? %>
+              <% if article.user == current_user || (current_user.role? :leader) %>
                   <%= link_to "Edit", edit_article_path(article), class: "btn btn-sm btn-warning" %>
+              <% end %>
+              <% if article.user == current_user || (current_user.role? :leader_full) %>
                   <%= link_to "Delete", article_path(article), method: :delete,
                               data: {confirm: "Are you sure you want to delete the article?"},
                               class: "btn btn-sm btn-danger" %>
@@ -22,7 +24,7 @@
               <% if article.categories.any? %>
                   Categories:
                   <% article.categories.each do |cat| %>
-                       <span class="badge hvr-pulse-shrink"><%= link_to cat.name, category_path(cat) %></span>
+                      <span class="badge hvr-pulse-shrink"><%= link_to cat.name, category_path(cat) %></span>
                   <% end %>
                   <br/>
               <% end %>

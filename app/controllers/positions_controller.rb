@@ -84,10 +84,4 @@ class PositionsController < ApplicationController
       params.require(:position).permit(:name)
     end
 
-  def require_admin_user
-    if !current_user.admin?
-      flash[:danger] = 'Sorry you do not have permissions to modify positions'
-      redirect_to positions_path
-    end
-  end
 end

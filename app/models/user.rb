@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :lockable, :zxcvbnable
 
   has_many :articles
+  has_many :assignments
+  has_many :roles, through: :assignments
+  has_many :relationships
+  has_many :scouts, through: :relationships
 
   before_save {self.email = email.downcase}
 
@@ -19,5 +23,8 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false},
             format: {with: VALID_EMAIL_REGEX }
 
+  def role?(role)
+    roles.any? { |r| r.name.underscore.to_sym == role }
+  end
 
 end

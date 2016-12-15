@@ -1,0 +1,19 @@
+<div class="sidebar" data-active-color="dkblue" data-background-color="black">
+  <div class="logo">
+      <span class="simple-text">
+        Troop Website
+      </span>
+  </div>
+
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <%= nav_link '<i class="material-icons">home</i><p>Home</p>'.html_safe, root_path %>
+      <%= nav_link '<i class="material-icons">events</i><p>Calendar</p>'.html_safe, calendar_path %>
+      <%= render 'layouts/sidebar_navigation/sidebar_parent' %>
+      <%= render 'layouts/sidebar_navigation/sidebar_scout_management' %>
+      <%= render 'layouts/sidebar_navigation/sidebar_event_management' %>
+      <%= render 'layouts/sidebar_navigation/sidebar_leader' %>
+      <%= render 'layouts/sidebar_navigation/sidebar_admin' %>
+    </ul>
+  </div>
+</div>
