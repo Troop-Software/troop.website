@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   
   resources :articles
   get '/calendar', to: 'static_pages#calendar'
-  resources :events
+  resources :events do
+    collection do
+      get 'ics_export'
+    end
+  end
+
   resources :scouts
   resources :requirements
   resources :scout_requirements
@@ -19,6 +24,8 @@ Rails.application.routes.draw do
   resources :scout_events
   resources :profiles, only: [:index, :show]
   resources :relationships
+
+
 
   namespace :admin do
     resources :users

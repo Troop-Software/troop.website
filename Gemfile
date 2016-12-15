@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'seed-fu'
 gem 'has_scope'
+gem 'icalendar'
 gem 'faker'
 
 # Use Capistrano for deployment
