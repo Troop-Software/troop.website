@@ -1,0 +1,39 @@
+<%= content_for(:title, 'Relationships') %>
+
+<div class="row">
+  <% if current_user.role? :leader_full %>
+      <div class="col-sm-3 col-sm-offset-9">
+        <%= link_to 'Assoc. User to Scout', new_relationship_path, class: 'btn btn-warning' %>
+      </div>
+  <% end %>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="fa fa-users fa-2x"></i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">Relationships</h4>
+        <ul class="list-group">
+          <% @relationships_group.each_pair do |user_id, relationship_group| %>
+              <ul class="list-group">
+                <span class="text-rose bold"><%= User.find(user_id).username %></span>
+                <% relationship_group.each do |relationship| %>
+                    <li class="list-group-item"><%= relationship.scout.name %>
+                      <span class="pull-right">
+                        <% if current_user.role? :leader_full %>
+                            <%= link_to '<i class="material-icons">edit</i>'.html_safe,
+                                      edit_relationship_path(relationship), class: 'text-success' %>
+                            <%= link_to "<i class='material-icons'>delete</i>".html_safe, relationship,
+                                        method: :delete, data: {confirm: 'Are you sure?'}, class: 'text-danger' %>
+                            <% end %>
+                      </span>
+                    </li>
+                <% end %>
+              </ul>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

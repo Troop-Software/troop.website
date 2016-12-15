@@ -22,10 +22,20 @@ class ApplicationController < ActionController::Base
     date = date != '' ? DateTime.strptime(date, date_format).change(:offset => offset).to_s : date
   end
 
+  def deny_access
+    flash[:danger] = 'Sorry you do not have permissions'
+    redirect_to :back
+  end
+
+  def require_user_leader
+    deny_access if !current_user.role? :leader
+  end
+
+  def require_user_leader_full
+    deny_access if !current_user.role? :leader_full
+  end
+
   def require_admin_user
-    if !current_user.role? :admin
-      flash[:danger] = 'Sorry you do not have permissions to modify categories'
-      redirect_to category_path
-    end
+    deny_access if !current_user.role? :admin
   end
 end

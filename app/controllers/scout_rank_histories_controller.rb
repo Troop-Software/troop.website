@@ -1,7 +1,7 @@
 class ScoutRankHistoriesController < ApplicationController
   before_action :set_srh_requirement, only: [:show, :edit, :update]
   before_action :authenticate_user!
-  before_action :require_admin_user, only: [:destroy, :index]
+  before_action :require_user_leader_full, only: [:index]
 
   def index
     @scout_rank_histories = ScoutRankHistory.all

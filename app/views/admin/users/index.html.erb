@@ -16,7 +16,7 @@
             <th>Roles</th>
           </tr>
           </thead>
-          <tbody>
+            <tbody>
           <% @users.each do |user| %>
               <tr>
                 <td><%= link_to user.username, admin_user_path(user) %></td>

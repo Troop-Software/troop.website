@@ -1,7 +1,8 @@
 class PatrolsController < ApplicationController
   before_action :set_patrol, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
+  before_action :require_user_leader
+
 
   # GET /patrols
   # GET /patrols.json

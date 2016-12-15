@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :scout_merit_badges
   resources :scout_events
   resources :profiles, only: [:index, :show]
+  resources :relationships
 
   namespace :admin do
     resources :users

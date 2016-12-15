@@ -1,6 +1,7 @@
 class ScoutsController < ApplicationController
   before_action :set_scout, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
   helper_method :scout_activities
 
