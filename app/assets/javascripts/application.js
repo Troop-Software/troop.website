@@ -124,5 +124,6 @@ $(document).ready(function () {
             close: 'fa fa-remove'
         }
     });
+    $(".alert" ).fadeOut(5000);
 });
 
