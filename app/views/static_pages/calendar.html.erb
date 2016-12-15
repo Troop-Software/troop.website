@@ -3,4 +3,7 @@
   <div class="card-content">
     <div id="calendar"></div>
   </div>
+  <%= link_to 'Export<i class="material-icons">get_app</i>'.html_safe,
+              {controller: 'events', action: :ics_export, format: :ics}, class: 'btn btn-primary btn-sm pull-right'%>
+
 </div>

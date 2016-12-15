@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :require_user_leader, only: [:new, :create, :edit, :update, :destroy]
+ # before_action :require_user_leader, only: [:new, :create, :edit, :update, :destroy]
 
 
   # GET /events
@@ -64,6 +64,25 @@ class EventsController < ApplicationController
     end
   end
 
+  def ics_export
+    @events = Event.all
+    respond_to do |format|
+      format.ics do
+        cal = Icalendar::Calendar.new
+        @events.each do |event|
+          ics_event = Icalendar::Event.new
+          ics_event.dtstart = event.start
+          ics_event.dtend = event.end unless event.end.nil?
+          ics_event.summary = event.title
+          ics_event.description = event.description
+          ics_event.url = event.external_link
+          cal.add_event(ics_event)
+        end
+        cal.publish
+        render text: cal.to_ical
+      end
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
