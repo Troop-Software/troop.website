@@ -31,6 +31,7 @@ gem 'has_scope'
 gem 'icalendar'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
+gem 'delayed_job_active_record'
 
 gem 'faker'
 # Use Capistrano for deployment
