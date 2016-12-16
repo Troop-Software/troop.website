@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161216025034) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admin_file_uploads", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",        null: false
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20161216025034) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.index ["user_id"], name: "index_admin_file_uploads_on_user_id"
+    t.index ["user_id"], name: "index_admin_file_uploads_on_user_id", using: :btree
   end
 
   create_table "article_categories", force: :cascade do |t|
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 20161216025034) do
     t.integer  "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["role_id"], name: "index_assignments_on_role_id"
-    t.index ["user_id"], name: "index_assignments_on_user_id"
+    t.index ["role_id"], name: "index_assignments_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -93,8 +96,8 @@ ActiveRecord::Schema.define(version: 20161216025034) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["scout_id"], name: "index_relationships_on_scout_id"
-    t.index ["user_id"], name: "index_relationships_on_user_id"
+    t.index ["scout_id"], name: "index_relationships_on_scout_id", using: :btree
+    t.index ["user_id"], name: "index_relationships_on_user_id", using: :btree
   end
 
   create_table "requirements", force: :cascade do |t|
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20161216025034) do
     t.string   "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["scout_id", "event_id"], name: "index_scout_events_on_scout_id_and_event_id", unique: true
+    t.index ["scout_id", "event_id"], name: "index_scout_events_on_scout_id_and_event_id", unique: true, using: :btree
   end
 
   create_table "scout_merit_badges", force: :cascade do |t|
@@ -163,9 +166,9 @@ ActiveRecord::Schema.define(version: 20161216025034) do
     t.string   "phone"
     t.date     "joined"
     t.integer  "bsa_id"
-    t.index ["patrol_id"], name: "index_scouts_on_patrol_id"
-    t.index ["position_id"], name: "index_scouts_on_position_id"
-    t.index ["rank_id"], name: "index_scouts_on_rank_id"
+    t.index ["patrol_id"], name: "index_scouts_on_patrol_id", using: :btree
+    t.index ["position_id"], name: "index_scouts_on_position_id", using: :btree
+    t.index ["rank_id"], name: "index_scouts_on_rank_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -189,10 +192,16 @@ ActiveRecord::Schema.define(version: 20161216025034) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
+  add_foreign_key "admin_file_uploads", "users"
+  add_foreign_key "assignments", "roles"
+  add_foreign_key "assignments", "users"
+  add_foreign_key "relationships", "scouts"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "scouts", "patrols"
 end
