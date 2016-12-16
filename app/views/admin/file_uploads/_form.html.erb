@@ -1,0 +1,30 @@
+<%= form_for(@admin_file_upload, multipart: true, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+    <%= render '/shared/errors', obj: @admin_file_upload %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :file %>
+      </div>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="upload-file-info" readonly>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-4">
+          <span class="btn btn-rose btn-round btn-file">
+           <span class="fileinput-new">Select file</span>
+            <%= f.file_field :file, class: 'form-control', onchange: "$('#upload-file-info').val($(this).val());" %>
+        </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-offset-4 col-sm-8">
+        <%= f.submit 'Upload File', class: 'btn btn-rose' %>
+      </div>
+    </div>
+<% end %>

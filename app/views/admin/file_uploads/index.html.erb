@@ -1,0 +1,38 @@
+<%= content_for(:title, 'Admin Area - File Uploads') %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="fa fa-file fa-2x"></i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">File Uploads</h4>
+        <table class="table table-striped table-no-bordered table-hover" cellspacing="0">
+          <thead>
+          <tr>
+            <th>User Name</th>
+            <th>File</th>
+            <th class="text-right">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @admin_file_uploads.each do |admin_file_upload| %>
+              <tr>
+                <td><%= admin_file_upload.user.username %></td>
+                <td><%= admin_file_upload.file.url %></td>
+                <td class="text-right">
+                  <%= link_to 'Destroy', admin_file_upload, method: :delete, data: {confirm: 'Are you sure?'} %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Upload New File', new_admin_file_upload_path %>
