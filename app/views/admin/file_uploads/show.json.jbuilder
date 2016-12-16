@@ -1,0 +1,1 @@
+json.partial! "admin_file_uploads/admin_file_upload", admin_file_upload: @admin_file_upload

@@ -28,8 +28,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'seed-fu'
 gem 'has_scope'
 gem 'icalendar'
-gem 'faker'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

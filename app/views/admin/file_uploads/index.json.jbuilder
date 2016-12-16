@@ -1,0 +1,1 @@
+json.array! @admin_file_uploads, partial: 'admin_file_uploads/admin_file_upload', as: :admin_file_upload
