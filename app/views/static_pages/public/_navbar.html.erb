@@ -9,19 +9,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Troop 433</a>
+      <a class="navbar-brand" href="/">Troop 433</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="public-home-navbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Join our Troop', home_path %></li>
+        <li><%= link_to 'Join our Troop', join_path %></li>
         <li><%= link_to 'Pictures', home_path %></li>
-        <li><%= link_to 'Eagle Scout Roll', home_path %></li>
+        <li><%= link_to 'Eagle Scout Roll', root_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-            <li><%= link_to 'Private Troop Area', root_path, class: '' %></li>
+            <li><%= link_to 'Private Troop Area', home_path, class: '' %></li>
         <% else %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

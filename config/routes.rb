@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'static_pages#public_home'
-  get '/home', to: 'static_pages#public_home'
-  
+  get '/join', to: 'static_pages#public_join_our_troop'
+  get '/home', to: 'static_pages#home'
+
   resources :articles
   get 'feed' => 'articles#feed', format: 'rss'
   get '/calendar', to: 'static_pages#calendar'
