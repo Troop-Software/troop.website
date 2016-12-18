@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   end
 
   root 'public#welcome'
-  get '/join', to: 'public#join_our_troop'
+  get '/join',    to: 'public#join_our_troop'
   get '/welcome', to: 'public#welcome'
+  get '/photos',  to: 'public#photos'
 
 
   resources :articles
