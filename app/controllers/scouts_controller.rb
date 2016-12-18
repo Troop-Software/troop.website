@@ -12,8 +12,9 @@ class ScoutsController < ApplicationController
   # GET /scouts
   # GET /scouts.json
   def index
-    @scouts = Scout.paginate(page: params[:page], per_page: 8)
-
+    current_user.show_inactive_scouts ?
+        @scouts = Scout.paginate(page: params[:page], per_page: 8) :
+        @scouts = Scout.where(active: true).paginate(page: params[:page], per_page: 8)
     respond_to do |format|
       format.html
       format.csv { send_data Scout.all.to_csv('scoutsReport'), filename: "scouts-#{Date.today}.csv" }
@@ -87,13 +88,17 @@ class ScoutsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_scout
-    @scout = Scout.find(params[:id])
+    current_user.show_inactive_scouts ?
+        @scout = Scout.find(params[:id]):
+        @scout = Scout.where(active: true).find(params[:id])
+
+
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def scout_params
     params.require(:scout).permit(:name, :grade, :birthdate, :patrol_id, :rank_id, :position_id, :email,
-                                  :phone, :joined, :bsa_id)
+                                  :phone, :joined, :bsa_id, :active)
   end
 
 

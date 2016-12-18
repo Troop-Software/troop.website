@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Storext.model
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -22,6 +24,10 @@ class User < ApplicationRecord
             length: {maximum: 128},
             uniqueness: {case_sensitive: false},
             format: {with: VALID_EMAIL_REGEX }
+
+  store_attributes :settings do
+    show_inactive_scouts Boolean
+  end
 
   def role?(role)
     roles.any? { |r| r.name.underscore.to_sym == role }
