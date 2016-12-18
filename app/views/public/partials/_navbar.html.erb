@@ -15,10 +15,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="public-home-navbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Join our Troop', join_path %></li>
-        <li><%= link_to 'Calendar' %></li>
-        <li><%= link_to 'Pictures' %></li>
-        <li><%= link_to 'Eagle Scout Roll', root_path %></li>
+        <li><%= nav_link 'Join our Troop', join_path %></li>
+        <li><%= nav_link 'Calendar', '#' %></li>
+        <li><%= nav_link 'Pictures', '#' %></li>
+        <li><%= nav_link 'Eagle Scout Roll', '#' %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
