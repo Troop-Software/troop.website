@@ -16,12 +16,13 @@
     <div class="collapse navbar-collapse" id="public-home-navbar">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Join our Troop', join_path %></li>
-        <li><%= link_to 'Pictures', home_path %></li>
+        <li><%= link_to 'Calendar' %></li>
+        <li><%= link_to 'Pictures' %></li>
         <li><%= link_to 'Eagle Scout Roll', root_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-            <li><%= link_to 'Private Troop Area', home_path, class: '' %></li>
+            <li><%= link_to 'Private Troop Area', root_path, class: '' %></li>
         <% else %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
