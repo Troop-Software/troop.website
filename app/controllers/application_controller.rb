@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:acount_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username] )
+    devise_parameter_sanitizer.permit(:account_update, keys: [:show_inactive_scouts] )
   end
 
   def convert_date(date) #convert bootstrap date to rails date
