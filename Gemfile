@@ -32,6 +32,7 @@ gem 'icalendar'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 gem 'delayed_job_active_record'
+gem 'storext'
 
 gem 'faker'
 # Use Capistrano for deployment
