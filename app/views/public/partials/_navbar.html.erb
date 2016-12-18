@@ -1,0 +1,41 @@
+<nav class="navbar navbar-primary navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#public-home-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Troop 433</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="public-home-navbar">
+      <ul class="nav navbar-nav">
+        <li><%= nav_link 'Join our Troop', join_path %></li>
+        <li><%= nav_link 'Calendar', '#' %></li>
+        <li><%= nav_link 'Pictures', photos_path %></li>
+        <li><%= nav_link 'Eagle Scout Roll', '#' %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+            <li><%= link_to 'Private Troop Area', root_path, class: '' %></li>
+        <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="material-icons">lock</i> Private Troop Area
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Log in', new_user_session_path, class: '' %></li>
+                <li><%= link_to 'Sign up', new_user_registration_path, class: '' %></li>
+              </ul>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+  </div>
+</nav>

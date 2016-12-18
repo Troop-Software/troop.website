@@ -16,6 +16,9 @@
             <% end %>
             <%= scout.name %>
             </a>
+            <% unless scout.active %>
+                <small>(inactive)</small>
+            <% end %>
             <span class="pull-right">
               <%= link_to "<i class='material-icons'>remove_red_eye</i>".html_safe, scout_path(scout) %>
               <% if current_user.role? :admin %>

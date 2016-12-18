@@ -16,7 +16,7 @@ class Scout < ApplicationRecord
   has_many :users, through: :relationships
 
 
-  #after_create :establish_scout_rank_history
+  after_create :establish_scout_rank_history
 
   def establish_scout_rank_history
     x = 1

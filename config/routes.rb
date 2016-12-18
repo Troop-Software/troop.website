@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'static_pages#home'
-  
+
+  authenticated :user do
+    root to: 'static_pages#home', as: :authenticated_root
+  end
+
+  root 'public#welcome'
+  get '/join',    to: 'public#join_our_troop'
+  get '/welcome', to: 'public#welcome'
+  get '/photos',  to: 'public#photos'
+
+
   resources :articles
   get 'feed' => 'articles#feed', format: 'rss'
   get '/calendar', to: 'static_pages#calendar'

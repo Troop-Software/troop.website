@@ -1,0 +1,18 @@
+.button-transparent {
+  display: inline-block;
+  //width: 200px;
+  padding: 8px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+.button-transparent:hover,
+.button-transparent:active {
+  background-color: #fff;
+  color: #000;
+  transition: background-color 0.5s ease-in, color 0.5s ease-in;
+}
