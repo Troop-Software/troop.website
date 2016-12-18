@@ -26,7 +26,7 @@ class User < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX }
 
   store_attributes :settings do
-    show_inactive_scouts Boolean
+    show_inactive_scouts Boolean, default: false
   end
 
   def role?(role)
