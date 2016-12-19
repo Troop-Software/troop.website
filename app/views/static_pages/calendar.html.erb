@@ -4,8 +4,8 @@
     <div id="calendar"></div>
   </div>
   <%= link_to 'Export ics<i class="material-icons">get_app</i>'.html_safe,
-              {controller: 'events', action: :calendar_export, format: :ics}, class: 'btn btn-primary btn-sm pull-right'%>
-<%= link_to 'Export csv<i class="material-icons">get_app</i>'.html_safe,
-              {controller: 'events', action: :calendar_export, format: :csv}, class: 'btn btn-primary btn-sm pull-right'%>
+              {controller: 'events', action: :calendar_export, format: :ics}, class: 'btn btn-primary btn-sm pull-right' %>
+  <%= link_to 'Export csv<i class="material-icons">get_app</i>'.html_safe,
+              {controller: 'events', action: :calendar_export, format: :csv}, class: 'btn btn-primary btn-sm pull-right' %>
 
 </div>

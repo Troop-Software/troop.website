@@ -7,3 +7,9 @@
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require public/material-kit.js
+
+
+
+$(document).ready(function () {
+
+});

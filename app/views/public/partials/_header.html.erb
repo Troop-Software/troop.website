@@ -4,14 +4,14 @@
       <div class="col-md-8">
         <p>&nbsp;</p>
         <% if current_page?(action: :join_our_troop) %>
-            <h1 class="title">Want to Join Troop 433?</h1>
+            <h1 class="title">Want to Join Troop <%= Rails.application.config.troop %>?</h1>
         <% else %>
-            <h1 class="title">Boy Scout Troop 433</h1>
+            <h1 class="title">Boy Scout Troop <%= Rails.application.config.troop %></h1>
         <% end %>
         <h1>&nbsp;</h1>
         <h2></h2>
         <% if current_page?(action: :join_our_troop) %>
-            <h4> Thanks for evaluating Troop 433. We are scout lead troop serving the Longwood community. Please scroll
+            <h4> Thanks for evaluating Troop <%= Rails.application.config.troop %>. We are scout lead troop serving the Longwood community. Please scroll
               down for more information about us. Hope to see you at one of our troop meetings soon.</h4>
         <% else %>
             <h4>A volunteer organization serving the boys of the Longwood community of
@@ -21,9 +21,9 @@
       <div class="col-md-12 text-center small">
         <h1>&nbsp;</h1>
         <% if current_page?(action: :join_our_troop) %>
-            <h3>&nbsp;</h3>
+            <br/>
         <% else %>
-            <h2>&nbsp;</h2>
+            <h4>&nbsp;</h4>
         <% end %>
         <p>Our chartered organization is the Middle Island Fire Department, located on Arnold Drive in Middle Island,
           New York.<br/>

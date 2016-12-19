@@ -1,4 +1,4 @@
-<nav class="navbar navbar-primary navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+<nav class="navbar navbar-primary <%= 'navbar-transparent navbar-color-on-scroll' unless solid%> navbar-fixed-top ">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -9,16 +9,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Troop 433</a>
+      <a class="navbar-brand" href="/">Troop <%= Rails.application.config.troop %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="public-home-navbar">
       <ul class="nav navbar-nav">
         <li><%= nav_link 'Join our Troop', join_path %></li>
-        <li><%= nav_link 'Calendar', '#' %></li>
+        <li><%= nav_link 'Calendar', troop_calendar_path %></li>
         <li><%= nav_link 'Pictures', photos_path %></li>
-        <li><%= nav_link 'Eagle Scout Roll', '#' %></li>
+        <li><%= nav_link 'Eagle Scout Roll', eagle_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
