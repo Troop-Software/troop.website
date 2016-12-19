@@ -47,10 +47,27 @@ class Scout < ApplicationRecord
       elect_mb_required = elective_merit_badges_required(self.rank_id)
       total_requirements_needed += eagle_mb_required + elect_mb_required
       earned_mbs = ScoutMeritBadge.where(scout_id: self.id)
-      earned_mbs.each do |earned_mb|
-        eagle_mb_earned += 1 if earned_mb.merit_badge.eagle_required
-        elect_mb_earned += 1 unless earned_mb.merit_badge.eagle_required
+      earned_eagle_mb= {}
+      earned_mb = {}
+      earned_mbs.each do |smb|
+        if (earned_eagle_mb.key?('Swimming') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Cycling')) ||
+            (earned_eagle_mb.key?('Hiking') && (smb.merit_badge.name == 'Swimming' || smb.merit_badge.name == 'Cycling')) ||
+            (earned_eagle_mb.key?('Cycling') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Swimming')) ||
+            (earned_eagle_mb.key?('Emergency Preparedness') && smb.merit_badge.name == 'Life Saving') ||
+            (earned_eagle_mb.key?('Life Saving') && smb.merit_badge.name == 'Emergency Preparedness') ||
+            (earned_eagle_mb.key?('Environmental Science') && smb.merit_badge.name == 'Sustainability') ||
+            (earned_eagle_mb.key?('Sustainability') && smb.merit_badge.name == 'Environmental Science')
+
+          earned_mb[smb.merit_badge.name] = smb.completed
+        else
+          earned_eagle_mb[smb.merit_badge.name] = smb.completed if smb.merit_badge.eagle_required
+        end
+        earned_mb[smb.merit_badge.name] = smb.completed unless smb.merit_badge.eagle_required
       end
+
+        eagle_mb_earned = earned_eagle_mb.count
+        elect_mb_earned = earned_mb.count
+
       eagle_mb_earned = eagle_mb_required if eagle_mb_earned > eagle_mb_required
       elect_mb_earned = elect_mb_required if elect_mb_earned > elect_mb_required
       completed_requirement_count += eagle_mb_earned + elect_mb_earned
