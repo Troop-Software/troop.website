@@ -37,8 +37,29 @@ class Scout < ApplicationRecord
       completed_requirement_count += 1 unless completed_requirement.empty?
 
     end
+    total_requirements_needed = requirements_for_rank.count.to_f
+    if self.rank_id == 6
+      eagle_mb_earned = 0
+      elect_mb_earned = 0
+      eagle_mb_required = 4
+      elect_mb_required = 2
+      total_requirements_needed += eagle_mb_required + elect_mb_required
+      earned_mbs = ScoutMeritBadge.where(scout_id: self.id)
+      earned_mbs.each do |earned_mb|
+        eagle_mb_earned += 1 if earned_mb.merit_badge.eagle_required
+        elect_mb_earned += 1 unless earned_mb.merit_badge.eagle_required
+      end
+      eagle_mb_earned = eagle_mb_required if eagle_mb_earned > eagle_mb_required
+      elect_mb_earned = elect_mb_required if elect_mb_earned > elect_mb_required
+      completed_requirement_count += eagle_mb_earned + elect_mb_earned
+    end
+    puts "~="*79
+    puts completed_requirement_count
+    puts total_requirements_needed
+    puts "~="*79
+
     self.rank_id -= 1
-    (completed_requirement_count / requirements_for_rank.count.to_f) * 100
+    (completed_requirement_count / total_requirements_needed) * 100
 
   end
 
@@ -72,7 +93,7 @@ class Scout < ApplicationRecord
           csv << %w{ID NAME GRADE AGE BIRTHDATE RANK POSITION PATROL}
           all.each do |scout|
             csv << [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
-                      scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
+                    scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
           end
         else
           csv << ["#{report} not found"]
