@@ -1,0 +1,31 @@
+<div class="main main-panel">
+  <div class="container">
+    <div class="section" id="carousel">
+      <div class="container">
+        <h2 class="text-center">Eagle Scout Roll</h2>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <% @eagle_scouts.each do |eagle_scout| %>
+                <div class="row">
+                  <% rank_history = eagle_scout.scout_rank_histories.where(rank_id: 8).first
+                     if rank_history.nil?
+                       rank_date = 'unknown'
+                     else
+                       rank_date_db = rank_history.rank_completed
+                       rank_date = "#{rank_date_db.strftime('%B')}, #{rank_date_db.year}"
+                     end
+                  %>
+                  <div class="col-md-6 col-md-offset-1">
+                    <h3><%= eagle_scout.name %></h3>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1">
+                    <h3><%= rank_date %></h3>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

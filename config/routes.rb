@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/join',    to: 'public#join_our_troop'
   get '/welcome', to: 'public#welcome'
   get '/photos',  to: 'public#photos'
+  get '/eagle',   to: 'public#eagle_roll'
 
 
   resources :articles

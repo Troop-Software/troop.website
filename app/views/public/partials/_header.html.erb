@@ -4,14 +4,14 @@
       <div class="col-md-8">
         <p>&nbsp;</p>
         <% if current_page?(action: :join_our_troop) %>
-            <h1 class="title">Want to Join Troop 433?</h1>
+            <h1 class="title">Want to Join Troop <%= Rails.application.config.troop %>?</h1>
         <% else %>
-            <h1 class="title">Boy Scout Troop 433</h1>
+            <h1 class="title">Boy Scout Troop <%= Rails.application.config.troop %></h1>
         <% end %>
         <h1>&nbsp;</h1>
         <h2></h2>
         <% if current_page?(action: :join_our_troop) %>
-            <h4> Thanks for evaluating Troop 433. We are scout lead troop serving the Longwood community. Please scroll
+            <h4> Thanks for evaluating Troop <%= Rails.application.config.troop %>. We are scout lead troop serving the Longwood community. Please scroll
               down for more information about us. Hope to see you at one of our troop meetings soon.</h4>
         <% else %>
             <h4>A volunteer organization serving the boys of the Longwood community of
