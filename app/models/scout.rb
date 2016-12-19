@@ -28,6 +28,90 @@ class Scout < ApplicationRecord
     end
   end
 
+  def calc_rank_complete
+    self.rank_id += 1
+    requirements_for_rank = Requirement.where(rank_id: self.rank_id)
+    completed_requirement_count = 0
+    requirements_for_rank.each do |req|
+      completed_requirement = ScoutRequirement.where(requirement_id: req.id, scout_id: self.id)
+      completed_requirement_count += 1 unless completed_requirement.empty?
+
+    end
+    total_requirements_needed = requirements_for_rank.count.to_f
+
+   case self.rank_id
+     when 6,7,8
+      eagle_mb_earned = 0
+      elect_mb_earned = 0
+      eagle_mb_required = eagle_merit_badges_required(self.rank_id)
+      elect_mb_required = elective_merit_badges_required(self.rank_id)
+      total_requirements_needed += eagle_mb_required + elect_mb_required
+      earned_mbs = ScoutMeritBadge.where(scout_id: self.id)
+      earned_eagle_mb= {}
+      earned_mb = {}
+      earned_mbs.each do |smb|
+        if (earned_eagle_mb.key?('Swimming') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Cycling')) ||
+            (earned_eagle_mb.key?('Hiking') && (smb.merit_badge.name == 'Swimming' || smb.merit_badge.name == 'Cycling')) ||
+            (earned_eagle_mb.key?('Cycling') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Swimming')) ||
+            (earned_eagle_mb.key?('Emergency Preparedness') && smb.merit_badge.name == 'Life Saving') ||
+            (earned_eagle_mb.key?('Life Saving') && smb.merit_badge.name == 'Emergency Preparedness') ||
+            (earned_eagle_mb.key?('Environmental Science') && smb.merit_badge.name == 'Sustainability') ||
+            (earned_eagle_mb.key?('Sustainability') && smb.merit_badge.name == 'Environmental Science')
+
+          earned_mb[smb.merit_badge.name] = smb.completed
+        else
+          earned_eagle_mb[smb.merit_badge.name] = smb.completed if smb.merit_badge.eagle_required
+        end
+        earned_mb[smb.merit_badge.name] = smb.completed unless smb.merit_badge.eagle_required
+      end
+
+        eagle_mb_earned = earned_eagle_mb.count
+        elect_mb_earned = earned_mb.count
+
+      eagle_mb_earned = eagle_mb_required if eagle_mb_earned > eagle_mb_required
+      elect_mb_earned = elect_mb_required if elect_mb_earned > elect_mb_required
+      completed_requirement_count += eagle_mb_earned + elect_mb_earned
+      # Do not count requirement for merit badges for progress bad
+      total_requirements_needed -= 1
+    end
+
+    puts "~="*79
+    puts completed_requirement_count
+    puts total_requirements_needed
+    puts completed_requirement_count / total_requirements_needed
+    puts "~="*79
+
+    self.rank_id -= 1
+    (completed_requirement_count / total_requirements_needed) * 100
+
+  end
+
+  def elective_merit_badges_required(rank_id)
+    case rank_id
+      when 6
+        2
+      when 7
+        4
+      when 8
+        8
+      else
+        0
+    end
+  end
+
+  def eagle_merit_badges_required(rank_id)
+    case rank_id
+      when 6
+        4
+      when 7
+        7
+      when 8
+        13
+      else
+        0
+    end
+  end
+
   def age(birthday)
     # http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
     (Time.now.to_s(:number).to_i - birthday.to_time.to_s(:number).to_i)/10e9.to_i
@@ -58,7 +142,7 @@ class Scout < ApplicationRecord
           csv << %w{ID NAME GRADE AGE BIRTHDATE RANK POSITION PATROL}
           all.each do |scout|
             csv << [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
-                      scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
+                    scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
           end
         else
           csv << ["#{report} not found"]

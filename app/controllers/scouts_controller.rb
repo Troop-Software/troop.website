@@ -25,7 +25,7 @@ class ScoutsController < ApplicationController
   # GET /scouts/1
   # GET /scouts/1.json
   def show
-   @ranks = Rank.all
+    @ranks = Rank.all
   end
 
   # GET /scouts/new
@@ -85,11 +85,12 @@ class ScoutsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_scout
     current_user.show_inactive_scouts ?
-        @scout = Scout.find(params[:id]):
+        @scout = Scout.find(params[:id]) :
         @scout = Scout.where(active: true).find(params[:id])
 
 

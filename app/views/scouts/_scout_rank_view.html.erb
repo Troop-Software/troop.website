@@ -1,5 +1,5 @@
 <% rank = Rank.find(current_rank_selected) %>
-<% requirements = Requirement.where(rank_id: current_rank_selected) %>
+<% requirements = Requirement.where(rank_id: current_rank_selected).order(:sortOrder)%>
 <h3 style="margin-top: 0px;"><%= rank.name %></h3>
 <div>
   <table class="table table-bordered table-striped table-responsive">
@@ -67,7 +67,7 @@
                 <% end %>
               </td>
               <td class="center">
-                <% if current_user.role? :leader_full %>
+                <% if (current_user.role? :leader_full) && !req.mb %>
                     <% if scout_requirement[:found] %>
                         <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), class: 'btn btn-sm btn-secondary' %>
                     <% else %>

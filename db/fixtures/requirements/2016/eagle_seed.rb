@@ -1,6 +1,6 @@
 Requirement.seed(sortOrder: 1,req_num: '1', revision: '2016', rank_id:8, req_category: :general,  description: 'Be active in your troop for a period of at least six months as a Life Scout.')
 Requirement.seed(sortOrder: 2,req_num: '2', revision: '2016', rank_id:8, req_category: :general,  description: 'As a Life Scout, demonstrate Scout spirit by living the Scout Oath and Scout Law. Tell how you have done your duty to God, how you have lived the Scout Oath and Scout Law in your everyday life, and how your understanding of the Scout Oath and Scout Law will guide your life in the future. List on your Eagle Scout Rank Application the names of individuals who know you personally and would be willing to provide a recommendation on your behalf, including parents/guardians, religious (if not affiliated with an organized religion, then the parent or guardian provides this reference), educational, employer (if employed), and two other references.')
-Requirement.seed(sortOrder: 3,req_num: '3', revision: '2016', rank_id:8, req_category: :general,  description: 'Earn a total of 21 merit badges (10 more than required for the Life rank), including these 13 merit badges:
+Requirement.seed(sortOrder: 3,req_num: '3', revision: '2016', rank_id:8, req_category: :general, mb: true,  description: 'Earn a total of 21 merit badges (10 more than required for the Life rank), including these 13 merit badges:
 a. First Aid
 b. Citizenship in the Community
 c. Citizenship in the Nation
