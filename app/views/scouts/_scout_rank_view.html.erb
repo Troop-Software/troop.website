@@ -1,5 +1,5 @@
 <% rank = Rank.find(current_rank_selected) %>
-<% requirements = Requirement.where(rank_id: current_rank_selected) %>
+<% requirements = Requirement.where(rank_id: current_rank_selected).order(:sortOrder)%>
 <h3 style="margin-top: 0px;"><%= rank.name %></h3>
 <div>
   <table class="table table-bordered table-striped table-responsive">
