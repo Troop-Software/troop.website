@@ -32,6 +32,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_record_upsert (0.6.3)
+      activerecord (>= 5.0, < 5.1)
+      arel (~> 7.0)
+      pg (~> 0.18)
     activejob (5.0.0.1)
       activesupport (= 5.0.0.1)
       globalid (>= 0.3.6)
@@ -287,6 +291,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_record_upsert
   aws-sdk (~> 2.3)
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.6)
