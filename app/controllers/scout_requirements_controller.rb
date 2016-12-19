@@ -101,9 +101,14 @@ class ScoutRequirementsController < ApplicationController
        # Mark all requirement completed
        requirements= Requirement.where(rank_id: active_rank)
        requirements.each do |req|
+         # check if record exists for requirement
+         unless ScoutRequirement.where(scout_id: @scout_requirement.scout_id, requirement_id: req.id).exists?
+
          #scout_requirement = ScoutRequirement.where(scout_id: scout_id, requirement_id: requirement.id)
-         ScoutRequirement.upsert(scout_id: @scout_requirement.scout_id, requirement_id: req.id, sign_off: @scout_requirement.sign_off,
+         ScoutRequirement.create(scout_id: @scout_requirement.scout_id, requirement_id: req.id, sign_off: @scout_requirement.sign_off,
                                   completed: true, completed_date: @scout_requirement.completed_date)
+         end
+
        end
 
        # Advance to next rank
