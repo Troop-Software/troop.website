@@ -12,20 +12,7 @@
               <%= scout_alert_message %>
             </div>
         <% end %>
-        <% obj.rank_id += 1 %>
-        <% requirements_for_rank = Requirement.where(rank_id: obj.rank_id) %>
-        <% completed_requirement_count = 0
-           requirements_for_rank.each do |req|
-             completed_requirement = ScoutRequirement.where(requirement_id: req.id, scout_id: obj.id)
-             completed_requirement_count += 1 unless completed_requirement.empty?
-
-           end %>
-        <%
-
-        %>
-        <% rank_completed = number_to_percentage(
-            (completed_requirement_count / requirements_for_rank.count.to_f) * 100, precision: 0) %>
-        <% obj.rank_id -= 1 %>
+        <% rank_completed = number_to_percentage(obj.calc_rank_percentage, precision: 0) %>
         <div class="col-xs-9" %>
           <div class="text-center">Progress towards next rank&#8230;</div>
           <div class="progress">

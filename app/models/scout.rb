@@ -28,6 +28,20 @@ class Scout < ApplicationRecord
     end
   end
 
+  def calc_rank_percentage
+    self.rank_id += 1
+    requirements_for_rank = Requirement.where(rank_id: self.rank_id)
+    completed_requirement_count = 0
+    requirements_for_rank.each do |req|
+      completed_requirement = ScoutRequirement.where(requirement_id: req.id, scout_id: self.id)
+      completed_requirement_count += 1 unless completed_requirement.empty?
+
+    end
+    self.rank_id -= 1
+    (completed_requirement_count / requirements_for_rank.count.to_f) * 100
+
+  end
+
   def age(birthday)
     # http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
     (Time.now.to_s(:number).to_i - birthday.to_time.to_s(:number).to_i)/10e9.to_i
