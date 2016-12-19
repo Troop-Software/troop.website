@@ -7,4 +7,5 @@ class Article < ActiveRecord::Base
   validates :description, presence: true, length: {minimum: 10, maximum: 1000}
   validates :user_id, presence: true
 
+  scope :search, -> (search) { where('title like ?', "%#{search}%") }
 end
