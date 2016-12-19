@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   belongs_to :user
   has_many :article_categories
   has_many :categories, through: :article_categories
@@ -7,5 +7,4 @@ class Article < ActiveRecord::Base
   validates :description, presence: true, length: {minimum: 10, maximum: 1000}
   validates :user_id, presence: true
 
-  scope :search, -> (search) { where('title like ?', "%#{search}%") }
 end

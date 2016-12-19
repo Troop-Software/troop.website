@@ -15,8 +15,6 @@ class Scout < ApplicationRecord
   has_many :relationships
   has_many :users, through: :relationships
 
-  scope :search, -> (search) { where('name like ?', "%#{search}%") }
-
 
   after_create :establish_scout_rank_history
 

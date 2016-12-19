@@ -6,7 +6,7 @@ class ScoutRequirementsController < ApplicationController
   # GET /scout_requirements
   # GET /scout_requirements.json
   def index
-    @scout_requirements = ScoutRequirement.all
+    @scout_requirements = ScoutRequirement.search(params[:search])
   end
 
   #

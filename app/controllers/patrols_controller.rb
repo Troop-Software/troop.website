@@ -7,7 +7,7 @@ class PatrolsController < ApplicationController
   # GET /patrols
   # GET /patrols.json
   def index
-    @patrols = Patrol.all
+    @patrols = Patrol.search(params[:search])
   end
 
   # GET /patrols/1
