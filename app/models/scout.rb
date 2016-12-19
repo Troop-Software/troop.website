@@ -38,11 +38,13 @@ class Scout < ApplicationRecord
 
     end
     total_requirements_needed = requirements_for_rank.count.to_f
-    if self.rank_id == 6
+
+   case self.rank_id
+     when 6,7,8
       eagle_mb_earned = 0
       elect_mb_earned = 0
-      eagle_mb_required = 4
-      elect_mb_required = 2
+      eagle_mb_required = eagle_merit_badges_required(self.rank_id)
+      elect_mb_required = elective_merit_badges_required(self.rank_id)
       total_requirements_needed += eagle_mb_required + elect_mb_required
       earned_mbs = ScoutMeritBadge.where(scout_id: self.id)
       earned_mbs.each do |earned_mb|
@@ -52,15 +54,45 @@ class Scout < ApplicationRecord
       eagle_mb_earned = eagle_mb_required if eagle_mb_earned > eagle_mb_required
       elect_mb_earned = elect_mb_required if elect_mb_earned > elect_mb_required
       completed_requirement_count += eagle_mb_earned + elect_mb_earned
+      # Do not count requirement for merit badges for progress bad
+      total_requirements_needed -= 1
     end
+
     puts "~="*79
     puts completed_requirement_count
     puts total_requirements_needed
+    puts completed_requirement_count / total_requirements_needed
     puts "~="*79
 
     self.rank_id -= 1
     (completed_requirement_count / total_requirements_needed) * 100
 
+  end
+
+  def elective_merit_badges_required(rank_id)
+    case rank_id
+      when 6
+        2
+      when 7
+        4
+      when 8
+        8
+      else
+        0
+    end
+  end
+
+  def eagle_merit_badges_required(rank_id)
+    case rank_id
+      when 6
+        4
+      when 7
+        7
+      when 8
+        13
+      else
+        0
+    end
   end
 
   def age(birthday)
