@@ -28,7 +28,7 @@ class Scout < ApplicationRecord
     end
   end
 
-  def calc_rank_percentage
+  def calc_rank_complete
     self.rank_id += 1
     requirements_for_rank = Requirement.where(rank_id: self.rank_id)
     completed_requirement_count = 0
