@@ -40,3 +40,7 @@ div.login-page {
 div.register-page {
   background: image-url('moss.jpeg') no-repeat center center fixed;
 }
+
+.progress-bar-dkblue {
+  @include progress-bar-variant($progress-bar-dkblue-bg);
+}
