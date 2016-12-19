@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/welcome', to: 'public#welcome'
   get '/photos',  to: 'public#photos'
   get '/eagle',   to: 'public#eagle_roll'
+  get '/troop_calendar', to: 'public#troop_calendar'
 
 
   resources :articles
