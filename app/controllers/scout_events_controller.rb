@@ -12,7 +12,6 @@ class ScoutEventsController < ApplicationController
   def index
     # only show events +- 30 days
     @scout_events = ScoutEvent.events_in_60_day_window
-   # @scout_events = ScoutEvent.all
   end
 
   # GET /scout_events/1
