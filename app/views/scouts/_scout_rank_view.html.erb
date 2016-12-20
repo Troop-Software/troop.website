@@ -27,8 +27,8 @@
                         <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
                   <% else %>
                       <div class="text-center">Rank Completed on <%= l rank_date %>
-                        <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
-                  <% end %>
+                        <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), remote: true, class: 'pull-right small' %></div>
+            <% end %>
               <% end %>
             </div>
           </th>

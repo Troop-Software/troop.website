@@ -41,7 +41,9 @@ class ScoutRankHistoriesController < ApplicationController
           flash[:success] = 'Rank completion date updated.'
           redirect_to scout_path(@scout_rank_history.scout_id)
         }
-        format.json { render :show, status: :ok, location: @scout_rank_history }
+
+        format.json { head :no_content }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @scout_rank_history.errors, status: :unprocessable_entity }
