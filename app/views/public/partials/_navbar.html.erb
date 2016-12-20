@@ -15,17 +15,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="public-home-navbar">
       <ul class="nav navbar-nav">
-<<<<<<< HEAD:app/views/public/partials/_navbar.html.erb
         <li><%= nav_link 'Join our Troop', join_path %></li>
         <li><%= nav_link 'Calendar', troop_calendar_path %></li>
         <li><%= nav_link 'Pictures', photos_path %></li>
         <li><%= nav_link 'Eagle Scout Roll', eagle_path %></li>
-=======
-        <li><%= link_to 'Join our Troop', join_path %></li>
-        <li><%= link_to 'Calendar' %></li>
-        <li><%= link_to 'Pictures' %></li>
-        <li><%= link_to 'Eagle Scout Roll', root_path %></li>
->>>>>>> 0493e8c... publc / private routing and controllers setup:app/views/public/partials/_navbar.html.erb
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>

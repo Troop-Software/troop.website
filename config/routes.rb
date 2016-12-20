@@ -7,16 +7,11 @@ Rails.application.routes.draw do
   end
 
   root 'public#welcome'
-<<<<<<< HEAD
   get '/join',    to: 'public#join_our_troop'
   get '/welcome', to: 'public#welcome'
   get '/photos',  to: 'public#photos'
   get '/eagle',   to: 'public#eagle_roll'
   get '/troop_calendar', to: 'public#troop_calendar'
-=======
-  get '/join', to: 'public#join_our_troop'
-  get '/welcome', to: 'public#welcome'
->>>>>>> 0493e8c... publc / private routing and controllers setup
 
 
   resources :articles
