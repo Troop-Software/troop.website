@@ -1,16 +1,19 @@
 <%= content_for(:title, 'Scout Details') %>
-<div class="card">
-  <div class="card-header" data-background-color="dkblue">
-    <h4 class="card-title"><%= @scout.name %>
-    <% unless @scout.active %>
-        <small>(inactive)</small>
-    <% end %>
-    </h4>
+<div class="hidden-print">
+  <div class="card">
+    <div class="card-header" data-background-color="dkblue">
+      <h4 class="card-title"><%= @scout.name %>
+        <% unless @scout.active %>
+            <small>(inactive)</small>
+        <% end %>
+      </h4>
+    </div>
+    <%= render 'scout_card_detail', obj: @scout %>
   </div>
-  <%= render 'scout_card_detail', obj: @scout %>
-</div>
 </div>
 <div class="card" style="margin-top: 0;">
   <%= render 'scouts/scout_detail_nav_bar' %>
 </div>
+</div>
+<%= render 'show_print' %>
 
