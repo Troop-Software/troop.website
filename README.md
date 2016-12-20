@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/bob-koertge/troop.website.png?label=ready&title=Ready)](https://waffle.io/bob-koertge/troop.website)
 # README
 [![CircleCI](https://circleci.com/gh/bob-koertge/troop.website.svg?style=svg)](https://circleci.com/gh/bob-koertge/troop.website)
 
