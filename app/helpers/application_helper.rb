@@ -24,6 +24,11 @@ module ApplicationHelper
 
   def date_for_display(date)
       fsdate = (date == nil)? date :  I18n.l( Date.parse(date.to_s), :format => :default)
+    if fsdate == '01/01/1111'
+      return 'Unknown'
+    else
+      return fsdate
+    end
   end
 
   def datetime_for_display(datetime)

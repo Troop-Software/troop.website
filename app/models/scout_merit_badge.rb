@@ -1,4 +1,4 @@
-class ScoutMeritBadge < ActiveRecord::Base
+class ScoutMeritBadge < ApplicationRecord
     belongs_to :scout
     belongs_to :merit_badge
 end

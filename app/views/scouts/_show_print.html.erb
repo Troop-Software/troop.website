@@ -1,66 +1,95 @@
 <div class="visible-print-block">
-  <div class="row">
-    <div class="col-xs-1 label">Name:</div>
-    <div class="col-xs-4"><%= @scout.name %></div>
-    <div class="col-xs-1 offset-xs-1 label">Email:</div>
-    <div class="col-xs-4"><%= @scout.email %></div>
-  </div>
-  <div class="row">
-    <div class="col-xs-1 label">Patrol:</div>
-    <div class="col-xs-4"><%= @scout.patrol.name %></div>
-    <div class="col-xs-1 offset-xs-1 label">Phone:</div>
-    <div class="col-xs-4"><%= number_to_phone(@scout.phone, areacode: true) %></div>
-  </div>
-  <div class="row">
-    <div class="col-xs-1 label">Rank:</div>
-    <div class="col-xs-2"><%= @scout.rank.name %></div>
-    <div class="col-xs-1 label">Date:</div>
-    <div class="col-xs-1">11/11/1111</div>
-    <div class="col-xs-1 offset-xs-1 label">DoB:</div>
-    <div class="col-xs-1"><%= date_for_display(@scout.birthdate) %></div>
-    <div class="col-xs-1 offset-xs-1 label">Age:</div>
-    <div class="col-xs-1"><%= @scout.age(@scout.birthdate) unless @scout.birthdate.nil? %></div>
-  </div>
-  <div class="row">
-    <div class="col-xs-1 label">Position:</div>
-    <div class="col-xs-4"><%= @scout.position.name %></div>
-    <div class="col-xs-1 offset-xs-1 label">Joined:</div>
-    <div class="col-xs-2"><%= date_for_display(@scout.joined) %></div>
-    <div class="col-xs-1 label">ID:</div>
-    <div class="col-xs-1"><%= @scout.bsa_id %></div>
-  </div>
-  <div class="row">&nbsp;</div>
-  <!---- if rank is completed show name and date ----->
-  <div class="row label">Completed Ranks:</div>
-  <div class="row">
-    <div class="col-xs-1">Scout</div>
-    <div class="col-xs-1">11/11/1111</div>
-  </div>
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-1 bold">Name:</div>
+      <div class="col-xs-4"><%= @scout.name %></div>
+      <div class="col-xs-1 col-xs-offset-1 bold">Email:</div>
+      <div class="col-xs-4"><%= @scout.email %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 bold">Patrol:</div>
+      <div class="col-xs-4"><%= @scout.patrol.name %></div>
+      <div class="col-xs-1 col-xs-offset-1 bold">Phone:</div>
+      <div class="col-xs-4"><%= number_to_phone(@scout.phone, areacode: true) %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 bold">Rank:</div>
+      <div class="col-xs-2"><%= @scout.rank.name %></div>
+      <div class="col-xs-1 bold">Date:</div>
+      <div class="col-xs-1"><%= date_for_display(@scout.scout_rank_histories.where(rank_id: @scout.rank_id).first.rank_completed) %></div>
+      <div class="col-xs-1 col-xs-offset-1 bold">DoB:</div>
+      <div class="col-xs-1"><%= date_for_display(@scout.birthdate) %></div>
+      <div class="col-xs-1 col-xs-offset-1 bold">Age:</div>
+      <div class="col-xs-1"><%= @scout.age(@scout.birthdate) unless @scout.birthdate.nil? %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 bold">Position:</div>
+      <div class="col-xs-4"><%= @scout.position.name %></div>
+      <div class="col-xs-1 col-xs-offset-1 bold">Joined:</div>
+      <div class="col-xs-2"><%= date_for_display(@scout.joined) %></div>
+      <div class="col-xs-1 bold">ID:</div>
+      <div class="col-xs-1"><%= @scout.bsa_id %></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <!---- if rank is completed show name and date ----->
+    <div class="row bold">Completed Ranks:</div>
+    <div class="row">
+      <% @scout.scout_rank_histories.each do |completed_rank| %>
+          <% unless completed_rank.rank_id == 1 %>
+              <div class="col-xs-2 bold"><%= completed_rank.rank.name %></div>
+              <div class="col-xs-2"><%= date_for_display(completed_rank.rank_completed) %></div>
+          <% end %>
+      <% end %>
+    </div>
+    <div class="row">
+      <!----- Ranks not Completed --------------->
+      <% next_rank = @scout.rank_id + 1 %>
+      <% while next_rank <= Rank.all.count %>
+          <div class="row">&nbsp;</div>
+          <div class="row bold col-xs-12"><%= Rank.find(next_rank).name %></div>
+          <% Requirement.where(rank_id: next_rank).each do |requirement|
+            completed_date = nil
+            req_date = @scout.scout_requirements.find_by(requirement: requirement)
+            @scout.scout_requirements.each { |test|
+              if test.requirement_id == requirement.id
+                completed_date = test.completed_date
+              end
+            }
+            unless requirement.req_num.nil? %>
+                  <div class="col-xs-1"><%= requirement.req_num %>.</div>
+                  <% if completed_date.nil? %>
+                      <div class="col-xs-2">____________</div>
+                  <% else %>
+                      <div class="col-xs-2"><%= date_for_display(completed_date) %></div>
+                  <% end %>
+              <% end %>
+          <% end %>
+          <% next_rank += 1 %>
 
-  <!----- Ranks not Completed --------------->
-  <%= 4.times do |y| %>
-      <div class="row">&nbsp;</div>
-      <div class="row label">Tenderfoot</div>
-      <table>
-        <% 19.times do |x| %>
-            <tr>
-              <td class="label"><%= x %>a.</td>
-              <td>XXXXOXXXXOXXXXOXXXXOXXXXOXXXXOXXXXO</td>
-              <td>11/11/1111</td>
-              <td></td>
-              <td><%= x %>a.</td>
-              <td>XXXXOXXXXOXXXXOXXXXOXXXXOXXXXOXXXXO</td>
-              <td>11/11/1111</td>
-            </tr>
-        <% end %>
-      </table>
-  <% end %>
+      <% end %>
+
+    </div>
+    <div class="row">&nbsp;</div>
+    <!-- ----------- Merit Badges Earned ------------- -->
+    <div class="row bold">Merit Badges Earned:</div>
+    <div class="row">
+
+      <% @scout_merit_badge = ScoutMeritBadge.where(scout_id: @scout.id)
+         @scout_merit_badge.each do |smb| %>
+          <div class="col-xs-3"><%= smb.merit_badge.name %>
+            <sup><%= '<i class="fa fa-star-o fa-sm" aria-hidden="true"></i>'.html_safe if smb.merit_badge.eagle_required? %></sup>
+          </div>
+          <div class="col-xs-2"><%= date_for_display(smb.completed) %></div>
+
+      <% end %>
+    </div>
+  </div>
 </div>
-  <!------------- Merit Badges Earned ------------- --!>
-  <!------------- Activity Totals ---------------!>
-  <!------------- Awards ---------------!>
-  <!------------- Training ---------------!>
-  <!------------- Leadership ---------------!>
+<!------------- Activity Totals ---------------!>
+
+<!------------- Awards ---------------!>
+<!------------- Training ---------------!>
+<!------------- Leadership ---------------!>
 
 
 

@@ -4,7 +4,7 @@ class ScoutRankHistoriesController < ApplicationController
   before_action :require_user_leader_full, only: [:index]
 
   def index
-    @scout_rank_histories = ScoutRankHistory.all
+    @scout_rank_histories = ScoutRankHistory.search(params[:search])
   end
 
   # GET /scout_rank_histories/new
