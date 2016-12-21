@@ -1,5 +1,5 @@
 <% rank = Rank.find(current_rank_selected) %>
-<% requirements = Requirement.where(rank_id: current_rank_selected).order(:sortOrder)%>
+<% requirements = Requirement.where(rank_id: current_rank_selected).order(:sortOrder) %>
 <h3 style="margin-top: 0px;"><%= rank.name %></h3>
 <div>
   <table class="table table-bordered table-striped table-responsive">
@@ -24,11 +24,11 @@
               <% if current_user.role? :leader_full %>
                   <% if rank_date == Date.parse('1/1/1111') %>
                       <div class="text-center">Rank Completed on Unknown Date
-                        <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), class: 'pull-right small' %></div>
+                        <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), remote: true, class: 'pull-right small' %></div>
                   <% else %>
                       <div class="text-center">Rank Completed on <%= l rank_date %>
                         <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), remote: true, class: 'pull-right small' %></div>
-            <% end %>
+                  <% end %>
               <% end %>
             </div>
           </th>
@@ -70,8 +70,10 @@
                 <% if (current_user.role? :leader_full) && !req.mb %>
                     <% if scout_requirement[:found] %>
                         <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), class: 'btn btn-sm btn-secondary' %>
+                        <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), remote:true, class: 'btn btn-sm btn-secondary' %>
                     <% else %>
                         <%= link_to req.req_num, new_scout_requirement_path(scout_id: @scout.id, req_id: req.id), class: 'btn btn-sm btn-primary' %>
+
                     <% end %>
                 <% else %>
                     <%= req.req_num %>

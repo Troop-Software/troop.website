@@ -20,9 +20,6 @@ class ScoutRequirementsController < ApplicationController
   # GET /scout_requirements/new
   def new
     @scout_requirement = ScoutRequirement.new
-    @scout_id = params[:scout_id]
-    @req_id = params[:req_id]
-
   end
 
   #
@@ -35,15 +32,12 @@ class ScoutRequirementsController < ApplicationController
   # POST /scout_requirements.json
   def create
     @scout_requirement = ScoutRequirement.new(scout_requirement_params)
-    mark_rank_completed_after_bor
+  #  mark_rank_completed_after_bor
 
     respond_to do |format|
       if @scout_requirement.save
-        format.html {
-          flash[:success] = "Scout's Requirement was successfully was successfully created."
-          redirect_to controller: 'scouts', action: 'show', id: @scout_requirement.scout_id
-        }
-        format.json { render :show, status: :created, location: @scout_requirement }
+        format.json { head :no_content  }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @scout_requirement.errors, status: :unprocessable_entity }
@@ -57,11 +51,8 @@ class ScoutRequirementsController < ApplicationController
   def update
     respond_to do |format|
       if @scout_requirement.update(scout_requirement_params)
-        format.html {
-          flash[:success] = "Scout's Requirement was successfully updated."
-          redirect_to controller: 'scouts', action: 'show', id: @scout_requirement.scout_id
-        }
-        format.json { render :show, status: :ok, location: @scout_requirement }
+        format.json { head :no_content  }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @scout_requirement.errors, status: :unprocessable_entity }
