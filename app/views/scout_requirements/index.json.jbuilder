@@ -1,0 +1,1 @@
+json.array! @scout_requirements, partial: 'scout_requirements/scout_requirement', as: :scout_requirement

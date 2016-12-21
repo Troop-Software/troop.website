@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Scout Requirements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scout_requirements.each do |scout_requirement| %>
+      <tr>
+        <td><%= scout_requirement.scout_id %></td>
+        <td><%= scout_requirement.requirement_id %></td>
+        <td><%= link_to 'Show', scout_requirement %></td>
+        <td><%= link_to 'Edit', edit_scout_requirement_path(scout_requirement) %></td>
+        <td><%= link_to 'Destroy', scout_requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scout Requirement', new_scout_requirement_path %>

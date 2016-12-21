@@ -70,7 +70,7 @@
                 <% if (current_user.role? :leader_full) && !req.mb %>
                     <% if scout_requirement[:found] %>
                         <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), class: 'btn btn-sm btn-secondary' %>
-                        <%= link_to req.req_num, edit_scout_requirement_path(ScoutRequirement.find_by(scout_id: @scout.id, requirement_id: req.id)), remote:true, class: 'btn btn-sm btn-secondary' %>
+                        <%= link_to req.req_num, edit_scout_requirement_path(1), remote: true, class: 'btn btn-sm btn-secondary' %>
                     <% else %>
                         <%= link_to req.req_num, new_scout_requirement_path(scout_id: @scout.id, req_id: req.id), class: 'btn btn-sm btn-primary' %>
 
