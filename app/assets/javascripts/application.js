@@ -137,11 +137,10 @@ $(document).ready(function () {
 
     });
 
-    $('#dialog').on('hidden.bs.modal', function () {
-        location.reload();
-    })
-
     $(".alert" ).fadeOut(5000);
 
 });
 
+//$('#dialog').on('hidden.bs.modal', function () {
+//    location.reload();
+//})

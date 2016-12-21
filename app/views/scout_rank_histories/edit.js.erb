@@ -1,5 +1,5 @@
 // Add the dialog title
-$('#dialog h3').html("<i class=' glyphicon glyphicon-pencil'></i> Edit Customer");
+$('#dialog h3').html("Update Rank Date");
 
 // Render the edit form
 $('.modal-body').html('<%= j render("scout_rank_histories/edit_form") %>');
@@ -10,4 +10,18 @@ $('#dialog').modal("show");
 // Set focus to the first element
 $('#dialog').on('shown.bs.modal', function () {
     $('.first_input').focus()
-})
+});
+
+$('.datetimepicker').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+    }
+});
