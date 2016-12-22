@@ -15,10 +15,12 @@ class ScoutRequirementsController < ApplicationController
   # GET /scout_requirements/new
   def new
     @scout_requirement = ScoutRequirement.new(scout_id: params[:scout_id], requirement_id: params[:req_id])
+    @scout_requirement.sign_off ||= current_user.username
   end
 
   # GET /scout_requirements/1/edit
   def edit
+    @scout_requirement.sign_off = current_user.username if @scout_requirement.sign_off.empty?
   end
 
   # POST /scout_requirements

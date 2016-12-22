@@ -1,4 +1,4 @@
-<%= form_for(@scout_requirement, remote: true, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+<%= form_for(@scout_requirement, remote: true, :html => {class: 'form-horizontal', role: 'form', id: 'scout_requirement'}) do |f| %>
     <%= render 'shared/errors', obj: @scout_requirement %>
     <%= f.fields_for :requirement do |r| %>
         <%= f.hidden_field :scout_id %>
@@ -23,7 +23,7 @@
         <%= f.label :completed_date %>
       </div>
       <div class="col-sm-7">
-        <%= f.text_field :completed_date, class: 'form-control datetimepicker', data: {date: @scout_requirement.completed_date, date_format: 'YYYY-MM-DD'} %>
+        <%= f.text_field :completed_date, class: 'form-control datetimepicker', value: Time.now.strftime('%Y-%m-%d'), data: {date: @scout_requirement.completed_date, date_format: 'YYYY-MM-DD'} %>
       </div>
     </div>
     <div class="form-group row">

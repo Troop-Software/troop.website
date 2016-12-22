@@ -91,7 +91,7 @@
               <td><%= simple_format(req.description) %></td>
               <td id="sign_off_<%= req.id %>" ><%= scout_requirement[:sign_off] %>&nbsp;</td>
               <% if scout_requirement[:completed_date] == Date.parse('1/1/1111') %>
-                  <td>n/a</td>
+                  <td id="completed_date_<%= req.id%>">n/a</td>
               <% else %>
                   <td id="completed_date_<%= req.id%>">
                     <%= l scout_requirement[:completed_date] unless scout_requirement[:completed_date].nil? %>
