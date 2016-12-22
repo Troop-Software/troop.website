@@ -1,3 +1,8 @@
+<% unless @scout_requirement.requirement.bor.nil? %>
+$('#dialog').on('hidden.bs.modal', function () {
+    location.reload();
+});
+<% end %>
 $('#dialog').modal('toggle');
 $('#completed_date_<%= @scout_requirement.requirement.id %>').contents().last().replaceWith("<%= date_for_display(@scout_requirement.completed_date) %>");
 $('#sign_off_<%= @scout_requirement.requirement.id %>').contents().last().replaceWith('<%= (@scout_requirement.sign_off) %>');

@@ -25,6 +25,7 @@ class ScoutRequirementsController < ApplicationController
   # POST /scout_requirements.json
   def create
     @scout_requirement = ScoutRequirement.new(scout_requirement_params)
+    mark_rank_completed_after_bor
 
     respond_to do |format|
       if @scout_requirement.save
@@ -74,4 +75,39 @@ class ScoutRequirementsController < ApplicationController
     def scout_requirement_params
       params.require(:scout_requirement).permit(:scout_id, :requirement_id, :sign_off, :completed_date)
     end
+
+  def mark_rank_completed_after_bor
+
+    if @scout_requirement.requirement.bor
+      # Mark rank completed
+      active_rank = Requirement.find(@scout_requirement.requirement_id).rank_id
+      mark_rank = ScoutRankHistory.new(scout_id: @scout_requirement.scout_id,
+                                       rank_id: active_rank)
+      mark_rank.rank_completed = @scout_requirement.completed_date
+      mark_rank.save
+
+      # Mark all requirement completed
+      requirements= Requirement.where(rank_id: active_rank)
+      requirements.each do |req|
+        # check if record exists for requirement
+        unless ScoutRequirement.where(scout_id: @scout_requirement.scout_id, requirement_id: req.id).exists?
+
+          ScoutRequirement.create(scout_id: @scout_requirement.scout_id,
+                                  requirement_id: req.id,
+                                  sign_off: @scout_requirement.sign_off,
+                                  completed_date: @scout_requirement.completed_date)
+        end
+
+      end
+
+      # Advance to next rank
+      current_scout = Scout.find(@scout_requirement.scout_id)
+      if active_rank - 1 == current_scout.rank_id
+        current_scout.rank_id += 1
+        current_scout.save
+      end
+
+    end
+  end
+
 end

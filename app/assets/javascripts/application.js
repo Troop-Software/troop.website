@@ -129,6 +129,3 @@ $(document).ready(function () {
 
 });
 
-//$('#dialog').on('hidden.bs.modal', function () {
-//    location.reload();
-//})
