@@ -14,7 +14,7 @@ class ScoutRequirementsController < ApplicationController
 
   # GET /scout_requirements/new
   def new
-    @scout_requirement = ScoutRequirement.new
+    @scout_requirement = ScoutRequirement.new(scout_id: params[:scout_id], requirement_id: params[:req_id])
   end
 
   # GET /scout_requirements/1/edit
@@ -44,9 +44,8 @@ class ScoutRequirementsController < ApplicationController
   def update
     respond_to do |format|
       if @scout_requirement.update(scout_requirement_params)
-      #  format.html { redirect_to @scout_requirement, notice: 'Scout requirement was successfully updated.' }
-      #  format.json { render :show, status: :ok, location: @scout_requirement }
-        format.json { head :no_content }
+        format.html { redirect_to @scout_requirement, notice: 'Scout requirement was successfully updated.' }
+        format.json { render :show, status: :ok, location: @scout_requirement }
         format.js
       else
         format.html { render :edit }
@@ -73,6 +72,6 @@ class ScoutRequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scout_requirement_params
-      params.fetch(:scout_requirement, {})
+      params.require(:scout_requirement).permit(:scout_id, :requirement_id, :sign_off, :completed_date)
     end
 end

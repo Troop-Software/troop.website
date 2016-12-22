@@ -1,3 +1,5 @@
 $('#dialog').modal('toggle');
 $('#completed_date_<%= @scout_requirement.requirement.id %>').contents().last().replaceWith("<%= date_for_display(@scout_requirement.completed_date) %>");
 $('#sign_off_<%= @scout_requirement.requirement.id %>').contents().last().replaceWith('<%= (@scout_requirement.sign_off) %>');
+$('#req_link_<%= @scout_requirement.requirement.id %>').replaceWith('<span id="req_link_<%= @scout_requirement.requirement.id %>"><%= @scout_requirement.requirement.req_num %></span>');
+
