@@ -23,7 +23,7 @@
             <div>
               <% if current_user.role? :leader_full %>
                   <% if rank_date == Date.parse('1/1/1111') %>
-                      <div class="text-center"><>Rank Completed on Unknown Date
+                      <div class="text-center">Rank Completed on Unknown Date
                         <%= link_to 'Update Date', edit_scout_rank_history_path(displayed_rank), remote: true, class: 'pull-right small' %></div>
                   <% else %>
                       <div class="text-center">Rank Completed on <%= l rank_date %>
