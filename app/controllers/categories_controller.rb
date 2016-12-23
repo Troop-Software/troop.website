@@ -3,6 +3,15 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :require_user_leader_full, only: [:create, :edit, :update, :destroy]
 
+
+  def check_category
+    @category = Category.find_by_name(params[:category][:name])
+
+    respond_to do |format|
+      format.json { render :json => !@category }
+    end
+  end
+
   # GET /categories
   # GET /categories.json
   def index
@@ -72,6 +81,7 @@ class CategoriesController < ApplicationController
         redirect_to categories_url
       }
       format.json { head :no_content }
+      format.js
     end
   end
 

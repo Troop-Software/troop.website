@@ -18,12 +18,20 @@
     <script>
         $(document).ready(function () {
             $("#new_category").validate({
-                debug: true,
                 rules: {
                     "category[name]": {
-                        required: true}
+                        required: true,
+                        rangelength: [3,15],
+                        remote: '/categories/check_category'
+                    }
                 },
-                errorPlacement: function(error, element) {
+                messages: {
+                    "category[name]": {
+                        required: 'Please specify a category name.',
+                        remote: jQuery.validator.format("{0} is already in use.")
+                    }
+                },
+                errorPlacement: function (error, element) {
                     $(element).parent('div').parent('div').addClass('has-error');
                     $(element).after(error);
                 }
