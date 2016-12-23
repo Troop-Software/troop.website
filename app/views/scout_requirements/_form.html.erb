@@ -32,3 +32,17 @@
       </div>
     </div>
 <% end %>
+<script>
+    $(document).ready(function () {
+        $("#scout_requirement").validate({
+            rules: {
+                "scout_requirement[sign_off]": {required: true},
+                "scout_requirement[completed_date]": {required: true}
+            },
+            errorPlacement: function (error, element) {
+                $(element).parent('div').parent('div').addClass('has-error');
+                $(element).after(error);
+            }
+        });
+    });
+</script>
