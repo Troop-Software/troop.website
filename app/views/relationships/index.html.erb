@@ -24,7 +24,7 @@
                             <%= link_to '<i class="material-icons">edit</i>'.html_safe,
                                       edit_relationship_path(relationship), class: 'text-success' %>
                             <%= link_to "<i class='material-icons'>delete</i>".html_safe, relationship,
-                                        method: :delete, data: {confirm: 'Are you sure?'}, class: 'text-danger' %>
+                                        method: :delete, data: {confirm: 'Are you sure you wish to delete this relationship?'}, class: 'text-danger' %>
                             <% end %>
                       </span>
                     </li>

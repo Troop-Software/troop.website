@@ -1,0 +1,2 @@
+$('#dialog').modal('toggle');
+$('#category_name_<%= @category.id%>').contents().last().replaceWith('<%= (@category.name) %>');

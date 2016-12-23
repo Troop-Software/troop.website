@@ -24,7 +24,7 @@
               <% if current_user.role? :admin %>
                   <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_scout_path(scout) %>
                   <%= link_to "<i class='material-icons'>delete</i>".html_safe, scout,
-                              method: :delete, data: {confirm: 'Are you sure?'} %>
+                              method: :delete, data: {confirm: "Are you sure you wish to delete #{scout.name}?"} %>
              <% end %>
             </span>
             </a>

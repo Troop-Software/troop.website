@@ -20,7 +20,7 @@
               <span class="pull-right">
                 <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_position_path(position) %>
                 <%= link_to "<i class='material-icons'>delete</i>".html_safe, position,
-                            method: :delete, data: {confirm: 'Are you sure?'} %>
+                            method: :delete, data: {confirm: "Are you sure you wish to delete the #{position.name} position?"} %>
                 </span>
               <% end %>
             </h4>

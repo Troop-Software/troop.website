@@ -20,7 +20,7 @@
     <% end %>
     <%= link_to 'Edit this requirement', edit_requirement_path(@requirement), class: 'btn btn-sm btn-primary' %>
     <%= link_to 'Delete this requirement', requirement_path(@requirement), method: :delete,
-                data: {confirm: 'Are you sure you want to delete the article?'},
+                data: {confirm: 'Are you sure you want to delete this requirement?'},
                 class: 'btn btn-sm btn-danger' %>
     <% if current_user.role? :admin%>
         </div>
