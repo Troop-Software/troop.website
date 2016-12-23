@@ -1,29 +1,42 @@
+<%= form_for(@scout_rank_history, remote: true, :html => {class: 'form-horizontal', id: 'scout_rank_history', role: 'form'}) do |f| %>
+    <%= render 'shared/errors', obj: @scout_rank_history %>
 
-  <%= form_for(@scout_rank_history, remote: true, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
-      <%= render 'shared/errors', obj: @scout_rank_history %>
+    <%= f.hidden_field :scout_id, value: @scout_rank_history.scout_id %>
+    <%= f.hidden_field :rank_id, value: @scout_rank_history.rank_id %>
 
-      <%= f.hidden_field :scout_id, value: @scout_rank_history.scout_id %>
-      <%= f.hidden_field :rank_id, value: @scout_rank_history.rank_id %>
-
-      <div class="form-group row">
-        <div class="control-label col-sm-4 col-sm-offset-1 ">
-          <%= f.label :rank_completed, class: 'input-lg' %>
-        </div>
-        <div class="col-sm-4 ">
-          <% if @scout_rank_history.rank_completed == Date.parse('1/1/1111') %>
-              <%= f.text_field :rank_completed, class: 'form-control datetimepicker input-lg', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'}, :value => Date.today %>
-          <% else %>
-              <%= f.text_field :rank_completed, class: 'form-control datetimepicker input-lg', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'} %>
-          <% end %>
-        </div>
+    <div class="form-group row">
+      <div class="control-label col-sm-4 col-sm-offset-1 ">
+        <%= f.label :rank_completed, class: 'input-lg' %>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-6 col-sm-offset-5">
-          <%= f.submit 'Update', id:'update_button',class: 'btn btn-success', onclick: 'window.location.reload();' %>
-        </div>
+      <div class="col-sm-4 ">
+        <% if @scout_rank_history.rank_completed == Date.parse('1/1/1111') %>
+            <%= f.text_field :rank_completed, class: 'form-control datetimepicker input-lg', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'}, :value => Date.today %>
+        <% else %>
+            <%= f.text_field :rank_completed, class: 'form-control datetimepicker input-lg', data: {date: @scout_rank_history.rank_completed, date_format: 'YYYY-MM-DD'} %>
+        <% end %>
       </div>
-  <% end %>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 col-sm-offset-5">
+        <%= f.submit 'Update', id: 'update_button', class: 'btn btn-success', onclick: 'window.location.reload();' %>
+      </div>
+    </div>
+<% end %>
 </div>
-
+<script>
+    $(document).ready(function () {
+        $("#scout_rank_history").validate({
+            rules: {
+                "scout_rank_history[rank_completed]": {
+                    required: true,
+                }
+            },
+            errorPlacement: function (error, element) {
+                $(element).parent('div').parent('div').addClass('has-error');
+                $(element).after(error);
+            }
+        });
+    });
+</script>
 
 
