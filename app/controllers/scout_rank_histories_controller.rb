@@ -1,19 +1,13 @@
 class ScoutRankHistoriesController < ApplicationController
   before_action :set_srh_requirement, only: [:show, :edit, :update]
   before_action :authenticate_user!
-  before_action :require_user_leader_full, only: [:index]
 
-  def index
-    @scout_rank_histories = ScoutRankHistory.search(params[:search])
-  end
 
   # GET /scout_rank_histories/new
   def new
     @scout_rank_history = ScoutRankHistory.new
   end
 
-  def show
-  end
 
   # POST /scout_rank_histories
   def create
@@ -41,7 +35,9 @@ class ScoutRankHistoriesController < ApplicationController
           flash[:success] = 'Rank completion date updated.'
           redirect_to scout_path(@scout_rank_history.scout_id)
         }
-        format.json { render :show, status: :ok, location: @scout_rank_history }
+
+        format.json { head :no_content }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @scout_rank_history.errors, status: :unprocessable_entity }

@@ -1,3 +1,6 @@
-<%= content_for(:title, 'Requirement Sign Off') %>
+<h1>Editing Scout Requirement</h1>
 
-<%= render 'new_form', scout_requirement: @scout_requirement %>
+<%= render 'form', scout_requirement: @scout_requirement %>
+
+<%= link_to 'Show', @scout_requirement %> |
+<%= link_to 'Back', scout_requirements_path %>

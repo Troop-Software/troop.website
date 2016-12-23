@@ -1,0 +1,1 @@
+json.partial! "scout_requirements/scout_requirement", scout_requirement: @scout_requirement

@@ -29,7 +29,12 @@ Rails.application.routes.draw do
   resources :positions
   resources :ranks
   resources :patrols
-  resources :categories
+  resources :categories do
+    collection do
+      get 'check_category'
+    end
+  end
+
   resources :scout_rank_histories
   resources :scout_merit_badges
   resources :scout_events

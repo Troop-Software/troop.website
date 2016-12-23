@@ -1,4 +1,4 @@
-  class ScoutMeritBadgesController < ApplicationController
+class ScoutMeritBadgesController < ApplicationController
   before_action :set_scout_merit_badge, only: [:show, :edit, :update]
   before_action :authenticate_user!
   before_action :require_user_leader_full, only: [:index]
@@ -23,7 +23,11 @@
       if @scout_merit_badge.save
         format.html {
           flash[:success] = 'Rank completion date saved.'
-          redirect_to scout_path(@scout_merit_badge.scout_id)
+          if params[:create_and_add]
+            redirect_to new_scout_merit_badge_path(scout_id: @scout_merit_badge.scout_id)
+          else
+            redirect_to scout_path(@scout_merit_badge.scout_id)
+          end
         }
         format.json { render :show, status: :created, location: @scout_merit_badge }
       else
@@ -51,12 +55,12 @@
 
   private
 
-# Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_scout_merit_badge
     @scout_merit_badge = ScoutMeritBadge.find(params[:id])
   end
 
-# Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
   def scout_merit_badge_params
     params.require(:scout_merit_badge).permit(:scout_id, :merit_badge_id, :completed)
   end

@@ -3,18 +3,14 @@
       <div class="card">
         <div class="card-header" role="tab" id="headingTwo<%= scout.id %>" data-background-color="dkblue">
           <h4 class="title">
-            <% if obj.first == scout %>
-                <a class="hvr-push" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
-                   aria-expanded="true" aria-controls="collapseTwo<%= scout.id %>">
-            <% else %>
-                <a class="collapsed hvr-push" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
-                   aria-expanded="false" aria-controls="collapseTwo<%= scout.id %>">
-            <% end %>
-            <i class='material-icons'>menu</i>
-            <% unless scout.scout_alert.nil? %>
-                <i class='material-icons'>warning</i>
-            <% end %>
-            <%= scout.name %>
+            <a class="hvr-push" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
+               aria-expanded="true" aria-controls="collapseTwo<%= scout.id %>">
+
+              <i class='material-icons'>menu</i>
+              <% unless scout.scout_alert.nil? %>
+                  <i class='material-icons'>warning</i>
+              <% end %>
+              <%= scout.name %>
             </a>
             <% unless scout.active %>
                 <small>(inactive)</small>
@@ -22,23 +18,16 @@
             <span class="pull-right">
               <%= link_to "<i class='material-icons'>remove_red_eye</i>".html_safe, scout_path(scout) %>
               <% if current_user.role? :admin %>
-                  <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_scout_path(scout) %>
                   <%= link_to "<i class='material-icons'>delete</i>".html_safe, scout,
-                              method: :delete, data: {confirm: 'Are you sure?'} %>
+                              method: :delete, data: {confirm: "Are you sure you wish to delete #{scout.name}?"} %>
              <% end %>
             </span>
             </a>
           </h4>
         </div>
-        <% if obj.first == scout %>
-            <div id="collapseTwo<%= scout.id %>" class="collapse in" role="tabpanel" aria-labelledby="headingTwo<%= scout.id %>">
-              <%= render 'scout_card_detail', obj: scout %>
-            </div>
-        <% else %>
-            <div id="collapseTwo<%= scout.id %>" class="collapse" role="tabpanel" aria-labelledby="headingTwo<%= scout.id %>">
-              <%= render 'scout_card_detail', obj: scout %>
-            </div>
-        <% end %>
+        <div id="collapseTwo<%= scout.id %>" class="collapse in" role="tabpanel" aria-labelledby="headingTwo<%= scout.id %>">
+          <%= render 'scout_card_detail', obj: scout %>
+        </div>
       </div>
   <% end %>
 </div>

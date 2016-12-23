@@ -44,3 +44,8 @@ div.register-page {
 .progress-bar-dkblue {
   @include progress-bar-variant($progress-bar-dkblue-bg);
 }
+
+.error {
+  color: $color-secondary-1-2 !important;
+}
+

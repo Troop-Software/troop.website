@@ -22,7 +22,7 @@
                 <td><%= admin_file_upload.user.username %></td>
                 <td><%= admin_file_upload.file.url %></td>
                 <td class="text-right">
-                  <%= link_to 'Destroy', admin_file_upload, method: :delete, data: {confirm: 'Are you sure?'} %>
+                  <%= link_to 'Destroy', admin_file_upload, method: :delete, data: {confirm: 'Are you sure you wish to delete this file?}'} %>
                 </td>
               </tr>
           <% end %>

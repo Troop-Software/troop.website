@@ -1,7 +1,7 @@
 <%= content_for(:title, 'Categories') %>
-<% if current_user.role? :leader_full%>
+<% if (current_user.role? :leader_full)%>
     <div class="text-right">
-      <%= link_to 'Create New Category', new_category_path, class: 'btn btn-warning ' %>
+      <%= link_to 'Create New Category', new_category_path, remote: true, class: 'btn btn-warning ' %>
     </div>
 <% end %>
 <div class="row">
@@ -9,12 +9,12 @@
       <div class="col-sm-6">
         <div class="card card-plain">
           <div class="card-header" data-background-color="dkblue">
-            <h4 class="card-title"><%= category.name %>
+            <h4 class="card-title"><span id="category_name_<%= category.id %>"><%= category.name %></span>
               <% if current_user.role? :leader_full%>
               <span class="pull-right">
-                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_category_path(category) %>
+                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_category_path(category), remote: true %>
                 <%= link_to "<i class='material-icons'>delete</i>".html_safe, category,
-                            method: :delete, data: {confirm: 'Are you sure?'} %>
+                            method: :delete, data: {confirm: "Are you sure you wish to delete #{category.name}?"} %>
                 </span>
               <% end %>
             </h4>

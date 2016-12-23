@@ -16,7 +16,7 @@
               <span class="pull-right">
                 <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_patrol_path(patrol) %>
                 <%= link_to "<i class='material-icons'>delete</i>".html_safe, patrol,
-                            method: :delete, data: {confirm: 'Are you sure?'} %>
+                            method: :delete, data: {confirm: "Are you sure you wish to delete the #{patrol.name} patrol?"} %>
                 </span>
               <% end %>
             </h4>
