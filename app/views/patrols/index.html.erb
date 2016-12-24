@@ -28,7 +28,7 @@
               <tr>
                 <th>Scout</th>
                 <th>Rank</th>
-                <th>Position</th>
+                <th>Position(s)</th>
               </tr>
               </thead>
               <tbody>
@@ -36,7 +36,7 @@
                     <tr>
                       <td><%= link_to scout.name, scout %></td>
                       <td><%= scout.rank.name %></td>
-                      <td><%= scout.position.name %></td>
+                      <td><%= active_positions(scout) %></td>
                     </tr>
               <% end %>
               </table>

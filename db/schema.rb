@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219055027) do
+ActiveRecord::Schema.define(version: 20161223212120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,18 @@ ActiveRecord::Schema.define(version: 20161219055027) do
     t.date     "completed"
   end
 
+  create_table "scout_positions", force: :cascade do |t|
+    t.integer  "scout_id"
+    t.integer  "position_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["position_id"], name: "index_scout_positions_on_position_id", using: :btree
+    t.index ["scout_id", "position_id", "start_date"], name: "unique_entry", unique: true, using: :btree
+    t.index ["scout_id"], name: "index_scout_positions_on_scout_id", using: :btree
+  end
+
   create_table "scout_rank_histories", force: :cascade do |t|
     t.integer  "scout_id"
     t.integer  "rank_id"
@@ -173,17 +185,15 @@ ActiveRecord::Schema.define(version: 20161219055027) do
     t.integer  "grade"
     t.date     "birthdate"
     t.integer  "patrol_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "rank_id"
-    t.integer  "position_id"
     t.string   "email"
     t.string   "phone"
     t.date     "joined"
     t.integer  "bsa_id"
-    t.boolean  "active",      default: true
+    t.boolean  "active",     default: true
     t.index ["patrol_id"], name: "index_scouts_on_patrol_id", using: :btree
-    t.index ["position_id"], name: "index_scouts_on_position_id", using: :btree
     t.index ["rank_id"], name: "index_scouts_on_rank_id", using: :btree
   end
 
@@ -220,5 +230,7 @@ ActiveRecord::Schema.define(version: 20161219055027) do
   add_foreign_key "assignments", "users"
   add_foreign_key "relationships", "scouts"
   add_foreign_key "relationships", "users"
+  add_foreign_key "scout_positions", "positions"
+  add_foreign_key "scout_positions", "scouts"
   add_foreign_key "scouts", "patrols"
 end
