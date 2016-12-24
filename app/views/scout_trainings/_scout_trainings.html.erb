@@ -1,0 +1,25 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header" data-background-color="dkblue">
+      <h4>Training <span class="label label-info"><%= scout_trainings.count%></span></h4>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped ">
+        <thead>
+        <tr>
+          <th>Course</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% scout_trainings.each do |scout_training| %>
+            <tr>
+              <td class="text-info"><%= scout_training.youth_training.name%></td>
+              <td><%= date_for_display(scout_training.completed_date) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ class ScoutsController < ApplicationController
 
   helper_method :scout_activities
   helper_method :scout_positions_held
+  helper_method :scout_trainings
 
   def scout_activities
     ScoutEvent.where(scout_id: params[:id]).joins(:event).order('events.start DESC')
@@ -14,6 +15,9 @@ class ScoutsController < ApplicationController
     ScoutPosition.where(scout_id: params[:id])
   end
 
+  def scout_trainings
+    ScoutTraining.where(scout_id: params[:id])
+  end
   # GET /scouts
   # GET /scouts.json
   def index

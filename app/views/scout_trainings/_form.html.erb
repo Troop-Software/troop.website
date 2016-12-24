@@ -37,3 +37,18 @@
       </div>
     </div>
 <% end %>
+<script>
+    $(document).ready(function () {
+        $("#scout_training").validate({
+            rules: {
+                "scout_training[scout_id]": {required: true},
+                "scout_training[youth_training_id]": {required: true},
+                "scout_training[completed_date]": {required: true}
+            },
+            errorPlacement: function (error, element) {
+                $(element).parent('div').parent('div').addClass('has-error');
+                $(element).after(error);
+            }
+        });
+    });
+</script>

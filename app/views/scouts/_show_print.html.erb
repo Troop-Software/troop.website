@@ -101,6 +101,12 @@
     <div class="row">&nbsp;</div>
     <!------------- Training --------------->
     <div class="row bold">Training:</div>
+    <% scout_trainings.each do |scout_training| %>
+        <div class="row">
+          <div class="col-xs-9"><%= scout_training.youth_training.name%></div>
+          <div class="col-xs-3"> <%= date_for_display(scout_training.completed_date) %></div>
+        </div>
+    <% end %>
 
 
     <div class="row">&nbsp;</div>

@@ -1,6 +1,6 @@
 <%= content_for(:title, 'Youth Training') %>
 
-<% if current_user.role? :admin %>
+<% if current_user.role? :leader %>
     <div class="text-right">
       <%= link_to 'Log Training', new_scout_training_path, class: 'btn btn-warning ' %>
     </div>
