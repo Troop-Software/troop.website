@@ -16,6 +16,8 @@ class Scout < ApplicationRecord
   has_many :users, through: :relationships
   has_many :scout_positions
   has_many :positions, through: :scout_positions
+  has_many :youth_trainings
+  has_many :scout_trainings, through: :youth_trainings
 
 
   after_create :establish_scout_rank_history
