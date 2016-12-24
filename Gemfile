@@ -34,6 +34,7 @@ gem 'aws-sdk', '~> 2.3'
 gem 'delayed_job_active_record'
 gem 'storext'
 gem 'active_record_upsert'
+gem 'newrelic_rpm'
 gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
