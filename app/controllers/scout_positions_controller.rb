@@ -1,5 +1,7 @@
 class ScoutPositionsController < ApplicationController
   before_action :set_scout_position, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
   # GET /scout_positions
   # GET /scout_positions.json
