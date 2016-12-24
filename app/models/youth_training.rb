@@ -1,0 +1,2 @@
+class YouthTraining < ApplicationRecord
+end
