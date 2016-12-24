@@ -4,9 +4,14 @@ class ScoutsController < ApplicationController
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
   helper_method :scout_activities
+  helper_method :scout_positions_held
 
   def scout_activities
     ScoutEvent.where(scout_id: params[:id]).joins(:event).order('events.start DESC')
+  end
+
+  def scout_positions_held
+    ScoutPosition.where(scout_id: params[:id])
   end
 
   # GET /scouts
