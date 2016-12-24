@@ -48,8 +48,9 @@
               <td><%= date_for_display(obj.birthdate) %></td>
             </tr>
             <tr>
-              <td class="text-primary bold">Position:</td>
-              <td><%= obj.position.name %></td>
+
+              <td class="text-primary bold">Position(s):</td>
+              <td><%= active_positions(obj) %></td>
               <td class="text-primary bold">BSA ID:</td>
               <td><%= obj.bsa_id %></td>
               <td class="text-primary bold">Joined:</td>

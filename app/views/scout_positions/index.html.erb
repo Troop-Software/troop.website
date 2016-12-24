@@ -1,0 +1,34 @@
+<%= content_for(:title, 'Scouts by Position') %>
+
+<% if current_user.role? :admin %>
+    <div class="text-right">
+      <%= link_to 'Assign Scout to Position', new_scout_position_path, class: 'btn btn-warning ' %>
+    </div>
+<% end %>
+<div class="row">
+  <% @scout_positions.group_by(&:position).each do |position, scout_positions| %>
+      <% next if position.name == 'None' %>
+      <div class="card col-sm-8 col-sm-offset-2">
+        <div class="card-header card-header-icon" data-background-color="dkblue">
+          <img src="<%= image_url("positions/#{position.name.downcase}.jpg") %>" class="img-card-rank">
+        </div>
+        <h3 class="card-stats"> <%= position.name %></h3>
+        <div class="card-content">
+          <table class="table table-responsive">
+            <% scout_positions.each do |scout_position| %>
+                <% next unless scout_position.current_position? %>
+                <tr>
+                  <td><%= link_to scout_position.scout.name, scout_position.scout %></td>
+                  <% if position.name == 'Patrol Leader' %>
+                      <td><%= scout_position.scout.patrol.name %></td>
+                  <% end %>
+                  <td class="pull-right"><%= (Date.today - scout_position.start_date).to_i %> Days</td>
+                  <td class="pull-right"><%= date_for_display(scout_position.start_date) %></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+  <% end %>
+  <br>
+</div>

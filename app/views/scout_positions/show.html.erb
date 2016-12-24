@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Scout:</strong>
+  <%= @scout_position.scout.name %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @scout_position.position.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= date_for_display(@scout_position.start_date) %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= date_for_display(@scout_position.end_date) %>
+</p>
+
+<p>
+  <strong>current</strong>
+  <%= @scout_position.current_position? %>
+</p>
+<%= link_to 'Edit', edit_scout_position_path(@scout_position) %> |
+<%= link_to 'Back', scout_positions_path %>

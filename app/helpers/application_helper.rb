@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def active_positions(scout)
+    positions = []
+    scout.scout_positions.each do |scout_position|
+      positions << scout_position.position.name if scout_position.current_position?
+    end
+    positions.join(', ')
+  end
+
   def gravatar_for(user, options = {size: 80})
     if user.class == String
       gravatar_id = Digest::MD5::hexdigest(user.downcase)
@@ -20,6 +28,11 @@ module ApplicationHelper
     content_tag(:li, :class => class_name) do
       link_to link_text, link_path
     end
+  end
+
+  def days_between(start_date, end_date)
+    end_date = Date.today if end_date.nil?
+    (end_date - start_date).to_i
   end
 
   def date_for_display(date)

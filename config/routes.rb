@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
 
   authenticated :user do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
   resources :scout_requirements
+  resources :scout_positions
   resources :positions
   resources :ranks
   resources :patrols
@@ -34,7 +36,6 @@ Rails.application.routes.draw do
       get 'check_category'
     end
   end
-
   resources :scout_rank_histories
   resources :scout_merit_badges
   resources :scout_events

@@ -16,7 +16,6 @@ ranks =['Just Joined', 'Scout', 'Tenderfoot', 'Second Class', 'First Class', 'St
                   birthdate: Faker::Date.between(18.years.ago, 11.years.ago),
                   patrol_id: rand(1..patrol_names.count),
                   rank_id: rand(1..ranks.count),
-                  position_id: rand(1..positions.count),
                   email: Faker::Internet.email,
                   phone: '1111111111',
                   joined: Date.today,

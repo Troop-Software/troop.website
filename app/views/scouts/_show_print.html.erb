@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       <div class="col-xs-1 bold">Position:</div>
-      <div class="col-xs-4"><%= @scout.position.name %></div>
+      <div class="col-xs-4"><%= active_positions(@scout) %></div>
       <div class="col-xs-1 col-xs-offset-1 bold">Joined:</div>
       <div class="col-xs-2"><%= date_for_display(@scout.joined) %></div>
       <div class="col-xs-1 bold">ID:</div>
@@ -83,13 +83,27 @@
 
       <% end %>
     </div>
+
+    <!------------- Activity Totals -------------->
+
+    <!------------- Awards --------------->
+    <!------------- Training --------------->
+
+
+    <div class="row">&nbsp;</div>
+    <!------------- Leadership --------------->
+    <div class="row bold">Leadership Positions Held:</div>
+    <% @scout_positions = ScoutPosition.where(scout_id: @scout.id)
+       @scout_positions.each do |scout_position| %>
+        <div class="row">
+          <div class="col-xs-3"><%= scout_position.position.name %></div>
+          <div class="col-xs-4">from: <%= date_for_display(scout_position.start_date) %>
+            to: <%= date_for_display(scout_position.end_date) %></div>
+          <div class="col-xs-3"><%= days_between(scout_position.start_date, scout_position.end_date) %> Days</div>
+        </div>
+    <% end %>
+
+
+
   </div>
 </div>
-<!------------- Activity Totals ---------------!>
-
-<!------------- Awards ---------------!>
-<!------------- Training ---------------!>
-<!------------- Leadership ---------------!>
-
-
-
