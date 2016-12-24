@@ -2,6 +2,7 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  */
+@import "sweetalert2";
 @import "material-dashboard";
 @import 'bootstrap-sprockets';
 @import "bootstrap";
@@ -11,6 +12,7 @@
 @import "hover-effects/push";
 @import "hover-effects/push";
 @import "hover-effects/pulse-shrink";
+
 
 
 /* stuff below here needs a home */
@@ -44,7 +46,7 @@
   font-weight: bold;
 }
 
-hr {
+.fancy hr {
   height: 30px;
   border-style: solid;
   border-color: #8c8b8b;
@@ -52,7 +54,7 @@ hr {
   border-radius: 20px;
 }
 
-hr:before {
+.fancy hr:before {
   display: block;
   content: "";
   height: 30px;

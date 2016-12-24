@@ -3,53 +3,49 @@
     <% flash.each do |name, msg|
       case name
         when 'danger', 'alert' %>
-            <div class="alert text-danger">
-              <div class="container-fluid">
-                <div class="alert-icon">
-                  <i class="material-icons">error_outline</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                 <%= msg %>
-              </div>
-            </div>
+            <script>
+                swal({
+                    title: "Bye Bye!",
+                    text: "<%= msg %>",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                    type: "success",
+                    timer: 3000
+                });
+            </script>
         <% when 'success', 'notice' %>
-            <div class="alert text-success">
-              <div class="container-fluid">
-                <div class="alert-icon">
-                  <i class="material-icons">check</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <%= msg %>
-              </div>
-            </div>
+            <script>
+                swal({
+                    title: "Good job!",
+                    text: "<%= msg %>",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                    type: "success",
+                    timer: 3000
+                });
+            </script>
         <% when 'warning' %>
-            <div class="alert alert-warning">
-              <div class="container-fluid">
-                <div class="alert-icon">
-                  <i class="material-icons">warning</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <b>Warning Alert:</b> <%= msg %>
-              </div>
-            </div>
+            <script>
+                swal({
+                    title: "Be Careful!",
+                    text: "<%= msg %>",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-warning",
+                    type: "warning",
+                    timer: 3000
+                });
+            </script>
         <% when 'info' %>
-            <div class="alert alert-info">
-              <div class="container-fluid">
-                <div class="alert-icon">
-                  <i class="material-icons">info_outline</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <b>Info alert:</b> <%= msg %>
-              </div>
-            </div>
+            <script>
+                swal({
+                    title: "Hey There!",
+                    text: "<%= msg %>",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-info",
+                    type: "info",
+                    timer: 3000
+                });
+            </script>
         <% end %>
     <% end %>
   </div>

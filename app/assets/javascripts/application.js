@@ -20,6 +20,7 @@
 //= require bootstrap-datetimepicker
 //= require fullcalendar
 //= require material-dashboard
+//= require sweetalert2.min
 //= require_tree .
 
 $(document).ready(function () {
