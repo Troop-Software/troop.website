@@ -1,0 +1,1 @@
+json.array! @scout_trainings, partial: 'scout_trainings/scout_training', as: :scout_training

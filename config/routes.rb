@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :scout_trainings
   devise_for :users
 
   authenticated :user do
