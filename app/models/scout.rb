@@ -161,17 +161,17 @@ class Scout < ApplicationRecord
 
     CSV.new(open(file), headers: true).each do |row|
       name = scout_name(row['First Name'], row['Middle Name'], row['Last Name'], row['Suffix'])
-      scout_record = Scout.find_by_name(name)
-      scout_record = Scout.new if scout_record.nil?
-      scout_record.name = name
-      scout_record.grade = row['Grade']
-      scout_record.birthdate = Date.strptime(row['Date of Birth'], '%m/%d/%y')
-      scout_record.rank_id = Rank.find_by_name(rank(row['Current Rank'])).id
-      scout_record.email = row['Email #1']
-      scout_record.phone = row['Home Phone']
-      scout_record.bsa_id = row['BSA ID#']
-      scout_record.patrol = Patrol.find(patrol_id(row['Patrol']).id)
-      scout_record.save
+      scout_record = Scout.find_or_initialize_by(name: name)
+      scout_record.update(name: name,
+                          grade: row['Grade'],
+                          birthdate: Date.strptime(row['Date of Birth'], '%m/%d/%y'),
+                          rank_id: Rank.find_by_name(rank(row['Current Rank'])).id,
+                          email: row['Email #1'],
+                          phone: row['Home Phone'],
+                          bsa_id: row['BSA ID#'],
+                          patrol: Patrol.find(patrol_id(row['Patrol']).id)
+      )
+
       #leader Positions
     end
   end
