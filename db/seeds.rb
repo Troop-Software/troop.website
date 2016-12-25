@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 patrol_names =['unassigned','Blood Hounds', 'Screaming Eagles', 'Black Hawks', 'Morning', 'Wolverines']
-positions = %w[none Patrol\ Leader Assistant\ senior\ patrol\ leader senior\ patrol\ leader troop\ guide Order\ of\ the\ Arrow\ troop\ representative den\ chief scribe librarian historian quartermaster bugler junior\ assistant\ Scoutmaster chaplain\ aide instructor troop\ webmaster Outdoor\ Ethics\ Guide ]
 ranks =['Just Joined', 'Scout', 'Tenderfoot', 'Second Class', 'First Class', 'Star', 'Life', 'Eagle']
 
 

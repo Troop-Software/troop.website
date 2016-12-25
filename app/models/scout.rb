@@ -171,9 +171,36 @@ class Scout < ApplicationRecord
                           bsa_id: row['BSA ID#'],
                           patrol: Patrol.find(patrol_id(row['Patrol']).id)
       )
-
-      #leader Positions
+      # Import Scout's Leadership Positions
+      unless row['Leadership Pos #1'].nil?
+        ScoutPosition.find_or_create_by(scout_id: Scout.find_by_name(name).id,
+                                        position_id: Position.find_by_name(convert_position(row['Leadership Pos #1'])).id,
+                                        start_date: Date.strptime(row['Leadership Pos Date #1'], '%m/%d/%y')
+        )
+        unless row['Leadership Pos #2'].nil?
+          ScoutPosition.find_or_create_by(scout_id: Scout.find_by_name(name).id,
+                                          position_id: Position.find_by_name(convert_position(row['Leadership Pos #2'])).id,
+                                          start_date: Date.strptime(row['Leadership Pos Date #2'], '%m/%d/%y')
+          )
+        end
+      end
     end
+  end
+
+  def self.convert_position(position_name)
+    case position_name
+      when 'Leave No Trace Tnr'
+        position_name = 'Outdoor Ethics Guide'
+      when 'Asst Patrol Ldr'
+        position_name = 'Asst Patrol Leader'
+      when 'Asst SPL'
+        position_name = 'Assistant Senior Patrol Leader'
+      when 'Senior Patrol Ldr'
+        position_name = 'Senior Patrol Leader'
+      when 'O/A Rep'
+        position_name = 'Order Of The Arrow Troop Representative'
+    end
+    position_name
   end
 
   def self.rank(rank_name)

@@ -5,7 +5,7 @@ class Admin::FileUploadsController < AdminController
 
     case params[:name]
       when /Scout/
-      # Scout.delay.import_scout(params[:id])
+       #Scout.import_scout(params[:id])
        ImportScoutJob.perform_later params[:id]
        redirect_to root_url, notice: "Imported File #{params[:name]}"
       else
