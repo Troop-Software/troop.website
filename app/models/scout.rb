@@ -43,40 +43,40 @@ class Scout < ApplicationRecord
     end
     total_requirements_needed = requirements_for_rank.count.to_f
 
-   case self.rank_id
-     when 6,7,8
-      eagle_mb_earned = 0
-      elect_mb_earned = 0
-      eagle_mb_required = eagle_merit_badges_required(self.rank_id)
-      elect_mb_required = elective_merit_badges_required(self.rank_id)
-      total_requirements_needed += eagle_mb_required + elect_mb_required
-      earned_mbs = ScoutMeritBadge.where(scout_id: self.id)
-      earned_eagle_mb= {}
-      earned_mb = {}
-      earned_mbs.each do |smb|
-        if (earned_eagle_mb.key?('Swimming') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Cycling')) ||
-            (earned_eagle_mb.key?('Hiking') && (smb.merit_badge.name == 'Swimming' || smb.merit_badge.name == 'Cycling')) ||
-            (earned_eagle_mb.key?('Cycling') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Swimming')) ||
-            (earned_eagle_mb.key?('Emergency Preparedness') && smb.merit_badge.name == 'Life Saving') ||
-            (earned_eagle_mb.key?('Life Saving') && smb.merit_badge.name == 'Emergency Preparedness') ||
-            (earned_eagle_mb.key?('Environmental Science') && smb.merit_badge.name == 'Sustainability') ||
-            (earned_eagle_mb.key?('Sustainability') && smb.merit_badge.name == 'Environmental Science')
+    case self.rank_id
+      when 6, 7, 8
+        eagle_mb_earned = 0
+        elect_mb_earned = 0
+        eagle_mb_required = eagle_merit_badges_required(self.rank_id)
+        elect_mb_required = elective_merit_badges_required(self.rank_id)
+        total_requirements_needed += eagle_mb_required + elect_mb_required
+        earned_mbs = ScoutMeritBadge.where(scout_id: self.id)
+        earned_eagle_mb= {}
+        earned_mb = {}
+        earned_mbs.each do |smb|
+          if (earned_eagle_mb.key?('Swimming') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Cycling')) ||
+              (earned_eagle_mb.key?('Hiking') && (smb.merit_badge.name == 'Swimming' || smb.merit_badge.name == 'Cycling')) ||
+              (earned_eagle_mb.key?('Cycling') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Swimming')) ||
+              (earned_eagle_mb.key?('Emergency Preparedness') && smb.merit_badge.name == 'Life Saving') ||
+              (earned_eagle_mb.key?('Life Saving') && smb.merit_badge.name == 'Emergency Preparedness') ||
+              (earned_eagle_mb.key?('Environmental Science') && smb.merit_badge.name == 'Sustainability') ||
+              (earned_eagle_mb.key?('Sustainability') && smb.merit_badge.name == 'Environmental Science')
 
-          earned_mb[smb.merit_badge.name] = smb.completed
-        else
-          earned_eagle_mb[smb.merit_badge.name] = smb.completed if smb.merit_badge.eagle_required
+            earned_mb[smb.merit_badge.name] = smb.completed
+          else
+            earned_eagle_mb[smb.merit_badge.name] = smb.completed if smb.merit_badge.eagle_required
+          end
+          earned_mb[smb.merit_badge.name] = smb.completed unless smb.merit_badge.eagle_required
         end
-        earned_mb[smb.merit_badge.name] = smb.completed unless smb.merit_badge.eagle_required
-      end
 
         eagle_mb_earned = earned_eagle_mb.count
         elect_mb_earned = earned_mb.count
 
-      eagle_mb_earned = eagle_mb_required if eagle_mb_earned > eagle_mb_required
-      elect_mb_earned = elect_mb_required if elect_mb_earned > elect_mb_required
-      completed_requirement_count += eagle_mb_earned + elect_mb_earned
-      # Do not count requirement for merit badges for progress bad
-      total_requirements_needed -= 1
+        eagle_mb_earned = eagle_mb_required if eagle_mb_earned > eagle_mb_required
+        elect_mb_earned = elect_mb_required if elect_mb_earned > elect_mb_required
+        completed_requirement_count += eagle_mb_earned + elect_mb_earned
+        # Do not count requirement for merit badges for progress bad
+        total_requirements_needed -= 1
     end
 
     puts "~="*79
@@ -152,5 +152,57 @@ class Scout < ApplicationRecord
           csv << ["#{report} not found"]
       end
     end
+  end
+
+  require 'net/http'
+
+  def self.import_scout(file_id)
+    file ='https:' + Admin::FileUpload.find(file_id).file.url
+
+    CSV.new(open(file), headers: true).each do |row|
+      name = scout_name(row['First Name'], row['Middle Name'], row['Last Name'], row['Suffix'])
+      scout_record = Scout.find_by_name(name)
+      scout_record = Scout.new if scout_record.nil?
+      scout_record.name = name
+      scout_record.grade = row['Grade']
+      scout_record.birthdate = Date.strptime(row['Date of Birth'], '%m/%d/%y')
+      scout_record.rank_id = Rank.find_by_name(rank(row['Current Rank'])).id
+      scout_record.email = row['Email #1']
+      scout_record.phone = row['Home Phone']
+      scout_record.bsa_id = row['BSA ID#']
+      scout_record.patrol = Patrol.find(patrol_id(row['Patrol']).id)
+      scout_record.save
+      #leader Positions
+    end
+  end
+
+  def self.rank(rank_name)
+    case rank_name
+      when nil
+        return 'Just Joined'
+      when '1st Class'
+        return 'First Class'
+      when '2nd Class'
+        return 'Second Class'
+      else
+        return rank_name
+    end
+  end
+
+  def self.patrol_id(patrol_name)
+    patrol = Patrol.find_by_name(patrol_name)
+    if patrol.nil?
+      patrol = Patrol.create(name: patrol_name)
+    end
+    return patrol
+  end
+
+  def self.scout_name(first, middle, last, suffix)
+    name = ''
+    name += first unless first.nil?
+    name += " #{middle}" unless middle.nil?
+    name += " #{last}" unless last.nil?
+    name += " #{suffix}" unless suffix.nil?
+    return name
   end
 end

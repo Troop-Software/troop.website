@@ -39,4 +39,5 @@ class ApplicationController < ActionController::Base
   def require_admin_user
     deny_access if !current_user.role? :admin
   end
+
 end

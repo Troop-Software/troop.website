@@ -78,15 +78,6 @@
     </div>
 
     <div class="form-group row">
-      <div class="control-label col-sm-2">
-        <%= f.label :position_id %>
-      </div>
-      <div class="col-sm-6">
-        <%= f.select :position_id, options_for_select(Position.all.map { |pn| [pn.name, pn.id] }, scout.position_id), {}, {class: 'form-control'} %>
-      </div>
-    </div>
-
-    <div class="form-group row">
       <div class="togglebutton col-sm-6 col-sm-offset-4">
         <label>
           <%= f.check_box :active %>

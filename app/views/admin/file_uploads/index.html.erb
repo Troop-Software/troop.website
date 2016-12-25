@@ -20,9 +20,10 @@
           <% @admin_file_uploads.each do |admin_file_upload| %>
               <tr>
                 <td><%= admin_file_upload.user.username %></td>
-                <td><%= admin_file_upload.file.url %></td>
+                <td><%= admin_file_upload.file_file_name %></td>
                 <td class="text-right">
                   <%= link_to 'Destroy', admin_file_upload, method: :delete, data: {confirm: 'Are you sure you wish to delete this file?}'} %>
+                  <%= link_to 'Import', import_file_admin_file_uploads_path(id: admin_file_upload.id, name: admin_file_upload.file_file_name) %>
                 </td>
               </tr>
           <% end %>

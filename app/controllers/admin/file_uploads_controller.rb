@@ -1,6 +1,17 @@
 class Admin::FileUploadsController < AdminController
   before_action :set_admin_file_upload, only: [:destroy]
 
+  def import_file
+
+    case params[:name]
+      when /Scout/
+       Scout.delay.import_scout(params[:id])
+       redirect_to root_url, notice: "Imported File #{params[:name]}"
+      else
+        redirect_to root_url, alert: "Unable to import #{params[:name]}"
+    end
+  end
+
   # GET /admin/file_uploads
   # GET /admin/file_uploads.json
   def index
@@ -41,13 +52,13 @@ class Admin::FileUploadsController < AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_file_upload
-      @admin_file_upload = Admin::FileUpload.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_file_upload
+    @admin_file_upload = Admin::FileUpload.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_file_upload_params
-      params.require(:admin_file_upload).permit(:user_id, :file)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def admin_file_upload_params
+    params.require(:admin_file_upload).permit(:user_id, :file)
+  end
 end

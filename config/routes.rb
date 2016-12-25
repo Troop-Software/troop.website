@@ -46,7 +46,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :file_uploads, except: [:edit, :show]
+    resources :file_uploads, except: [:edit, :show] do
+      collection do
+        get 'import_file'
+      end
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
