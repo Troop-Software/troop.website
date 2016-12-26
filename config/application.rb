@@ -14,5 +14,6 @@ module TroopWebsite
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Eastern Time (US & Canada)'
     config.serve_static_assets = true
+    config.active_job.queue_adapter = :delayed_job
   end
 end
