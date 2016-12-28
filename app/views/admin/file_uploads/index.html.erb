@@ -22,8 +22,10 @@
                 <td><%= admin_file_upload.user.username %></td>
                 <td><%= admin_file_upload.file_file_name %></td>
                 <td class="text-right">
-                  <%= link_to 'Destroy', admin_file_upload, method: :delete, data: {confirm: 'Are you sure you wish to delete this file?}'} %>
-                  <%= link_to 'Import', import_file_admin_file_uploads_path(id: admin_file_upload.id, name: admin_file_upload.file_file_name) %>
+                  <%= link_to 'Delete', admin_file_upload, method: :delete,
+                              class: 'btn btn-danger btn-sm',
+                              data: {confirm: 'Are you sure you wish to delete this file?}'} %>
+                  <%= link_to 'Import', import_file_admin_file_uploads_path(id: admin_file_upload.id, name: admin_file_upload.file_file_name), class: 'btn btn-warning btn-sm btn-round' %>
                 </td>
               </tr>
           <% end %>
