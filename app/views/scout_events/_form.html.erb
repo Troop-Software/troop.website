@@ -18,7 +18,7 @@
         <%= f.label :event_id %>
       </div>
       <div class="col-sm-8">
-        <%= f.select :event_id, options_for_select(Event.events_in_60_day_window.map { |e| ["#{e.title} - #{datetime_for_display(e.start)}", e.id] },
+        <%= f.select :event_id, options_for_select(Event.events_in_year_window.map { |e| ["#{e.title} - #{datetime_for_display(e.start)}", e.id] },
                                                    @scout_event.event_id),
                      {:include_blank => 'Please select a event'}, {:class => 'form-control'} %>
       </div>

@@ -4,14 +4,16 @@ class Admin::FileUploadsController < AdminController
   def import_file
 
     case params[:name]
+
+      when /Merit_Badges_Earned\.txt/
+        ImportMeritBadgesJob.perform_later params[:id]
+        redirect_to root_url, notice: "Importing File #{params[:name]}. It will be completed shortly."
+      when /Scout_Individual_Participation_Report\.txt/
+        ImportScoutEventsJob.perform_later params[:id]
+        redirect_to root_url, notice: "Importing File #{params[:name]}. It will be completed shortly."
       when /Scout/
-        #Scout.import_scout(params[:id])
         ImportScoutJob.perform_later params[:id]
         redirect_to root_url, notice: "Imported File #{params[:name]}. It will be completed shortly."
-      when /Merit_Badges_Earned/
-        ImportMeritBadgesJob.perform_later params[:id]
-        #ScoutMeritBadge.import_merit_badges(params[:id])
-        redirect_to root_url, notice: "Importing File #{params[:name]}. It will be completed shortly."
       else
         redirect_to root_url, alert: "Unable to import #{params[:name]}"
     end

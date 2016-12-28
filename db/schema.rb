@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228015548) do
+ActiveRecord::Schema.define(version: 20161228084713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161228015548) do
     t.string   "external_link"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.decimal  "logged_units"
   end
 
   create_table "merit_badges", force: :cascade do |t|

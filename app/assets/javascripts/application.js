@@ -60,12 +60,17 @@ $(document).ready(function () {
                 textColor: 'white'
             },
             {
-                url: '/events?search=campout',
+                url: '/events?search=camping',
                 color: 'green',
                 textColor: 'white'
             },
             {
-                url: '/events?search=outing',
+                url: '/events?search="cabin camping"',
+                color: 'green',
+                textColor: 'white'
+            },
+            {
+                url: '/events?search=hiking',
                 color: 'yellow',
                 textColor: 'black'
             },
