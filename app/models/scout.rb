@@ -160,7 +160,7 @@ class Scout < ApplicationRecord
     file ='https:' + Admin::FileUpload.find(file_id).file.url
 
     CSV.new(open(file), headers: true).each do |row|
-      name = scout_name(row['First Name'], row['Middle Name'], row['Last Name'], row['Suffix'])
+      name = scout_name(row['First Name'], row['Last Name'])
       scout_record = Scout.find_or_initialize_by(name: name)
       scout_record.update(name: name,
                           grade: row['Grade'],
@@ -224,12 +224,12 @@ class Scout < ApplicationRecord
     return patrol
   end
 
-  def self.scout_name(first, middle, last, suffix)
+  def self.scout_name(first, last)
     name = ''
     name += first unless first.nil?
-    name += " #{middle}" unless middle.nil?
+    #name += " #{middle}" unless middle.nil?
     name += " #{last}" unless last.nil?
-    name += " #{suffix}" unless suffix.nil?
+    #name += " #{suffix}" unless suffix.nil?
     return name
   end
 end
