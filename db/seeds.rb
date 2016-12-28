@@ -5,34 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-patrol_names =['unassigned','Blood Hounds', 'Screaming Eagles', 'Black Hawks', 'Morning', 'Wolverines']
-ranks =['Just Joined', 'Scout', 'Tenderfoot', 'Second Class', 'First Class', 'Star', 'Life', 'Eagle']
-
-
-#if Rails.env.development?
-  10.times do |x|
-    Scout.create!(name: Faker::Name.name, grade: rand(5..12),
-                  birthdate: Faker::Date.between(18.years.ago, 11.years.ago),
-                  patrol_id: rand(1..patrol_names.count),
-                  rank_id: rand(1..ranks.count),
-                  email: Faker::Internet.email,
-                  phone: '1111111111',
-                  joined: Date.today,
-                  bsa_id: '123456789'
-    )
-  end
-
-  10.times do |x|
-    User.create!(username: "#{Faker::StarWars.character} #{x}",
-                 email: Faker::Internet.email,
-                 password: '123456')
-
-  end
-  users = User.all
-  users.each do |user|
-    5.times do |x|
-      user.articles.create!(title: Faker::Pokemon.name.truncate(50), description: Faker::Lorem.paragraph(100, false, 8).truncate(1000))
-    end
-  end
-#end
 

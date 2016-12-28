@@ -16,7 +16,7 @@
               <%= f.label :merit_badge_id %>
             </div>
             <div class="col-sm-7">
-              <%= f.select :merit_badge_id, options_for_select(MeritBadge.all.map { |mb| [mb.name, mb.id] },
+              <%= f.select :merit_badge_id, options_for_select(MeritBadge.where(current: true).map { |mb| [mb.name, mb.id] },
                                                                @scout_merit_badge.merit_badge_id), {},
                            class: 'form-control' %>
             </div>

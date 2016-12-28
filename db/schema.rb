@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226105906) do
+ActiveRecord::Schema.define(version: 20161228015548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161226105906) do
     t.string  "name"
     t.boolean "eagle_required"
     t.string  "short_name"
+    t.boolean "current",        default: true
   end
 
   create_table "patrols", force: :cascade do |t|

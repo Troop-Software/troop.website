@@ -44,12 +44,14 @@ class ScoutMeritBadge < ApplicationRecord
       end
       record[:merit_badge].each do |merit_badge|
         #Rails.logger.debug merit_badge[0]
-        mb = MeritBadge.find_by_name(merit_badge[0])
+        merit_badge_clean = merit_badge[0].sub('#','')
+        mb = MeritBadge.find_by_name(merit_badge_clean)
         if mb.nil?
-          mb = MeritBadge.find_by_short_name(merit_badge[0])
+          mb = MeritBadge.find_by_short_name(merit_badge_clean)
           if mb.nil?
-            Delayed::Worker.logger.warn "Merit badge not found: #{merit_badge[0]}"
-            next
+            Delayed::Worker.logger.warn "Merit badge not found: #{merit_badge_clean}, adding as a legacy MB."
+            MeritBadge.create(name: merit_badge_clean , current: false, eagle_required: false)
+            mb = MeritBadge.find_by_name(merit_badge_clean)
           end
         end
         scout_mb_db_record = ScoutMeritBadge.find_or_initialize_by(scout_id: scout.id, merit_badge_id: mb.id )

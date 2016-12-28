@@ -4,7 +4,7 @@ class ScoutMeritBadgesController < ApplicationController
   before_action :require_user_leader_full, only: [:index]
 
   def index
-    @scout_merit_badges = ScoutMeritBadge.search(params[:search])
+    @scout_merit_badges = ScoutMeritBadge.search(params[:search]).where(current: true)
   end
 
   # GET /scout_rank_histories/new
