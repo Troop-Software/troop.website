@@ -1,6 +1,7 @@
 <%= content_for(:title, 'Admin Area - File Uploads') %>
 
 <div class="row">
+  <%= link_to 'Upload New File', new_admin_file_upload_path, class: 'btn btn-primary btn-round col-sm-2 col-sm-offset-10' %>
   <div class="col-md-12">
     <div class="card">
       <div class="card-header card-header-icon" data-background-color="rose">
@@ -36,6 +37,4 @@
   </div>
 </div>
 
-<br>
 
-<%= link_to 'Upload New File', new_admin_file_upload_path %>
