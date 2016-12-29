@@ -131,6 +131,13 @@ $(document).ready(function () {
         }
     });
 
+    $("#compact_view").hide();
+
+    $(".view-toggle").click(function(){
+        $(this).text($(this).text() == 'Compact View' ? 'Expanded View' : 'Compact View');
+        $("#expanded_view, #compact_view").toggle();
+    });
+
     $(".alert").fadeOut(5000);
 
 });

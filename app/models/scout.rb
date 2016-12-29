@@ -79,12 +79,6 @@ class Scout < ApplicationRecord
         total_requirements_needed -= 1
     end
 
-    puts "~="*79
-    puts completed_requirement_count
-    puts total_requirements_needed
-    puts completed_requirement_count / total_requirements_needed
-    puts "~="*79
-
     self.rank_id -= 1
     (completed_requirement_count / total_requirements_needed) * 100
 

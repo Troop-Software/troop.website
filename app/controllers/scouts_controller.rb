@@ -23,6 +23,7 @@ class ScoutsController < ApplicationController
   def index
     @scouts = Scout.search(params[:search]).where(active: true).paginate(page: params[:page], per_page: 8)
     @scouts = Scout.search(params[:search]).paginate(page: params[:page], per_page: 8) if current_user.show_inactive_scouts
+    @scouts_all = Scout.all
 
     respond_to do |format|
       format.html

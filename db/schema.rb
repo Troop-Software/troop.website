@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228084713) do
+ActiveRecord::Schema.define(version: 20161229094902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20161228084713) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.date     "completed_date"
+    t.index ["requirement_id", "scout_id"], name: "index_scout_requirements_on_requirement_id_and_scout_id", using: :btree
   end
 
   create_table "scout_trainings", force: :cascade do |t|
