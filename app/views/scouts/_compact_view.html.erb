@@ -1,0 +1,24 @@
+<div class="col-sm-12">
+  <div class="card">
+    <div class="card-content">
+      <table class="table table-responsive table-striped">
+        <thead>
+        <th>Scout Name</th>
+        <th>Rank</th>
+        <th>Patrol</th>
+        <th>Position</th>
+        </thead>
+        <tbody>
+        <% obj.each do |scout| %>
+            <tr>
+              <td><%= link_to scout.name, scout_path(scout) %></td>
+              <td><%= scout.rank.name %></td>
+              <td><%= scout.patrol.name %></td>
+              <td><%= active_positions(scout) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
