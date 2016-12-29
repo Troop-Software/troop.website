@@ -7,16 +7,20 @@ class Admin::FileUploadsController < AdminController
 
       when /Merit_Badges_Earned\.txt/
         ImportMeritBadgesJob.perform_later params[:id]
-        redirect_to root_url, notice: "Importing File #{params[:name]}. It will be completed shortly."
+
       when /Scout_Individual_Participation_Report\.txt/
         ImportScoutEventsJob.perform_later params[:id]
-        redirect_to root_url, notice: "Importing File #{params[:name]}. It will be completed shortly."
+
+      when /Individual_History_Report\.txt/
+        ImportPositionHistoryJob.perform_later params[:id]
+
       when /Scout/
         ImportScoutJob.perform_later params[:id]
-        redirect_to root_url, notice: "Imported File #{params[:name]}. It will be completed shortly."
+
       else
         redirect_to root_url, alert: "Unable to import #{params[:name]}"
     end
+    redirect_to admin_file_uploads_path, notice: "Importing File #{params[:name]}. It will be completed shortly."
   end
 
   # GET /admin/file_uploads
