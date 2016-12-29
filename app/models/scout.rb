@@ -162,6 +162,7 @@ class Scout < ApplicationRecord
     CSV.new(open(file), headers: true).each do |row|
       name = scout_name(row['First Name'], row['Last Name'])
       scout_record = Scout.find_or_initialize_by(name: name)
+      (row['Joined Unit'].blank?) ? joined_date = '' : joined_date = Date.strptime(row['Joined Unit'], '%m/%d/%y')
       scout_record.update(name: name,
                           grade: row['Grade'],
                           birthdate: Date.strptime(row['Date of Birth'], '%m/%d/%y'),
@@ -169,6 +170,7 @@ class Scout < ApplicationRecord
                           email: row['Email #1'],
                           phone: row['Home Phone'],
                           bsa_id: row['BSA ID#'],
+                          joined: joined_date,
                           patrol: Patrol.find(patrol_id(row['Patrol']).id)
       )
       # Import Scout's Leadership Positions

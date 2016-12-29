@@ -14,7 +14,7 @@ class Admin::FileUploadsController < AdminController
       when /Individual_History_Report\.txt/
         ImportPositionHistoryJob.perform_later params[:id]
 
-      when /Scout/
+      when /Scout\.txt/
         ImportScoutJob.perform_later params[:id]
 
       else
