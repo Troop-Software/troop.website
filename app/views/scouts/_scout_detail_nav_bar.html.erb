@@ -7,20 +7,21 @@
       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
         <% @ranks.each do |rank| %>
             <% unless rank.id == 1 %>
-                <li><a href="#<%= rank.id %>" tabindex="-1" data-toggle="tab"><%= rank.name %></a></li>
+                <li><a href="#<%= rank.id %>" tabindex="-1" data-toggle="tab" onclick='$("#myTabContent").show();$("#view-scout-detail").hide()'><%= rank.name %> </a></li>
             <% end %>
         <% end %>
       </ul>
     </li>
 
-    <li><a href="#merit-badges" data-toggle="tab">Merit Badges</a></li>
-    <li><a href="#activities" data-toggle="tab">Activities</a></li>
-    <li><a href="#positions_held" data-toggle="tab">Positions Held</a></li>
-    <li><a href="#training" data-toggle="tab">Training</a></li>
+    <li><%= link_to 'Merit Badges', scout_merit_badge_path, remote: true %></li>
+    <li><%= link_to 'Activities', scout_event_path, remote: true %></li>
+    <li><%= link_to 'Positions Held', scout_position_path, remote: true %></li>
+    <li><%= link_to 'Training', scout_training_path, remote: true %></li>
 
   </ul>
   <div class="card-content">
     <!-- Render Scout Rank and Requirements -->
+    <div id="view-scout-detail"></div>
     <div id="myTabContent" class="tab-content" style="margin-top: 0;">
       <% @ranks.each do |rank| %>
           <% unless rank.id == 1 %>
@@ -33,24 +34,6 @@
               </div>
           <% end %>
       <% end %>
-      <!-- Render Merit Badge Page -->
-
-      <div class="tab-pane fade in " id="merit-badges">
-        <%= render 'scout_merit_badges/scout_merit_badges' %>
-      </div>
-
-      <div class="tab-pane fade in" id="activities">
-        <%= render 'scout_events/scout_activities' %>
-      </div>
-
-      <div class="tab-pane fade in" id="positions_held">
-        <%= render 'scout_positions/scout_positions' %>
-      </div>
-
-      <div class="tab-pane fade in" id="training">
-        <%= render 'scout_trainings/scout_trainings' %>
-      </div>
-
       </div>
     </div>
   </div>

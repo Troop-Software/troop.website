@@ -1,5 +1,5 @@
 class ScoutTrainingsController < ApplicationController
-  before_action :set_scout_training, only: [:show, :edit, :update, :destroy]
+  before_action :set_scout_training, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
@@ -12,6 +12,10 @@ class ScoutTrainingsController < ApplicationController
   # GET /scout_trainings/1
   # GET /scout_trainings/1.json
   def show
+    @scout_trainings = ScoutTraining.where(scout_id: params[:id])
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 
   # GET /scout_trainings/new

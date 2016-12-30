@@ -1,7 +1,7 @@
 class ScoutEventsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_scout_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_scout_event, only: [ :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
@@ -18,6 +18,10 @@ class ScoutEventsController < ApplicationController
   # GET /scout_events/1
   # GET /scout_events/1.json
   def show
+    @scout_activities = ScoutEvent.where(scout_id: params[:id]).joins(:event).order('events.start DESC')
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 
   # GET /scout_events/new
