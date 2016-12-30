@@ -1,0 +1,17 @@
+report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default: true}
+@scouts.each do |scout|
+  report.start_new_page do
+    values(todays_date: Time.now,
+           scout_name: scout.name,
+           scout_email: scout.email,
+           scout_patrol: scout.patrol.name,
+           scout_phone: scout.phone,
+           scout_position: 'need to add',
+           scout_DOB: scout.birthdate,
+           scout_age: scout.age(scout.birthdate),
+           scout_rank: scout.rank.name,
+           scout_rank_date: 'need to add',
+           scout_joined: scout.joined,
+           scout_BSA: scout.bsa_id)
+  end
+end

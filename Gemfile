@@ -35,6 +35,7 @@ gem 'storext'
 gem 'active_record_upsert'
 gem 'newrelic_rpm'
 gem 'faker'
+gem 'thinreports-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
