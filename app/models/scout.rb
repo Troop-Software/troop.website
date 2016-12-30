@@ -33,6 +33,13 @@ class Scout < ApplicationRecord
   end
 
   def calc_rank_complete
+    if self.rank_completion.blank?
+      recalc_rank_complete
+    end
+    return self.rank_completion
+  end
+
+  def recalc_rank_complete
     self.rank_id += 1
     requirements_for_rank = Requirement.where(rank_id: self.rank_id)
     completed_requirement_count = 0
@@ -80,8 +87,8 @@ class Scout < ApplicationRecord
     end
 
     self.rank_id -= 1
-    (completed_requirement_count / total_requirements_needed) * 100
-
+    self.rank_completion = (completed_requirement_count / total_requirements_needed) * 100
+    self.save
   end
 
   def elective_merit_badges_required(rank_id)
