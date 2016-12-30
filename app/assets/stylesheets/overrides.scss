@@ -25,13 +25,16 @@ a:hover, a:visited, a:link, a:active
   background-color: $color-secondary-1-0;
 }
 
+
 .nav-tabs > li > a:hover{
   background-color: $color-secondary-2-0;
 }
 
-.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus , .nav-tabs > li.current > a{
   background-color: $color-complement-0;
 }
+
+
 
 div.login-page {
   background: image-url('login.jpeg') no-repeat center center fixed;

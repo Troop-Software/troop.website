@@ -3,14 +3,14 @@
   <% if current_user.role? :leader %>
       <%= link_to 'Create New Scout', new_scout_path, class: 'btn btn-warning btn-round btn-xs' %>
   <% end %>
-  <%= link_to 'Compact View', '#', class: 'btn btn-primary btn-xs btn-round view-toggle' %>
+  <%= link_to 'Switch View', '#', class: 'btn btn-primary btn-xs btn-round view-toggle' %>
 </div>
-<div id="compact_view">
+<div id="compact_view" style="display: none;">
   <div class="tw_pagination"><%= will_paginate %></div>
   <%= render 'scouts/compact_view', obj: @scouts %>
   <div class="tw_pagination"><%= will_paginate %></div>
 </div>
-<div id="expanded_view">
+<div id="expanded_view" >
   <%= render 'scout', obj: @scouts %>
   <div class="tw_pagination"><%= will_paginate %></div>
 </div>
