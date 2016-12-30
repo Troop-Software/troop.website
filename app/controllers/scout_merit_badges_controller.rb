@@ -18,6 +18,7 @@ class ScoutMeritBadgesController < ApplicationController
   # POST /scout_rank_histories
   def create
     @scout_merit_badge = ScoutMeritBadge.new(scout_merit_badge_params)
+    @scout_merit_badge.scout.recalc_rank_complete
 
     respond_to do |format|
       if @scout_merit_badge.save

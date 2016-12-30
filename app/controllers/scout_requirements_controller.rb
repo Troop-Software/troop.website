@@ -27,6 +27,7 @@ class ScoutRequirementsController < ApplicationController
   # POST /scout_requirements.json
   def create
     @scout_requirement = ScoutRequirement.new(scout_requirement_params)
+    @scout_requirement.scout.recalc_rank_complete
     mark_rank_completed_after_bor
 
     respond_to do |format|
@@ -45,6 +46,7 @@ class ScoutRequirementsController < ApplicationController
   # PATCH/PUT /scout_requirements/1
   # PATCH/PUT /scout_requirements/1.json
   def update
+    @scout_requirement.scout.recalc_rank_complete
     respond_to do |format|
       if @scout_requirement.update(scout_requirement_params)
         format.html { redirect_to @scout_requirement, notice: 'Scout requirement was successfully updated.' }

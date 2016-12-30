@@ -2,6 +2,8 @@ class ScoutMeritBadge < ApplicationRecord
   belongs_to :scout
   belongs_to :merit_badge
 
+  accepts_nested_attributes_for :scout
+
   def self.import_merit_badges(file_id)
     file ='https:' + Admin::FileUpload.find(file_id).file.url
     file = File.new(open(file, 'r'))

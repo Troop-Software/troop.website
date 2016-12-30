@@ -4,5 +4,5 @@ class ScoutRequirement < ActiveRecord::Base
   belongs_to :requirement
 
   accepts_nested_attributes_for :requirement
-
+  accepts_nested_attributes_for :scout
 end
