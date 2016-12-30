@@ -1,7 +1,8 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header" data-background-color="dkblue">
-      <h4>Activities Attended <span class="label label-info"><%= scout_activities.count%></span></h4>
+
+      <h4>Activities Attended <span class="label label-info"><%= @scout_activities.count%></span></h4>
     </div>
     <div class="card-content">
       <table class="table table-responsive table-striped ">
@@ -15,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-        <% scout_activities.each do |scout_activity| %>
+        <% @scout_activities.each do |scout_activity| %>
             <tr>
               <td class="text-warning"><%= scout_activity.event.category.titlecase %></td>
               <td><%= scout_activity.event.title %></td>

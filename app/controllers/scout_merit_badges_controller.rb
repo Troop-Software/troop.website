@@ -1,5 +1,5 @@
 class ScoutMeritBadgesController < ApplicationController
-  before_action :set_scout_merit_badge, only: [:show, :edit, :update]
+  before_action :set_scout_merit_badge, only: [:edit, :update]
   before_action :authenticate_user!
   before_action :require_user_leader_full, only: [:index]
 
@@ -13,6 +13,10 @@ class ScoutMeritBadgesController < ApplicationController
   end
 
   def show
+    @scout_merit_badge = ScoutMeritBadge.where(scout_id: params[:id])
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 
   # POST /scout_rank_histories

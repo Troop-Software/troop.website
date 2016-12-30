@@ -1,5 +1,5 @@
 class ScoutPositionsController < ApplicationController
-  before_action :set_scout_position, only: [:show, :edit, :update, :destroy]
+  before_action :set_scout_position, only: [ :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
@@ -13,6 +13,10 @@ class ScoutPositionsController < ApplicationController
   # GET /scout_positions/1
   # GET /scout_positions/1.json
   def show
+    @scout_positions_held = ScoutPosition.where(scout_id: params[:id])
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 
   # GET /scout_positions/new

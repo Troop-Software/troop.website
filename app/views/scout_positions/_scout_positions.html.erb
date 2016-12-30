@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header" data-background-color="dkblue">
-      <h4>Positions Held <span class="label label-info"><%= scout_positions_held.count%></span></h4>
+      <h4>Positions Held <span class="label label-info"><%= @scout_positions_held.count%></span></h4>
     </div>
     <div class="card-content">
       <table class="table table-responsive table-striped ">
@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-        <% scout_positions_held.each do |scout_position| %>
+        <% @scout_positions_held.each do |scout_position| %>
             <tr>
               <td class="text-info"><%= scout_position.position.name %></td>
               <td><%= date_for_display(scout_position.start_date) %></td>
