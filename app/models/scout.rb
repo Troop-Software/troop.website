@@ -122,6 +122,18 @@ class Scout < ApplicationRecord
     (Time.now.to_s(:number).to_i - birthday.to_time.to_s(:number).to_i)/10e9.to_i
   end
 
+  def current_rank_date
+    self.scout_rank_histories.find_by_rank_id(self.rank_id).rank_completed
+  end
+
+  def active_positions
+    positions = []
+    self.scout_positions.each do |scout_position|
+      positions << scout_position.position.name if scout_position.current_position?
+    end
+    positions.join(', ')
+  end
+
   def age_out_date(birthday)
     birthday + 18.years
   end

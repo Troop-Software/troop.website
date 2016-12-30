@@ -1,0 +1,68 @@
+report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default: true}
+@scouts.each do |scout|
+  report.start_new_page do
+    # Scout Basic Details
+    values(todays_date: ApplicationController.helpers.date_for_display(Time.now),
+           scout_name: scout.name,
+           scout_email: scout.email,
+           scout_patrol: scout.patrol.name,
+           scout_phone: scout.phone,
+           scout_position: scout.active_positions,
+           scout_DOB: ApplicationController.helpers.date_for_display(scout.birthdate),
+           scout_age: scout.age(scout.birthdate),
+           scout_rank: scout.rank.name,
+           scout_rank_date: ApplicationController.helpers.date_for_display(scout.current_rank_date),
+           scout_joined: ApplicationController.helpers.date_for_display(scout.joined),
+           scout_BSA: scout.bsa_id)
+
+    # Ranks Completed
+    scout.scout_rank_histories.each do |completed_rank|
+      unless completed_rank.rank_id == 1
+        values("#{completed_rank.rank_id}_rank_name".to_sym => completed_rank.rank.name)
+        values("#{completed_rank.rank_id}_rank_date".to_sym => ApplicationController.helpers.date_for_display(completed_rank.rank_completed))
+      end
+    end
+
+    # Ranks Remaining
+    next_rank = scout.rank_id + 1
+    requirement_matrix_even = {}
+    requirement_matrix_odd = {}
+
+    Requirement.where(rank_id: next_rank).order(:sortOrder).each do |requirement|
+      completed_date = '______________'
+      req_date = scout.scout_requirements.find_by(requirement: requirement)
+      scout.scout_requirements.each { |test|
+        if test.requirement_id == requirement.id
+          completed_date = test.completed_date
+        end
+      }
+      unless requirement.req_num.nil?
+        requirement.sortOrder.even? ?
+            requirement_matrix_even[requirement.req_num] = completed_date :
+            requirement_matrix_odd[requirement.req_num] = completed_date
+      end
+
+    end
+
+    if next_rank <= Rank.all.count
+      report.list(:next_rank).header do |header|
+        header.item(:next_rank_name).value(Rank.find(next_rank).name)
+      end
+
+      requirement_matrix_odd.each do |req_num, date|
+        report.list(:next_rank).add_row do |row|
+          row.item(:req_number).value(req_num)
+          row.item(:req_signoff_date).value(date)
+        end
+      end
+      requirement_matrix_even.each do |req_num, date|
+        report.list(:next_rank_even).add_row do |row|
+          row.item(:req_number).value(req_num)
+          row.item(:req_signoff_date).value(date)
+        end
+      end
+    end
+  end
+end
+
+

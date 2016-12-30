@@ -131,10 +131,9 @@ $(document).ready(function () {
         }
     });
 
-    $("#compact_view").hide();
+    //$("#compact_view").hide();
 
-    $(".view-toggle").click(function(){
-        $(this).text($(this).text() == 'Compact View' ? 'Expanded View' : 'Compact View');
+    $(".view-toggle").click(function () {
         $("#expanded_view, #compact_view").toggle();
     });
 

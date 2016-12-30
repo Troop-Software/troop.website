@@ -3,26 +3,16 @@
       <div class="card">
         <div class="card-header" role="tab" id="headingTwo<%= scout.id %>" data-background-color="dkblue">
           <h4 class="title">
-            <a class="hvr-push" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= scout.id %>"
-               aria-expanded="true" aria-controls="collapseTwo<%= scout.id %>">
-
-              <i class='material-icons'>menu</i>
-              <% unless scout.scout_alert.nil? %>
-                  <i class='material-icons'>warning</i>
-              <% end %>
-              <%= scout.name %>
-            </a>
+              <%= link_to scout.name, scout_path(scout), class: 'hvr-push' %>
             <% unless scout.active %>
                 <small>(inactive)</small>
             <% end %>
             <span class="pull-right">
-              <%= link_to "<i class='material-icons'>remove_red_eye</i>".html_safe, scout_path(scout) %>
               <% if current_user.role? :admin %>
                   <%= link_to "<i class='material-icons'>delete</i>".html_safe, scout,
                               method: :delete, data: {confirm: "Are you sure you wish to delete #{scout.name}?"} %>
              <% end %>
             </span>
-            </a>
           </h4>
         </div>
         <div id="collapseTwo<%= scout.id %>" class="collapse in" role="tabpanel" aria-labelledby="headingTwo<%= scout.id %>">

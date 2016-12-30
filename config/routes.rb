@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-
-  resources :scout_trainings
   devise_for :users
 
   authenticated :user do
     root to: 'static_pages#home', as: :authenticated_root
   end
 
+  # Public Facing Web Pages
   root 'public#welcome'
   get '/join',    to: 'public#join_our_troop'
   get '/welcome', to: 'public#welcome'
@@ -16,34 +15,39 @@ Rails.application.routes.draw do
   get '/troop_calendar', to: 'public#troop_calendar'
 
 
+  # Troop Private Pages
   resources :articles
   get 'feed' => 'articles#feed', format: 'rss'
   get '/calendar', to: 'static_pages#calendar'
 
   resources :scouts
   resources :requirements
+  resources :scout_requirements
+  resources :scout_positions
+  resources :scout_trainings
+  resources :scout_rank_histories
+  resources :scout_merit_badges
+  resources :scout_events
+  resources :positions
+  resources :ranks
+  resources :patrols
+  resources :relationships
   resources :events do
     collection do
       get 'calendar_export'
     end
   end
-  resources :scout_requirements
-  resources :scout_positions
-  resources :positions
-  resources :ranks
-  resources :patrols
   resources :categories do
     collection do
       get 'check_category'
     end
   end
-  resources :scout_rank_histories
-  resources :scout_merit_badges
-  resources :scout_events
-  #resources :profiles, only: [:index, :show]
-  resources :relationships
+
+  # Reports
+  get '/reports/scout_detail_report', to: 'reports#scout_detail_report'
 
 
+  # Admin Pages
   namespace :admin do
     resources :users
     resources :file_uploads, except: [:edit, :show] do
