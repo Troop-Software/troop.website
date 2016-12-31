@@ -13,6 +13,18 @@ class Event < ApplicationRecord
   scope :events_in_year_window, -> { where('events.start between ? and ?', 1.year.ago, 1.year.from_now) }
   # scope :today, -> { where(created_at: DateTime.now.beginning_of_day..DateTime.now.end_of_day) }
 
+  def logged
+    case self.category
+      when 'camping', 'cabin_camping'
+        return "#{self.logged_units.to_i} Nights"
+      when 'hiking', 'horseback', 'watercraft', 'backpacking'
+        return "#{self.logged_units} Miles"
+      when 'troop_meeting', 'plc', 'committee_meeting', 'service_project', 'training'
+        return "#{self.logged_units} Hours"
+      else
+        return self.logged_units
+    end
+  end
   def self.search(search)
     if search
       #search by id
