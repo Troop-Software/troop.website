@@ -108,22 +108,23 @@
     </div>
   </div>
 </div>
-<div class="card col-sm-6 col-sm-offset-3">
-  <div class="card-header card-header-icon" data-background-color="dkblue">
-    <img src="<%= image_url('ranks/Just Joined.png') %>" class="img-card-rank">
-  </div>
-  <div class="card-content">
-    <h3 class="card-title"><%= (earned_mb.size - 9) %> Additional Merit Badges</h3>
-    <table class="table">
-      <tbody>
-      <% for i in 9..earned_mb.size do %>
-          <tr>
-            <td><%= earned_mb.keys[i] %></td>
-            <td><%= date_for_display(earned_mb.values[i]) %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-</div>
+<% if earned_mb.size >= 9 %>
+    <div class="card col-sm-6 col-sm-offset-3">
+      <div class="card-header card-header-icon" data-background-color="dkblue">
+        <img src="<%= image_url('ranks/Just Joined.png') %>" class="img-card-rank">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title"><%= (earned_mb.size - 9) %> Additional Merit Badges</h3>
+        <table class="table">
+          <tbody>
+          <% for i in 9..earned_mb.size do %>
+              <tr>
+                <td><%= earned_mb.keys[i] %></td>
+                <td><%= date_for_display(earned_mb.values[i]) %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<% end %>
