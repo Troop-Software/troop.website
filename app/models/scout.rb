@@ -159,7 +159,7 @@ class Scout < ApplicationRecord
           csv << %w{ID NAME GRADE AGE BIRTHDATE RANK POSITION PATROL}
           all.each do |scout|
             csv << [scout.id, scout.name, scout.grade, scout.age(scout.birthdate),
-                    scout.birthdate, scout.rank.name, scout.position.name, scout.patrol.name]
+                    scout.birthdate, scout.rank.name, scout.active_positions, scout.patrol.name]
           end
         else
           csv << ["#{report} not found"]
