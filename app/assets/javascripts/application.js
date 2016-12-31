@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.tagsinput
 //= require jquery.validate.min
+//= require datatables.min
 //= require tether
 //= require moment
 //= require bootstrap
@@ -130,8 +131,6 @@ $(document).ready(function () {
             close: 'fa fa-remove'
         }
     });
-
-    //$("#compact_view").hide();
 
     $(".view-toggle").click(function () {
         $("#expanded_view, #compact_view").toggle();
