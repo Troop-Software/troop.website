@@ -29,40 +29,23 @@
       <img src="<%= image_url('ranks/Star.png') %>" class="img-card-rank">
     </div>
     <div class="card-content">
-      <div class="card-title">Star</div>
+      <h2 class="card-title">Star</h2>
       <table class="table">
         <tbody>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[0] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[0]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[1] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[1]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[2] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[2]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[3] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[3]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[0] %></td>
-          <td><%= date_for_display(earned_mb.values[0]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[1] %></td>
-          <td><%= date_for_display(earned_mb.values[1]) %></td>
-        </tr>
-
+        <% for i in 0..3 do %>
+            <tr>
+              <td>Eagle Required</td>
+              <td><%= earned_eagle_mb.keys[i] %></td>
+              <td><%= date_for_display(earned_eagle_mb.values[i]) %></td>
+            </tr>
+        <% end %>
+        <% for i in 0..1 do %>
+            <tr>
+              <td>Elective</td>
+              <td><%= earned_mb.keys[i] %></td>
+              <td><%= date_for_display(earned_mb.values[i]) %></td>
+            </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
@@ -74,34 +57,23 @@
       <img src="<%= image_url('ranks/Life.png') %>" class="img-card-rank">
     </div>
     <div class="card-content">
-      <h4 class="card-title">Life</h4>
+      <h2 class="card-title">Life</h2>
       <table class="table">
         <tbody>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[4] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[4]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[5] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[5]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[6] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[6]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[2] %></td>
-          <td><%= date_for_display(earned_mb.values[2]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[3] %></td>
-          <td><%= date_for_display(earned_mb.values[3]) %></td>
-        </tr>
+        <% for i in 4..6 do %>
+            <tr>
+              <td>Eagle Required</td>
+              <td><%= earned_eagle_mb.keys[i] %></td>
+              <td><%= date_for_display(earned_eagle_mb.values[i]) %></td>
+            </tr>
+        <% end %>
+        <% for i in 2..3 do %>
+            <tr>
+              <td>Elective</td>
+              <td><%= earned_mb.keys[i] %></td>
+              <td><%= date_for_display(earned_mb.values[i]) %></td>
+            </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
@@ -114,103 +86,44 @@
       <img src="<%= image_url('ranks/Eagle.png') %>" class="img-card-rank">
     </div>
     <div class="card-content">
-      <h4 class="card-title">Eagle</h4>
+      <h2 class="card-title">Eagle</h2>
       <table class="table">
         <tbody>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[7] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[7]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[8] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[8]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[9] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[9]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[10] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[10]) %></td>
-        </tr>
-        <tr>
-          <td>Eagle Required</td>
-          <td><%= earned_eagle_mb.keys[11] %></td>
-          <td><%= date_for_display(earned_eagle_mb.values[11]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[4] %></td>
-          <td><%= date_for_display(earned_mb.values[4]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[5] %></td>
-          <td><%= date_for_display(earned_mb.values[5]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[6] %></td>
-          <td><%= date_for_display(earned_mb.values[6]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[7] %></td>
-          <td><%= date_for_display(earned_mb.values[7]) %></td>
-        </tr>
-        <tr>
-          <td>Elective</td>
-          <td><%= earned_mb.keys[8] %></td>
-          <td><%= date_for_display(earned_mb.values[8]) %></td>
-        </tr>
-
+        <% for i in 7..11 do %>
+            <tr>
+              <td>Eagle Required</td>
+              <td><%= earned_eagle_mb.keys[i] %></td>
+              <td><%= date_for_display(earned_eagle_mb.values[i]) %></td>
+            </tr>
+        <% end %>
+        <% for i in 4..8 do %>
+            <tr>
+              <td>Elective</td>
+              <td><%= earned_mb.keys[i] %></td>
+              <td><%= date_for_display(earned_mb.values[i]) %></td>
+            </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<div class="col-md-6">
-  <div class="card">
-    <div class="card-header card-header-icon" data-background-color="dkblue">
-      <img src="<%= image_url('ranks/Just Joined.png') %>" class="img-card-rank">
-    </div>
-    <div class="card-content">
-      <h4 class="card-title">Additional Merit Badges</h4>
-      <table class="table">
-        <tbody>
-        <tr>
-          <td>Need to build this out</td>
-        </tr>
-
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<div class="row"></div>
-
-<div class="card col-sm-8 col-sm-offset-2">
-  <div class="card-title" data-background-color="dkblue">
-    <h4>Listing of all Merit Badges Earned</h4>
+<div class="card col-sm-6 col-sm-offset-3">
+  <div class="card-header card-header-icon" data-background-color="dkblue">
+    <img src="<%= image_url('ranks/Just Joined.png') %>" class="img-card-rank">
   </div>
   <div class="card-content">
-    <table class="table table-responsive table-striped">
+    <h3 class="card-title"><%= (earned_mb.size - 9) %> Additional Merit Badges</h3>
+    <table class="table">
       <tbody>
-      <% @scout_merit_badge.each do |smb| %>
-          <% if smb.merit_badge.eagle_required %>
-              <tr class='success'>
-          <% else %>
-              <tr>
-          <% end %>
-          <td><%= smb.merit_badge.name %></td>
-          <td><%= date_for_display(smb.completed) %></td>
+      <% for i in 9..earned_mb.size do %>
+          <tr>
+            <td><%= earned_mb.keys[i] %></td>
+            <td><%= date_for_display(earned_mb.values[i]) %></td>
           </tr>
       <% end %>
       </tbody>
     </table>
   </div>
+</div>
 </div>
