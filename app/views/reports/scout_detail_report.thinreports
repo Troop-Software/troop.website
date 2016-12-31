@@ -1,5 +1,4 @@
-report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default: true}
-@scouts.each do |scout|
+def compile_report(scout, report)
   report.start_new_page do
     # Scout Basic Details
     values(todays_date: ApplicationController.helpers.date_for_display(Time.now),
@@ -67,4 +66,12 @@ report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default
   end
 end
 
+report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default: true}
 
+if @scout
+  compile_report(@scout, report)
+else
+  @scouts.each do |scout|
+    compile_report(scout, report)
+  end
+end
