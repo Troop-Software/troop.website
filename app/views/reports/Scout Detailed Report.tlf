@@ -804,7 +804,7 @@
         ]
       },
       "detail": {
-        "height": 14,
+        "height": 13.7,
         "translate": {
           "x": 0,
           "y": -52
@@ -817,7 +817,7 @@
             "description": "",
             "x": 55,
             "y": 293,
-            "width": 42.5,
+            "width": 27,
             "height": 11,
             "style": {
               "font-family": [
@@ -850,7 +850,7 @@
             "display": true,
             "description": "",
             "x": 226,
-            "y": 295,
+            "y": 293,
             "width": 75.5,
             "height": 11,
             "style": {
@@ -877,13 +877,13 @@
             }
           },
           {
-            "id": "",
-            "type": "text",
+            "id": "req_short_desc",
+            "type": "text-block",
             "display": true,
             "description": "",
             "x": 82,
-            "y": 296,
-            "width": 179.5,
+            "y": 293,
+            "width": 144,
             "height": 11,
             "style": {
               "font-family": [
@@ -896,11 +896,17 @@
               "line-height": "",
               "line-height-ratio": "",
               "letter-spacing": "",
-              "font-style": []
+              "font-style": [],
+              "overflow": "fit",
+              "word-wrap": "break-word"
             },
-            "texts": [
-              "Short Desc Goes Here"
-            ]
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
           }
         ]
       },
@@ -909,7 +915,7 @@
         "height": 0,
         "translate": {
           "x": 0,
-          "y": -60
+          "y": -60.3
         },
         "items": []
       },
@@ -918,7 +924,7 @@
         "height": 0,
         "translate": {
           "x": 0,
-          "y": -76.5
+          "y": -76.8
         },
         "items": []
       },
@@ -970,7 +976,7 @@
       "height": 325.9,
       "header": {
         "enabled": true,
-        "height": 24,
+        "height": 18.7,
         "translate": {
           "x": 13.5,
           "y": -45
@@ -981,7 +987,7 @@
         "height": 14,
         "translate": {
           "x": 13.5,
-          "y": -118.2
+          "y": -123.5
         },
         "items": [
           {
@@ -989,9 +995,9 @@
             "type": "text-block",
             "display": true,
             "description": "",
-            "x": 301.5,
+            "x": 311.5,
             "y": 362.2,
-            "width": 42.5,
+            "width": 27,
             "height": 11,
             "style": {
               "font-family": [
@@ -1051,13 +1057,13 @@
             }
           },
           {
-            "id": "",
-            "type": "text",
+            "id": "req_short_desc",
+            "type": "text-block",
             "display": true,
             "description": "",
-            "x": 325,
-            "y": 365.2,
-            "width": 179.5,
+            "x": 339.2,
+            "y": 362.2,
+            "width": 144,
             "height": 11,
             "style": {
               "font-family": [
@@ -1070,11 +1076,17 @@
               "line-height": "",
               "line-height-ratio": "",
               "letter-spacing": "",
-              "font-style": []
+              "font-style": [],
+              "overflow": "fit",
+              "word-wrap": "break-word"
             },
-            "texts": [
-              "Short Desc Goes Here"
-            ]
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
           }
         ]
       },
@@ -1083,7 +1095,7 @@
         "height": 0,
         "translate": {
           "x": 13.5,
-          "y": -201.4
+          "y": -206.7
         },
         "items": []
       },
@@ -1092,11 +1104,11 @@
         "height": 0,
         "translate": {
           "x": 13.5,
-          "y": -274.3
+          "y": -279.6
         },
         "items": []
       },
-      "content-height": 301.9,
+      "content-height": 307.2,
       "auto-page-break": false
     },
     {
@@ -1564,7 +1576,7 @@
       },
       {
         "type": "x",
-        "position": 394
+        "position": 352.7
       },
       {
         "type": "x",

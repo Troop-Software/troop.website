@@ -38,8 +38,8 @@ report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default
       }
       unless requirement.req_num.nil?
         requirement.sortOrder.even? ?
-            requirement_matrix_even[requirement.req_num] = completed_date :
-            requirement_matrix_odd[requirement.req_num] = completed_date
+            requirement_matrix_even[requirement.req_num] = [requirement.short_desc, completed_date] :
+            requirement_matrix_odd[requirement.req_num] = [requirement.short_desc, completed_date]
       end
 
     end
@@ -49,16 +49,18 @@ report.set_layout tlf: 'reports/Scout Detailed Report', layout_options: {default
         header.item(:next_rank_name).value(Rank.find(next_rank).name)
       end
 
-      requirement_matrix_odd.each do |req_num, date|
+      requirement_matrix_odd.each do |req_num, values|
         report.list(:next_rank).add_row do |row|
           row.item(:req_number).value(req_num)
-          row.item(:req_signoff_date).value(date)
+          row.item(:req_short_desc).value(values[0])
+          row.item(:req_signoff_date).value(values[1])
         end
       end
-      requirement_matrix_even.each do |req_num, date|
+      requirement_matrix_even.each do |req_num, values|
         report.list(:next_rank_even).add_row do |row|
           row.item(:req_number).value(req_num)
-          row.item(:req_signoff_date).value(date)
+          row.item(:req_short_desc).value(values[0])
+          row.item(:req_signoff_date).value(values[1])
         end
       end
     end
