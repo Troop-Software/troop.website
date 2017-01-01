@@ -1,0 +1,17 @@
+report.set_layout tlf: 'reports/Patrol Report', layout_options: {default: true}
+
+@patrols.each do |patrol|
+  report.start_new_page do
+    report.list(:patrol).header do |header|
+      header.item(:patrol_name).value(patrol.name)
+    end
+    scouts = Scout.where(patrol_id: patrol.id)
+    scouts.each do |scout|
+      report.list(:patrol).add_row do |row|
+        row.item(:scout_name).value(scout.name)
+        row.item(:scout_phone).value(scout.phone)
+        row.item(:scout_email).value(scout.email)
+      end
+    end
+  end
+end

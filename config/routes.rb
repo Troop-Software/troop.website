@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   # Reports
   get '/reports/scout_detail_report', to: 'reports#scout_detail_report'
+  get '/reports/patrol_report', to: 'reports#patrol_report'
 
 
   # Admin Pages

@@ -18,12 +18,11 @@ class ReportsController < ApplicationController
   end
 
   def patrol_report
-    @patrols = Patrols.all
+    @patrols= Patrol.all
     respond_to do |format|
       format.pdf {
         send_data render_to_string, filename: 'Patrol Report.pdf', type: 'application/pdf', disposition: 'attachment'
       }
-
     end
   end
 end
