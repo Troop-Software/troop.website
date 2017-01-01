@@ -28,7 +28,7 @@
                   <%= f.label :scout %>
                 </div>
                 <div class="col-sm-8">
-                  <%= f.select :scout_id, options_for_select(Scout.all.map { |s| [s.name, s.id] }, @relationship.scout_id), {}, class: 'form-control' %>
+                  <%= f.select :scout_id, options_for_select(Scout.where(active: true).map { |s| [s.name, s.id] }, @relationship.scout_id), {}, class: 'form-control' %>
                 </div>
               </div>
 
