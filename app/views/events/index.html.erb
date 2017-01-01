@@ -60,7 +60,7 @@
             .columns(2)
             .search($(this).text())
             .draw();
-        $('.card-title').contents().last().replaceWith('Showing events in the ' + $(this).text() + ' category');
+        $('.card-title').contents().last().replaceWith('Showing events in the "' + $(this).text() + '" category');
 
     });
     $('#filter_all').click(function () {
