@@ -59,7 +59,7 @@
         <h4 class="card-title">Scouts in attendance</h4>
         <ul class="list-group">
           <% @event.scout_events.each do |scout_event| %>
-              <li class="list-group-item"><%= scout_event.scout.name %></li>
+              <li class="list-group-item"><%= link_to scout_event.scout.name, scout_event.scout %></li>
           <% end %>
         </ul>
       </div>

@@ -20,7 +20,7 @@
         <% @scout_activities.each do |scout_activity| %>
             <tr>
               <td class="text-warning"><%= scout_activity.event.category.titlecase %></td>
-              <td><%= scout_activity.event.title %></td>
+              <td><%= link_to scout_activity.event.title, scout_activity.event %></td>
               <td><%= scout_activity.notes %></td>
               <td><%= date_for_display(scout_activity.event.start) %></td>
               <td><%= date_for_display(scout_activity.event.end) %></td>

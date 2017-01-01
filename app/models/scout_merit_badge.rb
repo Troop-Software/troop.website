@@ -57,7 +57,7 @@ class ScoutMeritBadge < ApplicationRecord
           end
         end
         scout_mb_db_record = ScoutMeritBadge.find_or_initialize_by(scout_id: scout.id, merit_badge_id: mb.id )
-        scout_mb_db_record.update(completed: mb[1])
+        scout_mb_db_record.update(completed: merit_badge[1])
       end
     end
   end
