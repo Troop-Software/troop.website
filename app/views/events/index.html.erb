@@ -1,45 +1,73 @@
 <%= content_for(:title, 'Events Listing') %>
 <% if current_user.role? :leader %>
-    <table class="table table-responsive table-condensed">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Allday</th>
-        <th>Category</th>
-        <th>External link</th>
-        <th colspan="3"></th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @events.each do |event| %>
+    <div class="card col-md-12 ">
+      <div class="card-header" data-background-color="dkblue">
+        <h3 class="card-title ">Showing all Events</h3>
+      </div>
+      <div class="card-content">
+        <ul class="nav nav-tabs">
+          <% @events.categories.each do |category| %>
+              <li><a href="#" class=""><%= category[0].humanize %></a></li>
+          <% end %>
+        </ul>
+        <a id="filter_all" href="#" class="btn btn-warning btn-sm pull-right">Clear Filters</a>
+        <table id='events_listing' class="table table-responsive  table-striped">
+          <thead>
           <tr>
-            <td><%= event.title %></td>
-            <td><%= event.description %></td>
-            <% if event.allDay %>
-                <td><%= date_for_display(event.start) %></td>
-                <td><%= date_for_display(event.end) %></td>
-            <% else %>
-                <td><%= datetime_for_display(event.start) %></td>
-                <td><%= datetime_for_display(event.end) %></td>
-            <% end %>
-            <td><%= event.allDay %></td>
-            <td><%= event.category %></td>
-            <td><%= event.external_link %></td>
-            <td><%= link_to 'Show', event %></td>
-            <td><%= link_to 'Edit', edit_event_path(event) %></td>
-            <td><%= link_to 'Destroy', event, method: :delete, data: {confirm: "Are you sure you wish to delete #{event.title}?"} %></td>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Start</th>
+            <th>End</th>
           </tr>
-      <% end %>
-      </tbody>
-    </table>
+          </thead>
 
-    <br>
-
-    <%= link_to 'New Event', new_event_path %>
+          <tbody>
+          <% @events.each do |event| %>
+              <tr>
+                <td><%= link_to event.title, event %></td>
+                <td><%= event.description %></td>
+                <td><%= event.category.humanize %></td>
+                <% if event.allDay %>
+                    <td><%= date_for_display(event.start) %></td>
+                    <td><%= date_for_display(event.end) %></td>
+                <% else %>
+                    <td><%= date_for_display(event.start) %></td>
+                    <td><%= date_for_display(event.end) %></td>
+                <% end %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
 <% else %>
     <% controller.redirect_to calendar_path %>
 <% end %>
+</div>
+</div>
+<script>
+    $.fn.dataTable.moment('MM/D/YYYY');
+    var table = $('#events_listing').DataTable({
+        "dom": 'ftlp',
+        "order": [[3, "desc"]],
+        "columnDefs": [
+            {
+                "targets": [2],
+                "visible": false
+            }]
+    });
+    $('ul').on('click', 'a', function () {
+        table
+            .columns(2)
+            .search($(this).text())
+            .draw();
+        $('.card-title').contents().last().replaceWith('Showing events in the ' + $(this).text() + ' category');
+
+    });
+    $('#filter_all').click(function () {
+        table
+            .search('')
+            .columns().search('')
+            .draw();
+        $('.card-title').contents().last().replaceWith('Showing all Events');
+    });
+</script>

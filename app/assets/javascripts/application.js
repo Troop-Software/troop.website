@@ -17,6 +17,8 @@
 //= require datatables.min
 //= require tether
 //= require moment
+//= require datetime-moment
+//= require datetime
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require fullcalendar

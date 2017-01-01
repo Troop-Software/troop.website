@@ -1,3 +1,0 @@
-module ScoutHelper
-
-end
