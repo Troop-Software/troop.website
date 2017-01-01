@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231211310) do
+ActiveRecord::Schema.define(version: 20170101192806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20161231211310) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.index ["user_id"], name: "index_admin_file_uploads_on_user_id", using: :btree
+  end
+
+  create_table "adult_positions", force: :cascade do |t|
+    t.string  "name"
+    t.string  "code"
+    t.string  "abbr"
+    t.boolean "bsa_position", default: false
   end
 
   create_table "article_categories", force: :cascade do |t|

@@ -1,0 +1,34 @@
+<%= content_for(:title, 'Adult Positions') %>
+<div class="col-sm-8 col-sm-offset-2">
+  <div class="card">
+    <div class="card-header" data-background-color="dkblue">
+      <h4 class="card-title">Existing Adult Positions
+        <span class="pull-right">
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_position_path %>
+          </span>
+      </h4>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped">
+        <thead>
+        <th>BSA Code</th>
+        <th>Abbr</th>
+        <th>Position Name</th>
+        </thead>
+        <tbody>
+        <% @adult_positions.each do |position| %>
+            <tr>
+              <td><%= position.code %></td>
+              <td><%= position.abbr %></td>
+              <% if position.bsa_position %>
+                  <td><%= position.name %></td>
+              <% else %>
+                  <td><%= link_to position.name, edit_adult_position_path(position) %></td>
+              <% end %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

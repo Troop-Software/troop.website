@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :ranks
   resources :patrols
   resources :relationships
+  resources :adult_positions
   resources :events do
     collection do
       get 'calendar_export'
