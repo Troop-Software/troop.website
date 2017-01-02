@@ -1,3 +1,0 @@
-class AdultTraining < ApplicationRecord
-  
-end

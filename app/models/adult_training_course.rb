@@ -1,0 +1,3 @@
+class AdultTrainingCourse < ApplicationRecord
+  
+end
