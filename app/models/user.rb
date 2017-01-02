@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :roles, through: :assignments
   has_many :relationships
   has_many :scouts, through: :relationships
+  has_many :adults
 
   before_save {self.email = email.downcase}
 

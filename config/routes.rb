@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   authenticated :user do
     root to: 'static_pages#home', as: :authenticated_root
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :ranks
   resources :patrols
   resources :relationships
+  resources :adults
   resources :adult_positions
   resources :events do
     collection do

@@ -4,4 +4,6 @@ class AdultPosition < ApplicationRecord
   validates_uniqueness_of :name
   validates_uniqueness_of :code
   validates_uniqueness_of :abbr
+
+  has_many :adults
 end
