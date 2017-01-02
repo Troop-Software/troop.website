@@ -21,10 +21,28 @@
 
     <div class="form-group row">
       <div class="control-label col-sm-2">
+        <%= f.label :sex %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.select :sex, options_for_select(Adult.sexes.map { |key, value| [key.humanize.titlecase, key] }, @adult.sex),
+                     {:include_blank => 'Please select a sex'}, {:class => 'form-control'} %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
         <%= f.label :phone %>
       </div>
       <div class="col-sm-4">
         <%= f.telephone_field :phone, class: 'form-control' %>
+      </div>
+
+      <div class="control-label col-sm-2">
+        <%= f.label :dob %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.text_field :dob, class: 'form-control datetimepickeryear',
+                         data: {date: @adult.dob, date_format: 'YYYY-MM-DD'} %>
       </div>
     </div>
 
@@ -35,18 +53,21 @@
       <div class="col-sm-4">
         <%= f.number_field :bsa_id, class: 'form-control' %>
       </div>
+      <div class="control-label col-sm-2">
+        <%= f.label :drivers_license %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.text_field :drivers_license, class: 'form-control' %>
+      </div>
     </div>
 
     <div class="form-group row">
-      <div class="control-label col-sm-3">
-        <%= f.label 'Position Held' %>
+      <div class="control-label col-sm-2">
+        <%= f.label :joined %>
       </div>
-      <div class="col-sm-8">
-        <%= f.select :adult_position_id,
-                     options_for_select(AdultPosition.all.map { |p| [p.name, p.id] },
-                                        @adult.adult_position_id),
-                     {prompt: 'None'},
-                     class: 'form-control' %>
+      <div class="col-sm-4">
+        <%= f.text_field :joined, class: 'form-control datetimepickeryear',
+                         data: {date: @adult.joined, date_format: 'YYYY-MM-DD'} %>
       </div>
     </div>
     <% if (current_user.role? :admin) %>

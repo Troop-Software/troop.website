@@ -4,11 +4,35 @@
         <%= render 'shared/errors', obj: position %>
 
         <div class="form-group row">
-          <div class="control-label col-sm-2">
+          <div class="control-label col-sm-3">
             <%= f.label :name %>
           </div>
           <div class="col-sm-8">
             <%= f.text_field :name, class: 'form-control', placeholder: 'Position Title', autofocus: true %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :short_code %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :short_code, class: 'form-control', placeholder: 'Short Code'%>
+          </div>
+          <div class="control-label col-sm-3">
+            <%= f.label :bsa_code %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :bsa_code, class: 'form-control', placeholder: 'BSA Code'%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :adult_position %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.check_box :adult_position, class: 'form-control'%>
           </div>
         </div>
 

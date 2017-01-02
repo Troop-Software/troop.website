@@ -1,9 +1,15 @@
 class AdultPosition < ApplicationRecord
-  validates :name, presence: true, length: {minimum: 5, maximum: 50}
-  validates :abbr, presence: true, length: {minimum: 2, maximum: 5}
-  validates_uniqueness_of :name
-  validates_uniqueness_of :code
-  validates_uniqueness_of :abbr
+  belongs_to :adult
+  belongs_to :position
 
-  has_many :adults
+  validates :adult_id, presence: true
+  validates :position_id, presence: true
+  validates :start_date, presence: true
+  validates_uniqueness_of :adult, scope: [:position_id, :start_date], message: '- There is a record that matches this already.'
+
+  def current_position?
+    return false if self.position_id == 1 # Do not consider "None" to be a current position
+    (self.end_date.nil? || Date.today.between?(self.start_date, self.end_date)) ? true : false
+  end
+
 end

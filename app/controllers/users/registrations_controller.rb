@@ -9,28 +9,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 # POST /resource
   def create
-    super do |resource|
-     adult = Adult.find_by_email(resource.email)
-      unless adult.blank?
-        # link this account to Adult Record in Database
-        adult.user_id = resource.id
-        adult.save
-        # Give this account "Parent" permissions
-        Assignment.create(user_id: resource.id, role_id: 3)
-        # Giv this account "Leader" permissions if Adult is flagged as leader
-        if adult.leader?
-          Assignment.create(user_id: resource.id, role_id: 4)
-        end
-        #link this adult to scout with same email address
-        scouts = Scout.where(email: resource.email)
-        unless scouts.blank?
-          scouts.each do |scout|
-            Relationship.create(user_id: resource.id, scout_id: scout.id)
-          end
-
-        end
-      end
-    end
+    # super do |resource|
+    #  adult = Adult.find_by_email(resource.email)
+    #   unless adult.blank?
+    #     # link this account to Adult Record in Database
+    #     adult.user_id = resource.id
+    #     adult.save
+    #     # Give this account "Parent" permissions
+    #     Assignment.create(user_id: resource.id, role_id: 3)
+    #     # Giv this account "Leader" permissions if Adult is flagged as leader
+    #     if adult.leader?
+    #       Assignment.create(user_id: resource.id, role_id: 4)
+    #     end
+    #     #link this adult to scout with same email address
+    #     scouts = Scout.where(email: resource.email)
+    #     unless scouts.blank?
+    #       scouts.each do |scout|
+    #         Relationship.create(user_id: resource.id, scout_id: scout.id)
+    #       end
+    #
+    #     end
+    #   end
+    # end
   end
 
 # GET /resource/edit

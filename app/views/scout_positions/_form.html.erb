@@ -1,17 +1,28 @@
 <%= form_for(@scout_position, :html => {class: 'form-horizontal', id: :scout_position, role: 'form'}) do |f| %>
     <%= render 'shared/errors', obj: @scout_position %>
 
-    <div class="form-group row">
-      <div class="control-label col-sm-3">
-        <%= f.label :scout_id %>
-      </div>
-      <div class="col-sm-8">
-        <%= f.select :scout_id, options_for_select(Scout.all.map { |se| [se.name, se.id] },
-                                                   @scout_position.scout_id),
-                     {:include_blank => 'Please select a Scout'}, {:class => 'form-control'} %>
-      </div>
-    </div>
+    <% if params[:scout_id] %>
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :scout_id %>
+          </div>
+          <div class="col-sm-8">
+            <%= Scout.find(params[:scout_id]).name %>
+          </div>
+        </div>
 
+    <% else %>
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :scout_id %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select :scout_id, options_for_select(Scout.all.map { |se| [se.name, se.id] },
+                                                       @scout_position.scout_id),
+                         {:include_blank => 'Please select a Scout'}, {:class => 'form-control'} %>
+          </div>
+        </div>
+    <% end %>
     <div class="form-group row">
       <div class="control-label col-sm-3">
         <%= f.label :position_id %>

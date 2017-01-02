@@ -11,6 +11,9 @@ class AdultsController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def index
     @adults = Adult.search(params[:id])
   end
@@ -59,7 +62,7 @@ class AdultsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def adult_params
-    params.require(:adult).permit(:name, :email, :phone, :bsa_id, :leader, :adult_position_id, :user)
+    params.require(:adult).permit(:name, :sex, :email, :phone, :bsa_id, :dob, :drivers_license, :joined, :became_leader)
   end
 
 end
