@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :adult_positions
   resources :adult_training_courses, only: :index
   resources :adult_trainings
+  resources :vehicles
   resources :events do
     collection do
       get 'calendar_export'

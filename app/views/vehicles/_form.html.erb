@@ -1,0 +1,56 @@
+<%= form_for(@vehicle, :html => {class: 'form-horizontal', id: 'vehicle', role: 'form'}) do |f| %>
+    <%= render 'shared/errors', obj: @vehicle %>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :name %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Year/Make/Model', autofocus: true %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :belts %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.number_field :belts, class: 'form-control', placeholder: '# of seatbelts' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-2">
+        <%= f.label :plate %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.text_field :plate, class: 'form-control', placeholder: 'License Plate' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', vehicles_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+<% end %>
+<script>
+    $(document).ready(function () {
+        $("#vehicle").validate({
+            rules: {
+                "vehicle[name]": {
+                    required: true
+                },
+                "vehicle[belts]": {
+                    required: true,
+                    range: [2, 15]
+                }
+            },
+            errorPlacement: function (error, element) {
+                $(element).parent('div').parent('div').addClass('has-error');
+                $(element).after(error);
+            }
+        });
+    });
+</script>
