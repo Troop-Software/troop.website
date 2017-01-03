@@ -29,14 +29,15 @@
     <div class="row">
       <div class="card-header" data-background-color="dkblue">
         <h5>Positions Held
-          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_position_path(adult_id: @adult.id) %></span>
+          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                                               new_adult_position_path(adult_id: @adult.id) %></span>
         </h5>
       </div>
       <div class="card-content">
         <table class="table table-responsive table-striped">
           <% unless @adult.adult_positions.blank? %>
               <thead>
-              <th>Positon</th>
+              <th>Position</th>
               <th>Dates Served</th>
               <th>Days in Position</th>
               </thead>
@@ -61,7 +62,8 @@
     <div class="row">
       <div class="card-header" data-background-color="dkblue">
         <h5>Trainings
-          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_training_path(adult_id: @adult.id) %></span>
+          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                                               new_adult_training_path(adult_id: @adult.id) %></span>
         </h5>
       </div>
       <div class="card-content">
@@ -86,7 +88,8 @@
     <div class="row">
       <div class="card-header" data-background-color="dkblue">
         <h5>Vehicles
-          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_vehicle_path(adult_id: @adult.id) %></span>
+          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                                               new_adult_vehicle_path(adult_id: @adult.id) %></span>
         </h5>
       </div>
       <div class="card-content">
