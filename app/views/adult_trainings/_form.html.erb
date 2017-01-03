@@ -16,7 +16,7 @@
             <%= f.label :adult_id %>
           </div>
           <div class="col-sm-8">
-            <%= f.select :adult_id, options_for_select(Adult.all.map { |se| [se.name, se.id] },
+            <%= f.select :adult_id, options_for_select(Adult.where(inactive: false).map { |se| [se.name, se.id] },
                                                        @adult_training.adult_id),
                          {:include_blank => 'Please select a Adult'}, {:class => 'form-control'} %>
           </div>

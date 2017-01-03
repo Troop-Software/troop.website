@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103042057) do
+ActiveRecord::Schema.define(version: 20170103050539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170103042057) do
     t.date    "dob"
     t.string  "drivers_license"
     t.date    "joined"
+    t.boolean "inactive",        default: false
     t.index ["user_id"], name: "index_adults_on_user_id", using: :btree
   end
 

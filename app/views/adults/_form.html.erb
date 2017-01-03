@@ -70,6 +70,17 @@
                          data: {date: @adult.joined, date_format: 'YYYY-MM-DD'} %>
       </div>
     </div>
+    <% unless @adult.new_record? %>
+        <div class="form-group row">
+          <div class="togglebutton col-sm-6 col-sm-offset-4">
+            <label>
+              Mark Inactive
+              <%= f.check_box :inactive %>
+            </label>
+          </div>
+        </div>
+    <%end %>
+
     <% if (current_user.role? :admin) %>
         <div class="alert-danger">
           <div class="form-group row">

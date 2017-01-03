@@ -62,7 +62,8 @@ class AdultsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def adult_params
-    params.require(:adult).permit(:name, :sex, :email, :phone, :bsa_id, :dob, :drivers_license, :joined, :became_leader)
+    params.require(:adult).permit(:name, :sex, :email, :phone, :bsa_id, :dob,
+                                  :drivers_license, :joined, :became_leader, :inactive)
   end
 
 end
