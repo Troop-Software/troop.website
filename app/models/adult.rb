@@ -16,6 +16,7 @@ class Adult < ApplicationRecord
   has_many :positions, through: :adult_positions
   has_many :adult_trainings
   has_many :adult_training_courses, through: :adult_trainings
-
+  has_many :adult_vehicles
+  has_many :vehicles, through: :adult_vehicles
 
 end

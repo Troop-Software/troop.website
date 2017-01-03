@@ -34,6 +34,13 @@
       </div>
       <div class="card-content">
         <table class="table table-responsive table-striped">
+          <% unless @adult.adult_positions.blank? %>
+              <thead>
+              <th>Positon</th>
+              <th>Dates Served</th>
+              <th>Days in Position</th>
+              </thead>
+          <% end %>
           <% @adult.adult_positions.each do |adult_position| %>
               <tr>
                 <td><%= adult_position.position.name %></td>
@@ -59,10 +66,45 @@
       </div>
       <div class="card-content">
         <table class="table table-responsive table-striped">
+          <% unless @adult.adult_trainings.blank? %>
+              <thead>
+              <th>Course Name</th>
+              <th>Date Completed</th>
+              </thead>
+          <% end %>
           <% @adult.adult_trainings.each do |adult_training| %>
               <tr>
                 <td><%= adult_training.adult_training_course.name %></td>
                 <td><%= date_for_display(adult_training.completed_date) %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card col-sm-12">
+    <div class="row">
+      <div class="card-header" data-background-color="dkblue">
+        <h5>Vehicles
+          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_vehicle_path(adult_id: @adult.id) %></span>
+        </h5>
+      </div>
+      <div class="card-content">
+        <table class="table table-responsive table-striped">
+          <% unless @adult.vehicles.blank? %>
+              <thead>
+              <th></th>
+              <th>Vehicle</th>
+              <th># of Seat Belts</th>
+              <th>License Plate</th>
+              </thead>
+          <% end %>
+          <% @adult.vehicles.each do |vehicle| %>
+              <tr>
+                <td><%= '<i class="fa fa-truck" aria-hidden="true"></i>'.html_safe if vehicle.hitch %></td>
+                <td><%= vehicle.name %></td>
+                <td><%= vehicle.belts %></td>
+                <td><%= vehicle.plate %></td>
               </tr>
           <% end %>
         </table>

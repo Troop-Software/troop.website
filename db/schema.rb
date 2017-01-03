@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103052915) do
+ActiveRecord::Schema.define(version: 20170103064036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20170103052915) do
     t.datetime "updated_at",               null: false
     t.index ["adult_id"], name: "index_adult_trainings_on_adult_id", using: :btree
     t.index ["adult_training_course_id"], name: "index_adult_trainings_on_adult_training_course_id", using: :btree
+  end
+
+  create_table "adult_vehicles", force: :cascade do |t|
+    t.integer "adult_id"
+    t.integer "vehicle_id"
+    t.index ["adult_id", "vehicle_id"], name: "adult_to_vehicle", unique: true, using: :btree
+    t.index ["adult_id"], name: "index_adult_vehicles_on_adult_id", using: :btree
+    t.index ["vehicle_id"], name: "index_adult_vehicles_on_vehicle_id", using: :btree
   end
 
   create_table "adults", force: :cascade do |t|
@@ -307,6 +315,8 @@ ActiveRecord::Schema.define(version: 20170103052915) do
   add_foreign_key "adult_positions", "positions"
   add_foreign_key "adult_trainings", "adult_training_courses"
   add_foreign_key "adult_trainings", "adults"
+  add_foreign_key "adult_vehicles", "adults"
+  add_foreign_key "adult_vehicles", "vehicles"
   add_foreign_key "adults", "users"
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
