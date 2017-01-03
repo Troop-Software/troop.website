@@ -11,6 +11,7 @@
     <div class="card-content">
       <table class="table table-responsive table-striped">
         <thead>
+        <th></th>
         <th>Name</th>
         <th># of Seatbelts</th>
         <th>License Plate</th>
@@ -19,6 +20,7 @@
         <tbody>
         <% @vehicles.each do |vehicle| %>
             <tr>
+              <td><%= '<i class="fa fa-truck" aria-hidden="true"></i>'.html_safe if vehicle.hitch %></td>
               <td><%= vehicle.name %></td>
               <td><%= vehicle.belts %></td>
               <td><%= vehicle.plate %></td>
