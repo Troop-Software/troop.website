@@ -1,5 +1,21 @@
 <% if (current_user.role? :leader) %>
     <li>
+      <a data-toggle="collapse" href="#adults">
+        <i class="material-icons">people</i>
+        <p>Adult Management
+          <b class="caret"></b>
+        </p>
+      </a>
+      <div class="collapse" id="adults">
+        <ul class="nav">
+          <li><%= nav_link 'View Adults', adults_path %></li>
+          <li><%= nav_link 'Assign Adult to Position', new_adult_position_path %></li>
+          <li><%= nav_link 'Log Adult Training', new_adult_training_path %></li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
       <a data-toggle="collapse" href="#articles">
         <i class="material-icons">insert_drive_file</i>
         <p>Articles
@@ -28,4 +44,5 @@
         </ul>
       </div>
     </li>
+
 <% end %>

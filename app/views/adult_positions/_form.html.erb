@@ -1,0 +1,80 @@
+<%= form_for(@adult_position, :html => {class: 'form-horizontal', id: :adult_position, role: 'form'}) do |f| %>
+    <%= render 'shared/errors', obj: @adult_position %>
+
+
+    <% if params[:adult_id] %>
+        <%= f.hidden_field :adult_id, value: params[:adult_id] %>
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :adult_id %>
+          </div>
+          <div class="col-sm-8">
+            <%= Adult.find(params[:adult_id]).name %>
+          </div>
+        </div>
+
+    <% else %>
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :adult_id %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select :adult_id, options_for_select(Adult.where(inactive: false).map { |se| [se.name, se.id] },
+                                                       @adult_position.adult_id),
+                         {:include_blank => 'Please select a Adult'}, {:class => 'form-control'} %>
+          </div>
+        </div>
+    <% end %>
+    <div class="form-group row">
+      <div class="control-label col-sm-3">
+        <%= f.label :position_id %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.select :position_id, options_for_select(Position.where(adult_position: true).map { |p| [p.name, p.id] },
+                                                      @adult_position.position_id),
+                     {:include_blank => 'Please select a Position'}, {:class => 'form-control'} %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-3">
+        <%= f.label :start_date %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.text_field :start_date, class: 'form-control datetimepickeryear',
+                         data: {date: @adult_position.start_date, date_format: 'YYYY-MM-DD'} %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-3">
+        <%= f.label :end_date %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.text_field :end_date, class: 'form-control datetimepickeryear',
+                         data: {date: @adult_position.end_date, date_format: 'YYYY-MM-DD'} %>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-sm-5 col-sm-offset-4">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>
+<script>
+    $(document).ready(function () {
+        $("#adult_position").validate({
+            rules: {
+                "adult_position[adult_id]": {required: true},
+                "adult_position[position_id]": {required: true},
+                "adult_position[start_date]": {required: true}
+            },
+            errorPlacement: function (error, element) {
+                $(element).parent('div').parent('div').addClass('has-error');
+                $(element).after(error);
+            }
+        });
+    });
+</script>

@@ -36,6 +36,7 @@ gem 'active_record_upsert'
 gem 'newrelic_rpm'
 gem 'faker'
 gem 'thinreports-rails'
+gem 'awesome_print', require: 'ap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +51,10 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
 end
 
 group :test do

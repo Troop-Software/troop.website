@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231211310) do
+ActiveRecord::Schema.define(version: 20170103064036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,55 @@ ActiveRecord::Schema.define(version: 20161231211310) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.index ["user_id"], name: "index_admin_file_uploads_on_user_id", using: :btree
+  end
+
+  create_table "adult_positions", force: :cascade do |t|
+    t.integer  "adult_id"
+    t.integer  "position_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["adult_id"], name: "index_adult_positions_on_adult_id", using: :btree
+    t.index ["position_id"], name: "index_adult_positions_on_position_id", using: :btree
+  end
+
+  create_table "adult_training_courses", force: :cascade do |t|
+    t.string "name"
+    t.string "bsa_code"
+    t.date   "expired"
+  end
+
+  create_table "adult_trainings", force: :cascade do |t|
+    t.integer  "adult_id"
+    t.integer  "adult_training_course_id"
+    t.date     "completed_date"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["adult_id"], name: "index_adult_trainings_on_adult_id", using: :btree
+    t.index ["adult_training_course_id"], name: "index_adult_trainings_on_adult_training_course_id", using: :btree
+  end
+
+  create_table "adult_vehicles", force: :cascade do |t|
+    t.integer "adult_id"
+    t.integer "vehicle_id"
+    t.index ["adult_id", "vehicle_id"], name: "adult_to_vehicle", unique: true, using: :btree
+    t.index ["adult_id"], name: "index_adult_vehicles_on_adult_id", using: :btree
+    t.index ["vehicle_id"], name: "index_adult_vehicles_on_vehicle_id", using: :btree
+  end
+
+  create_table "adults", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "name"
+    t.integer "sex"
+    t.string  "email"
+    t.string  "phone"
+    t.integer "bsa_id"
+    t.date    "dob"
+    t.string  "drivers_license"
+    t.date    "joined"
+    t.boolean "inactive",        default: false
+    t.index ["user_id"], name: "index_adults_on_user_id", using: :btree
   end
 
   create_table "article_categories", force: :cascade do |t|
@@ -99,8 +148,11 @@ ActiveRecord::Schema.define(version: 20161231211310) do
 
   create_table "positions", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "adult_position", default: false
+    t.string   "bsa_code"
+    t.string   "short_code"
   end
 
   create_table "ranks", force: :cascade do |t|
@@ -241,6 +293,13 @@ ActiveRecord::Schema.define(version: 20161231211310) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string  "name"
+    t.integer "belts"
+    t.string  "plate"
+    t.boolean "hitch", default: false
+  end
+
   create_table "youth_trainings", force: :cascade do |t|
     t.string   "name"
     t.string   "abbr"
@@ -252,6 +311,13 @@ ActiveRecord::Schema.define(version: 20161231211310) do
   end
 
   add_foreign_key "admin_file_uploads", "users"
+  add_foreign_key "adult_positions", "adults"
+  add_foreign_key "adult_positions", "positions"
+  add_foreign_key "adult_trainings", "adult_training_courses"
+  add_foreign_key "adult_trainings", "adults"
+  add_foreign_key "adult_vehicles", "adults"
+  add_foreign_key "adult_vehicles", "vehicles"
+  add_foreign_key "adults", "users"
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
   add_foreign_key "relationships", "scouts"

@@ -4,22 +4,50 @@
     <div class="text-right">
       <%= link_to 'Create New Position', new_position_path, class: 'btn btn-warning ' %>
     </div>
-<% end %>
-<div class="row">&nbsp;</div>
-<div class="row">
-  <% @positions.each do |position| %>
-      <div class="col-sm-6">
-        <%= position.name %>
-        <% if current_user.role? :admin %>
-              <span class="pull-right">
-                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_position_path(position) %>
-                <%= link_to "<i class='material-icons'>delete</i>".html_safe, position,
-                            method: :delete, data: {confirm: "Are you sure you wish to delete the #{position.name} position?"} %>
-                </span>
-        <% end %>
 
+    <div class="card">
+      <div class="card-content">
+        <table id="positions_table" class="table table-responsive table-striped">
+          <thead>
+
+          <th>Position Name</th>
+          <th>Adult Position
+          </th>
+          <th>Short Code
+          </th>
+          <th>BSA Code
+          </th>
+          <th></th>
+          </thead>
+          <tbody>
+          <% @positions.each do |position| %>
+              <tr>
+                <td><%= position.name %></td>
+
+                <% if position.adult_position %>
+                    <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                <% else %>
+                    <td></td>
+                <% end %>
+                <td><%= position.short_code %></td>
+                <td><%= position.bsa_code %></td>
+                <td>
+                  <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_position_path(position) %>
+                  <%= link_to "<i class='material-icons'>delete</i>".html_safe, position,
+                              method: :delete, data: {confirm: "Are you sure you wish to delete the #{position.name} position?"} %>
+                </td>
+
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
-  <% end %>
-</div>
-
-
+    </div>
+<% end %>
+<script>
+    var table = $('#positions_table').DataTable({
+        "aoColumnDefs": [
+            { 'bSortable': false, 'aTargets': [ -1 ] }
+        ]
+    });
+</script>
