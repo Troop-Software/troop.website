@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102213358) do
+ActiveRecord::Schema.define(version: 20170103022053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20170102213358) do
     t.string "name"
     t.string "bsa_code"
     t.date   "expired"
+  end
+
+  create_table "adult_trainings", force: :cascade do |t|
+    t.integer  "adult_id"
+    t.integer  "adult_training_course_id"
+    t.date     "completed_date"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["adult_id"], name: "index_adult_trainings_on_adult_id", using: :btree
+    t.index ["adult_training_course_id"], name: "index_adult_trainings_on_adult_training_course_id", using: :btree
   end
 
   create_table "adults", force: :cascade do |t|
@@ -287,6 +297,8 @@ ActiveRecord::Schema.define(version: 20170102213358) do
   add_foreign_key "admin_file_uploads", "users"
   add_foreign_key "adult_positions", "adults"
   add_foreign_key "adult_positions", "positions"
+  add_foreign_key "adult_trainings", "adult_training_courses"
+  add_foreign_key "adult_trainings", "adults"
   add_foreign_key "adults", "users"
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"

@@ -53,16 +53,18 @@
   <div class="card col-sm-12">
     <div class="row">
       <div class="card-header" data-background-color="dkblue">
-        <h5>Training
-          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, '#' %></span>
+        <h5>Trainings Taken
+          <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_training_path(adult_id: @adult.id) %></span>
         </h5>
       </div>
       <div class="card-content">
         <table class="table table-responsive table-striped">
-          <tr>
-            <td>Training Name</td>
-            <td>11/11/1111</td>
-          </tr>
+          <% @adult.adult_trainings.each do |adult_training| %>
+              <tr>
+                <td><%= adult_training.adult_training_course.name %></td>
+                <td><%= date_for_display(adult_training.completed_date) %></td>
+              </tr>
+          <% end %>
         </table>
       </div>
     </div>

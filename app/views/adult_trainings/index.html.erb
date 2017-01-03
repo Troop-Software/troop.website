@@ -1,0 +1,31 @@
+<%= content_for(:title, 'Adult Training') %>
+
+<% if current_user.role? :leader %>
+    <div class="text-right">
+      <%= link_to 'Log Training', new_adult_training_path, class: 'btn btn-warning ' %>
+    </div>
+<% end %>
+<div class="row">
+  <% @adult_trainings.group_by(&:adult_training_course).each do |training, adult_trainings| %>
+      <div class="card col-sm-5 col-sm-offset-1">
+        <div class="card-header" data-background-color="dkblue">
+          <h4 class="text-center"><%= training.name %></h4>
+        </div>
+        <div class="card-content">
+          <table class="table table-responsive">
+            <% adult_trainings.each do |adult_training| %>
+                <tr>
+                  <td><%= link_to adult_training.adult.name, adult_training.adult %></td>
+                  <td class="pull-right"><%= date_for_display(adult_training.completed_date) %></td>
+                  <% if current_user.role? :leader %>
+                      <td><%= link_to "<i class='material-icons'>delete</i>".html_safe, adult_training,
+                                      method: :delete, data: {confirm: "Are you sure you wish to delete this record?"} %></td>
+                  <% end %>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+  <% end %>
+  <br>
+</div>

@@ -14,6 +14,8 @@ class Adult < ApplicationRecord
   belongs_to :user
   has_many :adult_positions
   has_many :positions, through: :adult_positions
+  has_many :adult_trainings
+  has_many :adult_training_courses, through: :adult_trainings
 
 
 end
