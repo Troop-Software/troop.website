@@ -34,7 +34,7 @@ class ScoutTrainingsController < ApplicationController
 
     respond_to do |format|
       if @scout_training.save
-        format.html { redirect_to scout_trainings_path, notice: 'Scout training was successfully created.' }
+        format.html { redirect_to scout_path(@scout_training.scout), notice: 'Scout training was successfully created.' }
         format.json { render :show, status: :created, location: @scout_training }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class ScoutTrainingsController < ApplicationController
   def update
     respond_to do |format|
       if @scout_training.update(scout_training_params)
-        format.html { redirect_to scout_trainings_path, notice: 'Scout training was successfully updated.' }
+        format.html { redirect_to scout_path(@scout_training.scout), notice: 'Scout training was successfully updated.' }
         format.json { render :show, status: :ok, location: @scout_training }
       else
         format.html { render :edit }

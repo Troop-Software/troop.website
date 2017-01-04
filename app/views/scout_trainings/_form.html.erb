@@ -1,23 +1,26 @@
 <%= form_for(@scout_training, :html => {class: 'form-horizontal', id: :scout_training, role: 'form'}) do |f| %>
     <%= render 'shared/errors', obj: @scout_training %>
-
-    <div class="form-group row">
-      <div class="control-label col-sm-3">
-        <%= f.label :scout_id %>
-      </div>
-      <div class="col-sm-8">
-        <%= f.select :scout_id, options_for_select(Scout.all.map { |se| [se.name, se.id] },
-                                                   @scout_training.scout_id),
-                     {:include_blank => 'Please select a Scout'}, {:class => 'form-control'} %>
-      </div>
-    </div>
+    <% if params[:scout_id] %>
+        <%= f.hidden_field :scout_id, value: params[:scout_id] %>
+    <% else %>
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :scout_id %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select :scout_id, options_for_select(Scout.all.map { |se| [se.name, se.id] },
+                                                       @scout_training.scout_id),
+                         {:include_blank => 'Please select a Scout'}, {:class => 'form-control'} %>
+          </div>
+        </div>
+    <% end %>
     <div class="form-group row">
       <div class="control-label col-sm-3">
         <%= f.label :course %>
       </div>
       <div class="col-sm-8">
         <%= f.select :youth_training_id, options_for_select(YouthTraining.all.map { |yt| [yt.name, yt.id] },
-                                                   @scout_training.youth_training_id),
+                                                            @scout_training.youth_training_id),
                      {:include_blank => 'Please select a Course'}, {:class => 'form-control'} %>
       </div>
     </div>
