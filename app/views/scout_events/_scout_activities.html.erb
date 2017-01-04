@@ -2,7 +2,11 @@
   <div class="card">
     <div class="card-header" data-background-color="dkblue">
 
-      <h4>Activities Attended <span class="label label-info"><%= @scout_activities.count%></span></h4>
+      <h4>Activities Attended <span class="label label-info"><%= @scout_activities.count%></span>
+        <span class="pull-right">
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                    new_scout_event_path(scout_id: params[:id]) %>
+        </span></h4>
     </div>
     <div class="card-content">
       <table id="scout_activities" class="table table-responsive">

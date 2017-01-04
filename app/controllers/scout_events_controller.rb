@@ -40,10 +40,10 @@ class ScoutEventsController < ApplicationController
 
     respond_to do |format|
       if @scout_event.save
-        format.html { redirect_to scout_events_path, notice: 'Scout event was successfully created.' }
+        format.html { redirect_to scout_path(@scout_event.scout), notice: 'Scout event was successfully created.' }
         format.json { render :show, status: :created, location: @scout_event }
       else
-        format.html { render :new }
+        format.html { render :back }
         format.json { render json: @scout_event.errors, status: :unprocessable_entity }
       end
     end
@@ -54,7 +54,7 @@ class ScoutEventsController < ApplicationController
   def update
     respond_to do |format|
       if @scout_event.update(scout_event_params)
-        format.html { redirect_to scout_events_path, notice: 'Scout event was successfully updated.' }
+        format.html { redirect_to scout_path(@scout_event.scout), notice: 'Scout event was successfully updated.' }
         format.json { render :show, status: :ok, location: @scout_event }
       else
         format.html { render :edit }
