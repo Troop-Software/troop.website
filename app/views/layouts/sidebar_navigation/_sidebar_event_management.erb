@@ -1,16 +1,4 @@
 <% if (current_user.role? :leader) %>
-    <li>
-      <a data-toggle="collapse" href="#event_management">
-        <i class="material-icons">event_note</i>
-        <p>Event Management
-          <b class="caret"></b>
-        </p>
-      </a>
-      <div class="collapse" id="event_management">
-        <ul class="nav">
-          <li><%= nav_link 'Add New Event', new_event_path %></li>
-          <li><%= nav_link 'View all events', events_path %></li>
-        </ul>
-      </div>
-    </li>
+    <li><%= nav_link '<i class="material-icons">event_note</i> Event Listing'.html_safe,
+                     events_path %></li>
 <% end %>

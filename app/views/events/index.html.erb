@@ -2,10 +2,15 @@
 <% if current_user.role? :leader %>
     <div class="card col-md-12 ">
       <div class="card-header" data-background-color="dkblue">
-        <h3 class="card-title ">Showing all Events</h3>
+        <h3 class="card-title ">Showing all Events
+          <span class="pull-right">
+              <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                          new_event_path %>
+          </span>
+        </h3>
       </div>
       <div class="card-content">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs event_categories">
           <% @events.categories.each do |category| %>
               <li><a href="#" class=""><%= category[0].humanize %></a></li>
           <% end %>
@@ -55,7 +60,7 @@
                 "visible": false
             }]
     });
-    $('ul').on('click', 'a', function () {
+    $('ul .event_categories').on('click', 'a', function () {
         table
             .columns(2)
             .search($(this).text())
