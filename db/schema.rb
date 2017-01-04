@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103064036) do
+ActiveRecord::Schema.define(version: 20170104185323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20170103064036) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.index ["user_id"], name: "index_admin_file_uploads_on_user_id", using: :btree
+  end
+
+  create_table "adult_events", force: :cascade do |t|
+    t.integer  "adult_id"
+    t.integer  "event_id"
+    t.string   "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["adult_id"], name: "index_adult_events_on_adult_id", using: :btree
+    t.index ["event_id"], name: "index_adult_events_on_event_id", using: :btree
   end
 
   create_table "adult_positions", force: :cascade do |t|
@@ -311,6 +321,8 @@ ActiveRecord::Schema.define(version: 20170103064036) do
   end
 
   add_foreign_key "admin_file_uploads", "users"
+  add_foreign_key "adult_events", "adults"
+  add_foreign_key "adult_events", "events"
   add_foreign_key "adult_positions", "adults"
   add_foreign_key "adult_positions", "positions"
   add_foreign_key "adult_trainings", "adult_training_courses"

@@ -1,0 +1,29 @@
+report.set_layout tlf: 'reports/Event Attendance Report', layout_options: {default: true}
+
+scouts_in_attendance = @scouts_in_attendance
+adults_in_attendance = @adults_in_attendance
+event_details = @event_details
+
+Rails.logger.debug adults_in_attendance.inspect
+report.start_new_page do
+  values(
+      event_title: event_details.title,
+      event_date_range: event_details.date_range ,
+      event_category: event_details.category.humanize.titlecase,
+      event_units: event_details.logged
+  )
+
+  scouts_in_attendance.each do |scout_event|
+    report.list(:scout_group).add_row do |row|
+      row.item(:scout_name).value(scout_event.scout.name)
+    end
+  end
+  adults_in_attendance.each do |adult_event|
+    report.list(:adult_group).add_row do |row|
+      row.item(:adult_name).value(adult_event.adult.name)
+    end
+  end
+end
+
+
+

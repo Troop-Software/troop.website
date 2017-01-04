@@ -36,8 +36,9 @@ Rails.application.routes.draw do
   resources :adult_positions
   resources :adult_training_courses, only: :index
   resources :adult_trainings
-  resources :vehicles, except: :show
   resources :adult_vehicles
+  resources :adult_events, only: [:new, :index]
+  resources :vehicles, except: :show
   resources :events do
     collection do
       get 'calendar_export'
@@ -52,7 +53,7 @@ Rails.application.routes.draw do
   # Reports
   get '/reports/scout_detail_report', to: 'reports#scout_detail_report'
   get '/reports/patrol_report', to: 'reports#patrol_report'
-
+  get '/reports/event_attendance_report', to: 'reports#event_attendance_report'
 
   # Admin Pages
   namespace :admin do

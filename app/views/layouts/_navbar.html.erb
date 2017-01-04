@@ -34,6 +34,8 @@
                 <li><%= link_to 'Scout Detail Report', reports_scout_detail_report_path(id: params[:id], format: :pdf) %></li>
             <% when 'patrols' %>
                 <li><%= link_to 'Patrol Report', reports_patrol_report_path(format: :pdf) %></li>
+            <% when 'events' %>
+                <li> <%= link_to 'Event Attendance Report', reports_event_attendance_report_path(id: params[:id], format: :pdf) %> </li>
             <% else %>
                 <li>No Reports Defined for <%= params[:controller] %></li>
             <% end %>

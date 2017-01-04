@@ -1,0 +1,33 @@
+<div class="card col-sm-12">
+  <div class="row">
+    <div class="card-header" data-background-color="dkblue">
+      <h5>Positions Held
+        <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                                             new_adult_position_path(adult_id: @adult.id) %></span>
+      </h5>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped">
+        <% unless @adult.adult_positions.blank? %>
+            <thead>
+            <th>Position</th>
+            <th>Dates Served</th>
+            <th>Days in Position</th>
+            </thead>
+        <% end %>
+        <% @adult.adult_positions.each do |adult_position| %>
+            <tr>
+              <td><%= adult_position.position.name %></td>
+              <% if adult_position.end_date.blank? %>
+                  <td><%= date_for_display(adult_position.start_date) %></td>
+              <% else %>
+                  <td><%= date_for_display(adult_position.start_date) %>
+                    - <%= date_for_display(adult_position.end_date) %></td>
+              <% end %>
+              <td><%= days_between(adult_position.start_date, adult_position.end_date) %> Days</td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
