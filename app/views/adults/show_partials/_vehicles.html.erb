@@ -1,0 +1,30 @@
+<div class="card col-sm-12">
+  <div class="row">
+    <div class="card-header" data-background-color="dkblue">
+      <h5>Vehicles
+        <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                                             new_adult_vehicle_path(adult_id: @adult.id) %></span>
+      </h5>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped">
+        <% unless @adult.vehicles.blank? %>
+            <thead>
+            <th></th>
+            <th>Vehicle</th>
+            <th># of Seat Belts</th>
+            <th>License Plate</th>
+            </thead>
+        <% end %>
+        <% @adult.vehicles.each do |vehicle| %>
+            <tr>
+              <td><%= '<i class="fa fa-truck" aria-hidden="true"></i>'.html_safe if vehicle.hitch %></td>
+              <td><%= vehicle.name %></td>
+              <td><%= vehicle.belts %></td>
+              <td><%= vehicle.plate %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

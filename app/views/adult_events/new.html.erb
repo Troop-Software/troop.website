@@ -1,0 +1,11 @@
+<%= content_for(:title, 'Event Attendance') %>
+<div class="row col-sm-8 col-sm-offset-2 text-center">
+  <div class="card">
+    <div class="card-header" data-background-color="green">
+      <h2 class="title">Add <%= Adult.find(params[:adult_id]).name %> to Event</h2>
+    </div>
+    <div class="card-content">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

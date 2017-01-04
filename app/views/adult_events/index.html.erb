@@ -1,0 +1,32 @@
+<%= content_for(:title, 'Event Attendance - 1 year window') %>
+<div class="col-sm-8 col-sm-offset-1">
+  <table class="table table-striped table-inverse">
+    <thead>
+    <tr>
+      <th>Adult</th>
+      <th>Event</th>
+      <th>Date</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @adult_events.each do |adult_event| %>
+        <tr>
+          <td><%= adult_event.adult.name %></td>
+          <td><%= adult_event.event.title %></td>
+          <td><%= datetime_for_display(adult_event.event.start) %></td>
+          <td><%= adult_event.notes %></td>
+          <td><%= link_to 'Show', adult_event %></td>
+          <td><%= link_to 'Edit', edit_adult_event_path(adult_event) %></td>
+          <td><%= link_to 'Destroy', adult_event, method: :delete, data: {confirm: 'Are you sure you wish to delete this event?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<%= link_to 'New Adult Event', new_adult_event_path %>
