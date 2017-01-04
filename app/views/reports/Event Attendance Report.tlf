@@ -1,0 +1,564 @@
+{
+  "version": "0.9.1",
+  "items": [
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 20,
+      "y": 20,
+      "width": 571.9,
+      "height": 37.1,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 18,
+        "color": "#000000",
+        "text-align": "center",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Event Attendance Report"
+      ]
+    },
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 61.2,
+      "y": 67.8,
+      "width": 49.4,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Event:"
+      ]
+    },
+    {
+      "id": "event_title",
+      "type": "text-block",
+      "display": true,
+      "description": "",
+      "x": 122.6,
+      "y": 67.8,
+      "width": 147,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [],
+        "overflow": "truncate",
+        "word-wrap": "break-word"
+      },
+      "reference-id": "",
+      "value": "",
+      "multiple-line": false,
+      "format": {
+        "base": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 61.2,
+      "y": 67.8,
+      "width": 49.4,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Event:"
+      ]
+    },
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 323.6,
+      "y": 67.8,
+      "width": 49.4,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Date(s):"
+      ]
+    },
+    {
+      "id": "event_date_range",
+      "type": "text-block",
+      "display": true,
+      "description": "",
+      "x": 370.6,
+      "y": 67.8,
+      "width": 221.3,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [],
+        "overflow": "fit",
+        "word-wrap": "break-word"
+      },
+      "reference-id": "",
+      "value": "",
+      "multiple-line": false,
+      "format": {
+        "base": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 61.2,
+      "y": 85.8,
+      "width": 55.4,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Category:"
+      ]
+    },
+    {
+      "id": "event_category",
+      "type": "text-block",
+      "display": true,
+      "description": "",
+      "x": 122.6,
+      "y": 85.8,
+      "width": 147,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [],
+        "overflow": "truncate",
+        "word-wrap": "break-word"
+      },
+      "reference-id": "",
+      "value": "",
+      "multiple-line": false,
+      "format": {
+        "base": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 323.6,
+      "y": 85.8,
+      "width": 49.4,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Units:"
+      ]
+    },
+    {
+      "id": "event_units",
+      "type": "text-block",
+      "display": true,
+      "description": "",
+      "x": 369.6,
+      "y": 85.8,
+      "width": 147,
+      "height": 13.3,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 12,
+        "color": "#000000",
+        "text-align": "left",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [],
+        "overflow": "truncate",
+        "word-wrap": "break-word"
+      },
+      "reference-id": "",
+      "value": "",
+      "multiple-line": false,
+      "format": {
+        "base": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "scout_group",
+      "type": "list",
+      "display": true,
+      "description": "",
+      "x": 60,
+      "y": 130,
+      "width": 255,
+      "height": 600,
+      "header": {
+        "enabled": true,
+        "height": 15,
+        "translate": {
+          "x": -1.2,
+          "y": -6.1
+        },
+        "items": [
+          {
+            "id": "",
+            "type": "text",
+            "display": true,
+            "description": "",
+            "x": 62.4,
+            "y": 136.1,
+            "width": 100,
+            "height": 15,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 14,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [
+                "bold"
+              ]
+            },
+            "texts": [
+              "Scouts"
+            ]
+          }
+        ]
+      },
+      "detail": {
+        "height": 19.3,
+        "translate": {
+          "x": -1.2,
+          "y": 8.9
+        },
+        "items": [
+          {
+            "id": "scout_name",
+            "type": "text-block",
+            "display": true,
+            "description": "",
+            "x": 83.8,
+            "y": 142.1,
+            "width": 230,
+            "height": 13.3,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 12,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [],
+              "overflow": "truncate",
+              "word-wrap": "break-word"
+            },
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
+          }
+        ]
+      },
+      "page-footer": {
+        "enabled": false,
+        "height": 0,
+        "translate": {
+          "x": -1.2,
+          "y": -16.8
+        },
+        "items": []
+      },
+      "footer": {
+        "enabled": false,
+        "height": 0,
+        "translate": {
+          "x": -1.2,
+          "y": -50.6
+        },
+        "items": []
+      },
+      "content-height": 585,
+      "auto-page-break": false
+    },
+    {
+      "id": "adult_group",
+      "type": "list",
+      "display": true,
+      "description": "",
+      "x": 320,
+      "y": 130,
+      "width": 255,
+      "height": 600,
+      "header": {
+        "enabled": true,
+        "height": 15,
+        "translate": {
+          "x": -3.6,
+          "y": 0
+        },
+        "items": [
+          {
+            "id": "",
+            "type": "text",
+            "display": true,
+            "description": "",
+            "x": 324.8,
+            "y": 130,
+            "width": 100,
+            "height": 15,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 14,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [
+                "bold"
+              ]
+            },
+            "texts": [
+              "Adults"
+            ]
+          }
+        ]
+      },
+      "detail": {
+        "height": 19.3,
+        "translate": {
+          "x": -3.6,
+          "y": -50
+        },
+        "items": [
+          {
+            "id": "adult_name",
+            "type": "text-block",
+            "display": true,
+            "description": "",
+            "x": 346.2,
+            "y": 201,
+            "width": 230,
+            "height": 13.3,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 12,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [],
+              "overflow": "truncate",
+              "word-wrap": "break-word"
+            },
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
+          }
+        ]
+      },
+      "page-footer": {
+        "enabled": false,
+        "height": 0,
+        "translate": {
+          "x": -3.6,
+          "y": -95.7
+        },
+        "items": []
+      },
+      "footer": {
+        "enabled": false,
+        "height": 0,
+        "translate": {
+          "x": -3.6,
+          "y": -144.5
+        },
+        "items": []
+      },
+      "content-height": 585,
+      "auto-page-break": false
+    }
+  ],
+  "state": {
+    "layout-guides": [
+      {
+        "type": "x",
+        "position": 61.2
+      },
+      {
+        "type": "x",
+        "position": 122.6
+      },
+      {
+        "type": "x",
+        "position": 389.6
+      },
+      {
+        "type": "x",
+        "position": 369.6
+      },
+      {
+        "type": "x",
+        "position": 323.6
+      },
+      {
+        "type": "y",
+        "position": 81.1
+      },
+      {
+        "type": "y",
+        "position": 99.1
+      }
+    ]
+  },
+  "title": "Event Attendance Report",
+  "report": {
+    "paper-type": "user",
+    "orientation": "portrait",
+    "margin": [
+      20,
+      20,
+      20,
+      20
+    ],
+    "width": 611.9,
+    "height": 791.8
+  }
+}
