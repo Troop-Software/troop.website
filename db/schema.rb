@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106005801) do
+ActiveRecord::Schema.define(version: 20170106212311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(version: 20170106005801) do
   end
 
   create_table "adult_training_courses", force: :cascade do |t|
-    t.string "name"
-    t.string "bsa_code"
-    t.date   "expired"
+    t.string  "name"
+    t.string  "bsa_code"
+    t.date    "expired"
+    t.integer "expires_after"
   end
 
   create_table "adult_trainings", force: :cascade do |t|

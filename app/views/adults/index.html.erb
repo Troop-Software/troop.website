@@ -19,7 +19,7 @@
         </thead>
         <tbody>
         <% @adults.each do |adult| %>
-            <tr>
+            <tr class="<%= 'danger' if adult.ypt_expired? %>">
               <td>
                 <%= link_to '<i class="fa fa-link" aria-hidden="true"></i>'.html_safe,
                             admin_user_path(adult.user) unless adult.user.blank? %>

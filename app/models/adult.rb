@@ -78,4 +78,27 @@ class Adult < ApplicationRecord
     #name += " #{suffix}" unless suffix.nil?
     return name
   end
+  def training_expired?(training_course, date_taken)
+    expired_after = AdultTrainingCourse.find(training_course).expires_after
+    unless expired_after.blank?
+      if date_taken < expired_after.years.ago
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def ypt_expired?
+    ypt_courses = AdultTrainingCourse.where(bsa_code: ['Y01','Y02','Y03']).ids
+    ypt_courses_taken = AdultTraining.where(adult_training_course_id: ypt_courses, adult_id: self.id )
+    ypt_courses_taken.each do |course|
+      Rails.logger.debug course.inspect
+      result = self.training_expired?(course.adult_training_course_id, course.completed_date)
+      if result != true
+        return false
+      end
+    end
+return true
+  end
 end
