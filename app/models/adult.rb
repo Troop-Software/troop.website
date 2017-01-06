@@ -63,7 +63,6 @@ class Adult < ApplicationRecord
   def self.format_date_for_import(date)
     return '' if date.blank?
     date = Date.strptime(date, '%m/%d/%Y')
-
   end
 
   def self.sex(field)
