@@ -15,7 +15,8 @@
             </thead>
         <% end %>
         <% @adult.adult_trainings.each do |adult_training| %>
-            <tr>
+            <% training_expired =  adult_training.training_expired?(adult_training.adult_training_course,adult_training.completed_date) %>
+            <tr class="<%= 'alert-danger' if training_expired %>">
               <td><%= adult_training.adult_training_course.name %></td>
               <td><%= date_for_display(adult_training.completed_date) %></td>
             </tr>

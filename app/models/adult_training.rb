@@ -53,4 +53,17 @@ class AdultTraining < ApplicationRecord
     #name += " #{suffix}" unless suffix.nil?
     return name
   end
+
+  def training_expired?(training_course, date_taken)
+    expired_after = AdultTrainingCourse.find(training_course.id).expires_after
+    unless expired_after.blank?
+      if date_taken < expired_after.years.ago
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+
 end

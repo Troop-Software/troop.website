@@ -5,6 +5,13 @@
       <h4><%= @adult.name %></h4>
     </div>
     <div class="card-content">
+      <% if @adult.ypt_expired? %>
+          <div class="alert-danger text-center">
+            <div class="row"></div>
+            <h4>Youth Protection Training Expired</h4>
+            <div class="row"></div>
+          </div>
+      <% end %>
       <table class="table table-responsive">
         <tr>
           <td class="text-primary bold">Email:</td>
