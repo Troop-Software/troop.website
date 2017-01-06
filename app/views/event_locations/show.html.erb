@@ -1,0 +1,40 @@
+<%= content_for(:title, 'Event Location') %>
+<div class="card col-sm-10 col-sm-offset-1">
+  <div class="row">
+    <div class="card-header" data-background-color="dkblue">
+      <h4><%= @event_location.name %></h4>
+      <p> <%= @event_location.address %></p>
+    </div>
+    <div class="card-content">
+      <iframe width="100%" height="300" frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=<%= ENV.fetch('GOOGLE_MAPS_API_KEY') %>&q=<%= @event_location.location %>" allowfullscreen>
+      </iframe>
+    </div>
+    <div class="col-sm-12 text-center">
+      <% if current_user.role? :leader %>
+          <%= link_to 'Edit', edit_event_location_path(@event_location), class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'Delete', event_location_path(@event_location), method: :delete,
+                      data: {confirm: 'Are you sure you want to delete this location?'},
+                      class: 'btn btn-sm btn-danger' %>
+      <% end %>
+      <%= link_to 'Back', :back, class: 'btn btn-sm ' %>
+    </div>
+  </div>
+</div>
+<div class="card col-sm-10 col-sm-offset-1">
+  <div class="card-header" data-background-color="dkblue">
+    <h5>Past Events at this location</h5>
+  </div>
+  <div class="card-content">
+    <table class="table table-responsive table-striped">
+      <% @events.each do |event| %>
+          <tr>
+            <td><%= event.category.humanize %></td>
+            <td><%= event.title %></td>
+            <td><%= event.date_range %></td>
+            <td><%= event.logged %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
