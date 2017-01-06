@@ -4,10 +4,10 @@ class Adult < ApplicationRecord
   enum sex: [:male, :female]
 
   validates :name, presence: true, length: {minimum: 5, maximum: 50}
-  validates :email, presence: true,
-            length: {maximum: 128},
-            uniqueness: {case_sensitive: false},
-            format: {with: VALID_EMAIL_REGEX}
+  # validates :email, presence: true,
+  #           length: {maximum: 128},
+  #           uniqueness: {case_sensitive: false},
+  #           format: {with: VALID_EMAIL_REGEX}
 
   validates_uniqueness_of :name
 

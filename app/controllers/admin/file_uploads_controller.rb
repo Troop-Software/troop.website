@@ -15,6 +15,10 @@ class Admin::FileUploadsController < AdminController
       when /Merit_Badges_Earned\.txt/
         ImportMeritBadgesJob.perform_later params[:id]
 
+      when /Adult_Individual_Participation_Report\.txt/
+        ImportAdultEventsJob.perform_later params[:id]
+        #AdultEvent.import_participation(params[:id])
+
       when /Scout_Individual_Participation_Report\.txt/
         ImportScoutEventsJob.perform_later params[:id]
 
