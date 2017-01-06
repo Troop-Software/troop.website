@@ -10,6 +10,7 @@ class Event < ApplicationRecord
   has_many :scouts, through: :scout_events
   has_many :adult_events
   has_many :adults, through: :adult_events
+  has_one :event_location
 
   scope :events_in_60_day_window, -> { where('events.start between ? and ?', 30.days.ago, 30.days.from_now) }
   scope :events_in_year_window, -> { where('events.start between ? and ?', 1.year.ago, 1.year.from_now) }
