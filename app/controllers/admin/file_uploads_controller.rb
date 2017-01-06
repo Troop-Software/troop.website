@@ -4,6 +4,8 @@ class Admin::FileUploadsController < AdminController
   def import_file
 
     case params[:name]
+      when /Adult\.txt/
+        Adult.import_adult(params[:id])
 
       when /Merit_Badges_Earned\.txt/
         ImportMeritBadgesJob.perform_later params[:id]
