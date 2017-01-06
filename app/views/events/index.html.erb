@@ -12,7 +12,7 @@
       <div class="card-content">
         <ul class="nav nav-tabs event_categories">
           <% @events.categories.each do |category| %>
-              <li><a href="#" class=""><%= category[0].humanize %></a></li>
+              <li><a href="#category" class=""><%= category[0].humanize %></a></li>
           <% end %>
         </ul>
         <a id="filter_all" href="#" class="btn btn-warning btn-sm pull-right">Clear Filters</a>
@@ -20,10 +20,12 @@
           <thead>
           <tr>
             <th>Title</th>
+            <th>Location</th>
             <th>Description</th>
             <th>Category</th>
             <th>Start</th>
             <th>End</th>
+            <th>Duration</th>
           </tr>
           </thead>
 
@@ -31,6 +33,7 @@
           <% @events.each do |event| %>
               <tr>
                 <td><%= link_to event.title, event %></td>
+                <td><%= link_to EventLocation.find(event.location_id).name, event_location_path(event.location_id) unless event.location_id.blank? %></td>
                 <td><%= event.description %></td>
                 <td><%= event.category.humanize %></td>
                 <% if event.allDay %>
@@ -40,6 +43,7 @@
                     <td><%= date_for_display(event.start) %></td>
                     <td><%= date_for_display(event.end) %></td>
                 <% end %>
+                <td><%= event.logged %></td>
               </tr>
           <% end %>
           </tbody>
@@ -53,16 +57,16 @@
     $.fn.dataTable.moment('MM/D/YYYY');
     var table = $('#events_listing').DataTable({
         "dom": 'ftlp',
-        "order": [[3, "desc"]],
+        "order": [4, "desc"],
         "columnDefs": [
             {
-                "targets": [2],
+                "targets": [3],
                 "visible": false
             }]
     });
     $('ul .event_categories').on('click', 'a', function () {
         table
-            .columns(2)
+            .columns(3)
             .search($(this).text())
             .draw();
         $('.card-title').contents().last().replaceWith('Showing events in the "' + $(this).text() + '" category');

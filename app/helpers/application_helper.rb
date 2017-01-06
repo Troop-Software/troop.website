@@ -8,6 +8,10 @@ module ApplicationHelper
     positions.join(', ')
   end
 
+  def google_map(location)
+    "https://www.google.com/maps/embed/v1/place?key=#{ENV.fetch('GOOGLE_MAPS_API_KEY')}&q='#{location}'"
+  end
+
   def gravatar_for(user, options = {size: 80})
     if user.class == String
       gravatar_id = Digest::MD5::hexdigest(user.downcase)
