@@ -7,12 +7,13 @@
     <div class="card-content">
       <h4 class="card-title"><%= @event.title %></h4>
       <h5><%= @event.description %></h5>
+      <h5><%= link_to 'View Location Details', event_location_path(@event.location_id) unless @event.location_id.blank? %></h5>
       <table class="table">
         <thead>
         <tr>
           <th>Start</th>
           <th>End</th>
-          <th>All Day</th>
+          <th>Duration</th>
           <th>Category</th>
         </tr>
         </thead>
@@ -25,7 +26,7 @@
               <td><%= datetime_for_display(@event.start) %></td>
               <td><%= datetime_for_display(@event.end) %></td>
           <% end %>
-          <td><%= @event.allDay %></td>
+          <td><%= @event.logged %></td>
           <td><span class="badge"><%= @event.category.humanize.titlecase %></span></td>
         </tr>
         </tbody>
@@ -41,7 +42,7 @@
     </div>
   </div>
 </div>
-<div class="row col-sm-11 text-center">
+<div class="row col-sm-12 text-center">
   <% if current_user.role? :admin %>
       <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-sm btn-primary' %>
       <%= link_to 'Delete', event_path(@event), method: :delete,
@@ -50,32 +51,31 @@
   <% end %>
   <%= link_to 'View Events', calendar_path, class: 'btn btn-sm btn-success' %>
 </div>
-<% if @event.scout_events.count > 0 %>
-    <div class="card col-sm-5">
-      <div class="card-header card-header-icon" data-background-color="dkblue">
-        <i class="material-icons">face</i>
-      </div>
-      <div class="card-content">
-        <h4 class="card-title">Scouts in attendance</h4>
-        <ul class="list-group">
-          <% @event.scout_events.each do |scout_event| %>
-              <li class="list-group-item"><%= link_to scout_event.scout.name, scout_event.scout %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="card col-sm-5 col-sm-offset-1">
+  <div class="card-header" data-background-color="dkblue">
+    <h4 class="card-title">Scouts in attendance <span class="label label-success"><%= @event.scout_events.count  %></span></h4>
+  </div>
+  <div class="card-content">
+    <ul class="list-group">
+      <% @event.scout_events.each do |scout_event| %>
+          <li class="list-group-item"><%= link_to scout_event.scout.name, scout_event.scout %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-    <div class="card col-sm-5 col-sm-offset-1">
-      <div class="card-header card-header-icon" data-background-color="dkblue">
-        <i class="material-icons">face</i>
-      </div>
-      <div class="card-content">
-        <h4 class="card-title">Adults in attendance</h4>
-        <ul class="list-group">
-          <% @event.adult_events.each do |adult_event| %>
-              <li class="list-group-item"><%= link_to adult_event.adult.name, adult_event.adult %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-<% end %>
+<div class="card col-sm-4 col-sm-offset-1">
+  <div class="card-header" data-background-color="dkblue">
+    <h4 class="card-title">Adults in attendance <span class="label label-success"><%= @event.adult_events.count  %></span></h4>
+  </div>
+  <div class="card-content">
+    <ul class="list-group">
+      <% @event.adult_events.each do |adult_event| %>
+          <li class="list-group-item"><%= link_to adult_event.adult.name, adult_event.adult %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

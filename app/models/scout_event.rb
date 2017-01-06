@@ -48,8 +48,8 @@ class ScoutEvent < ApplicationRecord
           file_date = DateTime.strptime("#{post_processed_file[i][0..8]} 09:00 pm", '%m/%d/%y %I:%M %P')
           file_event_type = post_processed_file[i][10..25].strip
           file_event_duration = post_processed_file[i][26..31].strip.to_i
-          file_event_location = post_processed_file[i][32..51].strip
-          file_event_description = post_processed_file[i][52..80].strip
+          file_event_location = post_processed_file[i][32..50].strip
+          file_event_description = post_processed_file[i][52..77].strip
           Rails.logger.debug "#{line_scout_name} #{file_event_type}"
 
           # Find or create event
