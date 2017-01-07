@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "users/registrations"}
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   authenticated :user do
     root to: 'static_pages#home', as: :authenticated_root

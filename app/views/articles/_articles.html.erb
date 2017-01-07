@@ -1,39 +1,36 @@
-<% obj.each do |article| %>
-    <div class="row">
-      <div class="col-sm-offset-1 col-sm-10 ">
-        <div class="card">
-          <div class="card-header" data-background-color="dkblue">
-            <h4 class="hvr-push"><%= link_to article.title, article_path(article) %></h4>
-            <span class="pull-right">
-              <% if article.user == current_user || (current_user.role? :leader) %>
-                  <%= link_to "Edit", edit_article_path(article), class: "btn btn-sm btn-warning" %>
-              <% end %>
-              <% if article.user == current_user || (current_user.role? :leader_full) %>
-                  <%= link_to "Delete", article_path(article), method: :delete,
-                              data: {confirm: "Are you sure you want to delete the article?"},
-                              class: "btn btn-sm btn-danger" %>
-              <% end %>
-
-            </span>
-          </div>
-          <div class="card-content">
-            <%= truncate(article.description, length: 500) %>
-          </div>
-          <div class="card-footer">
-            <small>
+<div class="card">
+  <div class="card-header" data-background-color="dkblue">
+    <h4>Article Listings</h4>
+  </div>
+  <div class="card-content">
+    <table class="table table-responsive table-striped">
+      <thead>
+      <th>Article</th>
+      <th>Author</th>
+      <th>Categories</th>
+      <th>Created</th>
+      <th>Updated</th>
+      </thead>
+      <tbody>
+      <% obj.each do |article| %>
+          <tr>
+            <td><%= link_to article.title, article_path(article) %></td>
+            <td><%= article.user.username %></td>
+            <td>
               <% if article.categories.any? %>
-                  Categories:
                   <% article.categories.each do |cat| %>
-                      <span class="badge hvr-pulse-shrink"><%= link_to cat.name, category_path(cat) %></span>
+                      <span class="badge hvr-pulse-shrink">
+                        <small><%= link_to cat.name, category_path(cat) %></small>
+                      </span>
                   <% end %>
-                  <br/>
               <% end %>
-              Created by: <%= article.user.username if article.user %>,
-              <%= time_ago_in_words(article.created_at) %> ago,
-              last updated: <%= time_ago_in_words(article.updated_at) %> ago
-            </small>
-          </div>
-        </div>
-      </div>
-    </div>
-<% end %>
+            </td>
+            <td><%= time_ago_in_words(article.created_at) %> ago</td>
+            <td><%= time_ago_in_words(article.updated_at) %> ago</td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

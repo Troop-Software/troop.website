@@ -66,3 +66,16 @@ div.register-page {
   width: 100%;
 }
 
+// Bootsy buttons
+ul.wysihtml5-toolbar a.btn
+{
+  @include btn-styles($brand-dkblue);
+}
+
+ul.wysihtml5-toolbar a.btn.btn-default.wysihtml5-command-active
+{
+  background: $color-secondary-1-0;
+}
+body.form-control.bootsy_text_area.wysihtml5-editor {
+  border:dotted 2px blue !important;
+}
