@@ -27,7 +27,7 @@
     <div id="myTabContent" class="tab-content" style="margin-top: 0;">
       <% @ranks.each do |rank| %>
           <% unless rank.id == 1 %>
-              <div class="tab-pane fade in <%= 'active' if rank.id == @scout.rank.id %>" id="<%= rank.id %>">
+              <div class="tab-pane fade in <%= 'active' if rank.id == @scout.rank.id + 1%>" id="<%= rank.id %>">
               <%= render 'scouts/scout_rank_view', current_rank_selected: rank.id %>
               </div>
           <% end %>
