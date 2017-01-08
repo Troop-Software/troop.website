@@ -36,6 +36,7 @@ gem 'active_record_upsert'
 gem 'newrelic_rpm'
 gem 'faker'
 gem 'thinreports-rails'
+gem 'bootsy'
 gem 'awesome_print', require: 'ap'
 
 group :development, :test do

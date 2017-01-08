@@ -1,14 +1,5 @@
 <%= content_for(:title, 'Create a new article') %>
-<div class="card col-sm-8 col-sm-offset-1">
-  <div class="row">
-    <div class="card-header" data-background-color="dkblue">
-      <h4>New Article</h4>
-    </div>
-    <div class="card-content">
-        <%= render 'form', article: @article %>
-    </div>
-  </div>
-</div>    
+<%= render 'form', article: @article %>
 
 
 
