@@ -1,4 +1,4 @@
 <% if (current_user.role? :leader) %>
-    <li><%= nav_link '<i class="material-icons">event_note</i> Event Listing'.html_safe,
+    <li><%= nav_link '<i class="material-icons">event_note</i><p>Events</p>'.html_safe,
                      events_path %></li>
 <% end %>

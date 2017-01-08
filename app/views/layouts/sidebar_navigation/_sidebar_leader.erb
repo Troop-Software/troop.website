@@ -1,5 +1,5 @@
 <% if (current_user.role? :leader) %>
-    <li><%= nav_link '<i class="material-icons">people</i> View Adults'.html_safe, adults_path %></li>
+    <li><%= nav_link '<i class="material-icons">people</i><p>Adults</p>'.html_safe, adults_path %></li>
     <li>
       <a data-toggle="collapse" href="#articles">
         <i class="material-icons">insert_drive_file</i>
