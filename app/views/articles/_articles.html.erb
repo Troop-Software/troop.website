@@ -1,6 +1,11 @@
 <div class="card">
   <div class="card-header" data-background-color="dkblue">
-    <h4>Article Listings</h4>
+    <h4>Article Listings
+      <span class="pull-right">
+              <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                          new_article_path %>
+          </span>
+    </h4>
   </div>
   <div class="card-content">
     <table class="table table-responsive table-striped">
@@ -25,8 +30,12 @@
                   <% end %>
               <% end %>
             </td>
-            <td><%= time_ago_in_words(article.created_at) %> ago</td>
-            <td><%= time_ago_in_words(article.updated_at) %> ago</td>
+            <td>
+              <small><%= time_ago_in_words(article.created_at) %> ago</small>
+            </td>
+            <td>
+              <small><%= time_ago_in_words(article.updated_at) %> ago</small>
+            </td>
           </tr>
       <% end %>
       </tbody>
