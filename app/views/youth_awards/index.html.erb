@@ -12,11 +12,13 @@
       <table class="table table-responsive table-striped">
         <thead>
         <td>Name</td>
+        <td>Description</td>
         </thead>
         <tbody>
         <% @youth_awards.each do |youth_award| %>
         <tr>
           <td><%= link_to youth_award.name, youth_award_path(youth_award) %></td>
+          <td><%= youth_award.description %></td>
         </tr>
         <% end %>
         </tbody>

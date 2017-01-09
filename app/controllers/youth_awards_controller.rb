@@ -60,6 +60,6 @@ class YouthAwardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def youth_award_params
-    params.require(:youth_award).permit(:name, :multiple, :active )
+    params.require(:youth_award).permit(:name, :multiple, :active, :description )
   end
 end
