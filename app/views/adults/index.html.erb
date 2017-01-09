@@ -1,5 +1,5 @@
 <%= content_for(:title, 'Adults involved with the Troop') %>
-<div class="col-sm-10 col-sm-offset-1">
+<div class="col-sm-12">
   <div class="card">
     <div class="card-header" data-background-color="dkblue">
       <h4 class="card-title">Troop Adults
@@ -13,18 +13,21 @@
         <thead>
         <th></th>
         <th>Name</th>
+        <th>Address</th>
         <th>Email</th>
         <th>Phone</th>
         <th></th>
         </thead>
         <tbody>
         <% @adults.each do |adult| %>
-            <tr class="<%= 'danger' if adult.ypt_expired? %>">
+            <tr>
               <td>
+                <%= '<i class="fa fa-exclamation-triangle text-danger" data-toggle="tooltip" title="YPT Expired" aria-hidden="true"></i>'.html_safe if adult.ypt_expired? %>
                 <%= link_to '<i class="fa fa-link" aria-hidden="true"></i>'.html_safe,
                             admin_user_path(adult.user) unless adult.user.blank? %>
               </td>
               <td><%= link_to adult.name, adult_path(adult) %></td>
+              <td><%= adult.address.full unless adult.address.blank? %></td>
               <td><%= adult.email %></td>
               <td><%= number_to_phone(adult.phone) %></td>
               <td>

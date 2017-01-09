@@ -6,9 +6,11 @@ class AdultsController < ApplicationController
 
   def new
     @adult = Adult.new
+    @adult.build_address
   end
 
   def edit
+    @adult.build_address if @adult.address.blank?
   end
 
   def show
@@ -63,7 +65,9 @@ class AdultsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def adult_params
     params.require(:adult).permit(:name, :sex, :email, :phone, :bsa_id, :dob,
-                                  :drivers_license, :joined, :became_leader, :inactive)
+                                  :drivers_license, :joined, :became_leader, :inactive,
+                                  :user_id, address_attributes: [:line1, :line2, :city, :state, :zip,
+                                                      :addressable_id, :addressable_type])
   end
 
 end

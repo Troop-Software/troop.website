@@ -14,12 +14,20 @@
       <% end %>
       <table class="table table-responsive">
         <tr>
+          <% unless @adult.address.blank? %>
+              <td class="text-primary bold" >Address</td>
+              <td colspan="3"><%= @adult.address.full %></td>
+          <% end %>
           <td class="text-primary bold">Email:</td>
           <td><%= @adult.email %></td>
+        </tr>
+        <tr>
           <td class="text-primary bold">Phone:</td>
           <td><%= number_to_phone(@adult.phone) %></td>
           <td class="text-primary bold">BSA ID:</td>
           <td><%= @adult.bsa_id %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <td class="text-primary bold">DOB:</td>
