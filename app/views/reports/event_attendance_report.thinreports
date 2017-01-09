@@ -4,7 +4,6 @@ scouts_in_attendance = @scouts_in_attendance
 adults_in_attendance = @adults_in_attendance
 event_details = @event_details
 
-Rails.logger.debug adults_in_attendance.inspect
 report.start_new_page do
   values(
       event_title: event_details.title,

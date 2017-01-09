@@ -1,0 +1,34 @@
+report.set_layout tlf: 'reports/YPT Report', layout_options: {default: true}
+adults = @adults
+
+report.start_new_page do
+  values(report_date: Date.today)
+  adults.each do |adult|
+    if adult.ypt_expired?
+      report.list.header do |header|
+        header.item(:report_section_header).value('Adults with Expired Youth Protection')
+      end
+      report.list.add_row do |row|
+        row.item(:name).value(adult.name)
+        row.item(:date).value(adult.last_ypt_date)
+        row.item(:days).value(adult.days_remaining_ypt)
+      end
+    end
+  end
+end
+
+report.start_new_page do
+  values(report_date: Date.today)
+  adults.each do |adult|
+    unless adult.ypt_expired?
+      report.list.header do |header|
+        header.item(:report_section_header).value('Adults with Valid Youth Protection')
+      end
+      report.list.add_row do |row|
+        row.item(:name).value(adult.name)
+        row.item(:date).value(adult.last_ypt_date)
+        row.item(:days).value(adult.days_remaining_ypt)
+      end
+    end
+  end
+end

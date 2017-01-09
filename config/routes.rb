@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   get '/reports/scout_detail_report', to: 'reports#scout_detail_report'
   get '/reports/patrol_report', to: 'reports#patrol_report'
   get '/reports/event_attendance_report', to: 'reports#event_attendance_report'
+  get '/reports/ypt_report', to: 'reports#ypt_report'
 
   # Admin Pages
   namespace :admin do
