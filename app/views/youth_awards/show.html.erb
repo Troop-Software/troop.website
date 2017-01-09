@@ -30,7 +30,7 @@
         <tr>
           <td><%= requirement.req_num %></td>
           <td><%= requirement.description %></td>
-          <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe,
+          <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" title="Edit Requirement"></i>'.html_safe,
                           edit_youth_award_requirement_path(requirement, youth_award_id: params[:id]) %></td>
         </tr>
             <% end %>

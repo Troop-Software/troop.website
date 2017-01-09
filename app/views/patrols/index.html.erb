@@ -14,8 +14,8 @@
               <span class="label label-success"><%= patrol.scouts.count %></span>
               <% if current_user.role? :admin%>
               <span class="pull-right">
-                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_patrol_path(patrol) %>
-                <%= link_to "<i class='material-icons'>delete</i>".html_safe, patrol,
+                <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Edit Patrol'>create</i>".html_safe, edit_patrol_path(patrol) %>
+                <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Delete Patrol'>delete</i>".html_safe, patrol,
                             method: :delete, data: {confirm: "Are you sure you wish to delete the #{patrol.name} patrol?"} %>
                 </span>
               <% end %>

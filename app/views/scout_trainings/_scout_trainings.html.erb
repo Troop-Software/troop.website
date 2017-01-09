@@ -3,7 +3,7 @@
     <div class="card-header" data-background-color="dkblue">
       <h4>Training <span class="label label-info"><%= @scout_trainings.count%></span>
         <span class="pull-right">
-        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Add New Training"></i>'.html_safe,
                     new_scout_training_path(scout_id: params[:id]) %>
         </span>
       </h4>

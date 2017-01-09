@@ -4,7 +4,10 @@
     <div class="card-header" data-background-color="dkblue">
       <h4 class="card-title"><%= @scout.name %>
         <% if current_user.role? :admin %>
-            <span class="pull-right"><%= link_to "<i class='material-icons'>create</i>".html_safe, edit_scout_path(@scout) %></span>
+            <span class="pull-right">
+              <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Edit Scout Details' >create</i>".html_safe,
+                          edit_scout_path(@scout) %>
+            </span>
         <% end %>
         <% unless @scout.active %>
             <small>(inactive)</small>

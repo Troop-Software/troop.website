@@ -12,8 +12,8 @@
             <h4 class="card-title"><span id="category_name_<%= category.id %>"><%= category.name %></span>
               <% if current_user.role? :leader_full%>
               <span class="pull-right">
-                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_category_path(category), remote: true %>
-                <%= link_to "<i class='material-icons'>delete</i>".html_safe, category,
+                <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Edit Category'>create</i>".html_safe, edit_category_path(category), remote: true %>
+                <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Delete Category'>delete</i>".html_safe, category,
                             method: :delete, data: {confirm: "Are you sure you wish to delete #{category.name}?"} %>
                 </span>
               <% end %>

@@ -3,7 +3,7 @@
     <div class="card-header" data-background-color="dkblue">
       <h4>Awards Earned <span class="label label-info"><%= @scout_awards.count%></span>
         <span class="pull-right">
-          <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+          <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Add Award"></i>'.html_safe,
                       new_scout_award_path(scout_id: params[:id]) %></span></h4>
     </div>
     <div class="card-content">
