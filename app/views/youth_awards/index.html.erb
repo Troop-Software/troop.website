@@ -1,0 +1,26 @@
+<%= content_for(:title, 'Youth Awards') %>
+<div class="col-sm-12">
+  <div class="card">
+    <div class="card-header" data-background-color="dkblue">
+      <h4 class="card-title">Youth Award Listing
+        <span class="pull-right">
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_youth_award_path %>
+          </span>
+      </h4>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped">
+        <thead>
+        <td>Name</td>
+        </thead>
+        <tbody>
+        <% @youth_awards.each do |youth_award| %>
+        <tr>
+          <td><%= link_to youth_award.name, youth_award_path(youth_award) %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<%= content_for(:title, 'Display Youth Award') %>
+<div class="card col-sm-10 col-sm-offset-1">
+  <div class="row">
+    <div class="card-header" data-background-color="dkblue">
+      <h4><%= @youth_award.name %>
+        <span class="pull-right">
+        <%= link_to '<i class="fa fa-plus" data-toggle="tooltip" title="Add New Requirement" aria-hidden="true"></i> '.html_safe,
+                    new_youth_award_requirement_path(youth_award_id: params[:id]) %>
+          </span>
+      </h4>
+    </div>
+    <div class="card-content">
+      <div>
+        <span class="text-primary bold">Can earn mutiple times?</span>
+        <%= @youth_award.multiple %>
+      </div>
+      <div>
+        <span class="text-primary bold">Award still available?</span>
+        <%= @youth_award.active %>
+      </div>
+      <table class="table table-responsive table-striped">
+        <thead>
+        <td>#</td>
+        <td>Description</td>
+        <td></td>
+        </thead>
+        <tbody>
+        <% @youth_award.youth_award_requirements.each do |requirement| %>
+        <tr>
+          <td><%= requirement.req_num %></td>
+          <td><%= requirement.description %></td>
+          <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe,
+                          edit_youth_award_requirement_path(requirement, youth_award_id: params[:id]) %></td>
+        </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row"></div>
+<div class="col-sm-12 text-center">
+  <%= link_to 'Back', youth_awards_path, class: 'btn btn-primary btn-sm' %>
+  <%= link_to 'Edit', edit_youth_award_path(@youth_award), class: 'btn btn-sm btn-primary' if current_user.role? :leader_full %>
+  <%= link_to 'Delete', @youth_award, method: :delete,
+                  data: {confirm: 'Are you sure you want to delete this award?'},
+                  class: 'btn btn-sm btn-danger' if current_user.role? :leader_full %>
+</div>

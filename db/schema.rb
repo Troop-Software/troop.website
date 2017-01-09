@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108221420) do
+ActiveRecord::Schema.define(version: 20170109021510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -360,6 +360,19 @@ ActiveRecord::Schema.define(version: 20170108221420) do
     t.boolean "hitch", default: false
   end
 
+  create_table "youth_award_requirements", force: :cascade do |t|
+    t.integer "youth_award_id"
+    t.integer "req_num"
+    t.string  "description"
+    t.index ["youth_award_id"], name: "index_youth_award_requirements_on_youth_award_id", using: :btree
+  end
+
+  create_table "youth_awards", force: :cascade do |t|
+    t.string  "name"
+    t.boolean "multiple", default: false
+    t.boolean "active",   default: true
+  end
+
   create_table "youth_trainings", force: :cascade do |t|
     t.string   "name"
     t.string   "abbr"
@@ -389,4 +402,5 @@ ActiveRecord::Schema.define(version: 20170108221420) do
   add_foreign_key "scout_trainings", "scouts"
   add_foreign_key "scout_trainings", "youth_trainings"
   add_foreign_key "scouts", "patrols"
+  add_foreign_key "youth_award_requirements", "youth_awards"
 end

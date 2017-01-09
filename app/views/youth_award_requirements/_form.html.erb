@@ -1,0 +1,43 @@
+<%= form_for(@youth_award_requirement, :html => {class: 'form-horizontal', id: 'youth_award_requirement', role: 'form'}) do |f| %>
+    <%= render 'shared/errors', obj: @youth_award_requirement %>
+    <% if params[:youth_award_id] %>
+        <%= f.hidden_field :youth_award_id, value: params[:youth_award_id] %>
+    <% else %>
+        <div class="form-group row">
+          <div class="control-label col-sm-3">
+            <%= f.label :youth_award_id %>
+          </div>
+          <div class="col-sm-7">
+            <%= f.select :youth_award_id, options_for_select(YouthAward.where(active: true).map { |ya| [ya.name, ya.id] },
+                                                             @youth_award_requirement.youth_award_id),
+                         {:include_blank => 'Please select an Award'},
+                         class: 'form-control' %>
+          </div>
+        </div>
+    <% end %>
+    <div class="form-group row">
+      <div class="control-label col-sm-3">
+        <%= f.label :req_num %>
+      </div>
+      <div class="col-sm-7">
+        <%= f.text_field :req_num, placeholder: 'Requirement Number', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label col-sm-3">
+        <%= f.label :description %>
+      </div>
+      <div class="col-sm-7">
+        <%= f.text_area :description, rows: 3, placeholder: 'Requirement Description', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-5 col-sm-offset-4">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', :back, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+
+<% end %>

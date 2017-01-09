@@ -21,7 +21,7 @@
         <tbody>
         <% @adult.adult_events.each do |adult_event| %>
             <tr>
-              <td class="text-warning"><%= adult_event.event.category.titlecase %></td>
+              <td class="text-warning"><%= adult_event.event.category.titlecase unless adult_event.event.category.blank? %></td>
               <td><%= link_to adult_event.event.title, adult_event.event %></td>
               <td><%= adult_event.notes %></td>
               <td><%= date_for_display(adult_event.event.start) %></td>
