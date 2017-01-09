@@ -86,6 +86,10 @@
       </div>
     </div>
 
+    <%= f.fields_for :address do |address| %>
+        <%= render :partial => 'shared/address', :locals => {:f => address} %>
+    <% end %>
+
     <div class="form-group row">
       <div class="col-sm-offset-2 col-sm-10">
         <%= f.submit class: 'btn btn-primary' %>

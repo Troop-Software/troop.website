@@ -20,6 +20,8 @@ class Adult < ApplicationRecord
   has_many :vehicles, through: :adult_vehicles
   has_many :adult_events
   has_many :events, through: :adult_events
+  has_one :address, :as => :addressable
+  accepts_nested_attributes_for :address
 
 
   def self.import_adult(file_id)
@@ -37,6 +39,13 @@ class Adult < ApplicationRecord
                           drivers_license: row['Drivers License'] ,
                           joined: format_date_for_import(row['Joined Unit'])
 
+      )
+      adult_address = Address.find_or_initialize_by(addressable_id: adult_record.id, addressable_type: 'Adult')
+      adult_address.update(line1: row['Home Address Line 1'],
+                           line2: row['Home Address Line 2'],
+                           city: row['Home City'],
+                           state: row['Home State'],
+                           zip: row['Home Zip']
       )
       #Adult Position
       unless row['Leadership Pos #1'].nil? || Adult.find_by_name(name).blank?

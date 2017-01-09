@@ -79,3 +79,9 @@ ul.wysihtml5-toolbar a.btn.btn-default.wysihtml5-command-active
 body.form-control.bootsy_text_area.wysihtml5-editor {
   border:dotted 2px blue !important;
 }
+
+.box  {
+  border: 1px $color-primary-0 solid;
+  padding: 9px;
+  display: block;
+}

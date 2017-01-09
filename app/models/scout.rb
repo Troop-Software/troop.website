@@ -18,7 +18,8 @@ class Scout < ApplicationRecord
   has_many :positions, through: :scout_positions
   has_many :youth_trainings
   has_many :scout_trainings, through: :youth_trainings
-
+  has_one :address, :as => :addressable
+  accepts_nested_attributes_for :address
 
   after_create :establish_scout_rank_history
 
@@ -185,6 +186,14 @@ class Scout < ApplicationRecord
                           bsa_id: row['BSA ID#'],
                           joined: joined_date,
                           patrol: Patrol.find(patrol_id(row['Patrol']).id)
+      )
+      # Import Scout's Address
+      scout_address = Address.find_or_initialize_by(addressable_id: scout_record.id, addressable_type: 'Scout')
+      scout_address.update(line1: row['Home Address Line 1'],
+                           line2: row['Home Address Line 2'],
+                           city: row['Home City'],
+                           state: row['Home State'],
+                           zip: row['Home Zip']
       )
       # Import Scout's Leadership Positions
       unless row['Leadership Pos #1'].nil?

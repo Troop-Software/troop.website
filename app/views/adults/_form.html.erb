@@ -80,7 +80,9 @@
           </div>
         </div>
     <%end %>
-
+    <%= f.fields_for :address do |address| %>
+        <%= render :partial => 'shared/address', :locals => {:f => address} %>
+    <% end %>
     <% if (current_user.role? :admin) %>
         <div class="alert-danger">
           <div class="form-group row">
