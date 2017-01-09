@@ -2,6 +2,18 @@ class ReportsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_user_leader
 
+  def ypt_report
+    @adults = Adult.where(inactive: false)
+    respond_to do |format|
+      format.pdf {
+        send_data render_to_string,
+                  filename: 'YPT Report.pdf',
+                  type: 'application/pdf',
+                  disposition: 'attachment'
+      }
+    end
+  end
+
   def scout_detail_report
     if params[:id]
       @scout = Scout.find(params[:id])

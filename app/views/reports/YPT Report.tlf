@@ -1,0 +1,289 @@
+{
+  "version": "0.9.1",
+  "items": [
+    {
+      "id": "",
+      "type": "text",
+      "display": true,
+      "description": "",
+      "x": 20,
+      "y": 20,
+      "width": 571.9,
+      "height": 37.1,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 18,
+        "color": "#000000",
+        "text-align": "center",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [
+          "bold"
+        ]
+      },
+      "texts": [
+        "Youth Protection Report"
+      ]
+    },
+    {
+      "id": "default",
+      "type": "list",
+      "display": true,
+      "description": "",
+      "x": 44,
+      "y": 81.1,
+      "width": 547.9,
+      "height": 690.7,
+      "header": {
+        "enabled": true,
+        "height": 21,
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "items": [
+          {
+            "id": "report_section_header",
+            "type": "text-block",
+            "display": true,
+            "description": "",
+            "x": 44,
+            "y": 81.1,
+            "width": 297,
+            "height": 17.2,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 16,
+              "color": "#000000",
+              "text-align": "center",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [
+                "bold"
+              ],
+              "overflow": "truncate",
+              "word-wrap": "break-word"
+            },
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
+          }
+        ]
+      },
+      "detail": {
+        "height": 17.3,
+        "translate": {
+          "x": 0,
+          "y": -77.6
+        },
+        "items": [
+          {
+            "id": "name",
+            "type": "text-block",
+            "display": true,
+            "description": "",
+            "x": 61.2,
+            "y": 183.7,
+            "width": 262.4,
+            "height": 13.3,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 12,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [],
+              "overflow": "truncate",
+              "word-wrap": "break-word"
+            },
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
+          },
+          {
+            "id": "date",
+            "type": "text-block",
+            "display": true,
+            "description": "",
+            "x": 336,
+            "y": 182.4,
+            "width": 100,
+            "height": 13.3,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 12,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [],
+              "overflow": "truncate",
+              "word-wrap": "break-word"
+            },
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
+          },
+          {
+            "id": "days",
+            "type": "text-block",
+            "display": true,
+            "description": "",
+            "x": 441,
+            "y": 182.4,
+            "width": 150.9,
+            "height": 13.3,
+            "style": {
+              "font-family": [
+                "IPAPGothic"
+              ],
+              "font-size": 12,
+              "color": "#000000",
+              "text-align": "left",
+              "vertical-align": "top",
+              "line-height": "",
+              "line-height-ratio": "",
+              "letter-spacing": "",
+              "font-style": [],
+              "overflow": "truncate",
+              "word-wrap": "break-word"
+            },
+            "reference-id": "",
+            "value": "",
+            "multiple-line": false,
+            "format": {
+              "base": "",
+              "type": ""
+            }
+          }
+        ]
+      },
+      "page-footer": {
+        "enabled": false,
+        "height": 0,
+        "translate": {
+          "x": 0,
+          "y": -158.9
+        },
+        "items": []
+      },
+      "footer": {
+        "enabled": false,
+        "height": 0,
+        "translate": {
+          "x": 0,
+          "y": -232.9
+        },
+        "items": []
+      },
+      "content-height": 669.7,
+      "auto-page-break": true
+    },
+    {
+      "id": "report_date",
+      "type": "text-block",
+      "display": true,
+      "description": "",
+      "x": 20,
+      "y": 42.1,
+      "width": 571.9,
+      "height": 17.2,
+      "style": {
+        "font-family": [
+          "IPAPGothic"
+        ],
+        "font-size": 16,
+        "color": "#000000",
+        "text-align": "center",
+        "vertical-align": "top",
+        "line-height": "",
+        "line-height-ratio": "",
+        "letter-spacing": "",
+        "font-style": [],
+        "overflow": "truncate",
+        "word-wrap": "break-word"
+      },
+      "reference-id": "",
+      "value": "",
+      "multiple-line": false,
+      "format": {
+        "base": "",
+        "type": ""
+      }
+    }
+  ],
+  "state": {
+    "layout-guides": [
+      {
+        "type": "x",
+        "position": 61.2
+      },
+      {
+        "type": "x",
+        "position": 122.6
+      },
+      {
+        "type": "x",
+        "position": 441
+      },
+      {
+        "type": "x",
+        "position": 369.6
+      },
+      {
+        "type": "x",
+        "position": 323.6
+      },
+      {
+        "type": "y",
+        "position": 81.1
+      },
+      {
+        "type": "y",
+        "position": 118.1
+      }
+    ]
+  },
+  "title": "Event Attendance Report",
+  "report": {
+    "paper-type": "user",
+    "orientation": "portrait",
+    "margin": [
+      20,
+      20,
+      20,
+      20
+    ],
+    "width": 611.9,
+    "height": 791.8
+  }
+}

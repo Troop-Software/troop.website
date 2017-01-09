@@ -36,7 +36,9 @@
                 <li><%= link_to 'Patrol Report', reports_patrol_report_path(format: :pdf) %></li>
             <% when 'events' %>
                 <li> <%= link_to 'Event Attendance Report', reports_event_attendance_report_path(id: params[:id], format: :pdf) %> </li>
-            <% else %>
+            <% when 'adults' %>
+                <li> <%= link_to 'YPT Report', reports_ypt_report_path(id: params[:id], format: :pdf) %> </li>
+          <% else %>
                 <li>No Reports Defined for <%= params[:controller] %></li>
             <% end %>
             <!-- <li role="separator" class="divider"></li> -->
