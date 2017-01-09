@@ -20,7 +20,8 @@ class Scout < ApplicationRecord
   has_many :scout_trainings, through: :youth_trainings
   has_one :address, :as => :addressable
   accepts_nested_attributes_for :address
-
+  has_many :scout_awards
+  has_many :youth_awards, through: :scout_awards
   after_create :establish_scout_rank_history
 
   def establish_scout_rank_history

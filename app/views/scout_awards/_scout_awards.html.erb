@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header" data-background-color="dkblue">
+      <h4>Awards Earned <span class="label label-info"><%= @scout_awards.count%></span>
+        <span class="pull-right">
+          <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+                      new_scout_award_path(scout_id: params[:id]) %></span></h4>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped ">
+        <thead>
+        <tr>
+
+          <th>Award Name</th>
+          <th>Award Description</th>
+          <th>Date</th>
+                  </tr>
+        </thead>
+        <tbody>
+        <% @scout_awards.each do |scout_award| %>
+            <tr>
+              <td><%= link_to scout_award.youth_award.name, youth_award_path(scout_award.youth_award) %></td>
+              <td><%= scout_award.youth_award.description %></td>
+              <td><%= date_for_display(scout_award.completed_date) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108221420) do
+ActiveRecord::Schema.define(version: 20170109070335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,16 @@ ActiveRecord::Schema.define(version: 20170108221420) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scout_awards", force: :cascade do |t|
+    t.integer  "scout_id"
+    t.integer  "youth_award_id"
+    t.date     "completed_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["scout_id"], name: "index_scout_awards_on_scout_id", using: :btree
+    t.index ["youth_award_id"], name: "index_scout_awards_on_youth_award_id", using: :btree
+  end
+
   create_table "scout_events", force: :cascade do |t|
     t.integer  "scout_id"
     t.integer  "event_id"
@@ -360,6 +370,20 @@ ActiveRecord::Schema.define(version: 20170108221420) do
     t.boolean "hitch", default: false
   end
 
+  create_table "youth_award_requirements", force: :cascade do |t|
+    t.integer "youth_award_id"
+    t.integer "req_num"
+    t.string  "description"
+    t.index ["youth_award_id"], name: "index_youth_award_requirements_on_youth_award_id", using: :btree
+  end
+
+  create_table "youth_awards", force: :cascade do |t|
+    t.string  "name"
+    t.boolean "multiple",    default: false
+    t.boolean "active",      default: true
+    t.string  "description"
+  end
+
   create_table "youth_trainings", force: :cascade do |t|
     t.string   "name"
     t.string   "abbr"
@@ -384,9 +408,12 @@ ActiveRecord::Schema.define(version: 20170108221420) do
   add_foreign_key "assignments", "users"
   add_foreign_key "relationships", "scouts"
   add_foreign_key "relationships", "users"
+  add_foreign_key "scout_awards", "scouts"
+  add_foreign_key "scout_awards", "youth_awards"
   add_foreign_key "scout_positions", "positions"
   add_foreign_key "scout_positions", "scouts"
   add_foreign_key "scout_trainings", "scouts"
   add_foreign_key "scout_trainings", "youth_trainings"
   add_foreign_key "scouts", "patrols"
+  add_foreign_key "youth_award_requirements", "youth_awards"
 end

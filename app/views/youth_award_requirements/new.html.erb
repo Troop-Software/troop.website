@@ -1,0 +1,15 @@
+<%= content_for(:title, 'Create New Youth Award Requirement') %>
+<div class="card col-sm-8 col-sm-offset-2">
+  <div class="row">
+    <div class="card-header" data-background-color="dkblue">
+      <% if params[:youth_award_id] %>
+          <h4>New Award Requirement for <%= YouthAward.find(params[:youth_award_id]).name %></h4>
+      <% else %>
+          <h4>New Award Requirement</h4>
+      <% end %>
+    </div>
+    <div class="card-content">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
