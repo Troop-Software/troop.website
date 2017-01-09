@@ -4,7 +4,7 @@
     <div class="card-header" data-background-color="dkblue">
       <h4 class="card-title">Troop Adults
         <span class="pull-right">
-        <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_adult_path %>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Create New Adult"></i>'.html_safe, new_adult_path %>
           </span>
       </h4>
     </div>
@@ -31,7 +31,7 @@
               <td><%= adult.email %></td>
               <td><%= number_to_phone(adult.phone) %></td>
               <td>
-                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe,
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" title="Edit Adult"></i>'.html_safe,
                               edit_adult_path(adult) %>
               </td>
             </tr>

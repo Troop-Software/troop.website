@@ -2,7 +2,7 @@
   <div class="row">
     <div class="card-header" data-background-color="dkblue">
       <h5>Events
-        <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe,
+        <span class="pull-right"><%= link_to '<i class="fa fa-plus" aria-hidden="true data-toggle="tooltip" title="Link to Another Event""></i>' .html_safe,
                                              new_adult_event_path(adult_id: @adult.id) %></span>
       </h5>
     </div>

@@ -13,8 +13,8 @@
               <span class="label label-success"><%= rank.scouts.count %></span>
               <% if current_user.role? :admin%>
               <span class="pull-right">
-                <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_rank_path(rank) %>
-                <%= link_to "<i class='material-icons'>delete</i>".html_safe, rank,
+                <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Edit Rank'>create</i>".html_safe, edit_rank_path(rank) %>
+                <%= link_to "<i class='material-icons'data-toggle='tooltip' title='Delete Rank'>delete</i>".html_safe, rank,
                             method: :delete, data: {confirm: "Are you sure you wish to delete the #{rank.name} rank?"} %>
                 </span>
               <% end %>

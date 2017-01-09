@@ -32,8 +32,8 @@
                 <td><%= position.short_code %></td>
                 <td><%= position.bsa_code %></td>
                 <td>
-                  <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_position_path(position) %>
-                  <%= link_to "<i class='material-icons'>delete</i>".html_safe, position,
+                  <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Edit Position'>create</i>".html_safe, edit_position_path(position) %>
+                  <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Delete Position'>delete</i>".html_safe, position,
                               method: :delete, data: {confirm: "Are you sure you wish to delete the #{position.name} position?"} %>
                 </td>
 
