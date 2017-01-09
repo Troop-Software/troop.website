@@ -26,10 +26,12 @@ class ScoutsController < ApplicationController
   # GET /scouts/new
   def new
     @scout = Scout.new
+    @scout.build_address
   end
 
   # GET /scouts/1/edit
   def edit
+    @scout.build_address if @scout.address.blank?
   end
 
   # POST /scouts
@@ -94,8 +96,10 @@ class ScoutsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def scout_params
     params.require(:scout).permit(:name, :grade, :birthdate, :patrol_id, :rank_id, :position_id, :email,
-                                  :phone, :joined, :bsa_id, :active)
+                                  :phone, :joined, :bsa_id, :active,
+                                  address_attributes: [:line1, :line2, :city, :state, :zip,
+                                                       :addressable_id, :addressable_type]
+    )
   end
-
 
 end
