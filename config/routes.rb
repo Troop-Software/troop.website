@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :scout_trainings
   resources :scout_rank_histories
   resources :scout_merit_badges
+  resources :scout_awards
   resources :scout_events
   resources :youth_awards
   resources :youth_award_requirements

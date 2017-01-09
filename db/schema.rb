@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109045443) do
+ActiveRecord::Schema.define(version: 20170109070335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,16 @@ ActiveRecord::Schema.define(version: 20170109045443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scout_awards", force: :cascade do |t|
+    t.integer  "scout_id"
+    t.integer  "youth_award_id"
+    t.date     "completed_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["scout_id"], name: "index_scout_awards_on_scout_id", using: :btree
+    t.index ["youth_award_id"], name: "index_scout_awards_on_youth_award_id", using: :btree
+  end
+
   create_table "scout_events", force: :cascade do |t|
     t.integer  "scout_id"
     t.integer  "event_id"
@@ -398,6 +408,8 @@ ActiveRecord::Schema.define(version: 20170109045443) do
   add_foreign_key "assignments", "users"
   add_foreign_key "relationships", "scouts"
   add_foreign_key "relationships", "users"
+  add_foreign_key "scout_awards", "scouts"
+  add_foreign_key "scout_awards", "youth_awards"
   add_foreign_key "scout_positions", "positions"
   add_foreign_key "scout_positions", "scouts"
   add_foreign_key "scout_trainings", "scouts"
