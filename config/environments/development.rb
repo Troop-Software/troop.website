@@ -64,6 +64,16 @@ Rails.application.configure do
       }
   }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => "smtp.mailgun.org",
+      :port => 587,
+      :domain => "appcc4335e0105640f7adc0d25e9a986e09.mailgun.org",
+      :user_name => "postmaster@appcc4335e0105640f7adc0d25e9a986e09.mailgun.org",
+      :password => "440c67ef21628b1d93d9875079d1271e"
+  }
+
   config.troop = 433
 
 end

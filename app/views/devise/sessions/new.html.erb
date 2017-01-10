@@ -27,12 +27,15 @@
 
                   <div class="footer text-center">
                     <%= f.submit 'Log in', class: 'btn btn-dkblue btn-wd btn-lg' %>
-                    <%= link_to 'Sign up', new_registration_path(resource_name) %>
+
                   </div>
                 </div>
+                <div class="row">&nbsp;</div>
+                <div class="small text-center"><%= render 'devise/shared/links' %></div>
               </div>
           <% end %>
         </div>
+
       </div>
     </div>
   </div>

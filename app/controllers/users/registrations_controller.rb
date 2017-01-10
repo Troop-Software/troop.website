@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # end
 
 # POST /resource
-  def create
+ # def create
     # super do |resource|
     #  adult = Adult.find_by_email(resource.email)
     #   unless adult.blank?
@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #     end
     #   end
     # end
-  end
+  #end
 
 # GET /resource/edit
 # def edit
