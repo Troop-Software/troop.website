@@ -94,7 +94,7 @@ Rails.application.configure do
           s3_region: ENV.fetch('AWS_REGION'),
       }
   }
-
+  config.action_mailer.default_url_options = { :host => 'troop433.heroku.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :authentication => :plain,
