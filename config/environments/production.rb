@@ -95,5 +95,14 @@ Rails.application.configure do
       }
   }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => "smtp.mailgun.org",
+      :port => 587,
+      :domain => "mg.troop433.website",
+      :user_name => ENV.fetch('MAILGUN_USERNAME'),
+      :password => ENV.fetch('MAILGUN_PASSWORD')
+  }
   config.troop = 433
 end
