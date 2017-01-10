@@ -1,26 +1,31 @@
-<h2 class="center">Resend unlock instructions</h2>
-<div class='row'>
-  <div class='col-xs-12'>
-    <%= form_for(resource, :html => {class: 'form-horizontal'},
-                 as: resource_name,
-                 url: unlock_path(resource_name),
-                 html: {method: :post}) do |f| %>
-        <%= devise_error_messages! %>
+<div class="card col-sm-6 col-sm-offset-3">
+  <div class="card-header" data-background-color="dkblue">
+    <h4 class="center">Resend unlock instructions</h4>
+  </div>
+  <div class='card-content'>
+    <div class='row'>
+      <%= form_for(resource, :html => {class: 'form-horizontal'},
+                   as: resource_name,
+                   url: unlock_path(resource_name),
+                   html: {method: :post}) do |f| %>
+          <%= devise_error_messages! %>
 
-        <div class="form-group row">
-          <div class="control-label col-sm-2">
-            <%= f.label :email %>
+          <div class="form-group row">
+            <div class="control-label col-sm-2">
+              <%= f.label :email %>
+            </div>
+            <div class="col-sm-9">
+              <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
+            </div>
           </div>
-          <div class="col-sm-8">
-            <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
-          </div>
-        </div>
 
-        <div class="form-group row">
-          <div class="offset-sm-2 col-sm-10">
-            <%= f.submit 'Resend unlock instructions', class: 'btn btn-primary btn-lg' %>
+          <div class="form-group row">
+            <div class="text-center">
+              <%= f.submit 'Resend unlock instructions', class: 'btn btn-primary btn-lg' %>
+            </div>
           </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="small text-center"><%= render 'devise/shared/links' %></div>
   </div>
 </div>

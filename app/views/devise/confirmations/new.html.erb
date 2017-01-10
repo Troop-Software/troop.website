@@ -1,6 +1,8 @@
-<h2 class="center">Resend confirmation instructions</h2>
-<div class='row'>
-  <div class='col-xs-12'>
+<div class="card col-sm-6 col-sm-offset-3">
+  <div class="card-header" data-background-color="dkblue">
+    <h4 class="center">Resend confirmation instructions</h4>
+  </div>
+  <div class='card-content'>
     <%= form_for(resource, :html => {class: 'form-horizontal'},
                  as: resource_name,
                  url: confirmation_path(resource_name),
@@ -8,20 +10,21 @@
         <%= devise_error_messages! %>
 
         <div class="form-group row">
-          <div class="control-label col-sm-2">
+          <div class="control-label col-sm-2 ">
             <%= f.label :email %>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-9">
             <%= f.email_field :email, class: 'form-control', autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="offset-sm-2 col-sm-10">
-            <%= f.submit 'Resend confirmation instructions', class: 'btn btn-primary btn-lg' %>
+          <div class="text-center">
+            <%= f.submit 'Send', class: 'btn btn-primary ' %><br/>
+
           </div>
         </div>
-
+        <div class="small text-center"><%= render 'devise/shared/links' %></div>
     <% end %>
   </div>
 </div>
