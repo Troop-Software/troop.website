@@ -101,8 +101,8 @@ Rails.application.configure do
       :address => "smtp.mailgun.org",
       :port => 587,
       :domain => "mg.troop433.website",
-      :user_name => ENV.fetch('MAILGUN_USERNAME'),
-      :password => ENV.fetch('MAILGUN_PASSWORD')
+      :user_name => ENV.fetch('MAILGUN_SMTP_LOGIN'),
+      :password => ENV.fetch('MAILGUN_SMTP_PASSWORD')
   }
   config.troop = 433
 end
