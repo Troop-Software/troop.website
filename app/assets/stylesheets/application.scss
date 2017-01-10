@@ -2,9 +2,9 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  */
+@import 'bootstrap-sprockets';
 @import "bootsy";
 @import "material-dashboard";
-@import 'bootstrap-sprockets';
 @import "bootstrap";
 @import "material-dashboard/plugins/plugin-datetime-picker";
 @import "md-mixins-customizations";
@@ -12,7 +12,7 @@
 @import "hover-effects/push";
 @import "hover-effects/push";
 @import "hover-effects/pulse-shrink";
-@import "glyphicons";
+
 
 
 
