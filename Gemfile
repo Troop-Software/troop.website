@@ -63,7 +63,7 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov'
   gem 'rspec_junit_formatter'
-  gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
+ # gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
 
 end
 

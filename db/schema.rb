@@ -190,16 +190,6 @@ ActiveRecord::Schema.define(version: 20170109070335) do
     t.boolean "current",        default: true
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.string   "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.string "event"
-  end
-
   create_table "patrols", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
