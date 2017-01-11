@@ -4,6 +4,10 @@ class Admin::FileUploadsController < AdminController
   def import_file
 
     case params[:name]
+      when /Adult_Position_History\.csv/
+        ImportAdultPositionHistoryJob.perform_later params[:id]
+        #AdultPosition.import_adult_history(params[:id])
+
       when /Scout_Training\.txt/
         ImportScoutTrainingJob.perform_later params[:id]
         #ScoutTraining.import_scout_training(params[:id])

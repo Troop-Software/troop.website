@@ -2,6 +2,7 @@
   #@scout_merit_badge = ScoutMeritBadge.where(scout_id: @scout.id)
   earned_eagle_mb= {}
   earned_mb = {}
+
   @scout_merit_badge.each do |smb|
     if (earned_eagle_mb.key?('Swimming') && (smb.merit_badge.name == 'Hiking' || smb.merit_badge.name == 'Cycling')) ||
         (earned_eagle_mb.key?('Hiking') && (smb.merit_badge.name == 'Swimming' || smb.merit_badge.name == 'Cycling')) ||
@@ -17,10 +18,11 @@
     end
     earned_mb[smb.merit_badge.name] = smb.completed unless smb.merit_badge.eagle_required
   end
+
 %>
 <% if current_user.role? :leader_full %>
     <div class="row text-right">
-      <%= link_to 'Log new MB', new_scout_merit_badge_path(scout_id: @scout_merit_badge.first.scout_id), class: 'btn btn-warning ' %>
+      <%= link_to 'Log new MB', new_scout_merit_badge_path(scout_id: @scout_merit_badge.first.scout_id), class: 'btn btn-warning ' unless @scout_merit_badge.blank? %>
     </div>
 <% end %>
 <div class="col-md-6">

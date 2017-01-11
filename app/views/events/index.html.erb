@@ -10,12 +10,6 @@
         </h3>
       </div>
       <div class="card-content">
-        <ul class="nav nav-tabs event_categories">
-          <% @events.categories.each do |category| %>
-              <li><a href="#category" class=""><%= category[0].humanize %></a></li>
-          <% end %>
-        </ul>
-        <a id="filter_all" href="#" class="btn btn-warning btn-sm pull-right">Clear Filters</a>
         <table id='events_listing' class="table table-responsive  table-striped">
           <thead>
           <tr>
@@ -61,7 +55,7 @@
         "columnDefs": [
             {
                 "targets": [3],
-                "visible": false
+                "visible": true
             }]
     });
     $('ul .event_categories').on('click', 'a', function () {

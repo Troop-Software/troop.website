@@ -3,6 +3,19 @@
     <h4 class="center">Resend confirmation instructions</h4>
   </div>
   <div class='card-content'>
+    <% flash.each do |name, msg| %>
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="alert alert-info">
+            <div class="alert-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true"><i class="material-icons">clear</i></span>
+            </button>
+            <%= msg %>
+          </div>
+        </div>
+    <% end %>
     <%= form_for(resource, :html => {class: 'form-horizontal'},
                  as: resource_name,
                  url: confirmation_path(resource_name),
