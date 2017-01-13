@@ -3,7 +3,7 @@ class ScoutEventsController < ApplicationController
 
   before_action :set_scout_event, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
+  before_action :require_user_leader, only: [:edit, :update]
 
   helper_method :get_scout_activities
 
@@ -42,6 +42,7 @@ class ScoutEventsController < ApplicationController
       if @scout_event.save
          format.html { redirect_to scout_path(@scout_event.scout_id), notice: 'Scout event was successfully created.' } if params[:redirect] == 'scout'
          format.html { redirect_to event_path(@scout_event.event_id), notice: 'Scout event was successfully created.' } if params[:redirect] == 'event'
+         format.html { redirect_to event_path(@scout_event.event_id), notice: 'Scout event was successfully created.' }
          format.json { render :show, status: :created, location: @scout_event }
       else
         format.html { render :new }
@@ -69,7 +70,10 @@ class ScoutEventsController < ApplicationController
   def destroy
     @scout_event.destroy
     respond_to do |format|
-      format.html { redirect_to scout_events_url, notice: 'Scout event was successfully destroyed.' }
+      format.html {
+        flash[:danger] = 'Registration was successfully removed.'
+        redirect_to event_path(@scout_event.event_id)
+      }
       format.json { head :no_content }
     end
   end

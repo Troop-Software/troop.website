@@ -11,7 +11,14 @@
     <ul class="list-group">
       <% @event.scout_events.each do |scout_event| %>
           <% if scout_event.registered? %>
-              <li class="list-group-item"><%= link_to scout_event.scout.name, scout_event.scout %></li>
+              <li class="list-group-item">
+                <%= link_to scout_event.scout.name, scout_event.scout %>
+                <span class="pull-right">
+                    <%= link_to '<i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" title="Unregister this Scout"></i>'.html_safe, scout_event_path(scout_event), method: :delete,
+                                data: {confirm: 'Are you sure you want to unregister for this event?'},
+                                class: 'text-danger' if current_user.role? :leader_full %>
+                </span>
+              </li>
           <% end %>
       <% end %>
     </ul>
@@ -31,7 +38,13 @@
     <ul class="list-group">
       <% @event.adult_events.each do |adult_event| %>
           <% if adult_event.registered? %>
-              <li class="list-group-item"><%= link_to adult_event.adult.name, adult_event.adult %></li>
+              <li class="list-group-item"><%= link_to adult_event.adult.name, adult_event.adult %>
+                <span class="pull-right">
+                    <%= link_to '<i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" title="Unregister this Adult"></i>'.html_safe, adult_event_path(adult_event), method: :delete,
+                                data: {confirm: 'Are you sure you want to unregister for this event?'},
+                                class: 'text-danger' if current_user.role? :leader_full %>
+                </span>
+              </li>
           <% end %>
       <% end %>
     </ul>

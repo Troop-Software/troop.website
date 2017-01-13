@@ -34,4 +34,9 @@ class User < ApplicationRecord
     roles.any? { |r| r.name.underscore.to_sym == role }
   end
 
+  def registered_adult?
+    adult_record = Adult.find_by(user_id: self.id)
+    adult_record.blank? ?  false :  true
+  end
+
 end

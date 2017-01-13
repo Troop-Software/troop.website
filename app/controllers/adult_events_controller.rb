@@ -3,7 +3,7 @@ class AdultEventsController < ApplicationController
 
   before_action :set_adult_event, only: [ :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
+  before_action :require_user_leader, only: [ :edit, :update]
 
   def new
     @adult_event = AdultEvent.new
@@ -20,11 +20,23 @@ class AdultEventsController < ApplicationController
       if @adult_event.save
         format.html { redirect_to adult_path(@adult_event.adult_id), notice: 'Adult event was successfully created.' } if params[:redirect] == 'adult'
         format.html { redirect_to event_path(@adult_event.event_id), notice: 'Adult event was successfully created.' } if params[:redirect] == 'event'
+        format.html { redirect_to event_path(@adult_event.event_id), notice: 'Adult event was successfully created.' }
         format.json { render :show, status: :created, location: @adult_event }
       else
-        format.html { render :back }
+        format.html { render :new }
         format.json { render json: @adult_event.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @adult_event.destroy
+    respond_to do |format|
+      format.html {
+        flash[:danger] = 'Registration was successfully removed.'
+        redirect_to event_path(@adult_event.event_id)
+      }
+      format.json { head :no_content }
     end
   end
   private
