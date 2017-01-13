@@ -20,7 +20,9 @@ class Event < ApplicationRecord
     return self.start.strftime('%m/%d/%Y') if self.end.blank?
     "#{self.start.strftime('%m/%d/%Y')} - #{self.end.strftime('%m/%d/%Y')}"
   end
-
+  def occurred?
+    (self.start < Date.today) ?  true :  false
+  end
   def logged
     case self.category
       when 'camping', 'cabin_camping'

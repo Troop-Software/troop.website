@@ -2,7 +2,12 @@
 <div class="row col-sm-8 col-sm-offset-2 text-center">
   <div class="card">
     <div class="card-header" data-background-color="green">
-      <h2 class="title">Add <%= Adult.find(params[:adult_id]).name %> to Event</h2>
+      <% if params[:adult_id] %>
+          <h2 class="title">Add <%= Adult.find(params[:adult_id]).name %> to Event</h2>
+      <% end %>
+      <% if params[:event_id] %>
+          <h2 class="title">Add Adult to <%= Event.find(params[:event_id]).title %></h2>
+      <% end %>
     </div>
     <div class="card-content">
       <%= render 'form' %>

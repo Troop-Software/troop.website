@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109070335) do
+ActiveRecord::Schema.define(version: 20170112234005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 20170109070335) do
     t.integer  "adult_id"
     t.integer  "event_id"
     t.string   "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "registered", default: false
+    t.boolean  "attended",   default: false
     t.index ["adult_id"], name: "index_adult_events_on_adult_id", using: :btree
     t.index ["event_id"], name: "index_adult_events_on_event_id", using: :btree
   end
@@ -177,10 +179,11 @@ ActiveRecord::Schema.define(version: 20170109070335) do
     t.boolean  "allDay"
     t.integer  "category"
     t.string   "external_link"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.decimal  "logged_units"
     t.integer  "location_id"
+    t.date     "last_registration_date"
   end
 
   create_table "merit_badges", force: :cascade do |t|
@@ -254,8 +257,10 @@ ActiveRecord::Schema.define(version: 20170109070335) do
     t.integer  "scout_id"
     t.integer  "event_id"
     t.string   "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "registered", default: false
+    t.boolean  "attended",   default: false
     t.index ["scout_id", "event_id"], name: "index_scout_events_on_scout_id_and_event_id", unique: true, using: :btree
   end
 

@@ -1,0 +1,37 @@
+<div class="card col-sm-5 col-sm-offset-1">
+  <div class="card-header" data-background-color="dkblue">
+    <h4 class="card-title">Scouts Registered
+      <span class="label label-success"><%= @event.scout_events.where(registered: true).count %></span>
+      <span class="pull-right">
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Register Scout for this Event"></i>'.html_safe, new_scout_event_path(event_id: @event.id, registered: true) %>
+          </span></h4>
+  </div>
+  <div class="card-content">
+    <ul class="list-group">
+      <% @event.scout_events.each do |scout_event| %>
+          <% if scout_event.registered? %>
+              <li class="list-group-item"><%= link_to scout_event.scout.name, scout_event.scout %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="card col-sm-4 col-sm-offset-1">
+  <div class="card-header" data-background-color="dkblue">
+    <h4 class="card-title">Adults Registered
+      <span class="label label-success"><%= @event.adult_events.count %></span>
+      <span class="pull-right">
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Register Adult for this Event"></i>'.html_safe, new_adult_event_path(event_id: @event.id, registered: true) %>
+          </span></h4>
+  </div>
+  <div class="card-content">
+    <ul class="list-group">
+      <% @event.adult_events.each do |adult_event| %>
+          <% if adult_event.registered? %>
+              <li class="list-group-item"><%= link_to adult_event.adult.name, adult_event.adult %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

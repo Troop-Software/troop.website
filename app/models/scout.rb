@@ -24,6 +24,14 @@ class Scout < ApplicationRecord
   has_many :youth_awards, through: :scout_awards
   after_create :establish_scout_rank_history
 
+
+  def self.allowed_scouts(user)
+    return Scout.where(active: true) if user.role?(:leader)
+    return Scout.where(active: true) if user.role?(:leader_full)
+    return Scout.all if user.role?(:admin)
+    Scout.joins(:relationships).where('relationships.user_id = ?', user)
+  end
+
   def establish_scout_rank_history
     x = 1
     until x > rank.id

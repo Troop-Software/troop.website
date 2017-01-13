@@ -1,7 +1,7 @@
 class ScoutEventsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_scout_event, only: [ :edit, :update, :destroy]
+  before_action :set_scout_event, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
@@ -20,7 +20,7 @@ class ScoutEventsController < ApplicationController
   def show
     @scout_activities = ScoutEvent.where(scout_id: params[:id]).joins(:event).order('events.start DESC')
     respond_to do |format|
-      format.js {render layout: false} # Add this line to you respond_to block
+      format.js { render layout: false } # Add this line to you respond_to block
     end
   end
 
@@ -40,10 +40,11 @@ class ScoutEventsController < ApplicationController
 
     respond_to do |format|
       if @scout_event.save
-        format.html { redirect_to scout_path(@scout_event.scout), notice: 'Scout event was successfully created.' }
-        format.json { render :show, status: :created, location: @scout_event }
+         format.html { redirect_to scout_path(@scout_event.scout_id), notice: 'Scout event was successfully created.' } if params[:redirect] == 'scout'
+         format.html { redirect_to event_path(@scout_event.event_id), notice: 'Scout event was successfully created.' } if params[:redirect] == 'event'
+         format.json { render :show, status: :created, location: @scout_event }
       else
-        format.html { render :back }
+        format.html { render :new }
         format.json { render json: @scout_event.errors, status: :unprocessable_entity }
       end
     end
@@ -74,17 +75,16 @@ class ScoutEventsController < ApplicationController
   end
 
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scout_event
-      @scout_event = ScoutEvent.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scout_event
+    @scout_event = ScoutEvent.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scout_event_params
-      params.require(:scout_event).permit(:scout_id, :event_id, :notes)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def scout_event_params
+    params.require(:scout_event).permit(:scout_id, :event_id, :notes, :attended, :registered)
+  end
 
 
 end

@@ -2,6 +2,12 @@
     <% if @adult_event.errors.any? %>
         <%= render 'shared/errors', obj: @adult_event %>
     <% end %>
+    <% if params[:attended] %>
+        <%= f.hidden_field :attended, value: params[:attended] %>
+    <% end %>
+    <% if params[:registered] %>
+        <%= f.hidden_field :registered, value: params[:registered] %>
+    <% end %>
     <% if params[:adult_id] %>
         <%= f.hidden_field :adult_id, value: params[:adult_id] %>
     <% else %>
@@ -16,19 +22,22 @@
           </div>
         </div>
     <% end %>
-    <div class="form-group row">
-      <div class="control-label col-sm-2">
-        <%= f.label :event_id %>
-      </div>
-      <div class="col-sm-8">
-        <%= f.select :event_id,
-                     options_for_select(Event.events_in_year_window.map { |e|
-                       ["#{e.title} - #{datetime_for_display(e.start)}", e.id]
-                     }, @adult_event.event_id),
-                     {:include_blank => 'Please select a event'}, {:class => 'form-control'} %>
-      </div>
-    </div>
-
+    <% if params[:event_id] %>
+        <%= f.hidden_field :event_id, value: params[:event_id] %>
+    <% else %>
+        <div class="form-group row">
+          <div class="control-label col-sm-2">
+            <%= f.label :event_id %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select :event_id,
+                         options_for_select(Event.events_in_year_window.map { |e|
+                           ["#{e.title} - #{datetime_for_display(e.start)}", e.id]
+                         }, @adult_event.event_id),
+                         {:include_blank => 'Please select a event'}, {:class => 'form-control'} %>
+          </div>
+        </div>
+    <% end %>
     <div class="form-group row">
       <div class="control-label col-sm-2">
         <%= f.label :notes %>
@@ -41,7 +50,14 @@
     <div class="form-group row">
       <div class="col-sm-offset-2 col-sm-10">
         <%= f.submit class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', adult_path(params[:adult_id]), class: 'btn btn-secondary' %>
+        <% if params[:adult_id] %>
+            <%= link_to 'Cancel', adult_path(params[:adult_id]), class: 'btn btn-secondary' %>
+            <%= hidden_field_tag 'redirect', 'adult' %>
+        <% end %>
+        <% if params[:event_id] %>
+            <%= link_to 'Cancel', event_path(params[:event_id]), class: 'btn btn-secondary' %>
+            <%= hidden_field_tag 'redirect', 'event' %>
+        <% end %>
       </div>
     </div>
 <% end %>

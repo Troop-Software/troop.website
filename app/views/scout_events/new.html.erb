@@ -2,7 +2,12 @@
 <div class="row col-sm-8 col-sm-offset-2 text-center">
   <div class="card">
     <div class="card-header" data-background-color="green">
-      <h2 class="title">Add <%= Scout.find(params[:scout_id]).name %> to Event</h2>
+      <% if params[:scout_id] %>
+          <h2 class="title">Add <%= Scout.find(params[:scout_id]).name %> to Event</h2>
+      <% end %>
+      <% if params[:event_id] %>
+          <h2 class="title">Add Scout to <%= Event.find(params[:event_id]).title %></h2>
+      <% end %>
     </div>
     <div class="card-content">
       <%= render 'form', scout_event: @scout_event %>
