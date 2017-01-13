@@ -16,7 +16,7 @@
             <%= f.label :scout_id %>
           </div>
           <div class="col-sm-8">
-            <%= f.select :scout_id, options_for_select(Scout.where(active: true).map { |se| [se.name, se.id] },
+           <%= f.select :scout_id, options_for_select(Scout.allowed_scouts(current_user).map { |se| [se.name, se.id] },
                                                        @scout_event.scout_id),
                          {:include_blank => 'Please select a Scout'}, {:class => 'form-control'} %>
           </div>
