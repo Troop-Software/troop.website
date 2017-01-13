@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   resources :adult_training_courses, only: :index
   resources :adult_trainings
   resources :adult_vehicles
-  resources :adult_events, only: [:new, :index]
+  resources :adult_events
   resources :vehicles, except: :show
   resources :event_locations
   resources :events do

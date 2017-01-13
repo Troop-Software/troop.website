@@ -18,7 +18,8 @@ class AdultEventsController < ApplicationController
 
     respond_to do |format|
       if @adult_event.save
-        format.html { redirect_to adult_path(@adult_event.adult), notice: 'Scout event was successfully created.' }
+        format.html { redirect_to adult_path(@adult_event.adult_id), notice: 'Adult event was successfully created.' } if params[:redirect] == 'adult'
+        format.html { redirect_to event_path(@adult_event.event_id), notice: 'Adult event was successfully created.' } if params[:redirect] == 'event'
         format.json { render :show, status: :created, location: @adult_event }
       else
         format.html { render :back }
@@ -34,7 +35,7 @@ class AdultEventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def adult_event_params
-    params.require(:adult_event).permit(:adult_id, :event_id, :notes)
+    params.require(:adult_event).permit(:adult_id, :event_id, :notes, :attended, :registered)
   end
 
 end

@@ -98,7 +98,7 @@ class AdultEvent < ApplicationRecord
 
           end
           # Add Adult to event
-          AdultEvent.find_or_create_by(adult_id: adult_id, event_id: event.id)
+          AdultEvent.find_or_create_by(adult_id: adult_id, event_id: event.id, attended: true)
           i += 1
         end
       end

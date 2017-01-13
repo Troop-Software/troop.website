@@ -95,7 +95,7 @@ class ScoutEvent < ApplicationRecord
 
           end
           # Add Scout to event
-          ScoutEvent.find_or_create_by(scout_id: scout_id, event_id: event.id)
+          ScoutEvent.find_or_create_by(scout_id: scout_id, event_id: event.id, attended: true)
           i += 1
         end
       end
