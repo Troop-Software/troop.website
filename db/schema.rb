@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113051345) do
+ActiveRecord::Schema.define(version: 20170113082812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,7 +196,8 @@ ActiveRecord::Schema.define(version: 20170113051345) do
   create_table "notifications", force: :cascade do |t|
     t.string  "text"
     t.string  "link"
-    t.boolean "active", default: true
+    t.boolean "active",        default: true
+    t.date    "display_until"
   end
 
   create_table "patrols", force: :cascade do |t|
