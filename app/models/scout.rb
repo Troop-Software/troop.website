@@ -154,7 +154,7 @@ class Scout < ApplicationRecord
 
   def scout_alert
     # Set Red if less than 180 left till 18 and rank is Life
-    return ['danger', 'Less than 3 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(0, 180)
+    return ['danger', 'Less than 6 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(0, 180)
 
     # Set Yellow if less than 274 left and rank is Life
     return ['warning', 'Less than 9 months till 18th birthday'] if self.rank.name == 'Life' and days_till_18(self.birthdate).between?(181, 274)

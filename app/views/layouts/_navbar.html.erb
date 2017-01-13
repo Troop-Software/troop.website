@@ -39,13 +39,13 @@
             <% when 'adults' %>
                 <li> <%= link_to 'YPT Report', reports_ypt_report_path(id: params[:id], format: :pdf) %> </li>
             <% else %>
-                <li>No Reports Defined for <%= params[:controller] %></li>
+                <li><a href="#">No Reports Defined for <%= params[:controller] %></a></li>
             <% end %>
             <!-- <li role="separator" class="divider"></li> -->
           </ul>
         </li>
         <li class="dropdown">
-          <% notifications = Notification.where(active: true) %>
+          <% notifications = Notification.to_show %>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="material-icons">notifications</i>
             <span class="notification"><%= notifications.count %></span>

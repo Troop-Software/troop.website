@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   resources :adult_vehicles
   resources :adult_events
   resources :vehicles, except: :show
+  resources :notifications
   resources :event_locations
   resources :events do
     collection do

@@ -29,8 +29,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = User.find(current_user)
 
+
     respond_to do |format|
       if @article.save
+        Notification.create(text: @article.title, link: article_path(@article.id), display_until: 2.days.from_now)
         format.html {
           flash[:success] = 'Article was successfully created.'
           redirect_to article_path(@article)
