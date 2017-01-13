@@ -1,0 +1,12 @@
+Troop Happenings
+
+<% @articles.each do |article| %>
+  <%= article.title %> - <%= article_url(article) %>
+<% end %>
+
+Upcomming Events:
+<% @events.each do |event| %>
+ <%= event.title %> - <%= event.date_range %> - <%= event_url(event) %>
+<% end %>
+
+You received this email because you're a member of our Troop.
