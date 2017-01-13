@@ -3,7 +3,7 @@
     <h4>Article Listings
       <span class="pull-right">
               <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Create New Article"></i>'.html_safe,
-                          new_article_path %>
+                          new_article_path if current_user.role? :leader %>
           </span>
     </h4>
   </div>

@@ -1,7 +1,7 @@
     <h1><%= content_for(:title, 'Home Page') %></h1>
     <div class="row">
       <div class="pull-right">
-        <%= link_to 'View all articles', articles_path , class: 'btn btn-warning btn-sm'%>
+        <%= link_to 'View all articles', articles_path , class: 'btn btn-warning btn-sm' if current_user.role?(:leader) %>
       </div>
     </div>
     <%= render 'articles/article_homepage', obj: @articles %>

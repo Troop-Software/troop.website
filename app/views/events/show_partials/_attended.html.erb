@@ -3,7 +3,8 @@
     <h4 class="card-title">Scouts in attendance
       <span class="label label-success"><%= @event.scout_events.where(attended: true).count %></span>
       <span class="pull-right">
-        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Add Scout who Attended this Event"></i>'.html_safe, new_scout_event_path(event_id: @event.id, attended: true )%>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Add Scout who Attended this Event"></i>'.html_safe,
+                    new_scout_event_path(event_id: @event.id, attended: true ) if current_user.role?(:leader)%>
           </span>
     </h4>
   </div>
@@ -23,7 +24,8 @@
     <h4 class="card-title">Adults in attendance
       <span class="label label-success"><%= @event.adult_events.where(attended: true).count %></span>
       <span class="pull-right">
-        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Add Adult who Attended this Event"></i>'.html_safe, new_adult_event_path(event_id: @event.id, attended: true )%>
+        <%= link_to '<i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Add Adult who Attended this Event"></i>'.html_safe,
+                    new_adult_event_path(event_id: @event.id, attended: true ) if current_user.role?(:leader) %>
           </span>
     </h4>
   </div>
