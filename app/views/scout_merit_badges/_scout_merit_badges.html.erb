@@ -91,14 +91,14 @@
       <h2 class="card-title">Eagle</h2>
       <table class="table">
         <tbody>
-        <% for i in 7..11 do %>
+        <% for i in 7..12 do %>
             <tr>
               <td>Eagle Required</td>
               <td><%= earned_eagle_mb.keys[i] %></td>
               <td><%= date_for_display(earned_eagle_mb.values[i]) %></td>
             </tr>
         <% end %>
-        <% for i in 4..8 do %>
+        <% for i in 4..7 do %>
             <tr>
               <td>Elective</td>
               <td><%= earned_mb.keys[i] %></td>
