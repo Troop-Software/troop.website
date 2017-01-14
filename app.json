@@ -11,6 +11,6 @@
   ],
   "scripts": {
     "postdeploy":
-      "rails db:load:schema db:seed_fu db:seed_fu FIXTURE_PATH=db/fixtures/requirements/2016 db:seed_fu FIXTURE_PATH=db/fixtures/users"
+      "rails db:schema:load db:seed_fu db:seed_fu FIXTURE_PATH=db/fixtures/requirements/2016 db:seed_fu FIXTURE_PATH=db/fixtures/users"
   }
 }
