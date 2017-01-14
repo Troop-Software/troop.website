@@ -28,7 +28,7 @@
               <%= Rails.configuration.troop_website.troop_meetings %>
             </div>
             <div class="col-md-8">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=<%= ENV.fetch('GOOGLE_MAPS_API_KEY') %>&q=<%= Rails.configuration.troop_website.meeting_location %>"
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_API_KEY'] || 'AIzaSyA9Oo2SoS99G7Z1lF_qh9aGX3fHJu67bg4' %>&q=<%= Rails.configuration.troop_website.meeting_location %>"
                       width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
