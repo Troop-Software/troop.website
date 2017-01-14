@@ -1,0 +1,31 @@
+# My Troop custom configuration.
+# Do not put sensitive data in this file (use environment variables instead).
+
+default: &default
+  troop_number: 433
+  welcome_tag_line: A volunteer organization serving the boys of the Longwood community of Suffolk County for over 35 years.
+  welcome_sub_tag_line_1: Our chartered organization is the Middle Island Fire Department, located on Arnold Drive in Middle Island, New York.
+  welcome_sub_tag_line_2: We are a Quality Unit in the Benjamin Tallmadge District of the Suffolk County Council.
+  join_tag_line: Thanks for evaluating Troop 433. We are scout lead troop serving the Longwood community. Please scroll down for more information about us. Hope to see you at one of our troop meetings soon.
+  troop_meetings: Monday nights 7:30pm – 9pm.  We meet every Monday evening while school is in session.   Middle Island Fire Department Arnold Drive, Middle Island NY
+  meeting_location: Middle Island Fire Department, 31 Arnold Dr, Middle Island, NY 11953
+  past_trips:
+    - Northern Tier High Adventure Base, Minnesota
+    - Chilkoot High Adventure Base, Alaska
+    - Florida Sea Base High Adventure Base, Florida
+    - Summit Scout Reservation, West Virgina
+    - Boston, Massachusetts
+    - Battleship Cove, Massachusetts
+    - Washington D.C.
+    - Camp Hero, Montauk NY
+    - Bulowa Scout Reservation, NY
+    - and the list is growing...
+
+production:
+  <<: *default
+
+development:
+  <<: *default
+
+test:
+  <<: *default

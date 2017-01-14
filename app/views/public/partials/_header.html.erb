@@ -4,19 +4,16 @@
       <div class="col-md-8">
         <p>&nbsp;</p>
         <% if current_page?(action: :join_our_troop) %>
-            <h1 class="title">Want to Join Troop <%= Rails.application.config.troop %>?</h1>
+            <h1 class="title">Want to Join Troop <%= Rails.configuration.troop_website['troop_number'] %>?</h1>
         <% else %>
-            <h1 class="title">Boy Scout Troop <%= Rails.application.config.troop %></h1>
+            <h1 class="title">Boy Scout Troop <%= Rails.configuration.troop_website['troop_number'] %></h1>
         <% end %>
         <h1>&nbsp;</h1>
         <h2></h2>
         <% if current_page?(action: :join_our_troop) %>
-            <h4> Thanks for evaluating Troop <%= Rails.application.config.troop %>. We are scout lead troop serving the
-              Longwood community. Please scroll
-              down for more information about us. Hope to see you at one of our troop meetings soon.</h4>
+            <h4> <%= Rails.configuration.troop_website.join_tag_line %></h4>
         <% else %>
-            <h4>A volunteer organization serving the boys of the Longwood community of
-              Suffolk County for over 35 years.</h4>
+            <h4><%= Rails.configuration.troop_website.welcome_tag_line %></h4>
         <% end %>
       </div>
       <div class="col-md-12 text-center small">
@@ -26,9 +23,8 @@
         <% else %>
             <h4>&nbsp;</h4>
         <% end %>
-        <p>Our chartered organization is the Middle Island Fire Department, located on Arnold Drive in Middle Island,
-          New York.<br/>
-          We are a Quality Unit in the Benjamin Tallmadge District of the Suffolk County Council.</p>
+        <p><%= Rails.configuration.troop_website.welcome_sub_tag_line_1 %><br/>
+          <%= Rails.configuration.troop_website.welcome_sub_tag_line_2 %></p>
       </div>
     </div>
   </div>

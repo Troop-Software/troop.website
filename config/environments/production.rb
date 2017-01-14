@@ -104,5 +104,5 @@ Rails.application.configure do
       :user_name => ENV.fetch('MAILGUN_SMTP_LOGIN'),
       :password => ENV.fetch('MAILGUN_SMTP_PASSWORD')
   }
-  config.troop = 433
+
 end

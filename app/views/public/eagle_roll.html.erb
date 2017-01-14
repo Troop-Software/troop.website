@@ -3,9 +3,9 @@
 <div class="wrapper">
   <%
     if @eagle_scouts.count == 0
-      headline = "Troop #{Rails.application.config.troop} Eagle Roll<h3>Will you be the first?</h3>".html_safe
+      headline = "Troop #{Rails.configuration.troop_website.troop_number} Eagle Roll<h3>Will you be the first?</h3>".html_safe
     else
-      headline = "Troop #{Rails.application.config.troop} Eagle Roll<h3>#{@eagle_scouts.count} Eagle Scouts and counting&hellip;</h3>".html_safe
+      headline = "Troop #{Rails.configuration.troop_website.troop_number} Eagle Roll<h3>#{@eagle_scouts.count} Eagle Scouts and counting&hellip;</h3>".html_safe
     end
   %>
   <%= render 'public/partials/header_alt',

@@ -74,6 +74,4 @@ Rails.application.configure do
       :password => "440c67ef21628b1d93d9875079d1271e"
   }
 
-  config.troop = 433
-
 end
