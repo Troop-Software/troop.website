@@ -3,9 +3,15 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :zxcvbnable, :confirmable
+  if Rails.configuration.troop_website.confirm_signup
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :trackable, :validatable,
+           :lockable, :zxcvbnable, :confirmable
+  else
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :trackable, :validatable,
+           :lockable, :zxcvbnable, :confirmable
+  end
 
 
   has_many :articles
@@ -15,7 +21,7 @@ class User < ApplicationRecord
   has_many :scouts, through: :relationships
   has_many :adults
 
-  before_save {self.email = email.downcase}
+  before_save { self.email = email.downcase }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -25,7 +31,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
             length: {maximum: 128},
             uniqueness: {case_sensitive: false},
-            format: {with: VALID_EMAIL_REGEX }
+            format: {with: VALID_EMAIL_REGEX}
 
   store_attributes :settings do
     show_inactive_scouts Boolean, default: false
@@ -37,7 +43,7 @@ class User < ApplicationRecord
 
   def registered_adult?
     adult_record = Adult.find_by(user_id: self.id)
-    adult_record.blank? ?  false :  true
+    adult_record.blank? ? false : true
   end
 
 end
