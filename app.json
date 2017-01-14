@@ -1,0 +1,16 @@
+{
+  "name": "Troop Website",
+  "description": "An open source Scout Troop Website that can help you manage your Troop",
+  "repository": "https://github.com/Troop-Software/troop.website",
+  "keywords": [
+    "Troop",
+    "Website",
+    "Scout",
+    "BSA",
+    "Boy"
+  ],
+  "scripts": {
+    "postdeploy":
+      "rails build_heroku_db"
+  }
+}

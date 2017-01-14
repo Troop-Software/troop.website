@@ -88,21 +88,21 @@ Rails.application.configure do
   config.paperclip_defaults = {
       storage: :s3,
       s3_credentials: {
-          bucket: ENV.fetch('S3_BUCKET_NAME'),
-          access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-          secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-          s3_region: ENV.fetch('AWS_REGION'),
+          bucket: ENV['S3_BUCKET_NAME'],
+          access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+          secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+          s3_region: ENV['AWS_REGION']
       }
   }
-  config.action_mailer.default_url_options = { :host => ENV.fetch('WEBSITE_URL') }
+  config.action_mailer.default_url_options = { :host => ENV['WEBSITE_URL'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :authentication => :plain,
-      :address => ENV.fetch('MAILGUN_SMTP_SERVER'),
-      :port => ENV.fetch('MAILGUN_SMTP_PORT'),
-      :domain => ENV.fetch('MAILGUN_DOMAIN'),
-      :user_name => ENV.fetch('MAILGUN_SMTP_LOGIN'),
-      :password => ENV.fetch('MAILGUN_SMTP_PASSWORD')
+      :address => ENV['MAILGUN_SMTP_SERVER'],
+      :port => ENV['MAILGUN_SMTP_PORT'],
+      :domain => ENV['MAILGUN_DOMAIN'],
+      :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+      :password => ENV['MAILGUN_SMTP_PASSWORD']
   }
 
 end
