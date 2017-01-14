@@ -94,15 +94,15 @@ Rails.application.configure do
           s3_region: ENV['AWS_REGION']
       }
   }
-  config.action_mailer.default_url_options = { :host => ENV.fetch('WEBSITE_URL') }
+  config.action_mailer.default_url_options = { :host => ENV['WEBSITE_URL'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :authentication => :plain,
-      :address => ENV.fetch('MAILGUN_SMTP_SERVER'),
-      :port => ENV.fetch('MAILGUN_SMTP_PORT'),
-      :domain => ENV.fetch('MAILGUN_DOMAIN'),
-      :user_name => ENV.fetch('MAILGUN_SMTP_LOGIN'),
-      :password => ENV.fetch('MAILGUN_SMTP_PASSWORD')
+      :address => ENV['MAILGUN_SMTP_SERVER'],
+      :port => ENV['MAILGUN_SMTP_PORT'],
+      :domain => ENV['MAILGUN_DOMAIN'],
+      :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+      :password => ENV['MAILGUN_SMTP_PASSWORD']
   }
 
 end
