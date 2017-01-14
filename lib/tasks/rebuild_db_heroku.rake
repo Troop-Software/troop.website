@@ -5,5 +5,4 @@ task :build_heroku_db => :environment do
   Rake::Task["db:seed"].invoke
   system("rake db:seed_fu FIXTURE_PATH=db/fixtures/requirements/2016")
   system("rake db:seed_fu FIXTURE_PATH=db/fixtures/users FILTER=generic")
-
 end

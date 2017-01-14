@@ -13,7 +13,6 @@ class User < ApplicationRecord
            :lockable, :zxcvbnable
   end
 
-
   has_many :articles
   has_many :assignments
   has_many :roles, through: :assignments
