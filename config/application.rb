@@ -13,8 +13,6 @@ module TroopWebsite
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     my_troop_config = ENV['TROOP_CONFIG_FILE'] || 'my_troop'
-    ap ENV['TROOP_CONFIG_FILE']
-    ap my_troop_config
     config.troop_website = Hashie::Mash.new(Rails.application.config_for(my_troop_config))
     ap config.troop_website
     config.time_zone = 'Eastern Time (US & Canada)'
