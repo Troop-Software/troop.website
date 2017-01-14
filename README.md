@@ -1,9 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/bob-koertge/troop.website.png?label=ready&title=Ready)](https://waffle.io/bob-koertge/troop.website)
-# README
-[![CircleCI](https://circleci.com/gh/bob-koertge/troop.website.svg?style=svg)](https://circleci.com/gh/bob-koertge/troop.website)
+#Configure for your troop
+Edit the my_troop.yml file
 
-#notes
-https://www.sitepoint.com/devise-authentication-in-depth/
 
 #User Roles
 | Roles | Resource | Permissions |
