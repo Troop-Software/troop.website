@@ -11,6 +11,6 @@
   ],
   "scripts": {
     "postdeploy":
-      "rails rebuild_db"
+      "rails build_heroku_db"
   }
 }
