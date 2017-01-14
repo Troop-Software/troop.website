@@ -15,5 +15,6 @@
       "rails db:seed_fu",
       "rails db:seed_fu FIXTURE_PATH=db/fixtures/requirements/2016",
       "rails db:seed_fu FIXTURE_PATH=db/fixtures/users"
-      }
-    }
+    ]
+  }
+}
