@@ -5,7 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :zxcvbnable
+         :lockable, :zxcvbnable, :confirmable if Rails.configuration.troop_website.confirm_signup
+
 
   has_many :articles
   has_many :assignments
