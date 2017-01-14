@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV.fetch('EMAIL_FROM_ADDRESS')
+  email_address = ENV['EMAIL_FROM_ADDRESS'] || 'test@example.com'
+  default from: email_address
   layout 'mailer'
 end
