@@ -1,5 +1,5 @@
 desc 'This builds heroku button db'
-task :build_db => :environment do
+task :build_heroku_db => :environment do
   Rake::Task["db:schema:load"].invoke
   Rake::Task["db:seed_fu"].invoke
   Rake::Task["db:seed"].invoke
