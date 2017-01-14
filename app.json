@@ -2,5 +2,18 @@
   "name": "Troop Website",
   "description": "An open source Scout Troop Website that can help you manage your Troop",
   "repository": "https://github.com/Troop-Software/troop.website",
-  "keywords": ["Troop", "Website", "Scout", "BSA", "Boy"]
-}
+  "keywords": [
+    "Troop",
+    "Website",
+    "Scout",
+    "BSA",
+    "Boy"
+  ],
+  "scripts": {
+    "postdeploy": [
+      "rails db:load:schema",
+      "rails db:seed_fu",
+      "rails db:seed_fu FIXTURE_PATH=db/fixtures/requirements/2016",
+      "rails db:seed_fu FIXTURE_PATH=db/fixtures/users"
+      }
+    }
