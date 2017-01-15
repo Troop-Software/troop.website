@@ -1,7 +1,7 @@
 class RequirementsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_user_leader_full, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_requirement, only: [:show, :edit, :update, :destroy]
-  before_action :require_user_leader_full, only: [:create, :edit, :update, :destroy]
 
   has_scope :by_rank_id
 

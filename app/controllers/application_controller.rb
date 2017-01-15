@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def deny_access
     flash[:danger] = 'Sorry you do not have permissions'
-    redirect_to :back
+    redirect_back(fallback_location: root_url)
   end
 
   def require_user_leader

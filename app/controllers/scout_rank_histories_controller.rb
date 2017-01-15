@@ -1,5 +1,6 @@
 class ScoutRankHistoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_user_leader
   before_action :set_srh_requirement, only: [:show, :edit, :update]
 
 
