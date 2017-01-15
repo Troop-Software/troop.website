@@ -1,4 +1,5 @@
 class ScoutRequirementsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_scout_requirement, only: [:show, :edit, :update, :destroy]
 
   # GET /scout_requirements

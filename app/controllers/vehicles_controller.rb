@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
   def new

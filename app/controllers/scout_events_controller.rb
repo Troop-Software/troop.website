@@ -1,8 +1,8 @@
 class ScoutEventsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_scout_event, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_scout_event, only: [:edit, :update, :destroy]
   before_action :require_user_leader, only: [:edit, :update]
 
   helper_method :get_scout_activities

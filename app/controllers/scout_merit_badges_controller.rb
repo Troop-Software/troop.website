@@ -1,6 +1,6 @@
 class ScoutMeritBadgesController < ApplicationController
-  before_action :set_scout_merit_badge, only: [:edit, :update]
   before_action :authenticate_user!
+  before_action :set_scout_merit_badge, only: [:edit, :update]
   before_action :require_user_leader_full, only: [:index]
 
   def index

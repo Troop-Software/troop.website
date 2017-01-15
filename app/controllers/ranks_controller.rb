@@ -1,6 +1,6 @@
 class RanksController < ApplicationController
-  before_action :set_rank, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_rank, only: [:show, :edit, :update, :destroy]
   before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
 
   # GET /ranks

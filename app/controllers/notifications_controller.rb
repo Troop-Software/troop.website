@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_user_leader
+  before_action :set_notification, only: [:show, :edit, :update, :destroy]
 
   def index
     @notifications = Notification.all

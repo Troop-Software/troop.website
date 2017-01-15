@@ -1,6 +1,6 @@
 class YouthAwardsController < ApplicationController
-  before_action :set_youth_award, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_youth_award, only: [:show, :edit, :update, :destroy]
   before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
   def new

@@ -1,4 +1,5 @@
 class EventLocationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_event_location, only: [:show, :edit, :update, :destroy]
 
   # GET /event_locations

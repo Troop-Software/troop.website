@@ -1,8 +1,7 @@
 class AdultEventsController < ApplicationController
   include ApplicationHelper
-
-  before_action :set_adult_event, only: [ :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_adult_event, only: [ :edit, :update, :destroy]
   before_action :require_user_leader, only: [ :edit, :update]
 
   def new
