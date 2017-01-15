@@ -1,5 +1,5 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
+Get your own Troop Website for free w/ Heroku
 
 #Configure for your troop
 Edit the my_troop.yml file
