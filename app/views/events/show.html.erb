@@ -50,49 +50,49 @@
                   class: 'btn btn-sm btn-danger' %>
   <% end %>
   <%= link_to 'View Events', calendar_path, class: 'btn btn-sm btn-success' %>
-  <% unless current_user.role? :leader %>
-      <% scouts = Scout.allowed_scouts(current_user) %>
-      <% scouts.each do |scout| %>
-          <% scout_event = ScoutEvent.find_by(scout_id: scout.id, event_id: @event.id) %>
-          <% if scout_event.blank? %>
-              <%= button_to "Register #{scout.name}", {controller: 'scout_events', action: :create, scout_event: {scout_id: scout.id, event_id: @event.id, registered: true}}, method: :post, class: 'btn btn-sm btn-info' %>
-          <% else %>
-              <%= link_to "Unregister #{scout.name}", scout_event_path(scout_event), method: :delete,
-                          data: {confirm: 'Are you sure you want to unregister for this event?'},
-                          class: 'btn btn-sm btn-danger' %>
+  <% unless @event.occurred? %>
+      <% unless current_user.role? :leader %>
+          <% scouts = Scout.allowed_scouts(current_user) %>
+          <% scouts.each do |scout| %>
+              <% scout_event = ScoutEvent.find_by(scout_id: scout.id, event_id: @event.id) %>
+              <% if scout_event.blank? %>
+                  <%= button_to "Register #{scout.name}", {controller: 'scout_events', action: :create, scout_event: {scout_id: scout.id, event_id: @event.id, registered: true}}, method: :post, class: 'btn btn-sm btn-info' %>
+              <% else %>
+                  <%= link_to "Unregister #{scout.name}", scout_event_path(scout_event), method: :delete,
+                              data: {confirm: 'Are you sure you want to unregister for this event?'},
+                              class: 'btn btn-sm btn-danger' %>
+              <% end %>
           <% end %>
       <% end %>
-  <% end %>
-  <% if current_user.registered_adult? %>
-      <% if Adult.find_by(user_id: current_user.id).ypt_expired? %>
-          <%= link_to 'Register Myself', '#',
-                      onclick: 'swal({
+
+      <% if current_user.registered_adult? %>
+          <% if Adult.find_by(user_id: current_user.id).ypt_expired? %>
+              <%= link_to 'Register Myself', '#',
+                          onclick: 'swal({
                        title: "Unable to register you",
                        text: "You must be a registered adult and your Youth Protection Training must be current",
                        type: "warning"
                        })',
-                      class: 'btn btn-sm btn-info' %>
-      <% else %>
-          <% adult_event = AdultEvent.find_by(adult_id: Adult.find_by(user_id: current_user.id).id, event_id: @event.id) %>
-          <% if adult_event.blank? %>
-              <%= button_to 'Register Myself', {controller: 'adult_events',
-                                                action: :create,
-                                                adult_event: {
-                                                    adult_id: Adult.find_by(user_id: current_user.id).id,
-                                                    event_id: @event.id,
-                                                    registered: true}
-              },
-                            method: :post,
-                            class: 'btn btn-sm btn-info' %>
+                          class: 'btn btn-sm btn-info' %>
           <% else %>
-              <%= link_to 'Unregister Myself', adult_event_path(adult_event), method: :delete,
-                          data: {confirm: 'Are you sure you want to unregister for this event?'},
-                          class: 'btn btn-sm btn-danger' %>
+              <% adult_event = AdultEvent.find_by(adult_id: Adult.find_by(user_id: current_user.id).id, event_id: @event.id) %>
+              <% if adult_event.blank? %>
+                  <%= button_to 'Register Myself', {controller: 'adult_events',
+                                                    action: :create,
+                                                    adult_event: {
+                                                        adult_id: Adult.find_by(user_id: current_user.id).id,
+                                                        event_id: @event.id,
+                                                        registered: true}
+                  },
+                                method: :post,
+                                class: 'btn btn-sm btn-info' %>
+              <% else %>
+                  <%= link_to 'Unregister Myself', adult_event_path(adult_event), method: :delete,
+                              data: {confirm: 'Are you sure you want to unregister for this event?'},
+                              class: 'btn btn-sm btn-danger' %>
+              <% end %>
           <% end %>
-
       <% end %>
-
-
   <% end %>
 </div>
 <div class="row">&nbsp;</div>
