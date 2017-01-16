@@ -1,0 +1,116 @@
+Feature: Check Routes have correct permissions leader
+
+  Scenario Outline: Leader signed in has access to proper pages
+    Given I am not authenticated
+    And I goto the login page
+    And I enter valid leader credentials
+    And I visit <page>
+    Then the response code should be <allowed>
+
+    Examples:
+      | page                             | allowed |
+      | /welcome                         | true    |
+      | /join                            | true    |
+      | /photos                          | true    |
+      | /eagle                           | true    |
+      | /troop_calendar                  | true    |
+      | /articles                        | true    |
+      | /articles/new                    | true    |
+      | /articles/1/edit                 | true    |
+      | /scouts                          | true    |
+      | /scouts/new                      | true    |
+      | /scouts/1/edit                   | true    |
+      | /scouts/1                        | true    |
+      | /requirements/new                | false   |
+      | /requirements/1/edit             | false   |
+      | /scout_requirements              | false   |
+      | /scout_requirements/new          | false   |
+      | /scout_requirements/1/edit       | false   |
+      | /scout_positions                 | true    |
+      | /scout_positions/new             | false   |
+      | /scout_positions/1/edit          | false   |
+      | /scout_positions/1.js            | true    |
+      | /scout_positions/1               | true    |
+      | /scout_trainings/1/edit          | false   |
+      | /scout_trainings/1.js            | true    |
+      | /scout_trainings/1               | true    |
+      | /scout_rank_histories/new        | false   |
+      | /scout_rank_histories/1/edit     | false   |
+      | /scout_merit_badges              | false   |
+      | /scout_merit_badges/new          | false   |
+      | /scout_merit_badges/1/edit       | false   |
+      | /scout_merit_badges/1.js         | true    |
+      | /scout_merit_badges/1            | true    |
+      | /scout_awards                    | false   |
+      | /scout_awards/new                | false   |
+      | /scout_awards/1/edit             | false   |
+      | /scout_awards/1.js               | true    |
+      | /scout_awards/1                  | true    |
+      | /scout_events                    | false   |
+      | /scout_events/new                | false   |
+      | /scout_events/1/edit             | false   |
+      | /scout_events/1.js               | true    |
+      | /scout_events/1                  | true    |
+      | /youth_awards                    | false   |
+      | /youth_awards/new                | false   |
+      | /youth_awards/1/edit             | false   |
+      | /youth_awards/1                  | true    |
+      | /youth_award_requirements        | false   |
+      | /youth_award_requirements/new    | false   |
+      | /youth_award_requirements/1/edit | false   |
+      | /youth_award_requirements/1      | true    |
+      | /positions                       | false   |
+      | /positions/new                   | false   |
+      | /positions/1/edit                | false   |
+      | /positions/1                     | true    |
+      | /ranks                           | true    |
+      | /ranks/new                       | false   |
+      | /ranks/1/edit                    | false   |
+      | /ranks/1                         | true    |
+      | /patrols                         | true    |
+      | /patrols/new                     | false   |
+      | /patrols/1/edit                  | false   |
+      | /patrols/1                       | false   |
+      | /relationships                   | false   |
+      | /relationships/new               | false   |
+      | /relationships/1/edit            | false   |
+      | /relationships/1                 | false   |
+      | /adults                          | true    |
+      | /adults/new                      | false   |
+      | /adults/1/edit                   | false   |
+      | /adults/1                        | true    |
+      | /adult_positions/new             | false   |
+      | /adult_positions/1/edit          | false   |
+      | /adult_events                    | true    |
+      | /adult_events/new                | false   |
+      | /adult_trainings                 | true    |
+      | /adult_trainings/new             | false   |
+      | /adult_trainings/1/edit          | false   |
+      | /adult_trainings/1               | true    |
+      | /vehicles                        | true    |
+      | /vehicles/new                    | false   |
+      | /vehicles/1/edit                 | false   |
+      | /notifications                   | true    |
+      | /notifications/new               | false   |
+      | /notifications/1/edit            | false   |
+      | /event_locations                 | true    |
+      | /event_locations/new             | false   |
+      | /event_locations/1/edit          | false   |
+      | /event_locations/1               | true    |
+      | /events                          | true    |
+      | /events/new                      | false   |
+      | /events/1/edit                   | false   |
+      | /events/1                        | true    |
+      | /categories                      | true    |
+      | /categories/new                  | true    |
+      | /categories/1/edit               | true    |
+      | /categories/1                    | true    |
+      | /reports/scout_detail_report     | true    |
+      | /reports/patrol_report           | true    |
+      | /reports/event_attendance_report | true    |
+      | /reports/ypt_report              | true    |
+      | /admin/users                     | false   |
+      | /admin/users/1/edit              | false   |
+      | /admin/file_uploads              | false   |
+      | /admin/file_uploads/new          | false   |
+

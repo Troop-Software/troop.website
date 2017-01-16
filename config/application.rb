@@ -14,7 +14,6 @@ module TroopWebsite
     # -- all .rb files in that directory are automatically loaded.
     my_troop_config = ENV['TROOP_CONFIG_FILE'] || 'my_troop'
     config.troop_website = Hashie::Mash.new(Rails.application.config_for(my_troop_config))
-    ap config.troop_website
     config.time_zone = 'Eastern Time (US & Canada)'
     config.serve_static_assets = true
     config.active_job.queue_adapter = :delayed_job

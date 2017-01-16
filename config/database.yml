@@ -6,7 +6,7 @@ development:
   username:
   password:
 
-test: &TEST
+test: &test
   adapter: postgresql
   encoding: utf8
   database: troop_website_test
@@ -19,3 +19,6 @@ production:
   database: troop_website
   pool: 5
   timeout: 5000
+
+cucumber:
+  <<: *test

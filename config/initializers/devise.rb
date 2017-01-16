@@ -274,4 +274,6 @@ Devise.setup do |config|
 
   #zxcvbnable
   config.min_password_score = 0
+
+  config.sign_out_via = Rails.env.test? ? :get : :delete
 end

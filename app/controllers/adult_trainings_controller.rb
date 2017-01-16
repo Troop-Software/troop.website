@@ -1,7 +1,8 @@
 class AdultTrainingsController < ApplicationController
-  before_action :set_adult_training, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
+  before_action :require_user_leader, only:  [:show, :index]
+  before_action :require_user_leader_full, except:  [:show, :index]
+  before_action :set_adult_training, only: [:edit, :update, :destroy]
 
   def index
     @adult_trainings = AdultTraining.all

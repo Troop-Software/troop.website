@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_user_leader, only: [:new, :edit]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -94,6 +95,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
+    set_article
     if current_user != @article.user && !(current_user.role? :leader)
       flash[:danger] = 'You can only edit or delete your own articles'
       redirect_to root_path

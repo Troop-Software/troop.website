@@ -44,7 +44,6 @@ gem 'awesome_print', require: 'ap'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
   gem 'rack-mini-profiler'
   gem 'stackprof'
   gem 'flamegraph'
@@ -61,12 +60,11 @@ group :development do
 end
 
 group :test do
+  gem 'cucumber-rails', :require => false
   gem 'capybara'
+  gem 'rspec-expectations'
   gem 'database_cleaner'
   gem 'simplecov'
-  gem 'rspec_junit_formatter'
- # gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

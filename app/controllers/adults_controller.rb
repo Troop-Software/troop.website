@@ -1,7 +1,8 @@
 class AdultsController < ApplicationController
-  before_action :set_adult, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :require_user_leader_full
+  before_action :require_user_leader, only: [:show, :index]
+  before_action :require_user_leader_full, except: [:show, :index]
+  before_action :set_adult, only: [:show, :edit, :update, :destroy]
 
 
   def new
