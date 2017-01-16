@@ -2,10 +2,8 @@ And(/^I visit (.*)$/) do |page|
   @page = page
   begin
   visit @page
-    ap page
   rescue ActiveRecord::RecordNotFound, ActionController::InvalidCrossOriginRequest, ActionController::UnknownFormat => error
-    ap error
-    end
+  end
 end
 
 Then(/^the response code should be (.*)$/) do |allowed|
