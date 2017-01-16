@@ -1,6 +1,6 @@
 class EventLocationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_user_leader, only: [:show, :index]
+  before_action :require_user_leader, only: [:index]
   before_action :require_user_leader_full, except: [:show, :index]
   before_action :set_event_location, only: [:show, :edit, :update, :destroy]
 

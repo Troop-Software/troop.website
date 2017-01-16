@@ -23,13 +23,13 @@ And(/^I enter valid (.*) credentials$/) do |type|
                username: @username,
                password: @password,
                password_confirmation: @password).save!
-    when 'leader'
+    when 'leader', 'leader_full', 'admin'
       user_leader = User.create(email: @email,
                       username: @username,
                       password: @password,
                       password_confirmation: @password,
                       confirmed_at: confirmed_at)
-      admin_role = Role.find_or_create_by(name: 'adult')
+      admin_role = Role.find_or_create_by(name: 'admin')
       scout_role = Role.find_or_create_by(name: 'scout')
       parent_role = Role.find_or_create_by(name: 'parent')
       leader_role = Role.find_or_create_by(name: 'leader')
@@ -37,6 +37,13 @@ And(/^I enter valid (.*) credentials$/) do |type|
       Assignment.find_or_create_by(user_id: user_leader.id, role_id: scout_role.id)
       Assignment.find_or_create_by(user_id: user_leader.id, role_id: parent_role.id)
       Assignment.find_or_create_by(user_id: user_leader.id, role_id: leader_role.id)
+      Assignment.find_or_create_by(user_id: user_leader.id, role_id: leader_full_role.id) if type == 'leader_full'
+      if type == 'admin'
+        Assignment.find_or_create_by(user_id: user_leader.id, role_id: leader_full_role.id)
+        Assignment.find_or_create_by(user_id: user_leader.id, role_id: admin_role.id)
+      end
+
+
   end
   visit '/users/sign_in'
   fill_in 'user_email', :with => @email
