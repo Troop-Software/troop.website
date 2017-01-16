@@ -1,7 +1,7 @@
 class YouthAwardRequirementsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_user_leader_full, except: :show
   before_action :set_youth_award_requirement, only: [:show, :edit, :update, :destroy]
-  before_action :require_user_leader, only: [:create, :edit, :update, :destroy]
 
   def new
     @youth_award_requirement = YouthAwardRequirement.new

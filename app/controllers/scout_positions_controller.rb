@@ -1,6 +1,7 @@
 class ScoutPositionsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_user_leader, except: :show
+  before_action :require_user_leader_full, only: [:edit, :new]
   before_action :set_scout_position, only: [ :edit, :update, :destroy]
 
 

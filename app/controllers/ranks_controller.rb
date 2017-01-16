@@ -1,7 +1,8 @@
 class RanksController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_user_leader, only: :index
+  before_action :require_admin_user, except: [:show, :index]
   before_action :set_rank, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
 
   # GET /ranks
   # GET /ranks.json

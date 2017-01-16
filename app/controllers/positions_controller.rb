@@ -1,6 +1,6 @@
 class PositionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_admin_user, only: [:create, :edit, :update, :destroy]
+  before_action :require_admin_user, except: :show
   before_action :set_position, only: [:show, :edit, :update, :destroy]
 
 

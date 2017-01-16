@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_user_leader
+  before_action :require_user_leader, except: :scout_detail_report
 
   def ypt_report
     @adults = Adult.where(inactive: false)

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :require_user_leader_full, except: [:show, :index]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  # before_action :require_user_leader, only: [:new, :create, :edit, :update, :destroy]
 
 
   # GET /events
