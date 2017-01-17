@@ -36,6 +36,7 @@ Edit the my_troop.yml file or set the ENV variable TROOP_CONFIG_FILE to point to
  - View Scouts by Training
  - Report for all Scouts
  - Create Articles
+ - View Scouts marked inactive
  - Essentially a read-only version of Leader_Full
  
 ### Leader Full
@@ -67,6 +68,8 @@ Edit the my_troop.yml file or set the ENV variable TROOP_CONFIG_FILE to point to
  - Set Notifications
  - Create Article Categories
  - Reports
+ - View Scouts marked inactive
+ - Reactive Scouts marked inactive
  
 ### Admin
  - Link Users to Adult Records

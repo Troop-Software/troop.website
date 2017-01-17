@@ -21,6 +21,7 @@ Feature: Check Routes have correct permissions leader
       | /scouts/new                      | true    |
       | /scouts/1/edit                   | true    |
       | /scouts/1                        | true    |
+      | /scouts/show_inactive            | true    |
       | /requirements/new                | true    |
       | /requirements/1/edit             | true    |
       | /scout_requirements              | true    |
