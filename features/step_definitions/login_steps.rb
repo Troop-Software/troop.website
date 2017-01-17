@@ -53,7 +53,7 @@ And(/^I enter valid (.*) credentials$/) do |type|
 end
 
 Then(/^I am logged into the application$/) do
-  expect(page).to have_title('Troop 433 Website [Home Page]')
+  expect(page).to have_title("Troop #{Rails.configuration.troop_website.troop_number} Website [Home Page]")
 end
 
 
