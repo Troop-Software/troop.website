@@ -1,7 +1,11 @@
+##Found a bug or have and idea for a new feature?  Please let us know [Add issue](https://troopwebsite.atlassian.net/secure/CreateIssue!default.jspa)
+
+--
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 Get your own Troop Website for free w/ Heroku
 
 I am currently running my troop off this software utilizing the free pricing tiers of Heroku, Mailgun, NewRelic and Papertrail. The only costs I have incurred are with AWS S3 for file storage (last months bill was 28 cents).
+--
 ##Configure for your troop
 Edit the my_troop.yml file or set the ENV variable TROOP_CONFIG_FILE to point to your yml file
 
