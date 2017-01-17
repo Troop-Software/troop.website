@@ -22,18 +22,20 @@
             </thead>
             <tbody>
             <% rank.scouts.each do |scout| %>
-                <tr>
-                  <td><%= link_to scout.name, scout %></td>
-                  <td><%= scout.rank.name %></td>
-                  <td><%= active_positions(scout) %></td>
-                </tr>
+                <% if scout.active? %>
+                    <tr>
+                      <td><%= link_to scout.name, scout %></td>
+                      <td><%= scout.rank.name %></td>
+                      <td><%= active_positions(scout) %></td>
+                    </tr>
+                <% end %>
             <% end %>
             </table>
 
         </div>
       </div>
   <% end %>
-  </div>
+</div>
 </div>
 
 

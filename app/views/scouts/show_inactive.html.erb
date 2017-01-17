@@ -1,0 +1,24 @@
+<%= content_for(:title, 'Inactive Scout Listing') %>
+<div>
+  <div class="card col-sm-7 col-sm-offset-2">
+    <div class="card-header" data-background-color="dkblue">
+      <h4 class="card-title">Inactive Scouts</h4>
+    </div>
+    <div class="card-content">
+      <table class="table table-responsive table-striped">
+        <thead>
+        <th>Scout Name</th>
+        <th>Last Updated</th>
+        <th></th>
+        </thead>
+      <% @scouts.each do |scout| %>
+            <tr>
+              <td><%= scout.name %></td>
+              <td><%= datetime_for_display(scout.updated_at) %></td>
+              <td><%= link_to('Reactivate', scout_path(scout, active: true), :method => :put, class: 'pull-right') if current_user.role? :leader_full %></td>
+            </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

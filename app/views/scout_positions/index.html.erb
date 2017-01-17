@@ -16,15 +16,17 @@
         <div class="card-content">
           <table class="table table-responsive">
             <% scout_positions.each do |scout_position| %>
-                <% next unless scout_position.current_position? %>
-                <tr>
-                  <td><%= link_to scout_position.scout.name, scout_position.scout %></td>
-                  <% if position.name == 'Patrol Leader' %>
-                      <td><%= scout_position.scout.patrol.name %></td>
-                  <% end %>
-                  <td class="pull-right"><%= (Date.today - scout_position.start_date).to_i %> Days</td>
-                  <td class="pull-right"><%= date_for_display(scout_position.start_date) %></td>
-                </tr>
+                <% if scout_position.scout.active? %>
+                    <% next unless scout_position.current_position? %>
+                    <tr>
+                      <td><%= link_to scout_position.scout.name, scout_position.scout %></td>
+                      <% if position.name == 'Patrol Leader' %>
+                          <td><%= scout_position.scout.patrol.name %></td>
+                      <% end %>
+                      <td class="pull-right"><%= (Date.today - scout_position.start_date).to_i %> Days</td>
+                      <td class="pull-right"><%= date_for_display(scout_position.start_date) %></td>
+                    </tr>
+                <% end %>
             <% end %>
           </table>
         </div>
