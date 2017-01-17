@@ -17,8 +17,8 @@ Feature: Check Routes have correct permissions
       | /users/password/edit             | false   |
       | /users/sign_up                   | true    |
       | /users/edit                      | false   |
-      | /users/confirmation/new          | true    |
-      | /users/confirmation              | true    |
+    #  | /users/confirmation/new          | true    |
+    #  | /users/confirmation              | true    |
       | /users/unlock                    | true    |
       | /users/unlock/new                | true    |
       | /articles                        | false   |
