@@ -1,6 +1,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 Get your own Troop Website for free w/ Heroku
 
+I am currently running my troop off this software utilizing the free pricing tiers of Heroku, Mailgun, NewRelic and Papertrail. The only costs I have incurred are with AWS S3 for file storage (last months bill was 28 cents).
 ##Configure for your troop
 Edit the my_troop.yml file or set the ENV variable TROOP_CONFIG_FILE to point to your yml file
 
@@ -80,18 +81,18 @@ Edit the my_troop.yml file or set the ENV variable TROOP_CONFIG_FILE to point to
 
 ####Mailgun has a great free tier so we use them to send outgoing email
  - MAILGUN_API_KEY 
-- MAILGUN_DOMAIN
-- MAILGUN_PUBLIC_KEY
-- MAILGUN_SMTP_LOGIN
-- MAILGUN_SMTP_PASSWORD
-- MAILGUN_SMTP_PORT
-- MAILGUN_SMTP
+ - MAILGUN_DOMAIN
+ - MAILGUN_PUBLIC_KEY
+ - MAILGUN_SMTP_LOGIN
+ - MAILGUN_SMTP_PASSWORD
+ - MAILGUN_SMTP_PORT
+ - MAILGUN_SMTP
 
-- GOOGLE_MAPS_API_KEY - Sign up with google for an api key, free tier works great
+ - GOOGLE_MAPS_API_KEY - Sign up with google for an api key, free tier works great
 
 ####AWS S3 is used to store files you upload for import
-- AWS_ACCESS_KEY_ID 
-- AWS_SECRET_ACCESS_KEY
-- AWS_REGION
-- S3_BUCKET_NAME
+ - AWS_ACCESS_KEY_ID 
+ - AWS_SECRET_ACCESS_KEY
+ - AWS_REGION
+ - S3_BUCKET_NAME
 
