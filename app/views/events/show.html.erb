@@ -51,17 +51,19 @@
   <% end %>
   <%= link_to 'View Events', calendar_path, class: 'btn btn-sm btn-success' %>
   <% unless @event.occurred? %>
-      <% unless current_user.role? :leader %>
+      <% if current_user.role? :leader %>
+          <% scouts = Scout.joins(:relationships).where(relationships: {user_id: current_user}, active: true ) %>
+      <% else %>
           <% scouts = Scout.allowed_scouts(current_user) %>
-          <% scouts.each do |scout| %>
-              <% scout_event = ScoutEvent.find_by(scout_id: scout.id, event_id: @event.id) %>
-              <% if scout_event.blank? %>
-                  <%= button_to "Register #{scout.name}", {controller: 'scout_events', action: :create, scout_event: {scout_id: scout.id, event_id: @event.id, registered: true}}, method: :post, class: 'btn btn-sm btn-info' %>
-              <% else %>
-                  <%= link_to "Unregister #{scout.name}", scout_event_path(scout_event), method: :delete,
-                              data: {confirm: 'Are you sure you want to unregister for this event?'},
-                              class: 'btn btn-sm btn-danger' %>
-              <% end %>
+      <% end %>
+      <% scouts.each do |scout| %>
+          <% scout_event = ScoutEvent.find_by(scout_id: scout.id, event_id: @event.id) %>
+          <% if scout_event.blank? %>
+              <%= button_to "Register #{scout.name}", {controller: 'scout_events', action: :create, scout_event: {scout_id: scout.id, event_id: @event.id, registered: true}}, method: :post, class: 'btn btn-sm btn-info' %>
+          <% else %>
+              <%= link_to "Unregister #{scout.name}", scout_event_path(scout_event), method: :delete,
+                          data: {confirm: 'Are you sure you want to unregister for this event?'},
+                          class: 'btn btn-sm btn-danger' %>
           <% end %>
       <% end %>
 

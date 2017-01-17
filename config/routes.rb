@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   get 'feed' => 'articles#feed', format: 'rss'
   get '/calendar', to: 'static_pages#calendar'
 
-  resources :scouts
+  resources :scouts do
+    collection do
+      get 'show_inactive'
+      patch 'activate'
+    end
+  end
   resources :requirements
   resources :scout_requirements
   resources :scout_positions

@@ -1,10 +1,5 @@
 <%= content_for(:title, 'Youth Training') %>
 
-<% if current_user.role? :leader %>
-    <div class="text-right">
-      <%= link_to 'Log Training', new_scout_training_path, class: 'btn btn-warning ' %>
-    </div>
-<% end %>
 <div class="row">
   <% @scout_trainings.group_by(&:youth_training).each do |training, scout_trainings| %>
       <div class="card col-sm-5 col-sm-offset-1">

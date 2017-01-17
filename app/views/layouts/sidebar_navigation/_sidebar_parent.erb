@@ -5,7 +5,7 @@
 
     <% when 1 %>
         <% relationship = relationships.first %>
-        <%= nav_link "<i class='material-icons'>face</i><p>#{relationship.scout.name}</p>".html_safe, scout_path(relationship.scout_id) %>
+        <%= nav_link "<i class='material-icons'>face</i><p>#{relationship.scout.name}</p>".html_safe, scout_path(relationship.scout_id) if relationship.scout.active?  %>
     <% else %>
         <li>
           <a data-toggle="collapse" href="#myScout">
@@ -17,7 +17,7 @@
           <div class="collapse" id="myScout">
             <ul class="nav">
               <% relationships.each do |relationship| %>
-                  <%= nav_link "<p>#{relationship.scout.name}</p>".html_safe, scout_path(relationship.scout_id) %>
+                  <%= nav_link "<p>#{relationship.scout.name}</p>".html_safe, scout_path(relationship.scout_id) if relationship.scout.active? %>
               <% end %>
             </ul>
           </div>

@@ -18,13 +18,17 @@
               <ul class="list-group">
                 <span class="text-rose bold"><%= User.find(user_id).username %></span>
                 <% relationship_group.each do |relationship| %>
-                    <li class="list-group-item"><%= relationship.scout.name %>
-                      <span class="pull-right">
+                    <% if relationship.scout.active? %>
+                        <li class="list-group-item"><%= relationship.scout.name %>
+                    <% else %>
+                        <li class="list-group-item"><s><%= relationship.scout.name %></s>
+                    <% end %>
+                    <span class="pull-right">
                         <% if current_user.role? :leader_full %>
                             <%= link_to '<i class="material-icons">edit</i>'.html_safe,
-                                      edit_relationship_path(relationship), class: 'text-success' %>
-                            <%= link_to "<i class='material-icons'>delete</i>".html_safe, relationship,
-                                        method: :delete, data: {confirm: 'Are you sure you wish to delete this relationship?'}, class: 'text-danger' %>
+                                        edit_relationship_path(relationship), class: 'text-success' %>
+                          <%= link_to "<i class='material-icons'>delete</i>".html_safe, relationship,
+                                      method: :delete, data: {confirm: 'Are you sure you wish to delete this relationship?'}, class: 'text-danger' %>
                             <% end %>
                       </span>
                     </li>

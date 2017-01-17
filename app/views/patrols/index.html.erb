@@ -11,8 +11,8 @@
         <div class="card">
           <div class="card-header" data-background-color="dkblue">
             <h4 class="card-title"><%= patrol.name %>
-              <span class="label label-success"><%= patrol.scouts.count %></span>
-              <% if current_user.role? :admin%>
+              <span class="label label-success"><%= patrol.scouts.where(active: true).count %></span>
+              <% if current_user.role? :admin %>
               <span class="pull-right">
                 <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Edit Patrol'>create</i>".html_safe, edit_patrol_path(patrol) %>
                 <%= link_to "<i class='material-icons' data-toggle='tooltip' title='Delete Patrol'>delete</i>".html_safe, patrol,
@@ -33,11 +33,13 @@
               </thead>
               <tbody>
               <% patrol.scouts.each do |scout| %>
-                    <tr>
-                      <td><%= link_to scout.name, scout %></td>
-                      <td><%= scout.rank.name %></td>
-                      <td><%= active_positions(scout) %></td>
-                    </tr>
+                  <% if scout.active %>
+                      <tr>
+                        <td><%= link_to scout.name, scout %></td>
+                        <td><%= scout.rank.name %></td>
+                        <td><%= active_positions(scout) %></td>
+                      </tr>
+                  <% end   %>
               <% end %>
               </table>
             </p>

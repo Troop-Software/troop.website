@@ -17,6 +17,10 @@ class ScoutsController < ApplicationController
     end
   end
 
+  def show_inactive
+    @scouts = Scout.where(active: false)
+  end
+
   # GET /scouts/1
   # GET /scouts/1.json
   def show
@@ -56,11 +60,20 @@ class ScoutsController < ApplicationController
   # PATCH/PUT /scouts/1
   # PATCH/PUT /scouts/1.json
   def update
+   if params[:active]
+     @scout.active = true
+     @scout.save
+     redirect_to show_inactive_scouts_path and return
+   end
     respond_to do |format|
       if @scout.update(scout_params)
         format.html {
           flash[:success] = 'Scout was successfully updated.'
-          redirect_to @scout
+          if @scout.active?
+            redirect_to @scout
+          else
+            redirect_to scouts_path
+          end
         }
         format.json { render :show, status: :ok, location: @scout }
       else
@@ -86,10 +99,11 @@ class ScoutsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_scout
-    current_user.show_inactive_scouts ?
-        @scout = Scout.find(params[:id]) :
-        @scout = Scout.where(active: true).find(params[:id])
-
+    if params[:active]
+      @scout = Scout.find(params[:id])
+    else
+      @scout = Scout.where(active: true).find(params[:id])
+    end
 
   end
 

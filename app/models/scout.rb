@@ -28,8 +28,8 @@ class Scout < ApplicationRecord
   def self.allowed_scouts(user)
     return Scout.where(active: true) if user.role?(:leader)
     return Scout.where(active: true) if user.role?(:leader_full)
-    return Scout.all if user.role?(:admin)
-    Scout.joins(:relationships).where('relationships.user_id = ?', user)
+    return Scout.where(active: true) if user.role?(:admin)
+    Scout.where(active: true).joins(:relationships).where('relationships.user_id = ?', user)
   end
 
   def establish_scout_rank_history
