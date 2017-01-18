@@ -2,7 +2,7 @@
 <% requirements = Requirement.where(rank_id: current_rank_selected).order(:sortOrder) %>
 <h3 style="margin-top: 0px;"><%= rank.name %></h3>
 <div>
-  <table class="table table-bordered table-striped table-responsive">
+  <table class="table table-striped table-responsive">
     <thead class="text-primary">
 
     <%
@@ -38,7 +38,6 @@
     <tr>
       <th><i class="fa fa-check" aria-hidden="true"></i></th>
       <th class="text-center">#</th>
-      <th class="text-center">Category</th>
       <th>Requirement</th>
       <th>Signed</th>
       <th>Date</th>
@@ -87,7 +86,6 @@
                     <%= req.req_num %>
                 <% end %>
                 </td>
-              <td class="small center"><%= req.req_category.humanize %></td>
               <td><%= simple_format(req.description) %></td>
               <td id="sign_off_<%= req.id %>"><%= scout_requirement[:sign_off] %>&nbsp;</td>
               <% if scout_requirement[:completed_date] == Date.parse('1/1/1111') %>
@@ -104,6 +102,5 @@
     <% end %>
     </tbody>
   </table>
-
 </div>
 

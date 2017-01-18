@@ -15,9 +15,9 @@
           <thead>
           <tr>
             <th>Text</th>
-            <th>Link</th>
+            <th class="hidden-xs">Link</th>
             <th>Display Until</th>
-            <th>Active</th>
+            <th class="hidden-xs">Active</th>
             <th class="text-right">Actions</th>
           </tr>
           </thead>
@@ -25,9 +25,9 @@
           <% @notifications.each do |notice| %>
           <tr>
             <td><%= notice.text %></td>
-            <td><%= notice.link %></td>
+            <td class="hidden-xs"><%= notice.link %></td>
             <td><%= notice.display_until %></td>
-            <td><%= notice.active %></td>
+            <td class="hidden-xs"><%= notice.active %></td>
             <td class="text-right">
               <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_notification_path(notice) %>
               <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, notification_path(notice), method: :delete,

@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-xs-12">
   <div class="card">
     <div class="card-header" data-background-color="dkblue">
 
@@ -14,7 +14,6 @@
           <tr>
             <th>Category</th>
             <th>Activity Name</th>
-            <th>Notes</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Count</th>
@@ -25,7 +24,6 @@
             <tr>
               <td class="text-warning"><%= scout_activity.event.category.titlecase %></td>
               <td><%= link_to scout_activity.event.title, scout_activity.event %></td>
-              <td><%= scout_activity.notes %></td>
               <td><%= date_for_display(scout_activity.event.start) %></td>
               <td><%= date_for_display(scout_activity.event.end) %></td>
               <td><%= scout_activity.event.logged %></td>
@@ -37,7 +35,9 @@
   </div>
 </div>
 <script>
+
     var table = $('#scout_activities').DataTable({
+        responsive: true,
         "columnDefs": [
             { "visible": false, "targets": 0 }
         ],

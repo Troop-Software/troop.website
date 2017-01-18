@@ -1,7 +1,7 @@
 <div class="card-content">
   <% scout_alert, scout_alert_message = obj.scout_alert %>
   <div class="row">
-    <div class="card card-stats">
+    <div class="card card-stats col-sm-12">
       <div class="card-header" data-background-color="dkblue">
         <img src="<%= image_url("ranks/#{obj.rank.name}.png") %>" class="img-card-rank">
       </div>
@@ -14,7 +14,7 @@
         <% end %>
 
         <% rank_completed = number_to_percentage(obj.calc_rank_complete, precision: 0) %>
-        <div class="col-xs-9" %>
+        <div class="col-sm-9 col-xs-12" %>
           <div class="text-center">Progress towards next rank&#8230;</div>
           <div class="progress">
             <span id="progress">
@@ -28,44 +28,24 @@
         <p class="category"><%= obj.patrol.name %></p>
         <h3 class="title"><%= obj.rank.name %></h3>
 
-        <div class="row">
-          <table class="table table-responsive">
-            <tr>
-
-            </tr>
-            <tr>
-              <td class="text-primary bold">Address:</td>
-              <td colspan="5" class="text-left"><%= obj.address.full unless obj.address.blank? %></td>
-            </tr>
-
-            <tr>
-              <td class="text-primary bold">Email:</td>
-              <td><%= obj.email %></td>
-              <td></td>
-              <td></td>
-              <td class="text-primary bold">Phone:</td>
-              <td><%= number_to_phone(obj.phone, area_code: true) %></td>
-            </tr>
-            <tr>
-              <td class="text-primary bold">Grade:</td>
-              <td><%= obj.grade %></td>
-              <td class="text-primary bold">Age:</td>
-              <td><%= "#{obj.age(obj.birthdate)} yrs old" unless obj.birthdate.nil? %></td>
-              <td class="text-primary bold">Birth Date:</td>
-              <td><%= date_for_display(obj.birthdate) %></td>
-            </tr>
-            <tr>
-
-              <td class="text-primary bold">Position(s):</td>
-              <td><%= active_positions(obj) %></td>
-              <td class="text-primary bold">BSA ID:</td>
-              <td><%= obj.bsa_id %></td>
-              <td class="text-primary bold">Joined:</td>
-              <td><%= date_for_display(obj.joined) %></td>
-            </tr>
-          </table>
-
+        <div class="col-xs-12 text-left">
+          <span class="text-primary bold">Address: </span><%= obj.address.full unless obj.address.blank? %>
         </div>
+        <div class="col-xs-12 col-sm-4 text-left"><span class="text-primary bold">Email: </span><%= obj.email %></div>
+        <div class="col-xs-12 col-sm-3 col-sm-offset-5 text-left">
+          <span class="text-primary bold">Phone: </span><%= number_to_phone(obj.phone, area_code: true) %></div>
+        <div class="col-xs-6 col-sm-4 text-left"><span class="text-primary bold">Grade: </span><%= obj.grade %></div>
+        <div class="col-xs-6 col-sm-4 text-left">
+          <span class="text-primary bold">Age: </span><%= "#{obj.age(obj.birthdate)} yrs old" unless obj.birthdate.nil? %>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-sm-offset-1 text-left">
+          <span class="text-primary bold">Birth Date: </span><%= date_for_display(obj.birthdate) %></div>
+        <div class="col-xs-6 col-sm-4 text-left">
+          <span class="text-primary bold">Position: </span><%= active_positions(obj) %></div>
+        <div class="col-xs-6 col-sm-4 text-left"><span class="text-primary bold">BSA ID: </span><%= obj.bsa_id %></div>
+        <div class="col-xs-6 col-sm-3 col-sm-offset-1 text-left">
+          <span class="text-primary bold">Joined: </span><%= date_for_display(obj.joined) %></div>
+        <div class="col-sm-12">&nbsp;</div>
       </div>
     </div>
   </div>
