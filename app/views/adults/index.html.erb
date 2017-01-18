@@ -1,5 +1,5 @@
 <%= content_for(:title, 'Adults involved with the Troop') %>
-<div class="col-sm-12">
+<div class="col-xs-12">
   <div class="card">
     <div class="card-header" data-background-color="dkblue">
       <h4 class="card-title">Troop Adults
@@ -13,8 +13,8 @@
         <thead>
         <th></th>
         <th>Name</th>
-        <th>Address</th>
-        <th>Email</th>
+        <th class="hidden-xs">Address</th>
+        <th class="hidden-xs">Email</th>
         <th>Phone</th>
         <th></th>
         </thead>
@@ -27,8 +27,8 @@
                             admin_user_path(adult.user) unless adult.user.blank? %>
               </td>
               <td><%= link_to adult.name, adult_path(adult) %></td>
-              <td><%= adult.address.full unless adult.address.blank? %></td>
-              <td><%= adult.email %></td>
+              <td class="hidden-xs"><%= adult.address.full unless adult.address.blank? %></td>
+              <td class="hidden-xs"><%= adult.email %></td>
               <td><%= number_to_phone(adult.phone) %></td>
               <td>
                 <%= link_to '<i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" title="Edit Adult"></i>'.html_safe,

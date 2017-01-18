@@ -22,17 +22,19 @@
     <li><%= link_to 'Awards', scout_award_path, remote: true %></li>
 
   </ul>
-  <div class="card-content">
-    <!-- Render Scout Rank and Requirements -->
-    <div id="view-scout-detail"></div>
-    <div id="myTabContent" class="tab-content" style="margin-top: 0;">
-      <% @ranks.each do |rank| %>
-          <% unless rank.id == 1 %>
-              <div class="tab-pane fade in <%= 'active' if rank.id == @scout.rank.id + 1%>" id="<%= rank.id %>">
-              <%= render 'scouts/scout_rank_view', current_rank_selected: rank.id %>
-              </div>
-          <% end %>
-      <% end %>
+  <div class="card">
+    <div class="card-content">
+      <!-- Render Scout Rank and Requirements -->
+      <div id="view-scout-detail"></div>
+      <div id="myTabContent" class="tab-content" style="margin-top: 0;">
+        <% @ranks.each do |rank| %>
+            <% unless rank.id == 1 %>
+                <div class="tab-pane fade in <%= 'active' if rank.id == @scout.rank.id + 1 %>" id="<%= rank.id %>">
+                  <%= render 'scouts/scout_rank_view', current_rank_selected: rank.id %>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
