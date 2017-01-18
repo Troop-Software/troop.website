@@ -1,5 +1,5 @@
 <%= content_for(:title, 'Scout Listing') %>
-<div class="text-right col-md-4 col-md-offset-8" id="scout_view">
+<div class="text-right col-sm-4 col-sm-offset-8" id="scout_view">
   <% if current_user.role? :leader %>
       <%= link_to 'Create New Scout', new_scout_path, class: 'btn btn-warning btn-round btn-xs' %>
   <% end %>
