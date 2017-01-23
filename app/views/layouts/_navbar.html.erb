@@ -52,6 +52,9 @@
             <p class="hidden-lg hidden-md">Notifications</p>
           </a>
           <ul class="dropdown-menu">
+            <% if notifications.count == 0 %>
+                <li><a href="#">No notifications</a></li>
+            <% end %>
             <% notifications.each do |notice| %>
                 <li><a href="<%= notice.link %>"><%= notice.text %></a></li>
             <% end %>
