@@ -20,9 +20,18 @@ class Event < ApplicationRecord
     return self.start.strftime('%m/%d/%Y') if self.end.blank?
     "#{self.start.strftime('%m/%d/%Y')} - #{self.end.strftime('%m/%d/%Y')}"
   end
+
   def occurred?
     (self.start < Date.today) ?  true :  false
   end
+
+  def open_registration?
+    return false if self.occurred?
+    return true if self.last_registration_date.blank?
+    return true if self.last_registration_date > Date.today
+    return false
+  end
+
   def logged
     case self.category
       when 'camping', 'cabin_camping'
@@ -35,6 +44,7 @@ class Event < ApplicationRecord
         return self.logged_units
     end
   end
+
   def self.search(search)
     if search
       #search by id

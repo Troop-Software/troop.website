@@ -50,9 +50,10 @@
                   class: 'btn btn-sm btn-danger' %>
   <% end %>
   <%= link_to 'View Events', calendar_path, class: 'btn btn-sm btn-success' %>
-  <% unless @event.occurred? %>
+
+  <% if @event.open_registration? %>
       <% if current_user.role? :leader %>
-          <% scouts = Scout.joins(:relationships).where(relationships: {user_id: current_user}, active: true ) %>
+          <% scouts = Scout.joins(:relationships).where(relationships: {user_id: current_user}, active: true) %>
       <% else %>
           <% scouts = Scout.allowed_scouts(current_user) %>
       <% end %>
@@ -95,6 +96,8 @@
               <% end %>
           <% end %>
       <% end %>
+      <% else %>
+  <br/>Registration closed <%= date_for_display(@event.last_registration_date) %>
   <% end %>
 </div>
 <div class="row">&nbsp;</div>
