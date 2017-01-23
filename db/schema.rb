@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113082812) do
+ActiveRecord::Schema.define(version: 20170123075931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170113082812) do
     t.datetime "updated_at",                 null: false
     t.boolean  "registered", default: false
     t.boolean  "attended",   default: false
+    t.boolean  "driver",     default: false
     t.index ["adult_id"], name: "index_adult_events_on_adult_id", using: :btree
     t.index ["event_id"], name: "index_adult_events_on_event_id", using: :btree
   end

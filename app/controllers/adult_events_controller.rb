@@ -47,7 +47,7 @@ class AdultEventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def adult_event_params
-    params.require(:adult_event).permit(:adult_id, :event_id, :notes, :attended, :registered)
+    params.require(:adult_event).permit(:adult_id, :event_id, :notes, :attended, :registered, :driver)
   end
 
 end

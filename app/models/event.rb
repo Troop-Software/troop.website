@@ -28,7 +28,7 @@ class Event < ApplicationRecord
   def open_registration?
     return false if self.occurred?
     return true if self.last_registration_date.blank?
-    return true if self.last_registration_date > Date.today
+    return true if self.last_registration_date >= Date.today
     return false
   end
 

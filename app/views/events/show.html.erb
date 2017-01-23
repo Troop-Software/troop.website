@@ -96,6 +96,7 @@
               <% end %>
           <% end %>
       <% end %>
+      <br/>Registration open until <%= date_for_display(@event.last_registration_date) %>
       <% else %>
   <br/>Registration closed <%= date_for_display(@event.last_registration_date) %>
   <% end %>
