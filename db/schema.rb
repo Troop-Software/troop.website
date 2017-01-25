@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123214753) do
+ActiveRecord::Schema.define(version: 20170125111219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,11 +181,12 @@ ActiveRecord::Schema.define(version: 20170123214753) do
     t.boolean  "allDay"
     t.integer  "category"
     t.string   "external_link"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.decimal  "logged_units"
     t.integer  "location_id"
     t.date     "last_registration_date"
+    t.decimal  "cost",                   precision: 8, scale: 2
   end
 
   create_table "merit_badges", force: :cascade do |t|
