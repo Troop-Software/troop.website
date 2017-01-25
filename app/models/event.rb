@@ -32,6 +32,18 @@ class Event < ApplicationRecord
     return false
   end
 
+  def enough_transportation?
+    self.event_seatbelt_count > self.scout_events.count
+  end
+
+  def event_seatbelt_count
+    self.adult_events.sum(:seatbelts)
+  end
+
+  def scouts_without_seatbelts
+    (self.scout_events.count + self.adult_events.count) - event_seatbelt_count
+  end
+
   def logged
     case self.category
       when 'camping', 'cabin_camping'

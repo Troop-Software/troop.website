@@ -1,3 +1,19 @@
+<!-- Alert Section -->
+<% if (@event.adult_events.count < 2) || !(@event.enough_transportation?) %>
+    <div class="card col-xs-10 col-xs-offset-1">
+      <div class="card-header" data-background-color="red">
+        <h4 class="card-title">Warning</h4>
+      </div>
+      <div class="card-content">
+        <%= '<i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i> Not enough registered Adults<br/>'.html_safe if @event.adult_events.count < 2 %>
+        <%= "<i class='fa fa-exclamation-triangle text-danger' aria-hidden='true'></i> Not enough drivers, still need transportation for #{@event.scouts_without_seatbelts} people.<br/>".html_safe if !@event.enough_transportation? %>
+        <% @event.adult_events.each do |adult_event| %>
+        <%= "<i class='fa fa-exclamation-triangle text-danger' aria-hidden='true'></i> YPT Expired for #{adult_event.adult.name}".html_safe if adult_event.adult.ypt_expired? %>
+        <% end %>
+      </div>
+    </div>
+
+<% end %>
 <div class="card col-sm-5 col-sm-offset-1">
   <div class="card-header" data-background-color="dkblue">
     <h4 class="card-title">Scouts Registered
@@ -8,8 +24,8 @@
           </span></h4>
   </div>
   <div class="card-content">
-    <ul class="list-group">
-      <% @event.scout_events.each do |scout_event| %>
+    <ol class="list-group">
+      <% @event.scout_events.order("updated_at asc").each do |scout_event| %>
           <% if scout_event.registered? %>
               <li class="list-group-item">
                 <%= link_to scout_event.scout.name, scout_event.scout %>
@@ -21,7 +37,7 @@
               </li>
           <% end %>
       <% end %>
-    </ul>
+    </ol>
   </div>
 </div>
 
@@ -36,11 +52,12 @@
   </div>
   <div class="card-content">
     <ul class="list-group">
-      <% @event.adult_events.each do |adult_event| %>
+      <% @event.adult_events.order("updated_at asc").each do |adult_event| %>
           <% if adult_event.registered? %>
               <li class="list-group-item">
                 <%= '<i class="fa fa-exclamation-triangle text-danger" date-toggle="tooltip"
                 title="YPT Expired" aria-hidden="true"></i>'.html_safe if adult_event.adult.ypt_expired? %>
+                <span class="label label-dkblue "><%= adult_event.seatbelts %></span>
                 <%= '<i class="fa fa-car" aria-hidden="true"></i>'.html_safe if adult_event.driver %>
                 <%= link_to adult_event.adult.name, adult_event.adult %>
                 <span class="pull-right">

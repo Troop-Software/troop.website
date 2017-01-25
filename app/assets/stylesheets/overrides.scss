@@ -85,3 +85,8 @@ body.form-control.bootsy_text_area.wysihtml5-editor {
   padding: 9px;
   display: block;
 }
+
+ol li.list-group-item {
+  list-style: decimal inside;
+  display: list-item;
+}

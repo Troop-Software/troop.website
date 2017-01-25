@@ -139,7 +139,7 @@ $(document).ready(function () {
         $("#expanded_view, #compact_view").toggle();
     });
 
-    $(".alert").fadeOut(5000);
+   // $(".alert").fadeOut(5000);
 
 });
 
