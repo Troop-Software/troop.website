@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
     date = date != '' ? DateTime.strptime(date, date_format).change(:offset => offset).to_s : date
   end
 
+  def human_boolean(boolean)
+    boolean ? 'Yes' : 'No'
+  end
+
   def deny_access
     flash[:danger] = 'Sorry you do not have permissions'
     redirect_back(fallback_location: root_url)

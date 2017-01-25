@@ -86,7 +86,7 @@
 
       <% if current_user.registered_adult? %>
           <% if Adult.find_by(user_id: current_user.id).ypt_expired? %>
-              <%= link_to 'Register Myself', '#',
+              <%= link_to 'Register Myself', '#hero',
                           onclick: 'swal({
                        title: "Unable to register you",
                        text: "You must be a registered adult and your Youth Protection Training must be current",

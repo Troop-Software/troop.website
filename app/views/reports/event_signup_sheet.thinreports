@@ -1,0 +1,54 @@
+require 'barby/barcode/qr_code'
+require 'barby/outputter/png_outputter'
+
+report.set_layout tlf: 'reports/Event Signup Sheet', layout_options: {default: true}
+
+scouts_in_attendance = @scouts_in_attendance
+adults_in_attendance = @adults_in_attendance
+event_details = @event_details
+url = @url
+
+report.start_new_page do
+  values(
+      event_title: event_details.title,
+      event_date_range: event_details.date_range,
+      event_category: event_details.category.humanize.titlecase,
+      event_units: event_details.logged,
+      event_location: EventLocation.find(event_details.location_id).name,
+      event_last_registration_date: ApplicationController.helpers.date_for_display(event_details.last_registration_date)
+  )
+
+  item(:qr_code).src(StringIO.new(Barby::QrCode.new(url).to_png(ydim: 5, xdim: 5)))
+
+
+  line_number = 1
+  scouts_in_attendance.each do |scout_event|
+    report.list.add_row do |row|
+      row.item(:name).value("#{line_number}. #{scout_event.scout.name}")
+      row.item(:patrol).value(scout_event.scout.patrol.name)
+      row.item(:driver).value('----')
+      row.item(:seatbelts).value('----')
+      line_number += 1
+    end
+  end
+  adults_in_attendance.each do |adult_event|
+    report.list.add_row do |row|
+      row.item(:name).value("#{line_number}. #{adult_event.adult.name}")
+      row.item(:patrol).value('Adult')
+      row.item(:driver).value((adult_event.driver ? 'Yes' : 'No'))
+      row.item(:seatbelts).value(adult_event.seatbelts)
+      line_number += 1
+    end
+  end
+
+  total = scouts_in_attendance.count + adults_in_attendance.count
+  until total == 25 do
+    report.list.add_row do |row|
+      row.item(:name).value("#{total + 1}.")
+    end
+    total += 1
+  end
+end
+
+
+

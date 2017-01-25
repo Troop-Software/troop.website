@@ -35,7 +35,10 @@
             <% when 'patrols' %>
                 <li><%= link_to 'Patrol Report', reports_patrol_report_path(format: :pdf) %></li>
             <% when 'events' %>
-                <li> <%= link_to 'Event Attendance Report', reports_event_attendance_report_path(id: params[:id], format: :pdf) %> </li>
+                <% if params[:action] == 'show' %>
+                    <li> <%= link_to 'Event Attendance Report', reports_event_attendance_report_path(id: params[:id], format: :pdf) %> </li>
+                    <li> <%= link_to 'Event Sign Up Sheet', reports_event_signup_sheet_path(id: params[:id], format: :pdf) %> </li>
+                <% end %>
             <% when 'adults' %>
                 <li> <%= link_to 'YPT Report', reports_ypt_report_path(id: params[:id], format: :pdf) %> </li>
             <% else %>

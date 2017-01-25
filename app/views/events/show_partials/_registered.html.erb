@@ -5,10 +5,10 @@
         <h4 class="card-title">Warning</h4>
       </div>
       <div class="card-content">
-        <%= '<i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i> Not enough registered Adults<br/>'.html_safe if @event.adult_events.count < 2 %>
-        <%= "<i class='fa fa-exclamation-triangle text-danger' aria-hidden='true'></i> Not enough drivers, still need transportation for #{@event.scouts_without_seatbelts} people.<br/>".html_safe if !@event.enough_transportation? %>
+        <%= '<i class="fa fa-exclamation-triangle fa-fw text-danger" aria-hidden="true"></i> Not enough registered Adults<br/>'.html_safe if @event.adult_events.count < 2 %>
+        <%= "<i class='fa fa-exclamation-triangle fa-fw text-danger' aria-hidden='true'></i> Not enough drivers, still need transportation for #{@event.scouts_without_seatbelts} people.<br/>".html_safe if !@event.enough_transportation? %>
         <% @event.adult_events.each do |adult_event| %>
-        <%= "<i class='fa fa-exclamation-triangle text-danger' aria-hidden='true'></i> YPT Expired for #{adult_event.adult.name}".html_safe if adult_event.adult.ypt_expired? %>
+        <%= "<i class='fa fa-exclamation-triangle fa-fw text-danger' aria-hidden='true'></i> YPT Expired for #{adult_event.adult.name}".html_safe if adult_event.adult.ypt_expired? %>
         <% end %>
       </div>
     </div>
@@ -55,10 +55,10 @@
       <% @event.adult_events.order("updated_at asc").each do |adult_event| %>
           <% if adult_event.registered? %>
               <li class="list-group-item">
-                <%= '<i class="fa fa-exclamation-triangle text-danger" date-toggle="tooltip"
+                <%= '<i class="fa fa-exclamation-triangle fa-fw text-danger" date-toggle="tooltip"
                 title="YPT Expired" aria-hidden="true"></i>'.html_safe if adult_event.adult.ypt_expired? %>
                 <span class="label label-dkblue "><%= adult_event.seatbelts %></span>
-                <%= '<i class="fa fa-car" aria-hidden="true"></i>'.html_safe if adult_event.driver %>
+                <%= '<i class="fa fa-car fa-fw" aria-hidden="true"></i>'.html_safe if adult_event.driver %>
                 <%= link_to adult_event.adult.name, adult_event.adult %>
                 <span class="pull-right">
                     <%= link_to '<i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" title="Unregister this Adult"></i>'.html_safe, adult_event_path(adult_event), method: :delete,
