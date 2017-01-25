@@ -1116,7 +1116,7 @@
       }
     ]
   },
-  "title": "Event Attendance Report",
+  "title": "Event Signup Sheet",
   "report": {
     "paper-type": "user",
     "orientation": "portrait",
