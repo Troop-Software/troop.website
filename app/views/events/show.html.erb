@@ -12,7 +12,7 @@
       </div>
       <div class="col-xs-6">
         <span class="text-primary bold">Location: </span>
-        <%= link_to EventLocation.find(@event.location_id).name,
+        <%= link_to "#{EventLocation.find(@event.location_id).name} <i class='fa fa-map-o' aria-hidden='true'></i>".html_safe ,
                     event_location_path(@event.location_id) unless @event.location_id.blank? %>
       </div>
       <div class="col-xs-6">
@@ -34,8 +34,10 @@
             <span class="text-primary bold">End: </span><%= datetime_for_display(@event.end) %>
           </div>
       <% end %>
-      <div class="col-xs-12">
+      <div class="col-xs-6">
         <span class="text-primary bold">Units: </span><%= @event.logged %>
+      </div><div class="col-xs-6">
+        <span class="text-primary bold">Cost: </span>$<%= number_to_currency(@event.cost.to_f, delimiter: '', unit: '')%>
       </div>
       <div class="col-xs-12 text-center">
         <span class="badge"><%= @event.category.humanize.titlecase %></span>
