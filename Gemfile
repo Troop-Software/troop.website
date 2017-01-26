@@ -40,6 +40,8 @@ gem 'thinreports-rails'
 gem 'bootsy'
 gem 'hashie'
 gem 'awesome_print', require: 'ap'
+gem 'pdf-reader'
+# Gems for Creating Barcodes
 gem 'barby'
 gem 'rqrcode'
 gem 'chunky_png'

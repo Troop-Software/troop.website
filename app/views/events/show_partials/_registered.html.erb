@@ -8,7 +8,7 @@
         <%= '<i class="fa fa-exclamation-triangle fa-fw text-danger" aria-hidden="true"></i> Not enough registered Adults<br/>'.html_safe if @event.adult_events.count < 2 %>
         <%= "<i class='fa fa-exclamation-triangle fa-fw text-danger' aria-hidden='true'></i> Not enough drivers, still need transportation for #{@event.scouts_without_seatbelts} people.<br/>".html_safe if !@event.enough_transportation? %>
         <% @event.adult_events.each do |adult_event| %>
-        <%= "<i class='fa fa-exclamation-triangle fa-fw text-danger' aria-hidden='true'></i> YPT Expired for #{adult_event.adult.name}".html_safe if adult_event.adult.ypt_expired? %>
+        <%= "<i class='fa fa-exclamation-triangle fa-fw text-danger' aria-hidden='true'></i> YPT Expired for #{adult_event.adult.name}".html_safe if adult_event.adult.ypt_expired? %><br/>
         <% end %>
       </div>
     </div>
