@@ -2,6 +2,6 @@ class YptExpirationMailer < ApplicationMailer
 
   def ypt_expired_email(adult)
     @adult = adult
-    mail to: 'bob@bobkoertge.com'
+    mail to: @adult.email
   end
 end
