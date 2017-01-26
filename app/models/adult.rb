@@ -112,6 +112,15 @@ class Adult < ApplicationRecord
     return true
   end
 
+  def self.ypt_expired
+    adults = []
+    Adult.all.each do |adult|
+      adults << adult if adult.ypt_expired?
+    end
+    return adults
+  end
+
+
   def last_ypt_date
     ypt_courses = AdultTrainingCourse.where(bsa_code: ['Y01', 'Y02', 'Y03']).ids
     ypt_courses_taken = AdultTraining.where(adult_training_course_id: ypt_courses, adult_id: self.id).order(completed_date: :desc)
