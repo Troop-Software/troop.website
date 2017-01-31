@@ -20,21 +20,23 @@
         </thead>
         <tbody>
         <% @adults.each do |adult| %>
-            <tr>
-              <td>
-                <%= '<i class="fa fa-exclamation-triangle text-danger" data-toggle="tooltip" title="YPT Expired" aria-hidden="true"></i>'.html_safe if adult.ypt_expired? %>
-                <%= link_to '<i class="fa fa-link" aria-hidden="true"></i>'.html_safe,
-                            admin_user_path(adult.user) unless adult.user.blank? %>
-              </td>
-              <td><%= link_to adult.name, adult_path(adult) %></td>
-              <td class="hidden-xs"><%= adult.address.full unless adult.address.blank? %></td>
-              <td class="hidden-xs"><%= adult.email %></td>
-              <td><%= number_to_phone(adult.phone) %></td>
-              <td>
-                <%= link_to '<i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" title="Edit Adult"></i>'.html_safe,
-                              edit_adult_path(adult) %>
-              </td>
-            </tr>
+            <% unless @adult.inactive? %>
+                <tr>
+                  <td>
+                    <%= '<i class="fa fa-exclamation-triangle text-danger" data-toggle="tooltip" title="YPT Expired" aria-hidden="true"></i>'.html_safe if adult.ypt_expired? %>
+                    <%= link_to '<i class="fa fa-link" aria-hidden="true"></i>'.html_safe,
+                                admin_user_path(adult.user) unless adult.user.blank? %>
+                  </td>
+                  <td><%= link_to adult.name, adult_path(adult) %></td>
+                  <td class="hidden-xs"><%= adult.address.full unless adult.address.blank? %></td>
+                  <td class="hidden-xs"><%= adult.email %></td>
+                  <td><%= number_to_phone(adult.phone) %></td>
+                  <td>
+                    <%= link_to '<i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" title="Edit Adult"></i>'.html_safe,
+                                edit_adult_path(adult) %>
+                  </td>
+                </tr>
+            <% end %>
         <% end %>
         </tbody>
       </table>

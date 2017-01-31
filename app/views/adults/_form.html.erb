@@ -94,6 +94,7 @@
                            options_for_select(User.all.map { |u| [u.username, u.id] },
                                               @adult.user_id),
                            {prompt: 'None'},
+                           placeholder: 'None',
                            class: 'form-control' %>
             </div>
           </div>
