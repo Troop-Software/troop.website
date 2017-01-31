@@ -14,6 +14,7 @@
             <th>User Name</th>
             <th class="hidden-xs">Email</th>
             <th>Roles</th>
+            <th></th>
           </tr>
           </thead>
             <tbody>
@@ -22,6 +23,7 @@
                 <td><%= link_to user.username, admin_user_path(user) %></td>
                 <td class="hidden-xs"><%= user.email %></td>
                 <td><%= user.roles.map(&:name).join ',' %></td>
+                <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure you wish to delete this user?'} %></td>
               </tr>
           <% end %>
           </tbody>
