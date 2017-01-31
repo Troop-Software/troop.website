@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         <% @adults.each do |adult| %>
-            <% unless @adult.inactive? %>
+            <% unless adult.inactive? %>
                 <tr>
                   <td>
                     <%= '<i class="fa fa-exclamation-triangle text-danger" data-toggle="tooltip" title="YPT Expired" aria-hidden="true"></i>'.html_safe if adult.ypt_expired? %>
